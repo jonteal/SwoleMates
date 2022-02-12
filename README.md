@@ -134,3 +134,16 @@ Each member of your group is required to submit the following for review:
 The URL of the deployed application.
 
 The URL of the GitHub repository, with a unique name and a README describing the project.
+
+
+
+
+
+
+
+
+
+# REFERENCES
+
+3 MACROS
+https://www.bodybuilding.com/content/macro-math-3-keys-to-dialing-in-your-macro-ratios.html
