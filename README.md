@@ -100,7 +100,7 @@ No tests at this time
 
   Deployed Heroku Site: COMING SOON
   
-  Github Site: COMING SOON
+  Github Site: https://github.com/jonteal/SwoleMates
 
   <a name="creditsection"></a>
 ## Resources/Credit
