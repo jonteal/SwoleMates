@@ -1,0 +1,22 @@
+{
+  "name": "swolemates",
+  "version": "1.0.0",
+  "description": ":hocho: # populus :hocho: An app for content creators to track their growth on social media platforms.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonteal/SwoleMates.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jonteal/SwoleMates/issues"
+  },
+  "homepage": "https://github.com/jonteal/SwoleMates#readme",
+  "dependencies": {
+    "create-react-app": "^5.0.0"
+  }
+}
