@@ -98,9 +98,9 @@ No tests at this time
   <a name="linksection"></a>
   ## Links
 
-  Deployed Heroku Site: COMING SOON
+  Deployed Heroku Site: https://true-swole-mates.herokuapp.com/
   
-  Github Site: COMING SOON
+  Github Site: https://github.com/jonteal/SwoleMates
 
   <a name="creditsection"></a>
 ## Resources/Credit
