@@ -1,3 +1,112 @@
+# Swole-Mates 💪🏽💓
+
+<a name="descsection"></a>
+## Description
+Coming Soon...
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
+## Table of Contents
+1. [ Description. ](#descsection)
+2. [ User Story. ](#usersection)
+3. [ Acceptance Criteria. ](#acceptancesection)
+4. [ Installation. ](#installsection)
+5. [ License. ](#licensesection)
+6. [ Contributing. ](#contribsection)
+7. [ Tests. ](#testsection)
+8. [ Questions. ](#questionssection)
+9. [ Screenshots. ](#picsection)
+10. [ Links. ](#linksection)
+11. [ Resources/Credit. ](#creditsection)
+
+<a name="usersection"></a>
+## User Story
+```
+Coming Soon...
+
+```
+
+<a name="acceptancesection"></a>
+## Acceptance Criteria
+```
+Coming Soon...
+```
+
+<a name="installsection"></a>
+## Installation
+* Clone the repository using:
+```
+git clone COMING SOON
+```
+* Ensure you are in the current working directory
+* Install dependencies by opening the terminal (ctrl + j on windows) and running:
+```
+npm install || npm i
+```
+* Run the project by typing the following in the terminal:
+```
+npm run start
+```
+
+<a name="licensesection"></a>
+## License
+Copyright <2021>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+  <a name="contribsection"></a>
+## Contributing
+  
+1. [Fork the repo!](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
+2. Create a feature branch:
+```
+git checkout -b yourname-branch
+```
+3. Commit changes:
+```
+git commit -m 'Your changes here'
+```
+4. Push to the branch:
+```
+git push origin yourname-branch
+```
+5. Submit a pull request and wait for it to be approved or denied.
+
+  <a name="testsection"></a>
+## Tests
+No tests at this time
+
+  <a name="questionssection"></a>
+## Collaborators?
+  Meet the team:
+
+  INSERT TEAM MATES, EMAILS, and GITHUBS HERE
+
+  Questions/comments/concerns? Please send an email to codinglaurel@gmail.com
+  
+
+  <a name="picsection"></a>
+  ## Screenshots
+  ![Screenshot of COMING SOON](./comingsoon)
+
+
+  <a name="linksection"></a>
+  ## Links
+
+  Deployed Heroku Site: COMING SOON
+  
+  Github Site: COMING SOON
+
+  <a name="creditsection"></a>
+## Resources/Credit
+* COMING SOON
+
+
 23 Final Project: MERN Stack Single-Page Application
 Projects have played a key role in your journey to becoming a full-stack web developer. As you apply for development jobs, your portfolio is absolutely vital to opening doors to opportunities. Your portfolio showcases high-quality deployed examples of your work, and you can use your finished projects for that very purpose.
 
