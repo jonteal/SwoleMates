@@ -37,7 +37,7 @@ Coming Soon...
 ## Installation
 * Clone the repository using:
 ```
-git clone COMING SOON
+git clone https://github.com/jonteal/SwoleMates.git
 ```
 * Ensure you are in the current working directory
 * Install dependencies by opening the terminal (ctrl + j on windows) and running:
