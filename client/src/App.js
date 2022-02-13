@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
+
 import ComingSoon from './components/ComingSoon';
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
@@ -30,7 +30,6 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <>
-          <Navbar />
           <Switch>
             <Route exact path='/' component={ComingSoon} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
