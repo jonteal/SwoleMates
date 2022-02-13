@@ -1,20 +1,16 @@
 {
   "name": "swolemates",
   "version": "1.0.0",
-  "description": ":hocho: # populus :hocho: An app for content creators to track their growth on social media platforms.",
-  "main": "index.js",
+  "description": "",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jonteal/SwoleMates.git"
-  },
-  "author": "",
+  "author": "Jon Jackson, Eric Martin, Laurel Thorburn, Ryan Paragas, and Valerii Bihun",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jonteal/SwoleMates/issues"
-  },
   "homepage": "https://github.com/jonteal/SwoleMates#readme",
   "dependencies": {
     "create-react-app": "^5.0.0"
@@ -22,6 +18,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.6",
-    "tailwindcss": "^3.0.22"
+    "tailwindcss": "^3.0.22",
+    "concurrently": "^5.1.0"
   }
 }
