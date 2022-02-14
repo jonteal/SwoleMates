@@ -6,7 +6,7 @@ import React from 'react';
 const ComingSoon = () => {
     return (
         <>
-            <div className="text-red-600">
+            <div className="text-green-400 text-lg">
                 Coming soon..
             </div>
         </>
