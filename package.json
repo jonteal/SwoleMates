@@ -9,7 +9,7 @@
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build"
   },
-  "author": "Jon Jackson, Eric Martin, Laurel Thorburn, Ryan Paragas, and Valerii Bihun",
+  "author": "Eric Martin, Jon Jackson, Laurel Thorburn, Ryan Paragas, and Valerii Bihun",
   "license": "MIT",
   "homepage": "https://github.com/jonteal/SwoleMates#readme",
   "dependencies": {

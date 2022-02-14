@@ -6,6 +6,7 @@ import ComingSoon from './components/ComingSoon';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
