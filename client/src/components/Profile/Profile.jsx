@@ -4,18 +4,27 @@ import './profile.css';
 class Profile extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {value: ''};
+        this.state = {
+            firstName: '',
+            lastName: ''
+        };
     
-        this.handleChange = this.handleChange.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
     
-      handleChange(event) {
-        this.setState({value: event.target.value});
-      }
+      handleInputChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+    
+        this.setState({
+          [name]: value
+        });
+    }
     
       handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
+        alert('A name was submitted: ' + this.state.firstName + ' ' + this.state.lastName);
         event.preventDefault();
       }
     
@@ -30,11 +39,11 @@ class Profile extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <label>
               First Name:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
             </label>
             <label>
               Last Name:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
             </label>
 
             <select>
