@@ -15,8 +15,8 @@ const resolvers = {
 
   Mutation: {
     //createUser
-    createUser: async (parent, args) => {
-      const user = await User.create(args);
+    createUser: async (parent, { email, password }) => {
+      const user = await User.create({ email, password });
       const token = signToken(user);
       return { token, user };
     },
@@ -25,7 +25,7 @@ const resolvers = {
       const user = await User.findOne({ email });
 
       if (!user) {
-        throw new AuthenticationError('No user found');
+        throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPw = await user.isCorrectPassword(password);
