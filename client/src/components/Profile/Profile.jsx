@@ -71,6 +71,15 @@ class Profile extends React.Component {
 
             <br />
 
+            <label>
+              Height:
+              <input type="number" min="0" max="8" name="feet" value={this.state.height} onChange={this.handleInputChange} /> feet
+              <input type="number" min="0" max="11" name="inches" value={this.state.height} onChange={this.handleInputChange} /> inches
+
+            </label>
+
+            <br />
+
             <select>
                 <option value="woman">Woman</option>
                 <option value="man">Man</option>
