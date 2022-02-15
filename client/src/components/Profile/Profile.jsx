@@ -84,14 +84,14 @@ class Profile extends React.Component {
             </label>
 
             <br />
-
+            Birth Sex:
             <select>
-                <option value="woman">Woman</option>
-                <option value="man">Man</option>
+                <option value="woman">Female</option>
+                <option value="man">Male</option>
             </select>
 
             <br />
-
+            Exercise:
             <select>
                 <option value="1.2"> Sedentary (little to no exercise)</option>
                 <option value="1.375">Lightly Active (light exercise/sports 1-3 days/week)</option>
@@ -99,14 +99,14 @@ class Profile extends React.Component {
                 <option value="1.725">Very Active (hard exercise/sports 6-7 days a week)</option>
                 <option value="1.9">Extra Active (very hard exercise/sports & physical job or 2x training)</option>
             </select>
-
+            Goal:
             <select>
                 <option value="gain">Gain muscle</option>
                 <option value="lose">Lose fat</option>
                 <option selected value="maintain">Maintain</option>
             </select>
      <br />
-            <input type="submit" value="Submit" />
+            <button onClick={this.handleSubmit}>Submit</button>
           </form>
           </div>
           </div>
