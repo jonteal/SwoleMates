@@ -9,7 +9,8 @@ class Profile extends React.Component {
             lastName: '',
             age: '',
             weight: '150',
-            height: '',
+            feet: '',
+            inches: '',
             sex: ''
         };
     
@@ -36,6 +37,8 @@ class Profile extends React.Component {
         return (
         <>
             Welcome, (future username here), please complete your profile to meet your future swole mate 💓
+
+            <br />
 
             <input type="file" />
 
