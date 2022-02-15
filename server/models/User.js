@@ -20,9 +20,11 @@ const UserSchema = new Schema({
   },
   weight: {
     type: Number,
+    default: 0,
   },
   age: {
     type: Number,
+    default: 0,
   },
   sex: {
     type: String,
