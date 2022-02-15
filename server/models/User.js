@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const userSchema = new Schema({
   name: {
     type: String,
-    required: true,
     trim: true
   },
   email: {
@@ -21,17 +20,14 @@ const userSchema = new Schema({
   },
   weight: {
     type: Number,
-    required: true,
   },
-  Age: {
+  age: {
     type: Number,
-    required: true
   },
-  Sex: {
+  sex: {
     type: String,
-    requried: true
   },
-  Goal: {
+  goal: {
     type: String
   }
 });
