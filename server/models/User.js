@@ -4,7 +4,11 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
 const UserSchema = new Schema({
-  name: {
+  firstName: {
+    type: String,
+    trim: true
+  },
+  lastName: {
     type: String,
     trim: true
   },
@@ -25,6 +29,10 @@ const UserSchema = new Schema({
   age: {
     type: Number,
     default: 0,
+  },
+  height: {
+    type: Number,
+    default: 0
   },
   sex: {
     type: String,

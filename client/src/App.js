@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ComingSoon from './components/ComingSoon';
 import Navbar from './components/navbar/Navbar';
+import SignupForm from './components/SignupForm/SignupForm';
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -32,14 +33,15 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <>
-      <Router>
-        <Navbar />
+        <Router>
+          <Navbar />
+          <SignupForm />
           <Switch>
             <Route exact path='/' component={ComingSoon} />
             {/* <Route exact path='/signup' component={SignupForm} /> */}
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
-      </Router>
+        </Router>
       </>
     </ApolloProvider>
 
