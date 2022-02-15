@@ -6,7 +6,10 @@ class Profile extends React.Component {
         super(props);
         this.state = {
             firstName: '',
-            lastName: ''
+            lastName: '',
+            age: '',
+            weight: '',
+            height: ''
         };
     
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -44,6 +47,10 @@ class Profile extends React.Component {
             <label>
               Last Name:
               <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
+            </label>
+            <label>
+              Age:
+              <input type="text" name="age" value={this.state.age} onChange={this.handleInputChange} />
             </label>
 
             <select>
