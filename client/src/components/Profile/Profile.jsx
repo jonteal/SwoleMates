@@ -8,8 +8,9 @@ class Profile extends React.Component {
             firstName: '',
             lastName: '',
             age: '',
-            weight: '',
-            height: ''
+            weight: '150',
+            height: '',
+            sex: ''
         };
     
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -38,20 +39,44 @@ class Profile extends React.Component {
 
             <input type="file" />
 
+            <br />
 
           <form onSubmit={this.handleSubmit}>
             <label>
               First Name:
               <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
             </label>
+
+            <br />
+
             <label>
               Last Name:
               <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
             </label>
+
+                 <br />
+
+
             <label>
               Age:
-              <input type="text" name="age" value={this.state.age} onChange={this.handleInputChange} />
+              <input type="number" min="0" max="120" name="age" value={this.state.age} onChange={this.handleInputChange} />
             </label>
+
+            <br />
+
+            <label>
+              Weight:
+              <input type="number" min="0" name="weight" value={this.state.weight} onChange={this.handleInputChange} /> lbs
+            </label>
+
+            <br />
+
+            <select>
+                <option value="woman">Woman</option>
+                <option value="man">Man</option>
+            </select>
+
+            <br />
 
             <select>
                 <option value="1.2"> Sedentary (little to no exercise)</option>
@@ -60,7 +85,7 @@ class Profile extends React.Component {
                 <option value="1.725">Very Active (hard exercise/sports 6-7 days a week)</option>
                 <option value="1.9">Extra Active (very hard exercise/sports & physical job or 2x training)</option>
             </select>
-
+     <br />
             <input type="submit" value="Submit" />
           </form>
           </>
