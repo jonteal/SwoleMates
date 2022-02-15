@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ComingSoon from './components/ComingSoon';
+
+import SignupForm from './components/SignupForm/SignupForm';
 import Foodbar from './components/Food/Food.jsx'
 // import Navbar from './components/navbar/Navbar';
 import MealPlanner from './components/MealPlanner/MealPlanner.jsx'
@@ -37,8 +39,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <>
-      <Router>
-        {/* <Navbar /> */}
+        <Router>
+//           <Navbar />
+          <SignupForm />
           <Switch>
             <Route exact path='/' component={ComingSoon} />
             <Route exact path='/signup' component={SignupForm} />
@@ -48,11 +51,10 @@ function App() {
             {/* <Route exact path='/signup' component={SignupForm} /> */}
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
-      </Router>
+        </Router>
       </>
     </ApolloProvider>
 
   );
 }
 
-export default App;
