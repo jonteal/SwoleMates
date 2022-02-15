@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ComingSoon from './components/ComingSoon';
 import Food from './components/Food/Food'
+import Profile from './components/Profile/Profile'
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -35,6 +36,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={ComingSoon} />
             <Route exact path='/food' component={Food} />
+            <Route exact path='/profile' component={Profile} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
         </>
