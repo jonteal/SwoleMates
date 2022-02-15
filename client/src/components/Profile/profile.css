@@ -1,0 +1,17 @@
+.profile {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    align-items: center;
+}
+
+.profileContainer {
+    background-color: antiquewhite;
+    width: 50vw;
+    height: 75vh;
+}
+
+input {
+    font-size: 15px;
+}

@@ -38,7 +38,7 @@ function App() {
     <ApolloProvider client={client}>
       <>
         <Router>
-          <SignupForm />
+
           <Switch>
             <Route exact path='/' component={ComingSoon} />
             <Route exact path='/signup' component={SignupForm} />

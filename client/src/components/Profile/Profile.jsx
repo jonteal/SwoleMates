@@ -36,13 +36,13 @@ class Profile extends React.Component {
       render() {
         return (
         <>
-        <div className ="bg-indigo-900">
-          <div className="border-2">
+        <div className ="bg-indigo-400 profile">
+          <div className="profileContainer">
             Welcome, (future username here), please complete your profile to meet your future swole mate 💓
 
             <br />
 
-            <input type="file" />
+            <input type="file" name="userPhoto" accept="image/png, image/gif, image/jpeg" />
 
             <br />
 
