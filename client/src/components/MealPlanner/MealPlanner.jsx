@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 const API_KEY = "?apiKey=f8a19463536b4ffb8c05cdb882afb0c8";
 
-const MealPlan = () => {
+const MealPlanner = () => {
   const [foodMonday, setMonday] = useState("");
   const [foodTuesday, setTuesday] = useState("");
   const [foodWednesday, setWednesday] = useState("");
@@ -9,6 +9,8 @@ const MealPlan = () => {
   const [foodFriday, setFriday] = useState("");
   const [foodSaturday, setSaturday] = useState("");
   const [foodSunday, setSunday] = useState("");
+
+  const [foodPlan, setPlan] = useState([]);
 
 // cal is calculated based on our BMR;
 
@@ -23,33 +25,31 @@ const MealPlan = () => {
     fetch(fetchMealPlanUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        setMonday('');
-        setTuesday('');
-        setWednesday('');
-        setThursday('');
-        setFriday('');
-        setSaturday('');
-        setSunday('');
+        console.log(data.week)
+        console.log(data.week.length)
+        setPlan(data.week);
       });
   };
   
-
+ 
+  
   return (
     <div className="">
       <p>Meal planner for the week! </p>
       <div>
-        <div className="">
-          <h2> Monday:</h2>
-          <p>Meal plan for monday </p>
-
-          <br />
-
-
-        </div>
+     { Object.keys(foodPlan).map((key, index) => (
+         <>
+          <h1>{key}</h1>
+          <ul>
+              {foodPlan[key].meals.map(meal => (
+                  <li>{meal.title}</li>
+              ))}
+          </ul>
+         </>
+     ))}
       </div>
     </div>
   );
 };
 
-export default MealPlan;
+export default MealPlanner;
