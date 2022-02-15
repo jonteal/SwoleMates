@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const API_KEY = "?apiKey=f8a19463536b4ffb8c05cdb882afb0c8";
 
 
-const Food = () => {
+const FoodBar = () => {
     const [foodID, setFood] = useState({});
     const [foodCalories, setCalories] = useState("");
 
@@ -51,4 +51,4 @@ const Food = () => {
   );
 }
 
-export default Food;
+export default FoodBar;
