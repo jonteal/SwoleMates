@@ -1,43 +1,55 @@
 const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
+const { Error } = require('mongoose');
 
 const resolvers = {
-    Query: {
-        me: async (parent, args, context) => {
-            if (context.user) {
-            const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
-            return userData;
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
+  Query: {
+    getUser: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
+        return userData;
+      }
+      throw new AuthenticationError('You need to be logged in!');
     },
 
-    Mutation: {
+    // new queuries start here
+  },
+
+  Mutation: {
     //createUser
-    createUser: async (parent, args) => {
-        const user = await User.create(args);
-        const token = signToken(user);
-        return { token, user };
+    createUser: async (parent, { email, password }) => {
+      const user = await User.create({ email, password });
+      const token = signToken(user);
+      return { token, user };
     },
 
     login: async (parent, { email, password }) => {
-        const user = await User.findOne({ email });
+      const user = await User.findOne({ email });
 
-    if (!user) {
-        throw new AuthenticationError('No user found');
-    }
-
-    const correctPw = await user.isCorrectPassword(password);
-
-    if (!correctPw) {
+      if (!user) {
         throw new AuthenticationError('Incorrect credentials');
-    }
+      }
 
-    const token = signToken(user);
+      const correctPw = await user.isCorrectPassword(password);
 
-    return { token, user };
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
     },
+
+    startProfile: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
+      }
+
+      throw new Error({ msg: 'ID mismatch' })
+    },
+    //new mutations start here
 
   },
 };

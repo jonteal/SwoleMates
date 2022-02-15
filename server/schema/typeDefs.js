@@ -1,7 +1,5 @@
 const { gql } = require('apollo-server-express');
 
-//savedBooks = this will be an array of the Book type
-// ! means this field value can never be bull
 const typeDefs = gql`
   type User {
     _id: ID!
@@ -14,12 +12,14 @@ const typeDefs = gql`
     user: User
   }
   type Query {
-    me: User
+    getUser: User
   }
 
-  type Mutation {
-  createUser(username: String!, email: String!, password: String!): Auth
+  
+type Mutation {
+  createUser(email: String!, password: String!): Auth
   login(email: String!, password: String!): Auth
+  startProfile(name: String!, weight: Int!, age: Int!, sex: String!, goal: String!): User
 }
 `;
 
