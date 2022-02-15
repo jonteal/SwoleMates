@@ -57,7 +57,7 @@ class Profile extends React.Component {
               <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
             </label>
 
-                 <br />
+                <br />
 
 
             <label>
@@ -96,6 +96,12 @@ class Profile extends React.Component {
                 <option selected value="1.55">Moderately Active (moderate exercise/sports 3-5 days/week)</option>
                 <option value="1.725">Very Active (hard exercise/sports 6-7 days a week)</option>
                 <option value="1.9">Extra Active (very hard exercise/sports & physical job or 2x training)</option>
+            </select>
+
+            <select>
+                <option value="gain">Gain muscle</option>
+                <option value="lose">Lose fat</option>
+                <option selected value="maintain">Maintain</option>
             </select>
      <br />
             <input type="submit" value="Submit" />
