@@ -5,6 +5,7 @@ import ComingSoon from './components/ComingSoon';
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+// import SignupForm from './components/SignupForm/SignupForm';
 
 
 const httpLink = createHttpLink({
@@ -33,6 +34,7 @@ function App() {
         <>
           <Switch>
             <Route exact path='/' component={ComingSoon} />
+            {/* <Route exact path='/signup' component={SignupForm} /> */}
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
         </>
