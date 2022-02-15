@@ -7,11 +7,10 @@
 }
 
 .profileContainer {
-    background-color: antiquewhite;
-    width: 50vw;
+    background-color: white;
+    width: 30vw;
     height: 75vh;
-}
-
-input {
-    font-size: 15px;
+    border-radius: 10px;
+    box-shadow: 10px black;
+    padding: 5px;
 }
