@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import API from "../../utils/API";
 
 const MealPlanner = () => {
   const [foodMonday, setMonday] = useState("");
@@ -14,13 +13,25 @@ const MealPlanner = () => {
 
 // cal is calculated based on our BMR;
 
-  let calories = 2000
+  var calories = 2000
 
   useEffect(() => {
-    
-    API.fetchMealPlan(calories, setPlan);
+    fetchMealPlan(calories);
   }, []);
-   
+
+  const fetchMealPlan = (calories) => {
+    let fetchMealPlanUrl = `https://api.spoonacular.com/mealplanner/generate${process.env.REACT_APP_API_KEY}&time=day&targetCalories=${calories}`;
+    fetch(fetchMealPlanUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.week)
+        console.log(data.week.length)
+        setPlan(data.week);
+      });
+  };
+  
+ 
+  
   return (
     <div className="">
       <p>Meal planner for the week! </p>
