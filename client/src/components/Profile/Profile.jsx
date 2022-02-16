@@ -29,7 +29,21 @@ class Profile extends React.Component {
     }
     
       handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.firstName + ' ' + this.state.lastName);
+        alert(`A name was submitted: ${this.state.firstName} ${this.state.lastName} with the following information:
+        ${this.state.age}
+        ${this.state.weight}
+        ${this.state.feet}
+        ${this.state.inches}
+        `);
+
+        const firstName = this.state.firstName;
+        const lastName = this.state.lastName;
+        const age = this.state.age;
+        const weight = this.state.weight;
+        const height = ((this.state.feet * 12) + this.state.inches);
+
+        console.log(`this height in inches is ${height}`)
+
         event.preventDefault();
       }
     
@@ -78,7 +92,7 @@ class Profile extends React.Component {
 
             <label>
               Height:
-              <input type="number" min="0" max="8" name="feet" value={this.state.height} onChange={this.handleInputChange} /> feet
+              <input type="number" min="1" max="8" name="feet" value={this.state.height} onChange={this.handleInputChange} /> feet
               <input type="number" min="0" max="11" name="inches" value={this.state.height} onChange={this.handleInputChange} /> inches
 
             </label>
@@ -86,8 +100,8 @@ class Profile extends React.Component {
             <br />
             Birth Sex:
             <select>
-                <option value="woman">Female</option>
-                <option value="man">Male</option>
+                <option name="sex" value="woman">Female</option>
+                <option name ="sex" value="man">Male</option>
             </select>
 
             <br />
