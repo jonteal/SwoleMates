@@ -6,7 +6,7 @@ const ExerciseSchema = new Schema({
      // add autoincrement id
   id: {
     type: Number,
-    required: true,
+    // required: true,
     unique: true,
   },
   type: {
@@ -42,6 +42,7 @@ const ExerciseSchema = new Schema({
   caloriesBurnt: {
     type: Number,
     required: true,
+    trim: true
   },
 });
 

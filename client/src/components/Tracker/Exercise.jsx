@@ -1,119 +1,139 @@
 import React, { useState, useEffect } from "react";
 
+import { useMutation } from "@apollo/client";
+// import { ADD_EXERCISE } from "../../utils/mutations";
 
-const Exercise = () => {
+class Exercise extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      type: "",
+      durationInMinutes: "",
+      cardioDistanceInMiles: "",
+      repetitions: "",
+      sets: "",
+      weight: "",
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-    const [exerciseData, setExerciseData] = useState({
-        type: "",
-        durationInMinutes: "",
-        cardioDistanceInMiles: "",
-        repetitions: "",
-        sets: "",
-        weight: "",
-        caloriesBurnt: "",
-      });
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
 
-      const [showAlert, setShowAlert] = useState(false);
+    this.setState({
+      [name]: value,
+    });
+  }
 
+  handleSubmit(event) {
+    alert(
+      "Your exercise was submitted! \n"  
+      + "\n "
+      + "Exercise type: "  + this.state.type + "\n "
+      + "Exercise duration: "  + this.state.durationInMinutes + " minutes" + "\n "
+      + "Repetitions for weighted exercises: "  + this.state.cardioDistanceInMiles + " reps" + "\n "
+      + "Number of sets: "  + this.state.cardioDistanceInMiles + " sets" + "\n "
+      + "Used weights: "  + this.state.cardioDistanceInMiles + " lbs" + "\n "
+      + "\n "
+      + "Check calories burnt on your dashboard!"
+    );
+    event.preventDefault();
+  }
 
-    //   write a mutation with exercise add
-      const [createExercise, { data, error }] = useMutation(ADD_EXERCISE);
-
-      useEffect(() => {
-        error ? setShowAlert(true) : setShowAlert(false);
-      }, [error]);
-
-      const handleInputChange = (event) => {
-        const { type, durationInMinutes, cardioDistanceInMiles, repetitions, sets, weight, caloriesBurtn, value } = event.target;
-        setExerciseData({ ...exerciseData, [type]: value, [durationInMinutes]: value, [cardioDistanceInMiles]: value, [repetitions]: value, [sets]: value, [weight]: value, [caloriesBurnt]: value });
-      };
-
-      const handleFormSubmit = async (event) => {
-        event.preventDefault();
-    
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-    
-        try {
-          const { data } = await createExercise({
-            variables: { ...exerciseData },
-          });
-    
-        } catch (err) {
-          console.error(err);
-        }
-    
-        setExerciseFormData({
-            type: "",
-            durationInMinutes: "",
-            cardioDistanceInMiles: "",
-            repetitions: "",
-            sets: "",
-            weight: "",
-            caloriesBurnt: "",
-        });
-      };
-
+  render() {
     return (
-        <>
-        <Form onSubmit={handleFormSubmit}>
-          {/* show alert if server response is bad */}
-          <Alert
-            dismissible
-            onClose={() => setShowAlert(false)}
-            show={showAlert}
-            variant="danger"
-          >
-            Something is wrong with your exercise input "sadface"
-          </Alert>
-  
-          {/* Exercise type */}
-          <Form.Group>
-            <Form.Label htmlFor="type">Exercise type</Form.Label>
-            <Form.Control
-              type="type"
-              placeholder="Choose your exercise type"
+      <>
+        Please, enter your exercise detail!
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Type:
+            <input
+              type="text"
               name="type"
-              onChange={handleInputChange}
-              value={exerciseData.type}
-              required
+              value={this.state.type}
+              onChange={this.handleInputChange}
             />
-            <Form.Control.Feedback type="invalid">
-              Type is required!
-            </Form.Control.Feedback>
-          </Form.Group>
-  
-          {/* Exercise Duration */}
-          <Form.Group>
-            <Form.Label htmlFor="durationInMinutes">Duration of exercise</Form.Label>
-            <Form.Control
-              type="durationInMinutes"
-              placeholder="Enter exercise in minutes"
+          </label>
+
+          <br />
+
+          <label>
+            Exercise duration:
+            <input
+              type="text"
               name="durationInMinutes"
-              onChange={handleInputChange}
-              value={exerciseData.durationInMinutes}
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-            Duration of exercise is required!
-            </Form.Control.Feedback>
-          </Form.Group>
-          
-  
-          {/* Submit Button */}
-          <Button
-            disabled={!(exerciseData.type && exerciseData.durationInMinutes)}
-            type="submit"
-            variant="success"
-          >
-            Submit
-          </Button>
-        </Form>
+              value={this.state.durationInMinutes}
+              onChange={this.handleInputChange}
+            />{" "}
+            minutes;
+          </label>
+
+          <br />
+
+          <label>
+            Distance of cardio:
+            <input
+              type="number"
+              name="cardioDistanceInMiles"
+              value={this.state.cardioDistanceInMiles}
+              onChange={this.handleInputChange}
+            />{" "}
+            miles;
+          </label>
+
+          <br />
+
+          <label>
+            Repetitions for weighted exercises:
+            <input
+              type="number"
+              min="0"
+              name="repetitions"
+              value={this.state.repetitions}
+              onChange={this.handleInputChange}
+            />{" "}
+            reps;
+          </label>
+
+          <br />
+
+          <label>
+            Number of sets:
+            <input
+              type="number"
+              name="sets"
+              value={this.state.sets}
+              onChange={this.handleInputChange}
+            />{" "}
+            sets;
+          </label>
+
+          <br />
+
+          <label>
+            Used weights:
+            <input
+              type="number"
+              name="weight"
+              value={this.state.weight}
+              onChange={this.handleInputChange}
+            />{" "}
+            lbs;
+          </label>
+
+          <p>Here we well display burnt calories!</p>
+
+          <br />
+
+         
+          <input type="submit" value="Submit" />
+        </form>
       </>
     );
-  };
-  
-  export default Exercise;
+  }
+}
+
+export default Exercise;
