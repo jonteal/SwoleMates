@@ -13,7 +13,6 @@ import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import SignupForm from './components/SignupForm/SignupForm';
 
-
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
