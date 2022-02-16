@@ -2,14 +2,6 @@ import React, { useState, useEffect } from "react";
 const API_KEY = "?apiKey=f8a19463536b4ffb8c05cdb882afb0c8";
 
 const MealPlanner = () => {
-  const [foodMonday, setMonday] = useState("");
-  const [foodTuesday, setTuesday] = useState("");
-  const [foodWednesday, setWednesday] = useState("");
-  const [foodThursday, setThursday] = useState("");
-  const [foodFriday, setFriday] = useState("");
-  const [foodSaturday, setSaturday] = useState("");
-  const [foodSunday, setSunday] = useState("");
-
   const [foodPlan, setPlan] = useState([]);
 
   // cal is calculated based on our BMR;
@@ -27,6 +19,7 @@ const MealPlanner = () => {
       .then((data) => {
         console.log(data.week);
         console.log(data.week.length);
+        console.log(data.week.monday.meals[0].sourceUrl);
         setPlan(data.week);
       });
   };
@@ -34,17 +27,23 @@ const MealPlanner = () => {
   return (
     <div className="">
       <p>Meal planner for the week! </p>
+      <p>Just click to get the recipe.</p>
       <div>
         {Object.keys(foodPlan).map((key, index) => (
           <>
-            <br />
-            <h1>Meals for {key}:</h1>
-            <br />
+            <div>
+              <br />
+              <h1 key={key}>Meals for {key}:</h1>
+              <br />
+            </div>
             <ul>
               {foodPlan[key].meals.map((meal) => (
-                <div>
-                  <li>{meal.title}</li>
-                  <p></p>
+                <div key={meal.sourceUrl.id}>
+                  <li>
+                    <a href={meal.sourceUrl} target="_blank">
+                      - {meal.title};
+                    </a>
+                  </li>
                 </div>
               ))}
             </ul>
