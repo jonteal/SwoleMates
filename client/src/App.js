@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ComingSoon from './components/ComingSoon';
 
-// import Navbar from './components/navbar/Navbar';
+import Navbar from './components/navbar/Navbar';
 import MealPlanner from './components/MealPlanner/MealPlanner.jsx'
 import Profile from './components/Profile/Profile'
 import Foodbar from './components/Food/Food'
@@ -40,7 +40,7 @@ function App() {
     <ApolloProvider client={client}>
       <>
         <Router>
-          {/* <SignupForm /> */}
+          <Navbar />
           <Switch>
             <Route exact path='/' component={ComingSoon} />
             <Route exact path='/signup' component={SignupForm} />
