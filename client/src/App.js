@@ -13,6 +13,7 @@ import Quote from './components/Quote/Quote';
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import SignupForm from './components/SignupForm/SignupForm';
+import LoginForm from './components/LoginForm/LoginForm';
 
 
 
@@ -44,11 +45,11 @@ function App() {
           <Switch>
             <Route exact path='/' component={ComingSoon} />
             <Route exact path='/signup' component={SignupForm} />
+            <Route exact path='/login' component={LoginForm} />
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/quote' component={Quote} />
             <Route exact path='/food' component={Foodbar} />
             <Route exact path='/mealplan' component={MealPlanner} />
-            {/* <Route exact path='/signup' component={SignupForm} /> */}
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
         </Router>
