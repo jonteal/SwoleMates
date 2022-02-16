@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const ExerciseSchema = new Schema({
+     // add autoincrement id
   id: {
     type: Number,
     required: true,
@@ -38,7 +39,7 @@ const ExerciseSchema = new Schema({
     required: false,
     trim: true,
   },
-  caloriesBurtn: {
+  caloriesBurnt: {
     type: Number,
     required: true,
   },
