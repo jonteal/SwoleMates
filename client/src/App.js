@@ -7,11 +7,13 @@ import ComingSoon from './components/ComingSoon';
 import MealPlanner from './components/MealPlanner/MealPlanner.jsx'
 import Profile from './components/Profile/Profile'
 import Foodbar from './components/Food/Food'
+import Quote from './components/Quote/Quote';
 
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import SignupForm from './components/SignupForm/SignupForm';
+
 
 
 const httpLink = createHttpLink({
@@ -38,11 +40,12 @@ function App() {
     <ApolloProvider client={client}>
       <>
         <Router>
-          <SignupForm />
+          {/* <SignupForm /> */}
           <Switch>
             <Route exact path='/' component={ComingSoon} />
             <Route exact path='/signup' component={SignupForm} />
             <Route exact path='/profile' component={Profile} />
+            <Route exact path='/quote' component={Quote} />
             <Route exact path='/food' component={Foodbar} />
             <Route exact path='/mealplan' component={MealPlanner} />
             {/* <Route exact path='/signup' component={SignupForm} /> */}
