@@ -12,9 +12,9 @@ const MealPlanner = () => {
 
   const [foodPlan, setPlan] = useState([]);
 
-// cal is calculated based on our BMR;
+  // cal is calculated based on our BMR;
 
-  var calories = 2000
+  var calories = 2000;
 
   useEffect(() => {
     fetchMealPlan(calories);
@@ -25,28 +25,32 @@ const MealPlanner = () => {
     fetch(fetchMealPlanUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.week)
-        console.log(data.week.length)
+        console.log(data.week);
+        console.log(data.week.length);
         setPlan(data.week);
       });
   };
-  
- 
-  
+
   return (
     <div className="">
       <p>Meal planner for the week! </p>
       <div>
-     { Object.keys(foodPlan).map((key, index) => (
-         <>
-          <h1>{key}</h1>
-          <ul>
-              {foodPlan[key].meals.map(meal => (
+        {Object.keys(foodPlan).map((key, index) => (
+          <>
+            <br />
+            <h1>Meals for {key}:</h1>
+            <br />
+            <ul>
+              {foodPlan[key].meals.map((meal) => (
+                <div>
                   <li>{meal.title}</li>
+                  <p></p>
+                </div>
               ))}
-          </ul>
-         </>
-     ))}
+            </ul>
+            <br />
+          </>
+        ))}
       </div>
     </div>
   );
