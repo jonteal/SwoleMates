@@ -8,6 +8,7 @@ import MealPlanner from './components/MealPlanner/MealPlanner.jsx'
 import Profile from './components/Profile/Profile'
 import Foodbar from './components/Food/Food'
 import Quote from './components/Quote/Quote';
+import Exercise from './components/Tracker/Exercise';
 import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
 
 
@@ -52,6 +53,7 @@ function App() {
             <Route exact path='/personaldevelopment' component={PersonalDevelopment} />
             <Route exact path='/food' component={Foodbar} />
             <Route exact path='/mealplan' component={MealPlanner} />
+            <Route exact path='/exercise' component={Exercise} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
         </Router>
