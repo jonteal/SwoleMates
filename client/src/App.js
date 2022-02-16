@@ -9,6 +9,7 @@ import Profile from './components/Profile/Profile'
 import Foodbar from './components/Food/Food'
 import Quote from './components/Quote/Quote';
 import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
+import Mates from './components/Mates/Mates';
 
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
@@ -50,6 +51,7 @@ function App() {
             <Route exact path='/personaldevelopment' component={PersonalDevelopment} />
             <Route exact path='/food' component={Foodbar} />
             <Route exact path='/mealplan' component={MealPlanner} />
+            <Route exact path='/mates' component={Mates} />
             {/* <Route exact path='/signup' component={SignupForm} /> */}
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
