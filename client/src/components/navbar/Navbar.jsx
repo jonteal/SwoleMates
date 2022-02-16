@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as AiIcons from "react-icons/ai";
-import * as GrIcons from "react-icons/gr";
+import * as CgIcons from "react-icons/cg";
 import { IconContext } from 'react-icons';
 import { NavbarData } from './navbarData';
 import './navbar.css';
@@ -15,9 +15,10 @@ const Navbar = () => {
   <div className='nav'>
     <IconContext.Provider value={{ color: '#fff' }}>
     <div className="navbar">
-        <Link to="#" className="menuBars">
+        <button to="#" className="menuBars">
             <AiIcons.AiOutlineMenu onClick={showSidebar} />
-        </Link>
+            {/* <CgIcons.CgClose onClick={showSidebar} /> */}
+        </button>
         <span className="nav-title">Menu</span>
         <div className="nav-name">
             SwoleMates
@@ -25,11 +26,6 @@ const Navbar = () => {
     </div>
     <nav className={ sidebar ? 'nav-menu active' : 'nav-menu' }>
         <ul className="nav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-                <Link to='#' className="menu-bars">
-                    <AiIcons.AiOutlineClose />
-                </Link>
-            </li>
             {NavbarData.map((item, index) => {
                 return (
                     <li key={index} className={item.cName}>

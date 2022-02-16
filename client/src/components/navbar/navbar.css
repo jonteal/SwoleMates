@@ -6,7 +6,7 @@
     justify-content: start;
     align-items: center;
     font-size: 1.8rem;
-    position: fixed;
+    position: relative;
     width: 100vw;
     z-index: 7;
 }
@@ -26,11 +26,11 @@
 
 .nav-menu {
     background-color: #003d7a;
-    width: 250px;
-    height: 55vh;
+    height: 35vh;
+    width: 10vw;
     display: flex;
     justify-content: center;
-    position: fixed;
+    position: relative;
     top: 0;
     left: -100%;
     transition: 1000ms;
@@ -42,8 +42,10 @@
     left: 0;
     transition: 400ms;
     display: flex;
-    position: fixed;
+    position: relative;
     z-index: 7;
+    height: 35vh;
+    width: 10vw;
 }
 
 .nav-text {
@@ -110,14 +112,51 @@ span {
     }
 
     .navbar {
-        width: 42vh;
-        position: fixed;
+        width: 100vw;
+        position: relative;
         z-index: 7;
         top: 0;
     }
 
+    .nav-menu {
+        height: 47vh;
+        width: 47vw;
+    }
+
     .nav-menu.active {
-        position: fixed;
+        position: relative;
+        height: 47vh;
+        width: 47vw;
+    }
+    
+}
+
+@media screen and (max-width: 900px) {
+    .nav-title {
+        display: none;
+    }
+
+    .nav-name {
+        font-size: 30px;
+        justify-content: center;
+    }
+
+    .navbar {
+        width: 100vw;
+        position: relative;
+        z-index: 7;
+        top: 0;
+    }
+
+    .nav-menu {
+        height: 27vh;
+        width: 27vw;
+    }
+
+    .nav-menu.active {
+        position: relative;
+        height: 27vh;
+        width: 27vw;
     }
     
 }
