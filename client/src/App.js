@@ -8,6 +8,7 @@ import MealPlanner from './components/MealPlanner/MealPlanner.jsx'
 import Profile from './components/Profile/Profile'
 import Foodbar from './components/Food/Food'
 import Quote from './components/Quote/Quote';
+import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
 
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
@@ -43,9 +44,10 @@ function App() {
           {/* <SignupForm /> */}
           <Switch>
             <Route exact path='/' component={ComingSoon} />
-            <Route exact path='/signup' component={SignupForm} />
+            {/* <Route exact path='/signup' component={SignupForm} /> */}
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/quote' component={Quote} />
+            <Route exact path='/personaldevelopment' component={PersonalDevelopment} />
             <Route exact path='/food' component={Foodbar} />
             <Route exact path='/mealplan' component={MealPlanner} />
             {/* <Route exact path='/signup' component={SignupForm} /> */}
