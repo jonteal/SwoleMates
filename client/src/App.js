@@ -8,6 +8,7 @@ import MealPlanner from './components/MealPlanner/MealPlanner.jsx'
 import Profile from './components/Profile/Profile'
 import Foodbar from './components/Food/Food'
 import Quote from './components/Quote/Quote';
+import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
 
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
@@ -48,6 +49,7 @@ function App() {
             <Route exact path='/login' component={LoginForm} />
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/quote' component={Quote} />
+            <Route exact path='/personaldevelopment' component={PersonalDevelopment} />
             <Route exact path='/food' component={Foodbar} />
             <Route exact path='/mealplan' component={MealPlanner} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
