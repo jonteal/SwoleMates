@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Exercise } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const { Error } = require('mongoose');
@@ -42,15 +42,19 @@ const resolvers = {
       return { token, user };
     },
 
-    startProfile: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
-      }
+    // startProfile: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
+    //   }
 
-      throw new Error({ msg: 'ID mismatch' })
-    },
+    //   throw new Error({ msg: 'ID mismatch' })
+    // },
+
+    addExercise: async (parent, args) => {
+      const exercise = await Exercise.create(args);
+      return exercise;
+    }
     //new mutations start here
-
   },
 };
 
