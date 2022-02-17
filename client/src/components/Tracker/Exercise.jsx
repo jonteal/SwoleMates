@@ -42,6 +42,7 @@ class Exercise extends React.Component {
           this.state.type +
           ";" +
           "\n " +
+          "\n " +
           "Exercise duration: " +
           this.state.durationInMinutes +
           " minutes" +
@@ -61,6 +62,7 @@ class Exercise extends React.Component {
           "Exercise type: " +
           this.state.type +
           ";" +
+          "\n " +
           "\n " +
           "Repetitions for weighted exercises: " +
           this.state.repetitions +
@@ -87,6 +89,7 @@ class Exercise extends React.Component {
           this.state.type +
           ";" +
           "\n " +
+          "\n " +
           "Exercise duration: " +
           this.state.durationInMinutes +
           "minutes" +
@@ -107,6 +110,7 @@ class Exercise extends React.Component {
           <label>
             Select workout type:
             <select value={this.state.type} onChange={this.handleSelect}>
+              <option value="empty"></option>
               <option value="cardio">Cardio</option>
               <option value="strength">Strength training</option>
               <option value="stretching">Stretching</option>
