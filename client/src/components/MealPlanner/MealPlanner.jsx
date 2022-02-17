@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-const API_KEY = "?apiKey=f8a19463536b4ffb8c05cdb882afb0c8";
 
 const MealPlanner = () => {
   //   Setting up a state to save fetched data:
@@ -15,7 +14,7 @@ const MealPlanner = () => {
 
   //   Data fetch:
   const fetchMealPlan = (calories) => {
-    let fetchMealPlanUrl = `https://api.spoonacular.com/mealplanner/generate${API_KEY}&time=day&targetCalories=${calories}`;
+    let fetchMealPlanUrl = `https://api.spoonacular.com/mealplanner/generate${process.env.REACT_APP_API_KEY}&time=day&targetCalories=${calories}`;
     fetch(fetchMealPlanUrl)
       .then((res) => res.json())
       .then((data) => {

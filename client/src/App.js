@@ -18,7 +18,6 @@ import SignupForm from './components/SignupForm/SignupForm';
 import LoginForm from './components/LoginForm/LoginForm';
 
 
-
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -43,7 +42,9 @@ function App() {
     <ApolloProvider client={client}>
       <>
         <Router>
+
           <Navbar />
+
           <Switch>
             <Route exact path='/' component={ComingSoon} />
             <Route exact path='/signup' component={SignupForm} />
