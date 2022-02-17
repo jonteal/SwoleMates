@@ -11,33 +11,35 @@ const Profile = (props) => {
         const [inputWeight, setWeight] = useState('');
         const [inputFeet, setFeet] = useState('');
         const [inputInches, setInches] = useState('');
-        const [inputSex, setSex] = useState('');
+        // const [inputSex, setSex] = useState('');
 
-        function handleFirstName(event){
-          setFirstName(event.target.value);
-        }
-        function handleLastName(event){
-          setLastName(event.target.value);
-        }
-        function handleAge(event){
-          setAge(event.target.value);
-        }
-        function handleWeight(event){
-          setWeight(event.target.value);
-        }
-        function handleFeet(event){
-          setFeet(event.target.value);
-        }
+        // function handleFirstName(event){
+        //   setFirstName(event.target.value);
+        // }
+        // function handleLastName(event){
+        //   setLastName(event.target.value);
+        // }
+        // function handleAge(event){
+        //   setAge(event.target.value);
+        // }
+        // function handleWeight(event){
+        //   setWeight(event.target.value);
+        // }
+        // function handleFeet(event){
+        //   setFeet(event.target.value);
+        // }
     
-        function handleInch(event){
-          setInches(event.target.value);
-        }
+        // function handleInch(event){
+        //   setInches(event.target.value);
+        // }
         // function handleSex(event){
         //   setSex(event.target.value);
         // }
     
     
       function handleSubmit(event) {
+        event.preventDefault();
+
         alert(`A name was submitted: ${inputFirstName} ${inputLastName} with the following information:
         ${inputAge}
         ${inputWeight}
@@ -52,8 +54,6 @@ const Profile = (props) => {
         // const height = ((this.state.feet * 12) + this.state.inches);
 
         // console.log(`this height in inches is ${height}`)
-
-        event.preventDefault();
       }
     
         return (
@@ -68,17 +68,17 @@ const Profile = (props) => {
 
             <br />
 
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={(e) => handleSubmit(e)}>
             <label>
               First Name:
-              <input type="text" name="firstName" value={this.state.firstName} onChange={handleFirstName} />
+              <input type="text" name="firstName" value={inputFirstName} onChange={(e) => setFirstName(e.target.value)} />
             </label>
 
             <br />
 
             <label>
               Last Name:
-              <input type="text" name="lastName" value={this.state.lastName} onChange={handleLastName} />
+              <input type="text" name="lastName" value={inputLastName} onChange={(e) => setLastName(e.target.value)} />
             </label>
 
                 <br />
@@ -86,22 +86,22 @@ const Profile = (props) => {
 
             <label>
               Age:
-              <input type="number" min="0" max="120" name="age" value={this.state.age} onChange={handleAge} />
+              <input type="number" min="0" max="120" name="age" value={inputAge} onChange={(e) => setAge(e.target.value)} />
             </label>
 
             <br />
 
             <label>
               Weight:
-              <input type="number" min="0" name="weight" value={this.state.weight} onChange={handleWeight} /> lbs
+              <input type="number" min="0" name="weight" value={inputWeight} onChange={(e) => setWeight(e.target.value)} /> lbs
             </label>
 
             <br />
 
             <label>
               Height:
-              <input type="number" min="1" max="8" name="feet" value={this.state.height} onChange={handleFeet} /> feet
-              <input type="number" min="0" max="11" name="inches" value={this.state.height} onChange={handleInch} /> inches
+              <input type="number" min="1" max="8" name="feet" value={inputFeet} onChange={(e) => setFeet(e.target.value)} /> feet
+              <input type="number" min="0" max="11" name="inches" value={inputInches} onChange={(e) => setInches(e.target.value)} /> inches
 
             </label>
 
@@ -128,7 +128,7 @@ const Profile = (props) => {
                 <option selected value="maintain">Maintain</option>
             </select>
      <br />
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={(e) => handleSubmit(e)}>Submit</button>
           </form>
           </div>
           </div>
