@@ -55,6 +55,7 @@ function App() {
             <Route exact path='/food' component={Foodbar} />
             <Route exact path='/mealplan' component={MealPlanner} />
             {/* <Route exact path='/exercise' component={Exercise} /> */}
+            <Route exact path='/exercise' component={Exercise} />
             <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
           </Switch>
         </Router>

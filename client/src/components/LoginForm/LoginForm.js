@@ -1,10 +1,10 @@
 import React, {useState, useEffect } from "react";
 import "./LoginForm.css";
-import { Form, Button, Alert } from 'react-bootstrap';
 
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
+import SignupForm from '../../components/SignupForm/SignupForm';
 
 const LoginForm = () => {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
@@ -51,42 +51,51 @@ const LoginForm = () => {
 
 return (
     <>
-        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-            Something went wrong with your login credentials!
-            </Alert>
-            <Form.Group>
-            <Form.Label htmlFor='email'>Email</Form.Label>
-            <Form.Control
-                type='text'
-                placeholder='Your email'
-                name='email'
-                onChange={handleInputChange}
-                value={userFormData.email}
-                required
-            />
-            <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
-            </Form.Group>
 
-            <Form.Group>
-            <Form.Label htmlFor='password'>Password</Form.Label>
-            <Form.Control
-                type='password'
-                placeholder='Your password'
-                name='password'
-                onChange={handleInputChange}
-                value={userFormData.password}
-                required
-            />
-            <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
-            </Form.Group>
-            <Button
-                disabled={!(userFormData.email && userFormData.password)}
-                type='submit'
-                variant='success'>
-                Submit
-            </Button>
-        </Form>
+        <div className="min-h-screen flex justify-center align-center mainLogin">
+            <div className="bg-white p-16 rounded shadow-2xl w-2/3 loginCard">
+                <h2 className="text-3x1 font-bold mb-10 text-center">Login!</h2>
+                <form className="space-y-8" noValidate validated={validated} onSubmit={handleFormSubmit}>
+                    {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+                    Something went wrong with your login credentials!
+                    </alert> */}
+                    <div>
+                    <label className="block mb-2 font-bold" htmlFor='email'>Email</label>
+                    <input
+                        type='text'
+                        placeholder='Your email'
+                        name='email'
+                        onChange={handleInputChange}
+                        value={userFormData.email}
+                        required
+                    />
+                    {/* <label type='invalid'>Email is required!</label> */}
+                    </div>
+
+                    <div>
+                    <label className="block mb-2 font-bold" htmlFor='password'>Password</label>
+                    <input
+                        type='password'
+                        placeholder='Your password'
+                        name='password'
+                        onChange={handleInputChange}
+                        value={userFormData.password}
+                        required
+                    />
+                    {/* <label type='invalid'>Password is required!</label> */}
+                    </div>
+                    <button
+                        disabled={!(userFormData.email && userFormData.password)}
+                        type='submit'
+                        variant='success'>
+                        Submit
+                    </button>
+                    <p>Don't have an account? <span><a href={SignupForm}>Sign up!</a></span></p>
+                </form>
+            </div>
+
+        </div>
+
     </>
 );
 };
