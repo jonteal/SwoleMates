@@ -56,4 +56,15 @@ UserSchema.methods.isCorrectPassword = async function (password) {
 
 const User = mongoose.model('User', UserSchema);
 
+
+
+// ====================================================
+
+const profileSchema = new Schema({
+  username: String,
+  password: String,
+  email: String,
+  createdAt: String 
+})
+
 module.exports = User;
