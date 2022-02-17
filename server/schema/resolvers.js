@@ -44,7 +44,7 @@ const resolvers = {
 
     startProfile: async (parent, args, context) => {
       if (context.user) {
-        return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
+        //return create profile
       }
 
       throw new Error({ msg: 'ID mismatch' })
