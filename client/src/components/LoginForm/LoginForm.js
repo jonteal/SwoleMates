@@ -4,7 +4,7 @@ import "./LoginForm.css";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-import LoginForm from ";
+import SignupForm from '../../components/SignupForm/SignupForm';
 
 const LoginForm = () => {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
@@ -52,14 +52,14 @@ const LoginForm = () => {
 return (
     <>
         <div className="min-h-screen flex justify-center">
-            <div className="bg-white p-16 rounded shadow-2x1 w-2/3">
-                <h2 className="text-3x1 font-bold mb-10">Login!</h2>
+            <div className="bg-white p-16 rounded shadow-2xl w-2/3">
+                <h2 className="text-3x1 font-bold mb-10 text-center">Login!</h2>
                 <form className="space-y-8" noValidate validated={validated} onSubmit={handleFormSubmit}>
                     {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                     Something went wrong with your login credentials!
                     </alert> */}
                     <div>
-                    <label htmlFor='email'>Email</label>
+                    <label className="block mb-2 font-bold" htmlFor='email'>Email</label>
                     <input
                         type='text'
                         placeholder='Your email'
@@ -72,7 +72,7 @@ return (
                     </div>
 
                     <div>
-                    <label htmlFor='password'>Password</label>
+                    <label className="block mb-2 font-bold" htmlFor='password'>Password</label>
                     <input
                         type='password'
                         placeholder='Your password'
