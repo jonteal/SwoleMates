@@ -51,6 +51,7 @@ const LoginForm = () => {
 
 return (
     <>
+
         <div className="min-h-screen flex justify-center">
             <div className="bg-white p-16 rounded shadow-2xl w-2/3">
                 <h2 className="text-3x1 font-bold mb-10 text-center">Login!</h2>
@@ -92,6 +93,7 @@ return (
                     <p>Don't have an account? <span><a href={SignupForm}>Sign up!</a></span></p>
                 </form>
             </div>
+
         </div>
     </>
 );

@@ -13,7 +13,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    // new queuries start here
+    // new queries start here
   },
 
   Mutation: {
