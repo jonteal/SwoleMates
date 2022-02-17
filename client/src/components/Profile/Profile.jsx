@@ -1,53 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useMutation } from '@apollo/client';
 import './profile.css';
 
-class Profile extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            firstName: '',
-            lastName: '',
-            age: '',
-            weight: '150',
-            feet: '',
-            inches: '',
-            sex: ''
-        };
+//need to add mutation like add user
+
+const Profile = (props) => {
+        const [inputFirstName, setFirstName] = useState('');
+        const [inputLastName, setLastName] = useState('');
+        const [inputAge, setAge] = useState('');
+        const [inputWeight, setWeight] = useState('');
+        const [inputFeet, setFeet] = useState('');
+        const [inputInches, setInches] = useState('');
+        const [inputSex, setSex] = useState('');
+
+        function handleFirstName(event){
+          setFirstName(event.target.value);
+        }
+        function handleLastName(event){
+          setLastName(event.target.value);
+        }
+        function handleAge(event){
+          setAge(event.target.value);
+        }
+        function handleWeight(event){
+          setWeight(event.target.value);
+        }
+        function handleFeet(event){
+          setFeet(event.target.value);
+        }
     
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-      }
+        function handleInch(event){
+          setInches(event.target.value);
+        }
+        // function handleSex(event){
+        //   setSex(event.target.value);
+        // }
     
-      handleInputChange(event) {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
     
-        this.setState({
-          [name]: value
-        });
-    }
-    
-      handleSubmit(event) {
-        alert(`A name was submitted: ${this.state.firstName} ${this.state.lastName} with the following information:
-        ${this.state.age}
-        ${this.state.weight}
-        ${this.state.feet}
-        ${this.state.inches}
+      function handleSubmit(event) {
+        alert(`A name was submitted: ${inputFirstName} ${inputLastName} with the following information:
+        ${inputAge}
+        ${inputWeight}
+        ${inputFeet}
+        ${inputInches}
         `);
 
-        const firstName = this.state.firstName;
-        const lastName = this.state.lastName;
-        const age = this.state.age;
-        const weight = this.state.weight;
-        const height = ((this.state.feet * 12) + this.state.inches);
+        // const firstName = this.state.firstName;
+        // const lastName = this.state.lastName;
+        // const age = this.state.age;
+        // const weight = this.state.weight;
+        // const height = ((this.state.feet * 12) + this.state.inches);
 
-        console.log(`this height in inches is ${height}`)
+        // console.log(`this height in inches is ${height}`)
 
         event.preventDefault();
       }
     
-      render() {
         return (
         <>
         <div className ="bg-indigo-400 profile">
@@ -63,14 +71,14 @@ class Profile extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <label>
               First Name:
-              <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
+              <input type="text" name="firstName" value={this.state.firstName} onChange={handleFirstName} />
             </label>
 
             <br />
 
             <label>
               Last Name:
-              <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
+              <input type="text" name="lastName" value={this.state.lastName} onChange={handleLastName} />
             </label>
 
                 <br />
@@ -78,22 +86,22 @@ class Profile extends React.Component {
 
             <label>
               Age:
-              <input type="number" min="0" max="120" name="age" value={this.state.age} onChange={this.handleInputChange} />
+              <input type="number" min="0" max="120" name="age" value={this.state.age} onChange={handleAge} />
             </label>
 
             <br />
 
             <label>
               Weight:
-              <input type="number" min="0" name="weight" value={this.state.weight} onChange={this.handleInputChange} /> lbs
+              <input type="number" min="0" name="weight" value={this.state.weight} onChange={handleWeight} /> lbs
             </label>
 
             <br />
 
             <label>
               Height:
-              <input type="number" min="1" max="8" name="feet" value={this.state.height} onChange={this.handleInputChange} /> feet
-              <input type="number" min="0" max="11" name="inches" value={this.state.height} onChange={this.handleInputChange} /> inches
+              <input type="number" min="1" max="8" name="feet" value={this.state.height} onChange={handleFeet} /> feet
+              <input type="number" min="0" max="11" name="inches" value={this.state.height} onChange={handleInch} /> inches
 
             </label>
 
@@ -120,7 +128,7 @@ class Profile extends React.Component {
                 <option selected value="maintain">Maintain</option>
             </select>
      <br />
-            <button onClick={this.handleSubmit}>Submit</button>
+            <button onClick={handleSubmit}>Submit</button>
           </form>
           </div>
           </div>
@@ -128,7 +136,6 @@ class Profile extends React.Component {
         );
         
       }
-}
 
 export default Profile;
 
