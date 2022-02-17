@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./SignupForm.css";
-import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -53,58 +52,69 @@ const SignupForm = () => {
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
-        <Alert
-          dismissible
-          onClose={() => setShowAlert(false)}
-          show={showAlert}
-          variant="danger"
-        >
-          Something went wrong with your signup!
-        </Alert>
+      <div className="min-h-screen flex justify-center items-start">
+        <div className="bg-white p-8 rounded shadow-2xl w-3/4">
+          <h2 className="text-3xl font-bold mb-4 text-center">Create Your Account!</h2>
+          <form className="space-y-3" noValidate validated={validated} onSubmit={handleFormSubmit}>
+            {/* show alert if server response is bad */}
+            {/* <alert
+              dismissible
+              onClose={() => setShowAlert(false)}
+              show={showAlert}
+              variant="danger"
+            >
+              Something went wrong with your signup!
+            </alert> */}
 
-        {/* Email */}
-        <Form.Group>
-          <Form.Label htmlFor="email">Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Your email address"
-            name="email"
-            onChange={handleInputChange}
-            value={userFormData.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
-        </Form.Group>
+            {/* Email */}
+            <form>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                placeholder="Your email address"
+                name="email"
+                onChange={handleInputChange}
+                value={userFormData.email}
+                required
+                className="border-radius-5px"
+              />
+              {/* <div type="invalid">
+                Email is required!
+              </div> */}
+            </form>
 
-        {/* Password */}
-        <Form.Group>
-          <Form.Label htmlFor="password">Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Your password"
-            name="password"
-            onChange={handleInputChange}
-            value={userFormData.password}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
-        </Form.Group>
+            {/* Password */}
+            <form>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                placeholder="Your password"
+                name="password"
+                onChange={handleInputChange}
+                value={userFormData.password}
+                required
+              />
+              {/* <alert type="invalid">
+                Password is required!
+              </alert> */}
+            </form>
 
-        {/* Submit Button */}
-        <Button
-          disabled={!(userFormData.email && userFormData.password)}
-          type="submit"
-          variant="success"
-        >
-          Submit
-        </Button>
-      </Form>
+            <div>
+              <input type="checkbox" id="agree"/>
+              <label className="text-small" for="agree">I agree to the terms and conditions</label>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              disabled={!(userFormData.email && userFormData.password)}
+              type="submit"
+              variant="success"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
     </>
   );
 };
