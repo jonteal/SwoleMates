@@ -52,8 +52,8 @@ const LoginForm = () => {
 return (
     <>
 
-        <div className="min-h-screen flex justify-center">
-            <div className="bg-white p-16 rounded shadow-2xl w-2/3">
+        <div className="min-h-screen flex justify-center align-center mainLogin">
+            <div className="bg-white p-16 rounded shadow-2xl w-2/3 loginCard">
                 <h2 className="text-3x1 font-bold mb-10 text-center">Login!</h2>
                 <form className="space-y-8" noValidate validated={validated} onSubmit={handleFormSubmit}>
                     {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
@@ -95,6 +95,7 @@ return (
             </div>
 
         </div>
+
     </>
 );
 };
