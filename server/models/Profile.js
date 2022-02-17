@@ -28,6 +28,11 @@ const ProfileSchema = new Schema({
   },
   goal: {
     type: String
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
 });
 
