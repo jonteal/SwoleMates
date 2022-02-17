@@ -16,6 +16,11 @@ const resolvers = {
     // new queuries start here
   },
 
+  // social media query
+  // Query: {
+  //   sayHi: () => 'Hello World!'
+  // },
+
   Mutation: {
     //createUser
     createUser: async (parent, { email, password }) => {
