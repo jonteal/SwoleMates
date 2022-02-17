@@ -6,12 +6,15 @@ import { IconContext } from 'react-icons';
 import { NavbarData } from './navbarData';
 import './navbar.css';
 
+import AuthService from '../../utils/auth'
+
 const Navbar = () => {
     const [sidebar, setSidebar] = useState(false)
 
     const showSidebar = () => setSidebar(!sidebar)
   return (
-      
+      <>
+      {AuthService.loggedIn() === false && 
   <div className='nav'>
     <IconContext.Provider value={{ color: '#fff' }}>
     <div className="navbar">
@@ -40,6 +43,8 @@ const Navbar = () => {
     </nav>
     </IconContext.Provider>
   </div>
+}
+  </>
   );
 };
 
