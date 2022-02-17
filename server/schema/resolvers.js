@@ -47,6 +47,8 @@ const resolvers = {
     //     return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
     //   }
 
+      throw new Error({ msg: 'ID mismatch' })
+    },
     //   throw new Error({ msg: 'ID mismatch' })
     // },
 
@@ -54,6 +56,7 @@ const resolvers = {
       const exercise = await Exercise.create(args);
       return exercise;
     }
+
     //new mutations start here
   },
 };
