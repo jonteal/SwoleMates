@@ -105,7 +105,7 @@ class Exercise extends React.Component {
   render() {
     return (
       <>
-        Please, enter your exercise detail!
+        Please, enter your exercise details below!
         <form onSubmit={this.handleSubmit}>
           <label>
             Select workout type:
@@ -145,6 +145,8 @@ class Exercise extends React.Component {
                   />{" "}
                   miles;
                 </label>
+                <br />
+                <input type="submit" value="Save" />
               </div>
             ) : this.state.type == "strength" ? (
               <div>
@@ -189,6 +191,9 @@ class Exercise extends React.Component {
                   />{" "}
                   lbs;
                 </label>
+                <br />
+
+                <input type="submit" value="Save" />
               </div>
             ) : this.state.type == "stretching" ? (
               <div>
@@ -206,13 +211,12 @@ class Exercise extends React.Component {
                   minutes;
                 </label>
                 <br />
+                <input type="submit" value="Save" />
               </div>
             ) : null}
           </div>
 
           <br />
-
-          <input type="submit" value="Save" />
         </form>
       </>
     );
