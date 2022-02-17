@@ -11,12 +11,7 @@ const Navbar = () => {
 
     const showSidebar = () => setSidebar(!sidebar)
   return (
-<<<<<<< Updated upstream
       
-=======
-      <>
-      {AuthService.loggedIn() === false && 
->>>>>>> Stashed changes
   <div className='nav'>
     <IconContext.Provider value={{ color: '#fff' }}>
     <div className="navbar">

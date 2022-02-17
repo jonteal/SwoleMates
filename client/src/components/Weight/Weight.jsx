@@ -23,7 +23,7 @@ const Weight = () => {
                     required
                 />
                 <button 
-                    className="weightButton"
+                    className="weightButton filter drop-shadow-lg"
                     type="submit"
                     variant="success">
                         Submit
