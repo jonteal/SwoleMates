@@ -1,12 +1,14 @@
 import React, {useState, useEffect } from "react";
-import "./LoginForm.css";
+import "./loginForm.css";
 
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-import SignupForm from '../../components/SignupForm/SignupForm';
+import SignupForm from '../SignupForm/SignupForm';
 
-const LoginForm = () => {
+import {handleModal} from '../Welcome/Welcome'
+
+const LoginForm = ({handleModal}) => {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
     const [validated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
@@ -51,10 +53,9 @@ const LoginForm = () => {
 
 return (
     <>
-
-        <div className="min-h-screen flex justify-center align-center items-center mainLogin">
-            <div className="bg-white p-16 rounded shadow-2xl w-1/3 h-1/2 items-center">
-                <h2 className="text-3x1 font-bold mb-10 text-center">Login!</h2>
+        <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center bg-green-400">
+            <div className="bg-white p-16 rounded shadow-2xl w-1/3 h-1/2">
+                <h2 className="text-3x1 font-bold mb-10 text-center font-fa">Login!</h2>
                 <form className="space-y-8" noValidate validated={validated} onSubmit={handleFormSubmit}>
                     {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                     Something went wrong with your login credentials!

@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import ComingSoon from './components/ComingSoon';
+import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
 
 import Navbar from './components/Navbar/Navbar';
 import MealPlanner from './components/MealPlanner/MealPlanner.jsx'
@@ -11,11 +13,9 @@ import Quote from './components/Quote/Quote';
 import Exercise from './components/Tracker/Exercise';
 import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
 
-
-import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
 import SignupForm from './components/SignupForm/SignupForm';
 import LoginForm from './components/LoginForm/LoginForm';
+import Welcome from './components/Welcome/Welcome'
 
 
 const httpLink = createHttpLink({
@@ -46,7 +46,8 @@ function App() {
           <Navbar />
 
           <Switch>
-            <Route exact path='/' component={LoginForm} />
+            <Route exact path='/' component={Welcome} />
+            <Route exact path='/login' component={LoginForm} />
             <Route exact path='/signup' component={SignupForm} />
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/quote' component={Quote} />
