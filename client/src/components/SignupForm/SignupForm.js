@@ -99,11 +99,6 @@ const SignupForm = () => {
               </alert> */}
             </form>
 
-            <div>
-              <input type="checkbox" id="agree"/>
-              <label className="text-small" for="agree">I agree to the terms and conditions</label>
-            </div>
-
             {/* Submit Button */}
             <button
               disabled={!(userFormData.email && userFormData.password)}

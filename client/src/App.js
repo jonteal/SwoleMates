@@ -44,9 +44,8 @@ function App() {
         <Router>
           <Navbar />
           <Switch>
-            <Route exact path='/' component={ComingSoon} />
+            <Route exact path='/' component={LoginForm} />
             <Route exact path='/signup' component={SignupForm} />
-            <Route exact path='/login' component={LoginForm} />
             <Route exact path='/profile' component={Profile} />
             <Route exact path='/quote' component={Quote} />
             <Route exact path='/personaldevelopment' component={PersonalDevelopment} />
