@@ -1,79 +1,63 @@
 import React, { useState, useEffect } from "react";
-
 import { useMutation } from "@apollo/client";
-// import { ADD_EXERCISE } from "../../utils/mutations";
 
-class Exercise extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: "",
-      durationInMinutes: "",
-      cardioDistanceInMiles: "",
-      repetitions: "",
-      sets: "",
-      weight: "",
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
+// import { ADD_EXERCISE } from "../../utils/actions";
+
+const Exercise = (props) => {
+  const [type, setType] = useState("");
+  const [durationInMinutes, setDurationInMinutes] = useState("");
+  const [cardioDistanceInMiles, setCardioDistanceInMiles] = useState("");
+  const [repetitions, setRepetitions] = useState("");
+  const [sets, setSets] = useState("");
+  const [weight, setWeight] = useState("");
+
+  const [selectedType, setSelectedType] = useState([]);
+
+  function handleSelect(event) {
+    setType(event.target.value);
   }
 
-  handleSelect(event) {
-    this.setState({ type: event.target.value });
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
-    this.setState({
-      [name]: value,
-    });
-  }
-
-  handleSubmit(event) {
-    if (this.state.type == "cardio") {
+  function handleSubmit(event) {
+    if (type == "cardio") {
       alert(
         "Your exercise was submitted! \n" +
           "\n " +
           "Exercise type: " +
-          this.state.type +
+          type +
           ";" +
           "\n " +
           "\n " +
           "Exercise duration: " +
-          this.state.durationInMinutes +
+          durationInMinutes +
           " minutes" +
           "\n " +
           "Distance of cardio: " +
-          this.state.cardioDistanceInMiles +
+          cardioDistanceInMiles +
           " miles" +
           "\n " +
           "\n " +
           "Check calories burnt on your dashboard!"
       );
     }
-    if (this.state.type == "strength") {
+    if (type == "strength") {
       alert(
         "Your exercise was submitted! \n" +
           "\n " +
           "Exercise type: " +
-          this.state.type +
+          type +
           ";" +
           "\n " +
           "\n " +
           "Repetitions for weighted exercises: " +
-          this.state.repetitions +
+          repetitions +
           " reps" +
           "\n " +
           "Number of sets: " +
-          this.state.sets +
+          sets +
           " sets" +
           "\n " +
           "Used weights: " +
-          this.state.weight +
+          weight +
           " lbs" +
           "\n " +
           "\n " +
@@ -81,135 +65,119 @@ class Exercise extends React.Component {
       );
     }
 
-    if (this.state.type == "stretching") {
+    if (type == "stretching") {
       alert(
         "Your exercise was submitted! \n" +
           "\n " +
           "Exercise type: " +
-          this.state.type +
+          type +
           ";" +
           "\n " +
           "\n " +
           "Exercise duration: " +
-          this.state.durationInMinutes +
+          durationInMinutes +
           "minutes" +
           "\n " +
           "\n " +
           "Check out your dashboard!"
       );
+      event.preventDefault();
     }
 
-    event.preventDefault();
-  }
+    // 3)fron end side of mut
 
-  render() {
+    // ADD USE MUTATION HERE;
+
     return (
       <>
         Please, enter your exercise details below!
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Select workout type:
-            <select value={this.state.type} onChange={this.handleSelect}>
-              <option value="empty"></option>
-              <option value="cardio">Cardio</option>
-              <option value="strength">Strength training</option>
-              <option value="stretching">Stretching</option>
-            </select>
-          </label>
+        <form
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+        >
+          <label>Select workout type:</label>
+          <select value={type} onChange={setType}>
+            <option value="empty"></option>
+            <option value="cardio">Cardio</option>
+            <option value="strength">Strength training</option>
+            <option value="stretching">Stretching</option>
+          </select>
+
           <br />
           <div>
-            {this.state.type == "cardio" ? (
+            {type == "cardio" ? (
               <div>
-                {" "}
                 <p>I am form cardio </p>
-                <label>
-                  Exercise duration:
-                  <input
-                    type="number"
-                    min="0"
-                    name="durationInMinutes"
-                    value={this.state.durationInMinutes}
-                    onChange={this.handleInputChange}
-                  />{" "}
-                  minutes;
-                </label>
+                <label>Exercise duration:</label>
+                <input
+                  type="number"
+                  min="0"
+                  name="durationInMinutes"
+                  value={durationInMinutes}
+                  onChange={(e) => setDurationInMinutes(e.target.value)}
+                />
+                minutes;
                 <br />
-                <label>
-                  Distance of cardio:
-                  <input
-                    type="number"
-                    min="0"
-                    name="cardioDistanceInMiles"
-                    value={this.state.cardioDistanceInMiles}
-                    onChange={this.handleInputChange}
-                  />{" "}
-                  miles;
-                </label>
+                <label>Distance of cardio:</label>
+                <input
+                  type="number"
+                  min="0"
+                  name="cardioDistanceInMiles"
+                  value={cardioDistanceInMiles}
+                  onChange={(e) => setCardioDistanceInMiles(e.target.value)}
+                />
+                miles;
                 <br />
                 <input type="submit" value="Save" />
               </div>
-            ) : this.state.type == "strength" ? (
+            ) : type == "strength" ? (
               <div>
                 <p>I am form strength </p>
-
-                <label>
-                  Repetitions for weighted exercises:
-                  <input
-                    type="number"
-                    min="0"
-                    name="repetitions"
-                    value={this.state.repetitions}
-                    onChange={this.handleInputChange}
-                  />{" "}
-                  reps;
-                </label>
-
+                <label>Repetitions for weighted exercises:</label>
+                <input
+                  type="number"
+                  min="0"
+                  name="repetitions"
+                  value={repetitions}
+                  onChange={(e) => setRepetitions(e.target.value)}
+                />
+                reps;
                 <br />
-
-                <label>
-                  Number of sets:
-                  <input
-                    type="number"
-                    min="0"
-                    name="sets"
-                    value={this.state.sets}
-                    onChange={this.handleInputChange}
-                  />{" "}
-                  sets;
-                </label>
-
+                <label>Number of sets:</label>
+                <input
+                  type="number"
+                  min="0"
+                  name="sets"
+                  value={sets}
+                  onChange={(e) => setSets(e.target.value)}
+                />
+                sets;
                 <br />
-
-                <label>
-                  Used weights:
-                  <input
-                    type="number"
-                    min="0"
-                    name="weight"
-                    value={this.state.weight}
-                    onChange={this.handleInputChange}
-                  />{" "}
-                  lbs;
-                </label>
+                <label>Used weights:</label>
+                <input
+                  type="number"
+                  min="0"
+                  name="weight"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                />
+                lbs;
                 <br />
-
                 <input type="submit" value="Save" />
               </div>
-            ) : this.state.type == "stretching" ? (
+            ) : type == "stretching" ? (
               <div>
-                {" "}
                 <p>I am form stretching </p>
-                <label>
-                  Exercise duration:
-                  <input
-                    type="number"
-                    min="0"
-                    name="durationInMinutes"
-                    value={this.state.durationInMinutes}
-                    onChange={this.handleInputChange}
-                  />{" "}
-                  minutes;
-                </label>
+                <label>Exercise duration:</label>
+                <input
+                  type="number"
+                  min="0"
+                  name="durationInMinutes"
+                  value={durationInMinutes}
+                  onChange={(e) => setDurationInMinutes(e.target.value)}
+                />
+                minutes;
                 <br />
                 <input type="submit" value="Save" />
               </div>
@@ -221,6 +189,6 @@ class Exercise extends React.Component {
       </>
     );
   }
-}
+};
 
 export default Exercise;

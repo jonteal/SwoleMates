@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const ExerciseSchema = new Schema({
-     // add autoincrement id
-  id: {
-    type: Number,
-    // required: true,
-    unique: true,
+    // add date so we could navigate through different workouts?
+    // add autoincrement id
+  date: {
+    // get date only as  year\mth\day => no hours\min\sec 
+    type: Date
   },
   type: {
     type: String,
@@ -38,12 +38,7 @@ const ExerciseSchema = new Schema({
     type: Number,
     required: false,
     trim: true,
-  },
-  caloriesBurnt: {
-    type: Number,
-    required: true,
-    trim: true
-  },
+  }
 });
 
 const Exercise = mongoose.model("Exercise", ExerciseSchema);
