@@ -1,6 +1,5 @@
 import React, {useState, useEffect } from "react";
 import "./LoginForm.css";
-import { Form, Button, Alert } from 'react-bootstrap';
 
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
@@ -51,13 +50,14 @@ const LoginForm = () => {
 
 return (
     <>
-        <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+        <div>
+        <form noValidate validated={validated} onSubmit={handleFormSubmit}>
+            <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
             Something went wrong with your login credentials!
-            </Alert>
-            <Form.Group>
-            <Form.Label htmlFor='email'>Email</Form.Label>
-            <Form.Control
+            </alert>
+            <div>
+            <label htmlFor='email'>Email</label>
+            <input
                 type='text'
                 placeholder='Your email'
                 name='email'
@@ -65,12 +65,12 @@ return (
                 value={userFormData.email}
                 required
             />
-            <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
-            </Form.Group>
+            <label type='invalid'>Email is required!</label>
+            </div>
 
-            <Form.Group>
-            <Form.Label htmlFor='password'>Password</Form.Label>
-            <Form.Control
+            <div>
+            <label htmlFor='password'>Password</label>
+            <div
                 type='password'
                 placeholder='Your password'
                 name='password'
@@ -78,15 +78,16 @@ return (
                 value={userFormData.password}
                 required
             />
-            <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
-            </Form.Group>
-            <Button
+            <label type='invalid'>Password is required!</label>
+            </div>
+            <button
                 disabled={!(userFormData.email && userFormData.password)}
                 type='submit'
                 variant='success'>
                 Submit
-            </Button>
-        </Form>
+            </button>
+        </form>
+        </div>
     </>
 );
 };
