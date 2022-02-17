@@ -50,7 +50,6 @@ const resolvers = {
       throw new Error({ msg: 'ID mismatch' })
     },
     //new mutations start here
-
   },
 };
 
