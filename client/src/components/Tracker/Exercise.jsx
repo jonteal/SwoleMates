@@ -11,8 +11,6 @@ const Exercise = (props) => {
   const [sets, setSets] = useState("");
   const [weight, setWeight] = useState("");
 
-  const [selectedType, setSelectedType] = useState([]);
-
   function handleSelect(event) {
     setType(event.target.value);
   }
@@ -83,7 +81,7 @@ const Exercise = (props) => {
       );
       event.preventDefault();
     }
-
+  }
     // 3)fron end side of mut
 
     // ADD USE MUTATION HERE;
@@ -97,7 +95,7 @@ const Exercise = (props) => {
           }}
         >
           <label>Select workout type:</label>
-          <select value={type} onChange={setType}>
+          <select value={type} onChange={handleSelect}>
             <option value="empty"></option>
             <option value="cardio">Cardio</option>
             <option value="strength">Strength training</option>
@@ -189,6 +187,6 @@ const Exercise = (props) => {
       </>
     );
   }
-};
+;
 
 export default Exercise;
