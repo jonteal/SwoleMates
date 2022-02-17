@@ -11,7 +11,9 @@ const Profile = (props) => {
         const [inputWeight, setWeight] = useState('');
         const [inputFeet, setFeet] = useState('');
         const [inputInches, setInches] = useState('');
-        // const [inputSex, setSex] = useState('');
+        const [inputSex, setSex] = useState('');
+        const [inputActive, setActive] = useState('');
+        const [inputGoal, setGoal] = useState('');
 
         // function handleFirstName(event){
         //   setFirstName(event.target.value);
@@ -44,7 +46,9 @@ const Profile = (props) => {
         ${inputAge}
         ${inputWeight}
         ${inputFeet}
-        ${inputInches}
+        ${inputSex}
+        ${inputActive}
+        ${inputGoal}
         `);
 
         // const firstName = this.state.firstName;
@@ -107,14 +111,14 @@ const Profile = (props) => {
 
             <br />
             Birth Sex:
-            <select>
-                <option name="sex" value="woman">Female</option>
-                <option name ="sex" value="man">Male</option>
+            <select value={inputSex} onChange={(e) => setSex(e.target.value)}>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
             </select>
 
             <br />
             Exercise:
-            <select>
+            <select value={inputActive} onChange={(e) => setActive(e.target.value)}>
                 <option value="1.2"> Sedentary (little to no exercise)</option>
                 <option value="1.375">Lightly Active (light exercise/sports 1-3 days/week)</option>
                 <option selected value="1.55">Moderately Active (moderate exercise/sports 3-5 days/week)</option>
@@ -122,7 +126,7 @@ const Profile = (props) => {
                 <option value="1.9">Extra Active (very hard exercise/sports & physical job or 2x training)</option>
             </select>
             Goal:
-            <select>
+            <select value={inputGoal} onChange={(e) => setGoal(e.target.value)}>
                 <option value="gain">Gain muscle</option>
                 <option value="lose">Lose fat</option>
                 <option selected value="maintain">Maintain</option>
