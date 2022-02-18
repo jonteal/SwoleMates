@@ -64,8 +64,9 @@ return (
                     Something went wrong with your login credentials!
                     </alert> */}
                     <div>
-                    <label className="block mb-2 font-bold" htmlFor='email'></label>
+                    <label htmlFor='email'></label>
                     <input
+                        className="bg-gray-700 rounded-3xl border-1 border-black"
                         type='text'
                         placeholder='Email'
                         name='email'
@@ -77,8 +78,9 @@ return (
                     </div>
 
                     <div>
-                    <label className="block mb-2 font-bold" htmlFor='password'></label>
+                    <label htmlFor='password'></label>
                     <input
+                        className="bg-gray-700 rounded-3xl border-1 border-black"
                         type='password'
                         placeholder='Password'
                         name='password'
