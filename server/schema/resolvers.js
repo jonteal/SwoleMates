@@ -14,6 +14,16 @@ const resolvers = {
     },
 
     // new queuries start here
+  Query: {
+    async getPosts() {
+      try {
+        const posts = await Post.find();
+        return posts;
+      } catch (err) {
+        throw new Error(err);
+        }
+      }
+    }
   },
 
   Mutation: {
@@ -49,6 +59,8 @@ const resolvers = {
 
       throw new Error({ msg: 'ID mismatch' })
     },
+
+    
     //new mutations start here
 
   },
