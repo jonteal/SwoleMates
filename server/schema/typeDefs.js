@@ -22,7 +22,6 @@ const typeDefs = gql`
 
   type Exercise {
     _id: ID!
-
     type: String!,
     durationInMinutes: String!,
     cardioDistanceInMiles: String!,
@@ -65,6 +64,7 @@ type Mutation {
   ): Exercise
 
   addCardio(
+    id: Int!,
     type: String!,
     durationInMinutes: String!,
     cardioDistanceInMiles: String!,

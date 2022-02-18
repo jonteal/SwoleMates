@@ -49,12 +49,13 @@ mutation addExercise($id: Int!,
 
 export const ADD_CARDIO = gql`
 mutation addCardio(
+  $id: Int!,
   $type: String!, 
   $durationInMinutes: String!, 
   $cardioDistanceInMiles: String!, 
  ) {
       addCardio(
-        
+        id: $id,
         type:$type,
         durationInMinutes: $durationInMinutes,
         cardioDistanceInMiles: $cardioDistanceInMiles,

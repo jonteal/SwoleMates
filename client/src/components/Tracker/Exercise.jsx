@@ -11,9 +11,11 @@ const Exercise = (props) => {
   const [sets, setSets] = useState("");
   const [weight, setWeight] = useState("");
   const [date, setDate] = useState("");
+  const [id, setID] = useState("");
 
   // Current date:
   var currentDate = new Date().toISOString().split("T")[0];
+  var ID = Math.floor(Math.random() * 10000000);
 
   // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_EXERCISE mutation
   // const [addExercise, { error }] = useMutation(ADD_EXERCISE);
@@ -22,7 +24,9 @@ const Exercise = (props) => {
   function handleSelect(event) {
     setType(event.target.value);
     setDate(currentDate);
+    setID(ID);
     console.log(date);
+    console.log(ID);
   }
 
   const handleSubmit = async (event) => {
@@ -54,6 +58,7 @@ const Exercise = (props) => {
         const { data } = await addCardio({
           // Execute mutation and pass in defined parameter data as variables
           variables: {
+            id,
             type,
             durationInMinutes,
             cardioDistanceInMiles,

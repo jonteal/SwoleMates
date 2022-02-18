@@ -57,9 +57,9 @@ const resolvers = {
       return exercise;
     },
 
-    addCardio: async (parent, {type, durationInMinutes, cardioDistanceInMiles}) => {
-      console.log(`hello, these are args: ${type, durationInMinutes, cardioDistanceInMiles}`)
-      const cardio = await Exercise.create({type, durationInMinutes, cardioDistanceInMiles});
+    addCardio: async (parent, {id, type, durationInMinutes, cardioDistanceInMiles}) => {
+      console.log(`hello, these are args: ${id, type, durationInMinutes, cardioDistanceInMiles}`)
+      const cardio = await Exercise.create({id, type, durationInMinutes, cardioDistanceInMiles});
       return cardio;
     },
 
