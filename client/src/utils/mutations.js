@@ -47,7 +47,7 @@ export const ADD_PROFILE = gql`
 mutation startProfile(
   $firstName: String!, 
   $lastName: String!, 
-  $weight: Int!, 
+  $weight: Float!, 
   $age: Int!, 
   $height: Int!, 
   $sex: String!, 
@@ -62,6 +62,17 @@ mutation startProfile(
       goal: $goal
     ) {
       firstName
+    }
+  }
+`;
+
+export const UPDATE_WEIGHT = gql`
+  mutation updateWeight($weightData: Float!) {
+    updateWeight(weightData: $weightData) {
+      _id
+      username
+      email
+      savedWeight
     }
   }
 `
