@@ -1,12 +1,13 @@
 import React, {useState, useEffect } from "react";
-import "./LoginForm.css";
-
+import "./loginForm.css";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-import SignupForm from '../../components/SignupForm/SignupForm';
+import SignupForm from '../SignupForm/SignupForm';
+import { Link } from 'react-router-dom'
+import {handleModal} from '../Welcome/Welcome'
 
-const LoginForm = () => {
+const LoginForm = ({handleModal}) => {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
     const [validated] = useState(false);
     const [showAlert, setShowAlert] = useState(false);
@@ -51,19 +52,22 @@ const LoginForm = () => {
 
 return (
     <>
-
-        <div className="min-h-screen flex justify-center align-center mainLogin">
-            <div className="bg-white p-16 rounded shadow-2xl w-2/3 loginCard">
-                <h2 className="text-3x1 font-bold mb-10 text-center">Login!</h2>
+        <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
+            <div className="w-1/3 h-1/2 loginCard">
+                
+            <svg xmlns="http://www.w3.org/2000/svg" class="site__logo" width="56" height="84" viewBox="77.7 214.9 274.7 412"><defs><linearGradient id="a" x1="0%" y1="0%" y2="0%"><stop offset="0%" stop-color="#76D9F0"/><stop offset="100%" stop-color="#096479"/></linearGradient></defs><path fill="url(#a)" d="M215 214.9c-83.6 123.5-137.3 200.8-137.3 275.9 0 75.2 61.4 136.1 137.3 136.1s137.3-60.9 137.3-136.1c0-75.1-53.7-152.4-137.3-275.9z"/></svg>
+                
+                
+                <h2 className="text-3x1 font-bold mb-10 text-center font-fa loginTitle">LOG IN</h2>
                 <form className="space-y-8" noValidate validated={validated} onSubmit={handleFormSubmit}>
                     {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                     Something went wrong with your login credentials!
                     </alert> */}
                     <div>
-                    <label className="block mb-2 font-bold" htmlFor='email'>Email</label>
+                    <label className="block mb-2 font-bold" htmlFor='email'></label>
                     <input
                         type='text'
-                        placeholder='Your email'
+                        placeholder='Email'
                         name='email'
                         onChange={handleInputChange}
                         value={userFormData.email}
@@ -73,10 +77,10 @@ return (
                     </div>
 
                     <div>
-                    <label className="block mb-2 font-bold" htmlFor='password'>Password</label>
+                    <label className="block mb-2 font-bold" htmlFor='password'></label>
                     <input
                         type='password'
-                        placeholder='Your password'
+                        placeholder='Password'
                         name='password'
                         onChange={handleInputChange}
                         value={userFormData.password}
@@ -87,15 +91,14 @@ return (
                     <button
                         disabled={!(userFormData.email && userFormData.password)}
                         type='submit'
-                        variant='success'>
-                        Submit
+                        variant='success' className="loginBtn">
+                        Log In
                     </button>
-                    <p>Don't have an account? <span><a href={SignupForm}>Sign up!</a></span></p>
+                    <p className="loginSignup">Don't have an account? <span><Link to="/signup" className="underline cursor-pointer">Sign up!</Link></span></p>
                 </form>
             </div>
 
         </div>
-
     </>
 );
 };

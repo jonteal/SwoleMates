@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./SignupForm.css";
+import "./signupForm.css";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -16,6 +16,11 @@ const SignupForm = () => {
 
   const [createUser, { data, error }] = useMutation(ADD_USER);
 
+  const [inputPassword, setInputPassword] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
+  const [passwordMatch, setPasswordMatch] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
+
   useEffect(() => {
     error ? setShowAlert(true) : setShowAlert(false);
   }, [error]);
@@ -23,6 +28,18 @@ const SignupForm = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
+    setInputPassword(value);
+  };
+
+  const handlePasswordCheck = (event) => {
+    event.preventDefault();
+    (inputPassword === checkPassword) ? setPasswordMatch(true) : setPasswordMatch(false);
+    if (inputPassword !== checkPassword){
+      setPasswordError("Your passwords do not match, try again")
+    } else {
+      setPasswordError("")
+    }
+    
   };
 
   const handleFormSubmit = async (event) => {
@@ -71,7 +88,7 @@ const SignupForm = () => {
               <label htmlFor="email">Email</label>
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder="Enter email address"
                 name="email"
                 onChange={handleInputChange}
                 value={userFormData.email}
@@ -88,17 +105,26 @@ const SignupForm = () => {
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                placeholder="Your password"
+                placeholder="Enter password"
                 name="password"
                 onChange={handleInputChange}
                 value={userFormData.password}
+                onBlur={handlePasswordCheck}
                 required
               />
-              {/* <alert type="invalid">
-                Password is required!
-              </alert> */}
-            </form>
+                            <label htmlFor="passwordCheck">Retype Password</label>
 
+              <input
+                type="password"
+                placeholder="Retype your password"
+                name="passwordCheck"
+                onChange={(event) => setCheckPassword(event.target.value)}
+                onBlur={handlePasswordCheck}
+                required
+              />
+            </form>
+            {passwordMatch && <p>Your passwords match, great typing!</p>}
+              <p>{passwordError}</p>
             {/* Submit Button */}
             <button
               disabled={!(userFormData.email && userFormData.password)}

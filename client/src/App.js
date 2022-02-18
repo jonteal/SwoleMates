@@ -13,8 +13,10 @@ import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelo
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+
 import SignupForm from './components/SignupForm/SignupForm';
 import LoginForm from './components/LoginForm/LoginForm';
+import Welcome from './components/Welcome/Welcome'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -44,7 +46,8 @@ function App() {
           <Navbar />
 
           <Switch>
-            <Route exact path='/' component={LoginForm} />
+            <Route exact path='/' component={Welcome} />
+            <Route exact path='/login' component={LoginForm} />
             <Route exact path='/signup' component={SignupForm} />
             <Route exact path='/home' component={Dashboard} />
             <Route exact path='/profile' component={Profile} />
