@@ -51,6 +51,7 @@ mutation startProfile(
   $age: Int!, 
   $height: Int!, 
   $sex: String!, 
+  $activity: String!,
   $goal: String!) {
     startProfile(
       firstName:$firstName,
@@ -59,6 +60,7 @@ mutation startProfile(
       age: $age,
       height: $height
       sex: $sex,
+      activity: $activity,
       goal: $goal
     ) {
       firstName
