@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom'
 import Modal from '../LoginForm/LoginForm'
 import './welcome.css'
@@ -7,13 +7,20 @@ import './welcome.css'
 const Welcome = () => {
     //represents whether the modal is open or not, start false bc modal closed initially
     const [openModal, setModal] = useState(false);
-
-    // const handleModal = (event) => {
-    //     event.prevent.default();
-
-    //     // ok so now i need it to be opposite of what is was (or setModal = !setModal)
-    //     (setModal === false) ? setModal = true : setModal =false;
-    // }
+    const [scrollTop, setScrollTop] = useState();
+    const [scrolling, setScrolling] = useState();
+    useEffect(() => {
+      const onScroll = (e) => {
+        setScrollTop(e.target.documentElement.scrollTop);
+        setScrolling(e.target.documentElement.scrollTop > scrollTop);
+      };
+      window.addEventListener("scroll", onScroll);
+      return () => window.removeEventListener("scroll", onScroll);
+    }, [scrollTop]);
+    useEffect(() => {
+      console.log(scrolling);
+    }, [scrolling]);
+    
 
     return (
         <>
@@ -60,7 +67,7 @@ const Welcome = () => {
             </div>
         
         </div>}
-        {openModal && <Modal />}
+        {openModal && <Modal onScroll={(event) => setScrolling(event)}/>}
         </>
     )
 }
