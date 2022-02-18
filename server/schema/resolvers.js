@@ -39,13 +39,14 @@ const resolvers = {
   },
 
   Mutation: {
-    //createUser
+    // CREATE USER
     createUser: async (parent, { email, password }) => {
       const user = await User.create({ email, password });
       const token = signToken(user);
       return { token, user };
     },
 
+    // LOGIN USER
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
 
@@ -64,6 +65,7 @@ const resolvers = {
       return { token, user };
     },
 
+    // START PROFILE
     startProfile: async (parent, args, context) => {
       if (context.user) {
         return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
@@ -128,6 +130,27 @@ const resolvers = {
         await post.save();
         return post;
       } else throw new UserInputError('Post not found!')
+    },
+
+    // DELETE COMMENT 
+    async deleteComment(_, { postId, commentId}, context ) {
+      const { firstName } = checkAuth(context);
+
+      const post = await Post.findById(postId);
+
+      if(post) {
+        const commentIndex = post.comments.findIndex(c => c.id === commentId);
+
+        if(post.comments[commentIndex].firstName === firstName) {
+          post.comments.splice(commentIndex, 1);
+          await post.save();
+          return post;
+        } else {
+          throw new AuthenticationError('Action not allowed')
+        }
+      } else {
+        throw new UserInputError('Post not found!');
+      }
     }
 
   },
