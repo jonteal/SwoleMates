@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const MealPlanner = () => {
+
   //   Setting up a state to save fetched data:
   const [foodPlan, setPlan] = useState([]);
 
