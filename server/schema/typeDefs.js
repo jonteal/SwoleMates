@@ -28,34 +28,19 @@ const typeDefs = gql`
   }
   
 type Mutation {
-  createUser(
-    email: String!, 
-    password: String!): Auth
 
-  login(
-    email: String!, 
-    password: String!): Auth
-
-  startProfile(
-    firstName: String!, 
-    lastName: String!, 
-    weight: Int!, 
-    age: Int!, 
-    height: Int!, 
-    sex: String!,
-    activity: String!, 
-    goal: String!): User
+  createUser(email: String!, password: String!): Auth
+  login(email: String!, password: String!): Auth
+  startProfile(firstName: String!, lastName: String!, weight: Int!, age: Int!, height: Int!, sex: String!, goal: String!): User
 
   createUser(
     email: String!, 
     password: String!
     ): Auth
-
   login(
     email: String!, 
     password: String!
     ): Auth
-
   addExercise(
     id: Int!,
     type: String!,
@@ -66,6 +51,7 @@ type Mutation {
     weight: Int!,
     caloriesBurnt: Int!
   ): Exercise
+
 }
 `;
 
