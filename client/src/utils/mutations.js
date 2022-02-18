@@ -24,21 +24,25 @@ export const LOGIN_USER = gql`
 // 1)
 // create add exer\work here
 
-// export const ADD_EXERCISE = gql`
-// mutation addExercise (
-//   $date: Date!, 
-//   $type: String!, 
-//   $durationInMinutes: Number!, 
-//   $cardioDistanceInMiles: Number!, 
-//   $repetitions: Number!, 
-//   $sets: Number! ) {
-//       addExercise(
-//         date: $date, 
-//         type: $type, 
-//         durationInMinutes: $durationInMinutes, 
-//         cardioDistanceInMiles: $cardioDistanceInMiles, 
-//         repetitions: $repetitions, 
-//         sets: $sets) 
-//   }
-// }
-// `;
+export const ADD_EXERCISE = gql`
+mutation addExercise($id: Int!, 
+  $type: String!, 
+  $durationInMinutes: Int!, 
+  $cardioDistanceInMiles: Int!, 
+  $repetitions: Int!, 
+  $sets: Int!, 
+  $weight: Int!, 
+  $caloriesBurnt: Int!) {
+      addExercise(
+        id: $id,
+        type:$type,
+        durationInMinutes: $durationInMinutes,
+        cardioDistanceInMiles: $cardioDistanceInMiles,
+        repetitions: $repetitions,
+        sets: $sets,
+        weight: $weight,
+        caloriesBurnt: $caloriesBurnt
+      ){
+  	id
+  }
+}`
