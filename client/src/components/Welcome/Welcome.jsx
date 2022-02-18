@@ -15,10 +15,10 @@ const Welcome = () => {
 
     return (
         <>
-        <div>
+        {!openModal && <div>
         Welcome to SwoleMate, are you ready to find your one true swolemate?
         <button onClick={() => {setModal(true)}} value={openModal} className="openModalBtn">If you see me, the modal is closed</button>
-        </div>
+        </div>}
         {openModal && <Modal />}
         </>
     )
