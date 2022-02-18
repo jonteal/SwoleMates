@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import ComingSoon from './components/ComingSoon';
+// import ComingSoon from './components/ComingSoon';
 import Dashboard from './components/Dashboard/Dashboard';
 import Navbar from './components/Navbar/Navbar';
 import MealPlanner from './components/MealPlanner/MealPlanner.jsx'
