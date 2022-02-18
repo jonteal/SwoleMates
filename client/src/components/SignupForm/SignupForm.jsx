@@ -103,15 +103,6 @@ const SignupForm = () => {
             validated={validated}
             onSubmit={handleFormSubmit}
           >
-            {/* show alert if server response is bad */}
-            {/* <alert
-              dismissible
-              onClose={() => setShowAlert(false)}
-              show={showAlert}
-              variant="danger"
-            >
-              Something went wrong with your signup!
-            </alert> */}
 
             {/* Email */}
             <form>
@@ -124,7 +115,6 @@ const SignupForm = () => {
                 onChange={handleInputChange}
                 value={userFormData.email}
                 required
-                className="border-radius-5px"
               />
               <br />
             </form>
