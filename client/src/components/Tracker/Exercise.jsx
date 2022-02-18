@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_EXERCISE } from "../../utils/mutations";
 
-// import { ADD_EXERCISE } from "../../utils/actions";
-
 const Exercise = (props) => {
   const [type, setType] = useState("");
   const [durationInMinutes, setDurationInMinutes] = useState("");
@@ -11,15 +9,22 @@ const Exercise = (props) => {
   const [repetitions, setRepetitions] = useState("");
   const [sets, setSets] = useState("");
   const [weight, setWeight] = useState("");
+  const [date, setDate] = useState("");
+
+  // Current date:
+  var currentDate = new Date().toISOString().split("T")[0];
 
   // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_EXERCISE mutation
   const [addExercise, { error }] = useMutation(ADD_EXERCISE);
 
   function handleSelect(event) {
     setType(event.target.value);
+    setDate(currentDate);
+    console.log(date);
   }
 
-  function handleSubmit(event) {
+  const handleSubmit = async (event) => {
+    console.log(date);
     if (type == "cardio") {
       alert(
         "Your exercise was submitted! \n" +
@@ -100,14 +105,16 @@ const Exercise = (props) => {
             repetitions,
             sets,
             weight,
+            date,
           },
         });
+        console.log(data);
         window.location.reload();
       } catch (err) {
         console.error(err);
       }
     }
-  }
+  };
 
   return (
     <>
