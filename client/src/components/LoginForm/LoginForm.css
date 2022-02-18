@@ -22,13 +22,14 @@
 }
 
 .loginBtn {
-    background-image: linear-gradient(160deg, #8ceabb 0%, #378f7b 100%);
+    background-image: linear-gradient(160deg, #096479 0%, #76D9F0 100%);
     color: #fff;
     margin-bottom: 6rem;
     width: 100%;
     border-radius: 10px;
+    padding: 2px 5px;
   }
 
   .loginSignup {
-color: #7e8ba3  
+    color: #7e8ba3;  
 }
