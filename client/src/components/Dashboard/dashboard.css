@@ -32,8 +32,9 @@
 
 }
 
-.nutrition {
+.calories {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 1px solid black;
@@ -45,25 +46,12 @@
     margin-bottom: 30px;
 }
 
-.food-card-placeholder {
-    height: 20vh;
-    width: 85vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
-.food-calories-placeholder {
-    display: flex;
-    margin: 15px 10px 10px 10px;
-}
-
-.food-bar-placeholder {
-    border: 1px solid black;
+.calories-consumed {
     width: 80vw;
-    height: 2vh;
-    border-radius: 10px;
-    background-color: green;
+    margin: 5px;
+    
+}
+
+.calories-burned {
+    width: 80vw;
 }

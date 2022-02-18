@@ -4,8 +4,9 @@ import './weight.css';
 const Weight = () => {
     const [userWeightData, setUserWeightData] = useState({ weight: '' });
     const [weight, setWeight] = useState('');
-    const handleWeightChange = (e) => {
-        const { weight, value } = e.target;
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const { weight, value } = event.target;
         setUserWeightData({ ...userWeightData, [weight]: value });
     };
 
@@ -14,7 +15,9 @@ const Weight = () => {
         <div className="weight-container filter drop-shadow-lg">
             <div className="weight-card">
                 <h1 className="weight-header">Add Weight Here</h1>
-                <form className="weight-form">
+                <form className="weight-form" onSubmit={(e) => {
+                    handleSubmit(e);
+                }}>
                 <input
                     className="weight-input"
                     type="text"
