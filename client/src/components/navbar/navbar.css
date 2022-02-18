@@ -1,8 +1,5 @@
-* {
-    font-family: 'Nunito', sans-serif;
-}
-
 .navbar {
+    font-family: 'Nunito', sans-serif;
     padding: 20px;
     background-color: #003d7a;
     height: 80px;
@@ -16,6 +13,7 @@
 }
 
 .menu-bars {
+    font-family: 'Nunito', sans-serif;
     margin-left: 10rem;
     font-size: 2.0rem;
     background: none;
@@ -29,6 +27,7 @@
 }
 
 .nav-menu {
+    font-family: 'Nunito', sans-serif;
     background-color: #003d7a;
     height: 0vh;
     width: 0vw;
@@ -43,6 +42,7 @@
 }
 
 .nav-menu.active {
+    font-family: 'Nunito', sans-serif;
     left: 0;
     transition: 400ms;
     display: flex;
@@ -53,6 +53,7 @@
 }
 
 .nav-text {
+    font-family: 'Nunito', sans-serif;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -62,6 +63,7 @@
 }
 
 .nav-text a {
+    font-family: 'Nunito', sans-serif;
     text-decoration: none;
     color: #f5f5f5;
     font-size: 18px;
@@ -95,6 +97,7 @@ span {
 }
 
 .nav-name {
+    font-family: 'Nunito', sans-serif;
     flex: 0.92;
     display: flex;
     align-items: center;
@@ -111,6 +114,7 @@ span {
     }
 
     .nav-name {
+        font-family: 'Nunito', sans-serif;
         font-size: 30px;
         justify-content: center;
     }
@@ -128,6 +132,7 @@ span {
     }
 
     .nav-menu.active {
+        font-family: 'Nunito', sans-serif;
         position: relative;
         height: 47vh;
         width: 47vw;
