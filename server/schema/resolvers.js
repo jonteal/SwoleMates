@@ -1,5 +1,5 @@
 const { User } = require('../models');
-const { AuthenticationError } = require('apollo-server-express');
+const { AuthenticationError, UserInputError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const { Error } = require('mongoose');
 
@@ -72,6 +72,8 @@ const resolvers = {
       throw new Error({ msg: 'ID mismatch' })
     },
 
+
+// CREATE POST MUTATION
     async createPost(_, { body }, context) {
       const user = checkAuth(context);
 
@@ -86,6 +88,8 @@ const resolvers = {
 
       return post;
     },
+
+// DELETE POST MUTATION
     async deletePost(_, { postId }, context){
       const user = checkAuth(context);
 
@@ -100,10 +104,31 @@ const resolvers = {
       } catch (err) {
         throw new Error(err);
       }
-    }
+    },
 
-    
-    //new mutations start here
+    // CREATE COMMENT MUTATION
+    createComment: async (_, { postId, body }, context) => {
+      const { firstName } = checkAuth(context);
+      if(body.trim() === '') {
+        throw new UserInputError('Empty comment', {
+          errors: {
+            body: 'Comment body must not be empty'
+          }
+        })
+      }
+
+      const post = await Post.findById(postId);
+
+      if(post) {
+        post.comments.unshift({
+          body,
+          firstName,
+          createdAt: new Date().toISOString()
+        })
+        await post.save();
+        return post;
+      } else throw new UserInputError('Post not found!')
+    }
 
   },
 };
