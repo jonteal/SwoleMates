@@ -14,7 +14,8 @@
   "homepage": "https://github.com/jonteal/SwoleMates#readme",
   "dependencies": {
     "create-react-app": "^5.0.0",
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "mongoose-auto-increment": "^5.0.1"
   },
   "devDependencies": {
     "concurrently": "^5.1.0"

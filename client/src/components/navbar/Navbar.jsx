@@ -14,7 +14,7 @@ const Navbar = () => {
     const showSidebar = () => setSidebar(!sidebar)
   return (
       <>
-      {AuthService.loggedIn() === true && 
+      {AuthService.loggedIn() === false && 
   <div className='nav'>
     <IconContext.Provider value={{ color: '#fff' }}>
     <div className="navbar">

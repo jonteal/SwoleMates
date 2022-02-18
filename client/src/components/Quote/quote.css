@@ -1,0 +1,30 @@
+.quote-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85vw;
+}
+
+.quote-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+}
+
+.quote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import "./loginForm.css";
-import { useMutation } from "@apollo/client";
-import { LOGIN_USER } from "../../utils/mutations";
-import Auth from "../../utils/auth";
-import SignupForm from "../SignupForm/SignupForm";
-import { Link } from "react-router-dom";
-import { handleModal } from "../Welcome/Welcome";
+import React, {useState, useEffect } from "react";
+import "./LoginForm.css";
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import SignupForm from '../SignupForm/SignupForm';
+import { Link } from 'react-router-dom'
+import {handleModal} from '../Welcome/Welcome'
 
 const LoginForm = ({ handleModal }) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
