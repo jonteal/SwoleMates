@@ -16,6 +16,10 @@ const SignupForm = () => {
 
   const [createUser, { data, error }] = useMutation(ADD_USER);
 
+  const [inputPassword, setInputPassword] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
+  const [passwordMatch, setPasswordMatch] = useState(false);
+
   useEffect(() => {
     error ? setShowAlert(true) : setShowAlert(false);
   }, [error]);
@@ -23,7 +27,16 @@ const SignupForm = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
+    setInputPassword(value);
   };
+
+  const handlePasswordCheck = (event) => {
+    event.preventDefault();
+
+    console.log(`This is the first password ${inputPassword} and this is the second password ${checkPassword}, now I wonder if they match?`)
+    inputPassword ===  checkPassword ? setPasswordMatch(true) : setPasswordMatch(false);
+  };
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -71,7 +84,7 @@ const SignupForm = () => {
               <label htmlFor="email">Email</label>
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder="Enter email address"
                 name="email"
                 onChange={handleInputChange}
                 value={userFormData.email}
@@ -88,16 +101,24 @@ const SignupForm = () => {
               <label htmlFor="password">Password</label>
               <input
                 type="password"
-                placeholder="Your password"
+                placeholder="Enter password"
                 name="password"
                 onChange={handleInputChange}
                 value={userFormData.password}
                 required
               />
-              {/* <alert type="invalid">
-                Password is required!
-              </alert> */}
+                            <label htmlFor="passwordCheck">Retype Password</label>
+
+              <input
+                type="password"
+                placeholder="Retype your password"
+                name="passwordCheck"
+                onChange={(event) => setCheckPassword(event.target.value)}
+                onBlur={handlePasswordCheck}
+                required
+              />
             </form>
+            {passwordMatch && <p>Your passwords match, great typing!</p>}
 
             {/* Submit Button */}
             <button
