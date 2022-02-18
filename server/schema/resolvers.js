@@ -151,6 +151,26 @@ const resolvers = {
       } else {
         throw new UserInputError('Post not found!');
       }
+    },
+
+    // LIKE POST
+    async likePost(_, { postId }, context) {
+      const { firstName } = checkAuth(context);
+
+      const post = await Post.findById(postId);
+      if(post) {
+        if(post.likes.find(like => like.firstName === firstName)) {
+          post.likes = post.likes.filter(like => like.firstName !== firstName);
+        } else {
+          post.likes.push({
+            firstName,
+            createdAt: new Date().toISOString()
+          })
+        } 
+
+        await post.save();
+        return post;
+      } else throw new UserInputError('Post not found!')
     }
 
   },
