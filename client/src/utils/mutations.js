@@ -42,3 +42,26 @@ export const LOGIN_USER = gql`
 //   }
 // }
 // `;
+
+export const ADD_PROFILE = gql`
+mutation startProfile(
+  $firstName: String!, 
+  $lastName: String!, 
+  $weight: Int!, 
+  $age: Int!, 
+  $height: Int!, 
+  $sex: String!, 
+  $goal: String!) {
+    startProfile(
+      firstName:$firstName,
+      lastName: $lastName,
+      weight: $weight,
+      age: $age,
+      height: $height
+      sex: $sex,
+      goal: $goal
+    ) {
+      firstName
+    }
+  }
+`

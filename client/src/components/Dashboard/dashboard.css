@@ -1,0 +1,57 @@
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.development {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    padding: 10px;
+    width: 85vw;
+    height: 20vh;
+    border: solid 1px black;
+    border-radius: 10px;
+    margin-bottom: 30px;    
+}
+
+.weight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    width: 85vw;
+    height: 20vh;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 10px;
+    margin-bottom: 30px;
+
+}
+
+.calories {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    width: 85vw;
+    height: 20vh;
+    border-radius: 10px;
+    margin: 15px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+.calories-consumed {
+    width: 80vw;
+    margin: 5px;
+    
+}
+
+.calories-burned {
+    width: 80vw;
+}

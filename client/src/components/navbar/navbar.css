@@ -26,8 +26,8 @@
 
 .nav-menu {
     background-color: #003d7a;
-    height: 35vh;
-    width: 10vw;
+    height: 0vh;
+    width: 0vw;
     display: flex;
     justify-content: center;
     position: relative;
@@ -91,10 +91,10 @@ span {
 }
 
 .nav-name {
-    flex: 1;
+    flex: 0.92;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     margin: 30px;
     padding: 20px;
     font-size: 40px;
@@ -119,44 +119,14 @@ span {
     }
 
     .nav-menu {
-        height: 47vh;
-        width: 47vw;
+        height: 0vh;
+        width: 0vw;
     }
 
     .nav-menu.active {
         position: relative;
         height: 47vh;
         width: 47vw;
-    }
-    
-}
-
-@media screen and (max-width: 900px) {
-    .nav-title {
-        display: none;
-    }
-
-    .nav-name {
-        font-size: 30px;
-        justify-content: center;
-    }
-
-    .navbar {
-        width: 100vw;
-        position: relative;
-        z-index: 7;
-        top: 0;
-    }
-
-    .nav-menu {
-        height: 27vh;
-        width: 27vw;
-    }
-
-    .nav-menu.active {
-        position: relative;
-        height: 27vh;
-        width: 27vw;
     }
     
 }
