@@ -12,7 +12,7 @@ const ExerciseSchema = new Schema({
     },
   date: {
     // get date only as  year\mth\day => no hours\min\sec 
-    type: Date
+    type: String
   },
   type: {
     type: String,

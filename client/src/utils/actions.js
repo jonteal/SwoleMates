@@ -6,5 +6,3 @@ export const ADD_STRENGTH = "ADD_STRENGTH";
 export const ADD_STRETCHING = "ADD_STRETCHING";
 
 export const GET_WORKOUT = "GET_WORKOUT";
-
-

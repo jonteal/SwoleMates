@@ -21,101 +21,81 @@ export const LOGIN_USER = gql`
     }
   }
 `;
-// 1)
-// create add exer\work here
 
-export const ADD_EXERCISE = gql`
-mutation addExercise($id: Int!, 
-  $type: String!, 
-  $durationInMinutes: Int!, 
-  $cardioDistanceInMiles: Int!, 
-  $repetitions: Int!, 
-  $sets: Int!, 
-  $weight: Int!, 
-  $caloriesBurnt: Int!) {
-      addExercise(
-        id: $id,
-        type:$type,
-        durationInMinutes: $durationInMinutes,
-        cardioDistanceInMiles: $cardioDistanceInMiles,
-        repetitions: $repetitions,
-        sets: $sets,
-        weight: $weight,
-        caloriesBurnt: $caloriesBurnt
-      ){
-  	id
-  }
-}`
+
 
 export const ADD_CARDIO = gql`
-mutation addCardio(
-  $id: Int!,
-  $type: String!, 
-  $durationInMinutes: String!, 
-  $cardioDistanceInMiles: String!, 
- ) {
-      addCardio(
-        id: $id,
-        type:$type,
-        durationInMinutes: $durationInMinutes,
-        cardioDistanceInMiles: $cardioDistanceInMiles,
-      ){
-  	type
+  mutation addCardio(
+    $id: Int!
+    $type: String!
+    $durationInMinutes: String!
+    $cardioDistanceInMiles: String!
+    $date: String!
+  ) {
+    addCardio(
+      id: $id
+      type: $type
+      durationInMinutes: $durationInMinutes
+      cardioDistanceInMiles: $cardioDistanceInMiles
+      date: $date
+    ) {
+      type
+    }
   }
-}`
+`;
 
 export const ADD_STRENGTH = gql`
-mutation addStrength(
-  $id: Int!,
-  $type: String!, 
-  $repetitions: String!, 
-  $sets: String!, 
-  $weight: String!, 
- ) {
-  addStrength(
-        id: $id,
-        type:$type,
-        repetitions: $repetitions,
-        sets: $sets,
-        weight: $weight
-      ){
-  	type
+  mutation addStrength(
+    $id: Int!
+    $type: String!
+    $repetitions: String!
+    $sets: String!
+    $weight: String!
+    $date: String!
+  ) {
+    addStrength(
+      id: $id
+      type: $type
+      repetitions: $repetitions
+      sets: $sets
+      weight: $weight
+      date: $date
+    ) {
+      type
+    }
   }
-}`
-
+`;
 
 export const ADD_STRETCHING = gql`
-mutation addStretching(
-  $id: Int!,
-  $type: String!, 
-  $durationInMinutes: String!, 
- ) {
-  addStretching(
-        id: $id,
-        type:$type,
-        durationInMinutes: $durationInMinutes,
-      ){
-  	type
+  mutation addStretching(
+    $id: Int!
+    $type: String!
+    $durationInMinutes: String!
+    $date: String!
+  ) {
+    addStretching(id: $id, type: $type, durationInMinutes: $durationInMinutes, date: $date) {
+      type
+    }
   }
-}`
-
+`;
 
 export const ADD_PROFILE = gql`
-mutation startProfile(
-  $firstName: String!, 
-  $lastName: String!, 
-  $weight: Float!, 
-  $age: Int!, 
-  $height: Int!, 
-  $sex: String!, 
-  $goal: String!) {
+  mutation startProfile(
+    $firstName: String!
+    $lastName: String!
+    $weight: Float!
+    $age: Int!
+    $height: Int!
+    $sex: String!
+    $goal: String!
+  ) {
     startProfile(
-      firstName:$firstName,
-      lastName: $lastName,
-      weight: $weight,
-      age: $age,
+      firstName: $firstName
+      lastName: $lastName
+      weight: $weight
+      age: $age
       height: $height
-      sex: $sex,
+      sex: $sex
       goal: $goal
     ) {
       firstName
@@ -132,4 +112,4 @@ export const UPDATE_WEIGHT = gql`
       savedWeight
     }
   }
-`
+`;

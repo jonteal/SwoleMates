@@ -54,19 +54,19 @@ const resolvers = {
 
   
 
-    addCardio: async (parent, {id, type, durationInMinutes, cardioDistanceInMiles}) => {
-      console.log(`hello, these are args for cardio : ${id, type, durationInMinutes, cardioDistanceInMiles}`)
-      const cardio = await Exercise.create({id, type, durationInMinutes, cardioDistanceInMiles});
+    addCardio: async (parent, {id, type, durationInMinutes, cardioDistanceInMiles, date}) => {
+      console.log(`hello, these are args for cardio : ${id, type, durationInMinutes, cardioDistanceInMiles, date}`)
+      const cardio = await Exercise.create({id, type, durationInMinutes, cardioDistanceInMiles, date});
       return cardio;
     },
-    addStrength: async (parent, {id, type, repetitions, sets, weight}) => {
-      console.log(`hello, these are args for strength: ${id, type, repetitions,sets, weight}`)
-      const strength = await Exercise.create({id, type, repetitions,sets, weight});
+    addStrength: async (parent, {id, type, repetitions, sets, weight, date}) => {
+      console.log(`hello, these are args for strength: ${id, type, repetitions,sets, weight, date}`)
+      const strength = await Exercise.create({id, type, repetitions,sets, weight, date});
       return strength;
     },
-    addStretching: async (parent, {id, type, durationInMinutes}) => {
+    addStretching: async (parent, {id, type, durationInMinutes, date}) => {
       console.log(`hello, these are args for stretching: ${id, type, durationInMinutes}`)
-      const stretching = await Exercise.create({id, type, durationInMinutes});
+      const stretching = await Exercise.create({id, type, durationInMinutes, date});
       return stretching;
     },
 

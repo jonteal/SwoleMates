@@ -68,6 +68,7 @@ type Mutation {
     type: String!,
     durationInMinutes: String!,
     cardioDistanceInMiles: String!,
+    date: String!
   ): Exercise
 
   addStrength(
@@ -75,13 +76,15 @@ type Mutation {
     type: String!,
     repetitions: String!, 
     sets: String!, 
-    weight: String!
+    weight: String!,
+    date: String!
   ): Exercise
 
   addStretching(
     id: Int!,
     type: String!,
-    durationInMinutes: String!
+    durationInMinutes: String!,
+    date: String!
     
   ): Exercise
 

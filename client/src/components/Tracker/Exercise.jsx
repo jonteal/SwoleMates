@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 
-import { ADD_CARDIO, ADD_STRENGTH, ADD_STRETCHING } from "../../utils/mutations";
+import {
+  ADD_CARDIO,
+  ADD_STRENGTH,
+  ADD_STRETCHING,
+} from "../../utils/mutations";
 
 const Exercise = (props) => {
   const [type, setType] = useState("");
@@ -19,7 +23,7 @@ const Exercise = (props) => {
 
   // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_EXERCISE mutation
   // const [addExercise, { error }] = useMutation(ADD_EXERCISE);
-  const [addCardio, { error }] = useMutation(ADD_CARDIO);
+   const [addCardio, { error }] = useMutation(ADD_CARDIO);
   const [addStrength, {  }] = useMutation(ADD_STRENGTH);
   const [addStretching, {  }] = useMutation(ADD_STRETCHING);
 
@@ -64,7 +68,7 @@ const Exercise = (props) => {
             type,
             durationInMinutes,
             cardioDistanceInMiles,
-            // date,
+            date
           },
         });
         console.log(data);
@@ -106,7 +110,8 @@ const Exercise = (props) => {
             type,
             repetitions,
             sets,
-            weight
+            weight,
+            date
             // date,
           },
         });
@@ -141,7 +146,8 @@ const Exercise = (props) => {
             id,
             type,
             durationInMinutes,
-         
+            date
+
             // date,
           },
         });
