@@ -8,17 +8,17 @@ import "./profile.css";
 const Profile = (props) => {
   const [inputFirstName, setFirstName] = useState("");
   const [inputLastName, setLastName] = useState("");
-  const [inputAge, setAge] = useState("");
-  const [inputWeight, setWeight] = useState("");
-  const [inputFeet, setFeet] = useState("");
-  const [inputInches, setInches] = useState("");
+  const [inputAge, setAge] = useState(0);
+  const [inputWeight, setWeight] = useState(0);
+  const [inputFeet, setFeet] = useState(0);
+  const [inputInches, setInches] = useState(0);
   const [inputSex, setSex] = useState("");
   const [inputActive, setActive] = useState("");
   const [inputGoal, setGoal] = useState("");
 
   const [addProfile, { error }] = useMutation(ADD_PROFILE);
 
-  function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     alert(`A name was submitted: ${inputFirstName} ${inputLastName} with the following information:
@@ -29,7 +29,26 @@ const Profile = (props) => {
         ${inputActive}
         ${inputGoal}
         `);
-  }
+    const inputHeight = inputFeet * 12 + inputInches;
+    const payload = {
+      firstName: inputFirstName,
+      lastName: inputLastName,
+      age: inputAge,
+      weight: inputWeight,
+      height: inputHeight,
+      sex: inputSex,
+      activity: inputActive,
+      goal: inputGoal,
+    };
+
+    try {
+      const { data } = await addProfile({
+        variables: { ...payload },
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
