@@ -1,5 +1,31 @@
 .loginBg {
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
+    background-color: #354152;
+}
+
+.loginCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #354152;
+}
+
+.loginTitle {
+    color: #7e8ba3;
+    font-size: 2.75rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+}
+
+.loginBtn {
+    background-image: linear-gradient(160deg, #8ceabb 0%, #378f7b 100%);
+    color: #fff;
+    margin-bottom: 6rem;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .loginSignup {
+color: #7e8ba3  
 }
