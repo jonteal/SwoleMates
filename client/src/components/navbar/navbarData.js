@@ -18,8 +18,8 @@ export const NavbarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Workouts',
-        path: '/workouts',
+        title: 'Exercise',
+        path: '/exercise',
         icon: <IoIcons.IoIosFitness />,
         cName: 'nav-text'
     },
