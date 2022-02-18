@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_EXERCISE } from "../../utils/mutations";
+import { ADD_CARDIO } from "../../utils/mutations";
 
 const Exercise = (props) => {
   const [type, setType] = useState("");
@@ -15,7 +16,8 @@ const Exercise = (props) => {
   var currentDate = new Date().toISOString().split("T")[0];
 
   // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_EXERCISE mutation
-  const [addExercise, { error }] = useMutation(ADD_EXERCISE);
+  // const [addExercise, { error }] = useMutation(ADD_EXERCISE);
+  const [addCardio, { error }] = useMutation(ADD_CARDIO);
 
   function handleSelect(event) {
     setType(event.target.value);
@@ -24,7 +26,9 @@ const Exercise = (props) => {
   }
 
   const handleSubmit = async (event) => {
+    console.log("handle")
     console.log(date);
+    event.preventDefault();
     if (type == "cardio") {
       alert(
         "Your exercise was submitted! \n" +
@@ -45,6 +49,22 @@ const Exercise = (props) => {
           "\n " +
           "Check calories burnt on your dashboard!"
       );
+      try {
+        console.log("try?")
+        const { data } = await addCardio({
+          // Execute mutation and pass in defined parameter data as variables
+          variables: {
+            type,
+            durationInMinutes,
+            cardioDistanceInMiles,
+            // date,
+          },
+        });
+        console.log(data);
+        console.log("Data where are u bish");
+      } catch (err) {
+        console.error(err);
+      }
     }
     if (type == "strength") {
       alert(
@@ -89,31 +109,15 @@ const Exercise = (props) => {
           "Check out your dashboard!"
       );
 
-      event.preventDefault();
+      
 
+
+     
+    }
+    
       // ADD USE MUTATION HERE;
       // Since mutation function is async, wrap in a `try...catch` to catch any network errors from throwing due to a failed request.
-
-      try {
-        const { data } = await addExercise({
-          // Execute mutation and pass in defined parameter data as variables
-
-          variables: {
-            type,
-            durationInMinutes,
-            cardioDistanceInMiles,
-            repetitions,
-            sets,
-            weight,
-            date,
-          },
-        });
-        console.log(data);
-        window.location.reload();
-      } catch (err) {
-        console.error(err);
-      }
-    }
+   
   };
 
   return (

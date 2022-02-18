@@ -15,12 +15,12 @@ const ExerciseSchema = new Schema({
     trim: true,
   },
   durationInMinutes: {
-    type: Number,
+    type: String,
     required: false,
     trim: true,
   },
   cardioDistanceInMiles: {
-    type: Number,
+    type: String,
     required: false,
     trim: true,
   },

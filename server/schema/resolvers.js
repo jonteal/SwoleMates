@@ -52,9 +52,15 @@ const resolvers = {
     //   throw new Error({ msg: 'ID mismatch' })
     // },
 
-    addExercise: async (parent, args) => {
-      const exercise = await Exercise.create(args);
+    addExercise: async (parent, {type, durationInMinutes, cardioDistanceInMiles, repetitions, sets, weight}) => {
+      const exercise = await Exercise.create({type, durationInMinutes, cardioDistanceInMiles, repetitions, sets, weight});
       return exercise;
+    },
+
+    addCardio: async (parent, {type, durationInMinutes, cardioDistanceInMiles}) => {
+      console.log(`hello, these are args: ${type, durationInMinutes, cardioDistanceInMiles}`)
+      const cardio = await Exercise.create({type, durationInMinutes, cardioDistanceInMiles});
+      return cardio;
     },
 
     updateWeight: async (parent, { weightData }, context) => {
