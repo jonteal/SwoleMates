@@ -19,6 +19,7 @@ const SignupForm = () => {
   const [inputPassword, setInputPassword] = useState('');
   const [checkPassword, setCheckPassword] = useState('');
   const [passwordMatch, setPasswordMatch] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
 
   useEffect(() => {
     error ? setShowAlert(true) : setShowAlert(false);
@@ -32,11 +33,14 @@ const SignupForm = () => {
 
   const handlePasswordCheck = (event) => {
     event.preventDefault();
-
-    console.log(`This is the first password ${inputPassword} and this is the second password ${checkPassword}, now I wonder if they match?`)
-    inputPassword ===  checkPassword ? setPasswordMatch(true) : setPasswordMatch(false);
+    (inputPassword === checkPassword) ? setPasswordMatch(true) : setPasswordMatch(false);
+    if (inputPassword !== checkPassword){
+      setPasswordError("Your passwords do not match, try again")
+    } else {
+      setPasswordError("")
+    }
+    
   };
-
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -105,6 +109,7 @@ const SignupForm = () => {
                 name="password"
                 onChange={handleInputChange}
                 value={userFormData.password}
+                onBlur={handlePasswordCheck}
                 required
               />
                             <label htmlFor="passwordCheck">Retype Password</label>
@@ -119,7 +124,7 @@ const SignupForm = () => {
               />
             </form>
             {passwordMatch && <p>Your passwords match, great typing!</p>}
-
+              <p>{passwordError}</p>
             {/* Submit Button */}
             <button
               disabled={!(userFormData.email && userFormData.password)}
