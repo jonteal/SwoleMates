@@ -87,7 +87,7 @@ const LoginForm = ({ handleModal }) => {
             <div>
               <label htmlFor="email"></label>
               <input
-                className="bg-gray-700 rounded-3xl border-1 border-black"
+                className="bg-gray-700 rounded-3xl border-1 border-black m-0"
                 type="text"
                 placeholder="Email"
                 name="email"

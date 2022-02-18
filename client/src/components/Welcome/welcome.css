@@ -29,7 +29,7 @@
       transition: all 0.25s ease-out;
   }
   .shadows:hover {
-      text-shadow: -16px 6px 15px #ced0d3;
+      text-shadow: -16px 6px 15px black;
   }
 
   /* CSS */
@@ -44,7 +44,7 @@
     padding: 18px 18px 17px;
     text-decoration: none;
     cursor: pointer;
-    background: #fff;
+    background: #7e8ba3;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
@@ -57,7 +57,7 @@
   }
   
   .button-57 span:last-child {
-    color: white;
+    color: #7e8ba3;
     display: block;
     position: absolute;
     bottom: 0;
@@ -76,7 +76,7 @@
     position: absolute;
     bottom: -50%;
     left: 0;
-    width: 100%;
+    width: 100% !important;
     height: 100%;
     background-color: black;
     transform-origin: bottom center;
@@ -112,3 +112,6 @@
           color: rgba(128, 128, 128, 0.37);
       }
   }
+
+
+  

@@ -116,9 +116,7 @@ const SignupForm = () => {
                 value={userFormData.email}
                 required
               />
-              <br />
             </form>
-
             {/* Password */}
             <form>
               <label htmlFor="password"></label>
@@ -132,7 +130,9 @@ const SignupForm = () => {
                 onBlur={handlePasswordCheck}
                 required
               />
-            <br />
+            </form>
+            <form>
+
 
               <label htmlFor="passwordCheck"></label>
 
