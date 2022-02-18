@@ -1,7 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_WEIGHT } from '../../utils/queries';
+import { UPDATE_WEIGHT } from '../../utils/mutations';
 import './weight.css';
 
 const Weight = () => {
+    const { loading, data } = useQuery(GET_WEIGHT);
+    const weigthData = data?.me || {};
+
+    const [updateWeight, {error}] = useMutation(UPDATE_WEIGHT);
+
+    // function not finished
+    const handleUpdateWeight = async (savedWeight) => {
+        const weightToSave = 
+        console.log(savedWeight);
+    };
+
     const [userWeightData, setUserWeightData] = useState({ weight: '' });
     const [weight, setWeight] = useState('');
     const handleSubmit = (event) => {

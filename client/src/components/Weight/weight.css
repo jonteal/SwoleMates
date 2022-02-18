@@ -24,6 +24,12 @@
     padding: 4px;
 }
 
+.weightButton {
+    background-color: #003d7a;
+    color: white;
+}
+
 .weightButton:hover {
     background-color: aqua;
+    color: black;
 }

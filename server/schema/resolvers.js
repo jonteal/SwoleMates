@@ -47,16 +47,27 @@ const resolvers = {
     //     return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
     //   }
 
-      throw new Error({ msg: 'ID mismatch' })
-    },
+    //   throw new AuthenticationError({ msg: 'ID mismatch' })
+    // },
     //   throw new Error({ msg: 'ID mismatch' })
     // },
 
     addExercise: async (parent, args) => {
       const exercise = await Exercise.create(args);
       return exercise;
-    }
+    },
 
+    updateWeight: async (parent, { weightData }, context) => {
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { savedWeight: weightData }},
+          { new: true }
+        );
+        return updatedUser
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
     //new mutations start here
   },
 };

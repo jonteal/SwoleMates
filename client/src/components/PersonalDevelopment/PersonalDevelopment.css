@@ -19,6 +19,8 @@
 }
 
 .dev-btn {
+    background-color: #003d7a;
+    color: white;
     margin-top: 10px;
     border: solid black 1px;
     padding: 5px;
@@ -27,4 +29,5 @@
 
 .dev-btn:hover {
     background-color: aquamarine;
+    color: black;
 }
