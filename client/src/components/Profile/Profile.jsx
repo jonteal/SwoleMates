@@ -17,28 +17,6 @@ const Profile = (props) => {
   const [inputGoal, setGoal] = useState("");
 
   const [addProfile, { error }] = useMutation(ADD_PROFILE);
-  // function handleFirstName(event){
-  //   setFirstName(event.target.value);
-  // }
-  // function handleLastName(event){
-  //   setLastName(event.target.value);
-  // }
-  // function handleAge(event){
-  //   setAge(event.target.value);
-  // }
-  // function handleWeight(event){
-  //   setWeight(event.target.value);
-  // }
-  // function handleFeet(event){
-  //   setFeet(event.target.value);
-  // }
-
-  // function handleInch(event){
-  //   setInches(event.target.value);
-  // }
-  // function handleSex(event){
-  //   setSex(event.target.value);
-  // }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -51,14 +29,6 @@ const Profile = (props) => {
         ${inputActive}
         ${inputGoal}
         `);
-
-    // const firstName = this.state.firstName;
-    // const lastName = this.state.lastName;
-    // const age = this.state.age;
-    // const weight = this.state.weight;
-    // const height = ((this.state.feet * 12) + this.state.inches);
-
-    // console.log(`this height in inches is ${height}`)
   }
 
   return (
