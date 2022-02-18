@@ -70,6 +70,23 @@ type Mutation {
     cardioDistanceInMiles: String!,
   ): Exercise
 
+  addStrength(
+    id: Int!,
+    type: String!,
+    repetitions: String!, 
+    sets: String!, 
+    weight: String!
+  ): Exercise
+
+  addStretching(
+    id: Int!,
+    type: String!,
+    durationInMinutes: String!
+    
+  ): Exercise
+
+
+
   updateWeight(weightData: Float!): User
 
 }

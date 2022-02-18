@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
-import { ADD_EXERCISE } from "../../utils/mutations";
-import { ADD_CARDIO } from "../../utils/mutations";
+
+import { ADD_CARDIO, ADD_STRENGTH, ADD_STRETCHING } from "../../utils/mutations";
 
 const Exercise = (props) => {
   const [type, setType] = useState("");
@@ -20,6 +20,8 @@ const Exercise = (props) => {
   // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_EXERCISE mutation
   // const [addExercise, { error }] = useMutation(ADD_EXERCISE);
   const [addCardio, { error }] = useMutation(ADD_CARDIO);
+  const [addStrength, {  }] = useMutation(ADD_STRENGTH);
+  const [addStretching, {  }] = useMutation(ADD_STRETCHING);
 
   function handleSelect(event) {
     setType(event.target.value);
@@ -30,7 +32,7 @@ const Exercise = (props) => {
   }
 
   const handleSubmit = async (event) => {
-    console.log("handle")
+    console.log("handle");
     console.log(date);
     event.preventDefault();
     if (type == "cardio") {
@@ -54,7 +56,7 @@ const Exercise = (props) => {
           "Check calories burnt on your dashboard!"
       );
       try {
-        console.log("try?")
+        console.log("try?");
         const { data } = await addCardio({
           // Execute mutation and pass in defined parameter data as variables
           variables: {
@@ -95,6 +97,24 @@ const Exercise = (props) => {
           "\n " +
           "Check out your dashboard!"
       );
+      try {
+        console.log("try?");
+        const { data } = await addStrength({
+          // Execute mutation and pass in defined parameter data as variables
+          variables: {
+            id,
+            type,
+            repetitions,
+            sets,
+            weight
+            // date,
+          },
+        });
+        console.log(data);
+        console.log("Data where are u bish");
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     if (type == "stretching") {
@@ -113,16 +133,24 @@ const Exercise = (props) => {
           "\n " +
           "Check out your dashboard!"
       );
-
-      
-
-
-     
+      try {
+        console.log("try?");
+        const { data } = await addStretching({
+          // Execute mutation and pass in defined parameter data as variables
+          variables: {
+            id,
+            type,
+            durationInMinutes,
+         
+            // date,
+          },
+        });
+        console.log(data);
+        console.log("Data where are u bish");
+      } catch (err) {
+        console.error(err);
+      }
     }
-    
-      // ADD USE MUTATION HERE;
-      // Since mutation function is async, wrap in a `try...catch` to catch any network errors from throwing due to a failed request.
-   
   };
 
   return (

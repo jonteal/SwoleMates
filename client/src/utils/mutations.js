@@ -64,6 +64,42 @@ mutation addCardio(
   }
 }`
 
+export const ADD_STRENGTH = gql`
+mutation addStrength(
+  $id: Int!,
+  $type: String!, 
+  $repetitions: String!, 
+  $sets: String!, 
+  $weight: String!, 
+ ) {
+  addStrength(
+        id: $id,
+        type:$type,
+        repetitions: $repetitions,
+        sets: $sets,
+        weight: $weight
+      ){
+  	type
+  }
+}`
+
+
+export const ADD_STRETCHING = gql`
+mutation addStretching(
+  $id: Int!,
+  $type: String!, 
+  $durationInMinutes: String!, 
+ ) {
+  addStretching(
+        id: $id,
+        type:$type,
+        durationInMinutes: $durationInMinutes,
+      ){
+  	type
+  }
+}`
+
+
 export const ADD_PROFILE = gql`
 mutation startProfile(
   $firstName: String!, 
