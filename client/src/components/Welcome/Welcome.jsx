@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom'
 import Modal from '../LoginForm/LoginForm'
+import './welcome.css'
 
 const Welcome = () => {
     //represents whether the modal is open or not, start false bc modal closed initially
@@ -16,10 +17,33 @@ const Welcome = () => {
     return (
         <>
         {!openModal && 
-        <div className='max-h-screen min-h-screen bg-blue-500 flex-col justify-end items-end'>
-                <div className="bg-red-400 min-h-1/2">
-                    Welcome to SwoleMate, are you ready to find your one true swolemate?
-                    <button onClick={() => {setModal(true)}} value={openModal} className="openModalBtn">If you see me, the modal is closed</button>
+        <div>
+            <div className="container">
+                <div className="shadows">
+                    <span>S</span>
+                    <span>W</span>
+                    <span>O</span>
+                    <span>L</span>
+                    <span>E</span>
+                    <span>M</span>
+                    <span>A</span>
+                    <span>T</span>
+                    <span>E</span>
+                    <span>S</span>
+                </div>
+            </div>
+    
+
+                <div className="welcomeBorder bg-red-500">
+                Are you ready to find your one true swolemate?
+                SCROLL DOWN
+            </div>
+
+            
+                <div className="bg-white btnCard">
+                    <button onClick={() => {setModal(true)}} value={openModal} className="openModalBtn">
+                       Click here to login, mate
+                        </button>
                     <br />
 
                         <div class="relative rounded-xl overflow-auto p-8">
