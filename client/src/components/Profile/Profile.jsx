@@ -8,17 +8,39 @@ import "./profile.css";
 const Profile = (props) => {
   const [inputFirstName, setFirstName] = useState("");
   const [inputLastName, setLastName] = useState("");
-  const [inputAge, setAge] = useState(0);
-  const [inputWeight, setWeight] = useState(0);
-  const [inputFeet, setFeet] = useState(0);
-  const [inputInches, setInches] = useState(0);
+  const [inputAge, setAge] = useState("");
+  const [inputWeight, setWeight] = useState("");
+  const [inputFeet, setFeet] = useState("");
+  const [inputInches, setInches] = useState("");
   const [inputSex, setSex] = useState("");
   const [inputActive, setActive] = useState("");
   const [inputGoal, setGoal] = useState("");
 
   const [addProfile, { error }] = useMutation(ADD_PROFILE);
+  // function handleFirstName(event){
+  //   setFirstName(event.target.value);
+  // }
+  // function handleLastName(event){
+  //   setLastName(event.target.value);
+  // }
+  // function handleAge(event){
+  //   setAge(event.target.value);
+  // }
+  // function handleWeight(event){
+  //   setWeight(event.target.value);
+  // }
+  // function handleFeet(event){
+  //   setFeet(event.target.value);
+  // }
 
-  const handleSubmit = async (event) => {
+  // function handleInch(event){
+  //   setInches(event.target.value);
+  // }
+  // function handleSex(event){
+  //   setSex(event.target.value);
+  // }
+
+  function handleSubmit(event) {
     event.preventDefault();
 
     alert(`A name was submitted: ${inputFirstName} ${inputLastName} with the following information:
@@ -29,26 +51,15 @@ const Profile = (props) => {
         ${inputActive}
         ${inputGoal}
         `);
-    const inputHeight = inputFeet * 12 + inputInches;
-    const payload = {
-      firstName: inputFirstName,
-      lastName: inputLastName,
-      age: inputAge,
-      weight: inputWeight,
-      height: inputHeight,
-      sex: inputSex,
-      activity: inputActive,
-      goal: inputGoal,
-    };
 
-    try {
-      const { data } = await addProfile({
-        variables: { ...payload },
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+    // const firstName = this.state.firstName;
+    // const lastName = this.state.lastName;
+    // const age = this.state.age;
+    // const weight = this.state.weight;
+    // const height = ((this.state.feet * 12) + this.state.inches);
+
+    // console.log(`this height in inches is ${height}`)
+  }
 
   return (
     <>

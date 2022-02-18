@@ -37,10 +37,6 @@ const UserSchema = new Schema({
   sex: {
     type: String,
   },
-  activity: {
-    type: String,
-    required: true
-  },
   goal: {
     type: String
   }
@@ -68,7 +64,7 @@ const profileSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  createdAt: String
+  createdAt: String 
 })
 
 module.exports = User;
