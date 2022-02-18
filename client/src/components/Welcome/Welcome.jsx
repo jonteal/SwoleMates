@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Modal from '../LoginForm/LoginForm'
 import './welcome.css'
 
+
 const Welcome = () => {
     //represents whether the modal is open or not, start false bc modal closed initially
     const [openModal, setModal] = useState(false);
