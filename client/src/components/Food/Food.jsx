@@ -48,7 +48,7 @@ const FoodBar = () => {
       <div>
         <div className="foodbar-text">
           <h2> We have that many cal: {foodCalories}</h2>
-          <h2>Here is some more info about nutriens for : </h2>
+          <h2>Here is some more info about nutrients for : </h2>
 
           <br />
 
