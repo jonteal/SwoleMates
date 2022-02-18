@@ -8,7 +8,7 @@ import MealPlanner from './components/MealPlanner/MealPlanner.jsx'
 import Profile from './components/Profile/Profile'
 import Foodbar from './components/Food/Food'
 import Quote from './components/Quote/Quote';
-// import Exercise from './components/Tracker/Exercise';
+import Exercise from './components/Tracker/Exercise';
 import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
 
 
