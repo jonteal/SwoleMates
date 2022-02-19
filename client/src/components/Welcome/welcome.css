@@ -52,7 +52,7 @@
 
 .welcomeMain {
   background-color: #354152;
-  height:100vh;
+  height: 100vh;
 }
 
 .welcomeBorder {
@@ -85,69 +85,25 @@
   text-shadow: -16px 6px 15px black;
 }
 
-/* CSS */
-.button-57 {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #18181a;
-  color: #18181a;
-  display: inline-block;
-  font-size: 15px;
-  line-height: 15px;
-  padding: 18px 18px 17px;
-  text-decoration: none;
-  cursor: pointer;
-  background: #7e8ba3;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+
+.welcomeBtn {
+  background-image: linear-gradient(160deg, #096479 0%, #76D9F0 100%);
+  color: #fff;
+  margin-bottom: 6rem;
+  width: 25%;
+  border-radius: 10px;
+  padding: 2px 5px;
+  opacity: .5;
 }
 
-.button-57 span:first-child {
-  position: relative;
-  transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
-  z-index: 10;
+.welcomeBtn:hover {
+    opacity: 1;
 }
 
-.button-57 span:last-child {
-  color: #7e8ba3;
-  display: block;
-  position: absolute;
-  bottom: 0;
-  transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
-  z-index: 100;
-  opacity: 0;
-  top: 50%;
-  left: 50%;
-  transform: translateY(225%) translateX(-50%);
-  height: 14px;
-  line-height: 13px;
+.bounceArrow {
+  background-color: #7e8ba3;
 }
 
-.button-57:after {
-  content: "";
-  position: absolute;
-  bottom: -50%;
-  left: 0;
-  width: 100% !important;
-  height: 100%;
-  background-color: black;
-  transform-origin: bottom center;
-  transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
-  transform: skewY(9.3deg) scaleY(0);
-  z-index: 50;
-}
-
-.button-57:hover:after {
-  transform-origin: bottom center;
-  transform: skewY(9.3deg) scaleY(2);
-}
-
-.button-57:hover span:last-child {
-  transform: translateX(-50%) translateY(-100%);
-  opacity: 1;
-  transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
-}
 
 @media screen and (max-width: 950px) {
   .shadows {
