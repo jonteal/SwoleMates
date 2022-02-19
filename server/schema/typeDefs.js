@@ -50,7 +50,7 @@ type Mutation {
 
   createPost(body:String!, firstName: String!): Post!
   deletePost(postId: ID!): String!
-  createComment(postID:String!, body: String!): Post!
+  createComment(postID:ID!, body: String!): Post!
   deleteComment(postId: ID!, commentId: ID!): Post!
   likePost(postId: ID!): Post!
 }

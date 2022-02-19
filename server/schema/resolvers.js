@@ -6,6 +6,8 @@ const {
 const { signToken } = require("../utils/auth");
 const { Error } = require("mongoose");
 
+const checkAuth = require('../utils/auth');
+
 const resolvers = {
   Query: {
     getUser: async (parent, args, context) => {
@@ -97,12 +99,12 @@ const resolvers = {
     },
 
     // DELETE POST MUTATION
-    async deletePost(_, { postId }, context) {
-      const user = checkAuth(context);
+    deletePost: async (_, { postId }, context) => {
+      // const user = checkAuth(context);
 
       try {
         const post = await Post.findById(postId);
-        if (user.firstName === post.firstName) {
+        if (context.user.firstName === post.firstName) {
           await post.delete();
           return "Post deleted successfully";
         } else {
@@ -115,7 +117,7 @@ const resolvers = {
 
     // CREATE COMMENT MUTATION
     createComment: async (_, { postId, body }, context) => {
-      const { firstName } = checkAuth(context);
+      // const { firstName } = checkAuth(context);
       if (body.trim() === "") {
         throw new UserInputError("Empty comment", {
           errors: {
@@ -129,6 +131,7 @@ const resolvers = {
       if (post) {
         post.comments.unshift({
           body,
+          user: context.user._id,
           firstName,
           createdAt: new Date().toISOString(),
         });
@@ -138,8 +141,8 @@ const resolvers = {
     },
 
     // DELETE COMMENT
-    async deleteComment(_, { postId, commentId }, context) {
-      const { firstName } = checkAuth(context);
+    deleteComment: async (_, { postId, commentId }, context) => {
+      // const { firstName } = checkAuth(context);
 
       const post = await Post.findById(postId);
 
@@ -159,8 +162,8 @@ const resolvers = {
     },
 
     // LIKE POST
-    async likePost(_, { postId }, context) {
-      const { firstName } = checkAuth(context);
+    likePost: async (_, { postId }, context) => {
+      // const { firstName } = checkAuth(context);
 
       const post = await Post.findById(postId);
       if (post) {
