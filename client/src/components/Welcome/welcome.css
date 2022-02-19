@@ -1,67 +1,49 @@
-/* .example-appear {
-  opacity: 0.01;
+.bottomToTop-appear {
+  animation: bottomToTop ease 2s;
+  -webkit-animation: bottomToTop ease 2s;
+  -moz-animation: bottomToTop ease 2s;
+  -o-animation: bottomToTop ease 2s;
+  -ms-animation: bottomToTop ease 2s;
 }
-
-.example-appear.example-appear-active {
-  opacity: 1;
-  transition: opacity 5s ease-in;
-}
-
-.example-enter {
-  opacity: 0.01;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 5s ease-in;
-} */
-
-.topToBottom-appear {
-  animation: topToBottom ease 2s;
-  -webkit-animation: topToBottom ease 2s;
-  -moz-animation: topToBottom ease 2s;
-  -o-animation: topToBottom ease 2s;
-  -ms-animation: topToBottom ease 2s;
-}
-@keyframes topToBottom {
+@keyframes bottomToTop {
   0% {
-    margin-top: -100%;
+    margin-top: 200%;
   }
   100% {
     margin-top: 0%;
   }
 }
 
-@-moz-keyframes topToBottom {
+@-moz-keyframes bottomToTop {
   0% {
-    margin-top: -100%;
+    margin-top: 200%;
   }
   100% {
     margin-top: 0%;
   }
 }
 
-@-webkit-keyframes topToBottom {
+@-webkit-keyframes bottomToTop {
   0% {
-    margin-top: -100%;
+    margin-top: 200%;
   }
   100% {
     margin-top: 0%;
   }
 }
 
-@-o-keyframes topToBottom {
+@-o-keyframes bottomToTop {
   0% {
-    margin-top: -100%;
+    margin-top: 200%;
   }
   100% {
     margin-top: 0%;
   }
 }
 
-@-ms-keyframes topToBottom {
+@-ms-keyframes bottomToTop {
   0% {
-    margin-top: -100%;
+    margin-top: 200%;
   }
   100% {
     margin-top: 0%;

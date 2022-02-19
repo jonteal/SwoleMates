@@ -78,7 +78,7 @@ const Welcome = () => {
 
         {openModal && (
           <CSSTransitionGroup
-            transitionName="topToBottom"
+            transitionName="bottomToTop"
             transitionAppear={true}
             transitionAppearTimeout={5000}
             transitionEnter={false}
