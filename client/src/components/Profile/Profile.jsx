@@ -8,44 +8,29 @@ import { Link } from "react-router-dom";
 //need to add mutation like add user
 
 const Profile = (props) => {
-  const [inputFirstName, setFirstName] = useState("");
-  const [inputLastName, setLastName] = useState("");
-  const [inputAge, setAge] = useState(0);
-  const [inputWeight, setWeight] = useState(0);
-  const [inputFeet, setFeet] = useState(0);
-  const [inputInches, setInches] = useState(0);
-  const [inputSex, setSex] = useState("");
-  const [inputActive, setActive] = useState("");
-  const [inputGoal, setGoal] = useState("");
+  const initialState = {
+    firstName: "",
+    lastName: "",
+    age: 0, //Int
+    weight: 0, //float
+    height: 0, //Int
+    sex: "",
+    activity: 0, //float
+    goal: "",
+  };
+  const [inputForm, setInputForm] = useState(initialState);
 
   const [addProfile, { error }] = useMutation(ADD_PROFILE);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    alert(`A name was submitted: ${inputFirstName} ${inputLastName} with the following information:
-        ${inputAge}
-        ${inputWeight}
-        ${inputFeet}
-        ${inputSex}
-        ${inputActive}
-        ${inputGoal}
-        `);
-    const inputHeight = inputFeet * 12 + inputInches;
-    const payload = {
-      firstName: inputFirstName,
-      lastName: inputLastName,
-      age: inputAge,
-      weight: inputWeight,
-      height: inputHeight,
-      sex: inputSex,
-      activity: inputActive,
-      goal: inputGoal,
-    };
+
+    console.log(inputForm);
 
     try {
       const { data } = await addProfile({
-        variables: { ...payload },
+        variables: inputForm,
       });
     } catch (err) {
       console.log(err);
@@ -66,7 +51,12 @@ const Profile = (props) => {
               type="text"
               name="firstName"
               placeholder="First Name"
-              onChange={(e) => setFirstName(e.target.value)}
+
+              onChange={(e) => {
+                const temp = inputForm;
+                temp.firstName = e.target.value;
+                setInputForm(temp);
+              }}
               required
             />
             <br />
@@ -76,7 +66,13 @@ const Profile = (props) => {
               type="text"
               name="lastName"
               placeholder="Last Name"
-              onChange={(e) => setLastName(e.target.value)}
+
+              onChange={(e) => {
+                const temp = inputForm;
+                temp.lastName = e.target.value;
+                setInputForm(temp);
+              }}
+              required
             />
             <br />
             {/* <label className="profileLabel">Age: </label> */}
@@ -87,7 +83,13 @@ const Profile = (props) => {
               max="120"
               name="age"
               placeholder="Age"
-              onChange={(e) => setAge(e.target.value)}
+
+              onChange={(e) => {
+                const temp = inputForm;
+                temp.age = parseInt(e.target.value);
+                setInputForm(temp);
+              }}
+              required
             />
             <br />
             {/* <label className="profileLabel">Weight in lbs: </label> */}
@@ -97,7 +99,13 @@ const Profile = (props) => {
               min="0"
               name="weight"
               placeholder="Weight (lbs)"
-              onChange={(e) => setWeight(e.target.value)}
+
+              onChange={(e) => {
+                const temp = inputForm;
+                temp.weight = parseFloat(e.target.value);
+                setInputForm(temp);
+              }}
+              required
             />{" "}
             <br />
             {/* <label className="profileLabel">Height in inches: </label> */}
@@ -107,15 +115,26 @@ const Profile = (props) => {
               min="0"
               max="11"
               name="inches"
-              value={inputInches}
+
               placeholder="Height (inches)"
-              onChange={(e) => setInches(e.target.value)}
+              onChange={(e) => {
+                const temp = inputForm;
+                temp.height = parseInt(e.target.value);
+                setInputForm(temp);
+              }}
+              required
             />{" "}
             <br />
             {/* <label className="profileLabel">Birth Sex: </label> */}
             <select
               className="bg-gray-700 w-2/3 border-1 border-black"
-              onChange={(e) => setSex(e.target.value)}
+
+              onChange={(e) => {
+                const temp = inputForm;
+                temp.sex = e.target.value;
+                setInputForm(temp);
+              }}
+              required
             >
               <option selected value="" disabled selected>
                 Birth Sex
@@ -127,8 +146,12 @@ const Profile = (props) => {
             {/* <label className="profileLabel">Lifestyle: </label> */}
             <select
               className="bg-gray-700 w-2/3 border-1 border-black"
-              value={inputActive}
-              onChange={(e) => setActive(e.target.value)}
+
+              onChange={(e) => {
+                const temp = inputForm;
+                temp.activity = parseFloat(e.target.value);
+                setInputForm(temp);
+              }}
             >
               <option selected value="" disabled selected>
                 Lifestyle
@@ -143,8 +166,12 @@ const Profile = (props) => {
             {/* <label className="profileLabel">Goal: </label> */}
             <select
               className="bg-gray-700 w-2/3 border-1 border-black"
-              value={inputGoal}
-              onChange={(e) => setGoal(e.target.value)}
+
+              onChange={(e) => {
+                const temp = inputForm;
+                temp.goal = e.target.value;
+                setInputForm(temp);
+              }}
             >
               <option selected value="" disabled selected>
                 Fitness Goal

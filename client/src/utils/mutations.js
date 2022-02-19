@@ -98,7 +98,7 @@ export const ADD_PROFILE = gql`
       sex: $sex
       goal: $goal
     ) {
-      firstName
+      _id
     }
   }
 `;
