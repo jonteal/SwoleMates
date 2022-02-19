@@ -1,5 +1,7 @@
 import React from "react";
 import './Mates.css';
+import { Grid } from 'semantic-ui-react';
+import PostCard from '../components/PostCard';
 
 import { useQuery } from "@apollo/client";
 
@@ -8,14 +10,29 @@ import {
 } from "../../utils/queries";
 
 const Mates = () => {
-    const { loading, data } = useQuery(FETCH_POSTS_QUERY);
+    const { loading, data: { getPosts: posts} } = useQuery(FETCH_POSTS_QUERY);
 
     if (data) {
         console.log(data);
     }
 
     return (
-        <h1>Mates</h1>
+        <Grid columns={3}>
+            <Grid.Row>
+                <h1>Recent Posts</h1>
+            </Grid.Row>
+            <Grid.Row>
+                {loading ? (
+                <h1>Loading posts...</h1>
+                ) : (
+                    posts && posts.map(post => (
+                        <Grid.Column key={post.id}>
+                            <PostCard post={post}/>
+                        </Grid.Column>
+                    ))
+                )}
+            </Grid.Row>
+        </Grid>
         
     )
 }
