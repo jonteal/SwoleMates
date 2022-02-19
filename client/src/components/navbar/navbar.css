@@ -1,4 +1,5 @@
 .navbar {
+    font-family: 'Nunito', sans-serif;
     padding: 20px;
     background-color: #003d7a;
     height: 80px;
@@ -12,6 +13,7 @@
 }
 
 .menu-bars {
+    font-family: 'Nunito', sans-serif;
     margin-left: 10rem;
     font-size: 2.0rem;
     background: none;
@@ -25,9 +27,10 @@
 }
 
 .nav-menu {
+    font-family: 'Nunito', sans-serif;
     background-color: #003d7a;
-    height: 35vh;
-    width: 10vw;
+    height: 0vh;
+    width: 0vw;
     display: flex;
     justify-content: center;
     position: relative;
@@ -39,6 +42,7 @@
 }
 
 .nav-menu.active {
+    font-family: 'Nunito', sans-serif;
     left: 0;
     transition: 400ms;
     display: flex;
@@ -49,6 +53,7 @@
 }
 
 .nav-text {
+    font-family: 'Nunito', sans-serif;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -58,6 +63,7 @@
 }
 
 .nav-text a {
+    font-family: 'Nunito', sans-serif;
     text-decoration: none;
     color: #f5f5f5;
     font-size: 18px;
@@ -91,10 +97,11 @@ span {
 }
 
 .nav-name {
-    flex: 1;
+    font-family: 'Nunito', sans-serif;
+    flex: 0.92;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     margin: 30px;
     padding: 20px;
     font-size: 40px;
@@ -107,6 +114,7 @@ span {
     }
 
     .nav-name {
+        font-family: 'Nunito', sans-serif;
         font-size: 30px;
         justify-content: center;
     }
@@ -119,44 +127,15 @@ span {
     }
 
     .nav-menu {
-        height: 47vh;
-        width: 47vw;
+        height: 0vh;
+        width: 0vw;
     }
 
     .nav-menu.active {
+        font-family: 'Nunito', sans-serif;
         position: relative;
         height: 47vh;
         width: 47vw;
-    }
-    
-}
-
-@media screen and (max-width: 900px) {
-    .nav-title {
-        display: none;
-    }
-
-    .nav-name {
-        font-size: 30px;
-        justify-content: center;
-    }
-
-    .navbar {
-        width: 100vw;
-        position: relative;
-        z-index: 7;
-        top: 0;
-    }
-
-    .nav-menu {
-        height: 27vh;
-        width: 27vw;
-    }
-
-    .nav-menu.active {
-        position: relative;
-        height: 27vh;
-        width: 27vw;
     }
     
 }
