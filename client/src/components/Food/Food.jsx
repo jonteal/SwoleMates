@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-const API_KEY = "?apiKey=f8a19463536b4ffb8c05cdb882afb0c8";
 
 const FoodBar = () => {
 // Setting up states to later use fetched data;
@@ -27,7 +26,7 @@ const FoodBar = () => {
 
 //   First API call to get food ID;
   const fetchFood = (foodSearchItem) => {
-    let fetchFoodUrl = `https://api.spoonacular.com/food/ingredients/search${API_KEY}&query=${foodSearchItem}&number=1`;
+    let fetchFoodUrl = `https://api.spoonacular.com/food/ingredients/search${process.env.REACT_APP_API_KEY}&query=${foodSearchItem}&number=1`;
     fetch(fetchFoodUrl)
       .then((res) => res.json())
       .then((data) => {
