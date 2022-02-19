@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./SignupForm.css";
+import "./signupForm.css";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -43,6 +43,8 @@ const SignupForm = () => {
     } else {
       setPasswordError("");
     }
+    (inputPassword === "" || checkPassword === "") ? setPasswordMatch(false): setPasswordError("");
+
   };
 
   const handleFormSubmit = async (event) => {
@@ -116,9 +118,7 @@ const SignupForm = () => {
                 value={userFormData.email}
                 required
               />
-              <br />
             </form>
-
             {/* Password */}
             <form>
               <label htmlFor="password"></label>
@@ -132,7 +132,9 @@ const SignupForm = () => {
                 onBlur={handlePasswordCheck}
                 required
               />
-            <br />
+            </form>
+            <form>
+
 
               <label htmlFor="passwordCheck"></label>
 

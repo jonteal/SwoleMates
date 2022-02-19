@@ -24,6 +24,7 @@ const Welcome = () => {
 
     return (
         <>
+        <div welcomeMain>
         {!openModal && 
         <div className="welcomeContainer">
             <div className="container">
@@ -54,13 +55,8 @@ const Welcome = () => {
                         </div>
                         </div>
 
-            </div>
-
-            
-                <div className="bg-blue-900 btnCard">
-
-                    <button onClick={() => {setModal(true)}} value={openModal} className="openModalBtn">
-                       Click here to login, mate
+                    <button onClick={() => {setModal(true)}} value={openModal} className="button-57" role="button">
+                       Ready?<span>Let's go...</span>
                     </button>
 
                     <br />
@@ -68,6 +64,7 @@ const Welcome = () => {
         
         </div>}
         {openModal && <Modal onScroll={(event) => setScrolling(event)}/>}
+        </div>
         </>
     )
 }
