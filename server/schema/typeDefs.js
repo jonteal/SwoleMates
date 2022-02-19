@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
@@ -30,62 +30,51 @@ const typeDefs = gql`
     getUser: User
     allExercises: [Exercise]!
   }
-  
-type Mutation {
-  createUser(
-    email: String!, 
-    password: String!): Auth
-    
-  login(
-    email: String!, 
-    password: String!
-    ): Auth
-    
-  startProfile(
-    firstName: String!, 
-    lastName: String!, 
-    weight: Float!, 
-    age: Int!, 
-    height: Int!, 
-    sex: String!,
-    activity: String!, 
-    goal: String!): User
-    
-  addCardio(
-    id: Int!,
-    type: String!,
-    durationInMinutes: String!,
-    cardioDistanceInMiles: String!,
-    date: String!
-  ): Exercise
 
-  addStrength(
-    id: Int!,
-    type: String!,
-    repetitions: String!, 
-    sets: String!, 
-    weight: String!,
-    date: String!
-  ): Exercise
+  type Mutation {
+    createUser(email: String!, password: String!): Auth
 
-  addStretching(
-    id: Int!,
-    type: String!,
-    durationInMinutes: String!,
-    date: String!
-  ): Exercise
+    login(email: String!, password: String!): Auth
 
-  addWorkout(
-    id: Int!,
-    date: String!,
-    routine: [ID!]
-  ): Workout
+    startProfile(
+      firstName: String!
+      lastName: String!
+      weight: Float!
+      age: Int!
+      height: Int!
+      sex: String!
+      activity: Float
+      goal: String!
+    ): User
 
-updateWeight(
-    weight: Float!
-  ): User
+    addCardio(
+      id: Int!
+      type: String!
+      durationInMinutes: String!
+      cardioDistanceInMiles: String!
+      date: String!
+    ): Exercise
 
-}
+    addStrength(
+      id: Int!
+      type: String!
+      repetitions: String!
+      sets: String!
+      weight: String!
+      date: String!
+    ): Exercise
+
+    addStretching(
+      id: Int!
+      type: String!
+      durationInMinutes: String!
+      date: String!
+    ): Exercise
+
+    addWorkout(id: Int!, date: String!, routine: [ID!]): Workout
+
+    updateWeight(weight: Float!): User
+  }
 `;
 
 module.exports = typeDefs;
