@@ -42,31 +42,30 @@ const resolvers = {
       return { token, user };
     },
 
-    // startProfile: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
-    //   }
+    startProfile: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
+      }
 
-    //   throw new AuthenticationError({ msg: 'ID mismatch' })
-    // },
-    //   throw new Error({ msg: 'ID mismatch' })
-    // },
+      throw new AuthenticationError({ msg: 'ID mismatch' })
+    },
 
-  
 
-    addCardio: async (parent, {id, type, durationInMinutes, cardioDistanceInMiles, date}) => {
+
+
+    addCardio: async (parent, { id, type, durationInMinutes, cardioDistanceInMiles, date }) => {
       console.log(`hello, these are args for cardio : ${id, type, durationInMinutes, cardioDistanceInMiles, date}`)
-      const cardio = await Exercise.create({id, type, durationInMinutes, cardioDistanceInMiles, date});
+      const cardio = await Exercise.create({ id, type, durationInMinutes, cardioDistanceInMiles, date });
       return cardio;
     },
-    addStrength: async (parent, {id, type, repetitions, sets, weight, date}) => {
-      console.log(`hello, these are args for strength: ${id, type, repetitions,sets, weight, date}`)
-      const strength = await Exercise.create({id, type, repetitions,sets, weight, date});
+    addStrength: async (parent, { id, type, repetitions, sets, weight, date }) => {
+      console.log(`hello, these are args for strength: ${id, type, repetitions, sets, weight, date}`)
+      const strength = await Exercise.create({ id, type, repetitions, sets, weight, date });
       return strength;
     },
-    addStretching: async (parent, {id, type, durationInMinutes, date}) => {
+    addStretching: async (parent, { id, type, durationInMinutes, date }) => {
       console.log(`hello, these are args for stretching: ${id, type, durationInMinutes}`)
-      const stretching = await Exercise.create({id, type, durationInMinutes, date});
+      const stretching = await Exercise.create({ id, type, durationInMinutes, date });
       return stretching;
     },
 
@@ -74,7 +73,7 @@ const resolvers = {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { savedWeight: weightData }},
+          { $push: { savedWeight: weightData } },
           { new: true }
         );
         return updatedUser

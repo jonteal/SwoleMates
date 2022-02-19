@@ -10,8 +10,6 @@ const SignupForm = () => {
     password: "",
   });
 
-  const [validated] = useState(false);
-
   const [showAlert, setShowAlert] = useState(false);
 
   const [createUser, { data, error }] = useMutation(ADD_USER);
@@ -98,12 +96,7 @@ const SignupForm = () => {
             SIGN UP
           </h2>
 
-          <form
-            className="space-y-3"
-            noValidate
-            validated={validated}
-            onSubmit={handleFormSubmit}
-          >
+          <form className="space-y-3" noValidate onSubmit={handleFormSubmit}>
             {/* Email */}
             <form>
               <label htmlFor="email"></label>
