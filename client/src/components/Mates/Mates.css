@@ -1,0 +1,9 @@
+.search {
+    border: 1px solid black;
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
