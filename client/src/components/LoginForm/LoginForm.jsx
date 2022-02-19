@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from "react";
-import "./LoginForm.css";
+import "./loginForm.css";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';

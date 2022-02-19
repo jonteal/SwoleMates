@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_PROFILE } from "../../utils/mutations";
 import "./profile.css";
+import '../LoginForm/loginForm.css'
+import { Link } from 'react-router-dom'
 
 //need to add mutation like add user
 
@@ -17,58 +19,31 @@ const Profile = (props) => {
   const [inputGoal, setGoal] = useState("");
 
   const [addProfile, { error }] = useMutation(ADD_PROFILE);
-  // function handleFirstName(event){
-  //   setFirstName(event.target.value);
-  // }
-  // function handleLastName(event){
-  //   setLastName(event.target.value);
-  // }
-  // function handleAge(event){
-  //   setAge(event.target.value);
-  // }
-  // function handleWeight(event){
-  //   setWeight(event.target.value);
-  // }
-  // function handleFeet(event){
-  //   setFeet(event.target.value);
-  // }
-
-  // function handleInch(event){
-  //   setInches(event.target.value);
-  // }
-  // function handleSex(event){
-  //   setSex(event.target.value);
-  // }
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    alert(`A name was submitted: ${inputFirstName} ${inputLastName} with the following information:
-        ${inputAge}
-        ${inputWeight}
-        ${inputFeet}
-        ${inputSex}
-        ${inputActive}
-        ${inputGoal}
-        `);
+    // alert(`A name was submitted: ${inputFirstName} ${inputLastName} with the following information:
+    //     ${inputAge}
+    //     ${inputWeight}
+    //     ${inputFeet}
+    //     ${inputSex}
+    //     ${inputActive}
+    //     ${inputGoal}
+    //     `);
 
-    // const firstName = this.state.firstName;
-    // const lastName = this.state.lastName;
-    // const age = this.state.age;
-    // const weight = this.state.weight;
-    // const height = ((this.state.feet * 12) + this.state.inches);
-
-    // console.log(`this height in inches is ${height}`)
   }
 
   return (
     <>
-      <div className="bg-indigo-400 profile">
-        <div className="profileContainer">
-          Welcome, (future username here), please complete your profile to meet
-          your future swole mate 💓
+      <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
+        <div className="w-1/3 h-1/2 loginCard">
+        <h2 className="text-3x1 font-bold mb-10 text-center font-fa loginTitle">
+            PROFILE
+          </h2>
           <br />
           <input
+            className="bg-gray-700 rounded-3xl border-1 border-black"
             type="file"
             name="userPhoto"
             accept="image/png, image/gif, image/jpeg"
@@ -78,6 +53,7 @@ const Profile = (props) => {
             <label>
               First Name:
               <input
+                className="bg-gray-700  border-1 border-black"
                 type="text"
                 name="firstName"
                 value={inputFirstName}
@@ -88,6 +64,7 @@ const Profile = (props) => {
             <label>
               Last Name:
               <input
+                className="bg-gray-700  border-1 border-black"
                 type="text"
                 name="lastName"
                 value={inputLastName}
@@ -98,6 +75,7 @@ const Profile = (props) => {
             <label>
               Age:
               <input
+                className="bg-gray-700  border-1 border-black"
                 type="number"
                 min="0"
                 max="120"
@@ -110,6 +88,7 @@ const Profile = (props) => {
             <label>
               Weight:
               <input
+                className="bg-gray-700  border-1 border-black"
                 type="number"
                 min="0"
                 name="weight"
@@ -122,6 +101,7 @@ const Profile = (props) => {
             <label>
               Height:
               <input
+                className="bg-gray-700  border-1 border-black"
                 type="number"
                 min="1"
                 max="8"
@@ -131,6 +111,7 @@ const Profile = (props) => {
               />{" "}
               feet
               <input
+                className="bg-gray-700  border-1 border-black"
                 type="number"
                 min="0"
                 max="11"
@@ -149,6 +130,7 @@ const Profile = (props) => {
             <br />
             Exercise:
             <select
+            className="bg-gray-700  border-1 border-black"
               value={inputActive}
               onChange={(e) => setActive(e.target.value)}
             >
@@ -168,7 +150,10 @@ const Profile = (props) => {
               </option>
             </select>
             Goal:
-            <select value={inputGoal} onChange={(e) => setGoal(e.target.value)}>
+            <select 
+            className="bg-gray-700  border-1 border-black"
+            value={inputGoal} onChange={(e) => setGoal(e.target.value)
+            }>
               <option value="gain">Gain muscle</option>
               <option value="lose">Lose fat</option>
               <option selected value="maintain">
@@ -176,7 +161,11 @@ const Profile = (props) => {
               </option>
             </select>
             <br />
-            <button onClick={(e) => handleSubmit(e)}>Submit</button>
+            <Link to="/home">
+            <button 
+            className="loginBtn"
+            onClick={(e) => handleSubmit(e)}>Submit</button>
+            </Link>
           </form>
         </div>
       </div>
