@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import 'semantic-ui-css/semantic.min.css';
+// import 'semantic-ui-css/semantic.min.css';
 import ComingSoon from './components/ComingSoon';
 
 // import Navbar from './components/navbar/Navbar';
@@ -41,7 +41,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <>
+
         <Router>
+
           {/* <SignupForm /> */}
           <Switch>
             <Route exact path='/' component={ComingSoon} />
