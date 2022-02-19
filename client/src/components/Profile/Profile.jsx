@@ -41,14 +41,6 @@ const Profile = (props) => {
         <h2 className="text-3x1 font-bold mb-10 text-center font-fa loginTitle">
             PROFILE
           </h2>
-          <br />
-          <input
-            className="bg-gray-700 rounded-3xl border-1 border-black"
-            type="file"
-            name="userPhoto"
-            accept="image/png, image/gif, image/jpeg"
-          />
-          <br />
           <form onSubmit={(e) => handleSubmit(e)}>
             <label>
               First Name:
@@ -175,7 +167,12 @@ const Profile = (props) => {
 
 export default Profile;
 
-// User profile, add photo
-// User Name
-// User age, weight, sex, lifestyle (see five options to choose from)
-//ask user goal??
+
+{/* <br />
+<input
+  className="bg-gray-700 rounded-3xl border-1 border-black"
+  type="file"
+  name="userPhoto"
+  accept="image/png, image/gif, image/jpeg"
+/>
+<br /> */}
