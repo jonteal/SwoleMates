@@ -80,8 +80,16 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    addExercise: async (parent, args) => {
+      const exercise = await Exercise.create(args);
+      return exercise;
+    }
     //new mutations start here
   },
+
+
+
+
 };
 
 module.exports = resolvers;

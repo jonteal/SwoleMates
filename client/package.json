@@ -20,7 +20,8 @@
     "react-dom": "^16.13.1",
     "react-icons": "^4.3.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-transition-group": "^4.4.2"
   },
   "scripts": {
     "start": "craco start",

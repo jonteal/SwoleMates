@@ -38,6 +38,7 @@ const LoginForm = ({ handleModal }) => {
       });
 
       Auth.login(data.login.token);
+      window.location.pathname += "home";
     } catch (err) {
       console.error(err);
     }
@@ -50,6 +51,8 @@ const LoginForm = ({ handleModal }) => {
 
   return (
     <>
+
+
       <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
         <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 loginCard">
           <svg
@@ -61,8 +64,8 @@ const LoginForm = ({ handleModal }) => {
           >
             <defs>
               <linearGradient id="a" x1="0%" y1="0%" y2="0%">
-                <stop offset="0%" stop-color="#76D9F0" />
-                <stop offset="100%" stop-color="#096479" />
+                <stop offset="0%" stopColor="#76D9F0" />
+                <stop offset="100%" stopColor="#096479" />
               </linearGradient>
             </defs>
             <path
@@ -124,6 +127,7 @@ const LoginForm = ({ handleModal }) => {
           </form>
         </div>
       </div>
+
     </>
   );
 };

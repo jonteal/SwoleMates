@@ -15,7 +15,8 @@
   "dependencies": {
     "create-react-app": "^5.0.0",
     "dotenv": "^16.0.0",
-    "mongoose-auto-increment": "^5.0.1"
+    "mongoose-auto-increment": "^5.0.1",
+    "react-transition-group": "^1.2.1"
   },
   "devDependencies": {
     "concurrently": "^5.1.0"

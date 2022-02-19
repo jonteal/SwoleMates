@@ -25,6 +25,7 @@ const Profile = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+
     console.log(inputForm);
 
     try {
@@ -50,6 +51,7 @@ const Profile = (props) => {
               type="text"
               name="firstName"
               placeholder="First Name"
+
               onChange={(e) => {
                 const temp = inputForm;
                 temp.firstName = e.target.value;
@@ -64,6 +66,7 @@ const Profile = (props) => {
               type="text"
               name="lastName"
               placeholder="Last Name"
+
               onChange={(e) => {
                 const temp = inputForm;
                 temp.lastName = e.target.value;
@@ -80,6 +83,7 @@ const Profile = (props) => {
               max="120"
               name="age"
               placeholder="Age"
+
               onChange={(e) => {
                 const temp = inputForm;
                 temp.age = parseInt(e.target.value);
@@ -95,6 +99,7 @@ const Profile = (props) => {
               min="0"
               name="weight"
               placeholder="Weight (lbs)"
+
               onChange={(e) => {
                 const temp = inputForm;
                 temp.weight = parseFloat(e.target.value);
@@ -110,6 +115,7 @@ const Profile = (props) => {
               min="0"
               max="11"
               name="inches"
+
               placeholder="Height (inches)"
               onChange={(e) => {
                 const temp = inputForm;
@@ -122,6 +128,7 @@ const Profile = (props) => {
             {/* <label className="profileLabel">Birth Sex: </label> */}
             <select
               className="bg-gray-700 w-2/3 border-1 border-black"
+
               onChange={(e) => {
                 const temp = inputForm;
                 temp.sex = e.target.value;
@@ -139,6 +146,7 @@ const Profile = (props) => {
             {/* <label className="profileLabel">Lifestyle: </label> */}
             <select
               className="bg-gray-700 w-2/3 border-1 border-black"
+
               onChange={(e) => {
                 const temp = inputForm;
                 temp.activity = parseFloat(e.target.value);
@@ -158,6 +166,7 @@ const Profile = (props) => {
             {/* <label className="profileLabel">Goal: </label> */}
             <select
               className="bg-gray-700 w-2/3 border-1 border-black"
+
               onChange={(e) => {
                 const temp = inputForm;
                 temp.goal = e.target.value;
@@ -185,14 +194,3 @@ const Profile = (props) => {
 };
 
 export default Profile;
-
-{
-  /* <br />
-<input
-  className="bg-gray-700 rounded-3xl border-1 border-black"
-  type="file"
-  name="userPhoto"
-  accept="image/png, image/gif, image/jpeg"
-/>
-<br /> */
-}

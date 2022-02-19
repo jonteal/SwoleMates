@@ -59,6 +59,8 @@ const SignupForm = () => {
       });
 
       Auth.login(data.createUser.token);
+      console.log(window.location.pathname);
+      window.location.pathname = "/profile";
     } catch (err) {
       console.error(err);
     }
