@@ -1,20 +1,28 @@
-.profile {
-    height: 100vh;
+.profileCard {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    font-size: 15px;
-    align-items: center;
+    /* align-items: center; */
+    background-color: #354152;
+    box-shadow: 0 0 250px #000;
+    text-align: center;
+    padding: 2rem 2rem;
+    color: #7e8ba3;
 }
 
-.profileContainer {
-    background-color: white;
-    width: 30vw;
-    height: 75vh;
-    border-radius: 10px;
-    box-shadow: 10px black;
-    padding: 5px;
+.profileCard ::placeholder {
+    opacity: 1;
+    color: #7e8ba3;
 }
 
-.profileSubmit {
-    width: 100%;
+.profileCard input {
+    margin: 5px 0px;
+}
+
+.profileCard select {
+    margin: 5px 0px;
+}
+
+.profileCard button {
+    margin: 5px;
 }

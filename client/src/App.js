@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // import ComingSoon from './components/ComingSoon';
 import Dashboard from './components/Dashboard/Dashboard';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import MealPlanner from './components/MealPlanner/MealPlanner.jsx'
 import Profile from './components/Profile/Profile'
 import Foodbar from './components/Food/Food'
@@ -18,6 +18,7 @@ import { setContext } from '@apollo/client/link/context';
 import SignupForm from './components/SignupForm/SignupForm';
 import LoginForm from './components/LoginForm/LoginForm';
 import Welcome from './components/Welcome/Welcome'
+import WrongPage from './components/WrongPage/WrongPage'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -58,7 +59,8 @@ function App() {
             <Route exact path='/mealplan' component={MealPlanner} />
             <Route exact path='/exercise' component={Exercise} />
             <Route exact path='/workout' component={Workout} />
-            <Route render={() => <h1 className='display-2'>Wrong page!</h1>} />
+            <Route render={WrongPage} />
+
           </Switch>
         </Router>
       </>
