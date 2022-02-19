@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./signupForm.css";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-
 
 const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({
@@ -43,8 +41,9 @@ const SignupForm = () => {
     } else {
       setPasswordError("");
     }
-    (inputPassword === "" || checkPassword === "") ? setPasswordMatch(false): setPasswordError("");
-
+    inputPassword === "" || checkPassword === ""
+      ? setPasswordMatch(false)
+      : setPasswordError("");
   };
 
   const handleFormSubmit = async (event) => {
@@ -105,7 +104,6 @@ const SignupForm = () => {
             validated={validated}
             onSubmit={handleFormSubmit}
           >
-
             {/* Email */}
             <form>
               <label htmlFor="email"></label>
@@ -134,8 +132,6 @@ const SignupForm = () => {
               />
             </form>
             <form>
-
-
               <label htmlFor="passwordCheck"></label>
 
               <input
