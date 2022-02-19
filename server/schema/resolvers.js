@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Post } = require("../models");
 const {
   AuthenticationError,
   UserInputError,
@@ -18,7 +18,7 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
-    // new queuries start here
+    // new queries start here
 
     getPosts: async () => {
       try {
@@ -81,13 +81,13 @@ const resolvers = {
     },
 
     // CREATE POST MUTATION
-    async createPost(_, { body }, context) {
-      const user = checkAuth(context);
+    async createPost(_, { body, firstName }, context) {
+      // const user = checkAuth(context);
 
       const newPost = new Post({
         body,
-        user: user.id,
-        firstName: user.firstName,
+        user: context.user._id,
+        firstName,
         createdAt: new Date().toISOString(),
       });
 
