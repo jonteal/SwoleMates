@@ -43,6 +43,8 @@ const SignupForm = () => {
     } else {
       setPasswordError("");
     }
+    (inputPassword === "" || checkPassword === "") ? setPasswordMatch(false): setPasswordError("");
+
   };
 
   const handleFormSubmit = async (event) => {
