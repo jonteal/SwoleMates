@@ -11,9 +11,6 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
-  type Query {
-    getUser: User
-  }
 
   type Post {
     id: ID!
@@ -40,8 +37,9 @@ const typeDefs = gql`
   }
 
   type Query {
+    getUser: User
     getPosts: [Post]
-    getPosts(postId: ID!): Post
+    getPost(postId: ID!): Post
   }
 
   
