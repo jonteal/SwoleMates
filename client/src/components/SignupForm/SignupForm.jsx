@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./SignupForm.css";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-
 
 const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({
@@ -43,6 +41,9 @@ const SignupForm = () => {
     } else {
       setPasswordError("");
     }
+    inputPassword === "" || checkPassword === ""
+      ? setPasswordMatch(false)
+      : setPasswordError("");
   };
 
   const handleFormSubmit = async (event) => {
@@ -73,7 +74,7 @@ const SignupForm = () => {
   return (
     <>
       <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
-        <div className="w-1/3 h-1/2 loginCard">
+        <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 loginCard">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="site__logo"
@@ -103,7 +104,6 @@ const SignupForm = () => {
             validated={validated}
             onSubmit={handleFormSubmit}
           >
-
             {/* Email */}
             <form>
               <label htmlFor="email"></label>
@@ -116,9 +116,7 @@ const SignupForm = () => {
                 value={userFormData.email}
                 required
               />
-              <br />
             </form>
-
             {/* Password */}
             <form>
               <label htmlFor="password"></label>
@@ -132,8 +130,8 @@ const SignupForm = () => {
                 onBlur={handlePasswordCheck}
                 required
               />
-            <br />
-
+            </form>
+            <form>
               <label htmlFor="passwordCheck"></label>
 
               <input

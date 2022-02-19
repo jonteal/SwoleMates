@@ -1,5 +1,5 @@
 import React, {useState, useEffect } from "react";
-import "./LoginForm.css";
+import "./loginForm.css";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
@@ -52,7 +52,7 @@ const LoginForm = ({ handleModal }) => {
   return (
     <>
       <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
-        <div className="w-1/3 h-1/2 loginCard">
+        <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 loginCard">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="site__logo"
@@ -87,7 +87,7 @@ const LoginForm = ({ handleModal }) => {
             <div>
               <label htmlFor="email"></label>
               <input
-                className="bg-gray-700 rounded-3xl border-1 border-black"
+                className="bg-gray-700 rounded-3xl border-1 border-black m-0"
                 type="text"
                 placeholder="Email"
                 name="email"

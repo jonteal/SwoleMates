@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_PROFILE } from "../../utils/mutations";
 import "./profile.css";
+import "../LoginForm/loginForm.css";
+import { Link } from "react-router-dom";
 
 //need to add mutation like add user
 
@@ -52,120 +54,111 @@ const Profile = (props) => {
 
   return (
     <>
-      <div className="bg-indigo-400 profile">
-        <div className="profileContainer">
-          Welcome, (future username here), please complete your profile to meet
-          your future swole mate 💓
-          <br />
-          <input
-            type="file"
-            name="userPhoto"
-            accept="image/png, image/gif, image/jpeg"
-          />
-          <br />
+      <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
+        <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 profileCard">
+          <h2 className="text-3x1 font-bold mb-10 text-center font-fa loginTitle">
+            PROFILE
+          </h2>
           <form onSubmit={(e) => handleSubmit(e)}>
-            <label>
-              First Name:
-              <input
-                type="text"
-                name="firstName"
-                value={inputFirstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </label>
+            {/* <label className="profileLabel">First Name: </label> */}
+            <input
+              className="bg-gray-700 border-1 w-2/3 border-black"
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
             <br />
-            <label>
-              Last Name:
-              <input
-                type="text"
-                name="lastName"
-                value={inputLastName}
-                onChange={(e) => setLastName(e.target.value)}
-              />
-            </label>
+            {/* <label className="profileLabel">Last Name: </label> */}
+            <input
+              className="bg-gray-700 border-1 w-2/3 m-b-1 border-black"
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              onChange={(e) => setLastName(e.target.value)}
+            />
             <br />
-            <label>
-              Age:
-              <input
-                type="number"
-                min="0"
-                max="120"
-                name="age"
-                value={inputAge}
-                onChange={(e) => setAge(e.target.value)}
-              />
-            </label>
+            {/* <label className="profileLabel">Age: </label> */}
+            <input
+              className="bg-gray-700 w-2/3 border-1 border-black"
+              type="number"
+              min="0"
+              max="120"
+              name="age"
+              placeholder="Age"
+              onChange={(e) => setAge(e.target.value)}
+            />
             <br />
-            <label>
-              Weight:
-              <input
-                type="number"
-                min="0"
-                name="weight"
-                value={inputWeight}
-                onChange={(e) => setWeight(e.target.value)}
-              />{" "}
-              lbs
-            </label>
+            {/* <label className="profileLabel">Weight in lbs: </label> */}
+            <input
+              className="bg-gray-700 w-2/3 border-1 border-black"
+              type="number"
+              min="0"
+              name="weight"
+              placeholder="Weight (lbs)"
+              onChange={(e) => setWeight(e.target.value)}
+            />{" "}
             <br />
-            <label>
-              Height:
-              <input
-                type="number"
-                min="1"
-                max="8"
-                name="feet"
-                value={inputFeet}
-                onChange={(e) => setFeet(e.target.value)}
-              />{" "}
-              feet
-              <input
-                type="number"
-                min="0"
-                max="11"
-                name="inches"
-                value={inputInches}
-                onChange={(e) => setInches(e.target.value)}
-              />{" "}
-              inches
-            </label>
+            {/* <label className="profileLabel">Height in inches: </label> */}
+            <input
+              className="bg-gray-700 w-2/3 border-1 border-black"
+              type="number"
+              min="0"
+              max="11"
+              name="inches"
+              value={inputInches}
+              placeholder="Height (inches)"
+              onChange={(e) => setInches(e.target.value)}
+            />{" "}
             <br />
-            Birth Sex:
-            <select value={inputSex} onChange={(e) => setSex(e.target.value)}>
+            {/* <label className="profileLabel">Birth Sex: </label> */}
+            <select
+              className="bg-gray-700 w-2/3 border-1 border-black"
+              onChange={(e) => setSex(e.target.value)}
+            >
+              <option selected value="" disabled selected>
+                Birth Sex
+              </option>
               <option value="female">Female</option>
               <option value="male">Male</option>
             </select>
             <br />
-            Exercise:
+            {/* <label className="profileLabel">Lifestyle: </label> */}
             <select
+              className="bg-gray-700 w-2/3 border-1 border-black"
               value={inputActive}
               onChange={(e) => setActive(e.target.value)}
             >
-              <option value="1.2"> Sedentary (little to no exercise)</option>
-              <option value="1.375">
-                Lightly Active (light exercise/sports 1-3 days/week)
+              <option selected value="" disabled selected>
+                Lifestyle
               </option>
-              <option selected value="1.55">
-                Moderately Active (moderate exercise/sports 3-5 days/week)
-              </option>
-              <option value="1.725">
-                Very Active (hard exercise/sports 6-7 days a week)
-              </option>
-              <option value="1.9">
-                Extra Active (very hard exercise/sports & physical job or 2x
-                training)
-              </option>
-            </select>
-            Goal:
-            <select value={inputGoal} onChange={(e) => setGoal(e.target.value)}>
-              <option value="gain">Gain muscle</option>
-              <option value="lose">Lose fat</option>
-              <option selected value="maintain">
-                Maintain
-              </option>
+              <option value="1.2"> Sedentary</option>
+              <option value="1.375">Lightly Active</option>
+              <option value="1.55">Moderately Active</option>
+              <option value="1.725">Very Active</option>
+              <option value="1.9">Extra Active</option>
             </select>
             <br />
-            <button onClick={(e) => handleSubmit(e)}>Submit</button>
+            {/* <label className="profileLabel">Goal: </label> */}
+            <select
+              className="bg-gray-700 w-2/3 border-1 border-black"
+              value={inputGoal}
+              onChange={(e) => setGoal(e.target.value)}
+            >
+              <option selected value="" disabled selected>
+                Fitness Goal
+              </option>
+              <option value="gain">Gain muscle</option>
+              <option value="lose">Lose fat</option>
+              <option value="maintain">Maintain</option>
+            </select>
+            <br />
+            <Link to="/home">
+              <button className="loginBtn" onClick={(e) => handleSubmit(e)}>
+                Submit
+              </button>
+            </Link>
           </form>
         </div>
       </div>
@@ -174,8 +167,3 @@ const Profile = (props) => {
 };
 
 export default Profile;
-
-// User profile, add photo
-// User Name
-// User age, weight, sex, lifestyle (see five options to choose from)
-//ask user goal??
