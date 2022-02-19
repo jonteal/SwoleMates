@@ -39,7 +39,13 @@ const UserSchema = new Schema({
   },
   goal: {
     type: String
-  }
+  },
+  friends: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ]
 });
 
 UserSchema.pre('save', async function (next) {
@@ -53,6 +59,10 @@ UserSchema.pre('save', async function (next) {
 UserSchema.methods.isCorrectPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
+
+UserSchema.virtual('friendCount').get(function() {
+  return this.friends.length;
+});
 
 const User = mongoose.model('User', UserSchema);
 

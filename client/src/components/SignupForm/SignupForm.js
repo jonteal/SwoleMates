@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./SignupForm.css";
+import "./signupForm.css";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
@@ -10,6 +10,8 @@ const SignupForm = () => {
     email: "",
     password: "",
   });
+
+  const [validated] = useState(false);
 
   const [showAlert, setShowAlert] = useState(false);
 
