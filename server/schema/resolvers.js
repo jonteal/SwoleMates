@@ -1,4 +1,4 @@
-const { User, Exercise } = require('../models');
+const { User, Exercise, Workout } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const { Error } = require('mongoose');
@@ -14,6 +14,11 @@ const resolvers = {
     },
 
     // new queries start here
+    // for now find all without date\user
+    allExercises: async () => {
+   return Exercise.find();
+
+    }
   },
 
   Mutation: {
@@ -67,6 +72,12 @@ const resolvers = {
       console.log(`hello, these are args for stretching: ${id, type, durationInMinutes}`)
       const stretching = await Exercise.create({ id, type, durationInMinutes, date });
       return stretching;
+    },
+ 
+    addWorkout: async (parent, {id, date, routine}) => {
+      console.log(`hello, these are args for workout: ${date, routine}`)
+      const workout = await Workout.create({id, date, routine});
+      return workout;
     },
 
     updateWeight: async (parent, { weightData }, context) => {

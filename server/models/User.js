@@ -44,10 +44,14 @@ const UserSchema = new Schema({
   goal: {
     type: String
   },
-  workout: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Workout'
-  }]
+
+  // workouts: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Workout",
+  //   },
+  // ],
+
 });
 
 UserSchema.pre('save', async function (next) {

@@ -26,7 +26,9 @@ const FoodBar = () => {
 
 //   First API call to get food ID;
   const fetchFood = (foodSearchItem) => {
-    let fetchFoodUrl = `https://api.spoonacular.com/food/ingredients/search${process.env.REACT_APP_API_KEY}&query=${foodSearchItem}&number=1`;
+
+    let fetchFoodUrl = `https://api.spoonacular.com/food/ingredients/search${process.env.REACT_APP_API_KEY_SPUNACULAR}&query=${foodSearchItem}&number=1`;
+
     fetch(fetchFoodUrl)
       .then((res) => res.json())
       .then((data) => {

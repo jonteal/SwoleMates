@@ -14,6 +14,13 @@ const typeDefs = gql`
     sets: Int!
     weight: Int!
     caloriesBurnt: Int!
+    date: String!
+  }
+
+  type Workout {
+    id: Int!
+    date: String!
+    routine: [ID!]
   }
   type Auth {
     token: ID!
@@ -21,15 +28,19 @@ const typeDefs = gql`
   }
   type Query {
     getUser: User
+    allExercises: [Exercise]!
   }
   
 type Mutation {
   createUser(
     email: String!, 
     password: String!): Auth
+    
   login(
     email: String!, 
-    password: String!): Auth
+    password: String!
+    ): Auth
+    
   startProfile(
     firstName: String!, 
     lastName: String!, 
@@ -39,16 +50,41 @@ type Mutation {
     sex: String!,
     activity: String!, 
     goal: String!): User
-  addExercise(
-    id: Int!,
-    type: String!,
-    durationInMinutes: String!,
-    cardioDistanceInMiles: String!,
-    repetitions: Int!,
-    sets: Int!,
-    weight: Int!,
-    caloriesBurnt: Int!
-  ): Exercise
+    
+  addCardio(
+    id: Int!,
+    type: String!,
+    durationInMinutes: String!,
+    cardioDistanceInMiles: String!,
+    date: String!
+  ): Exercise
+
+  addStrength(
+    id: Int!,
+    type: String!,
+    repetitions: String!, 
+    sets: String!, 
+    weight: String!,
+    date: String!
+  ): Exercise
+
+  addStretching(
+    id: Int!,
+    type: String!,
+    durationInMinutes: String!,
+    date: String!
+  ): Exercise
+
+  addWorkout(
+    id: Int!,
+    date: String!,
+    routine: [ID!]
+  ): Workout
+
+updateWeight(
+    weight: Float!
+  ): User
+
 }
 `;
 
