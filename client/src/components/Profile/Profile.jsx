@@ -37,73 +37,53 @@ const Profile = (props) => {
   return (
     <>
       <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
-        <div className="w-1/3 h-1/2 loginCard">
+        <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 loginCard">
         <h2 className="text-3x1 font-bold mb-10 text-center font-fa loginTitle">
             PROFILE
           </h2>
           <form onSubmit={(e) => handleSubmit(e)}>
-            <label>
-              First Name:
+            <label className="profileLabel">First Name: </label>
               <input
-                className="bg-gray-700  border-1 border-black"
+                className="bg-gray-700 border-1 w-2/3 border-black"
                 type="text"
                 name="firstName"
-                value={inputFirstName}
                 onChange={(e) => setFirstName(e.target.value)}
+                required
               />
-            </label>
+
             <br />
-            <label>
-              Last Name:
+            <label className="profileLabel">Last Name: </label>
               <input
-                className="bg-gray-700  border-1 border-black"
+                className="bg-gray-700 border-1  w-2/3 border-black"
                 type="text"
                 name="lastName"
-                value={inputLastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
-            </label>
+
             <br />
-            <label>
-              Age:
+            <label className="profileLabel">Age: </label>
               <input
-                className="bg-gray-700  border-1 border-black"
+                className="bg-gray-700  w-2/3 border-1 border-black"
                 type="number"
                 min="0"
                 max="120"
                 name="age"
-                value={inputAge}
                 onChange={(e) => setAge(e.target.value)}
               />
-            </label>
             <br />
-            <label>
-              Weight:
+            <label className="profileLabel">Weight in lbs: </label>
               <input
-                className="bg-gray-700  border-1 border-black"
+                className="bg-gray-700  w-2/3 border-1 border-black"
                 type="number"
                 min="0"
                 name="weight"
-                value={inputWeight}
                 onChange={(e) => setWeight(e.target.value)}
               />{" "}
-              lbs
-            </label>
+
             <br />
-            <label>
-              Height:
+            <label className="profileLabel">Height in inches: </label>
               <input
-                className="bg-gray-700  border-1 border-black"
-                type="number"
-                min="1"
-                max="8"
-                name="feet"
-                value={inputFeet}
-                onChange={(e) => setFeet(e.target.value)}
-              />{" "}
-              feet
-              <input
-                className="bg-gray-700  border-1 border-black"
+                className="bg-gray-700  w-2/3 border-1 border-black"
                 type="number"
                 min="0"
                 max="11"
@@ -111,39 +91,44 @@ const Profile = (props) => {
                 value={inputInches}
                 onChange={(e) => setInches(e.target.value)}
               />{" "}
-              inches
-            </label>
+
             <br />
-            Birth Sex:
-            <select value={inputSex} onChange={(e) => setSex(e.target.value)}>
+            <label className="profileLabel">Birth Sex: </label>
+            <select 
+              className="bg-gray-700  w-2/3 border-1 border-black"
+              placeholder="Birth Sex"
+              onChange={(e) => setSex(e.target.value)}>
               <option value="female">Female</option>
               <option value="male">Male</option>
             </select>
             <br />
-            Exercise:
+            <label className="profileLabel">Lifestyle: </label>
+
             <select
-            className="bg-gray-700  border-1 border-black"
+            className="bg-gray-700  w-2/3 border-1 border-black"
               value={inputActive}
               onChange={(e) => setActive(e.target.value)}
             >
-              <option value="1.2"> Sedentary (little to no exercise)</option>
+              <option value="1.2"> Sedentary</option>
               <option value="1.375">
-                Lightly Active (light exercise/sports 1-3 days/week)
+                Lightly Active
               </option>
               <option selected value="1.55">
-                Moderately Active (moderate exercise/sports 3-5 days/week)
+                Moderately Active
               </option>
               <option value="1.725">
-                Very Active (hard exercise/sports 6-7 days a week)
+                Very Active
               </option>
               <option value="1.9">
-                Extra Active (very hard exercise/sports & physical job or 2x
-                training)
+                Extra Active
               </option>
             </select>
-            Goal:
+
+          <br />
+
+          <label className="profileLabel">Goal: </label>
             <select 
-            className="bg-gray-700  border-1 border-black"
+            className="bg-gray-700 w-2/3 border-1 border-black"
             value={inputGoal} onChange={(e) => setGoal(e.target.value)
             }>
               <option value="gain">Gain muscle</option>
