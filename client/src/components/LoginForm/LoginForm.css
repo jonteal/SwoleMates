@@ -9,8 +9,8 @@
     align-items: center;
     background-color: #354152;
     box-shadow: 0 0 250px #000;
-  text-align: center;
-  padding: 4rem 2rem;
+    text-align: center;
+    padding: 4rem 2rem;
 }
 
 .loginTitle {
@@ -64,3 +64,11 @@ background-color: #354152;
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
   }
+
+  .profileLabel {
+    color: #7e8ba3
+  }
+
+  /* @media only screen and (max-width: 950px){
+
+} */
