@@ -24,6 +24,8 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+
+    
   },
     // new queries start here
   
@@ -82,7 +84,7 @@ const resolvers = {
       if (context.user) {
         const removeFriend = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { friends: { friendId }}},
+          { $pull: { friends: friendId }},
           { new: true }
         );
         return removeFriend;

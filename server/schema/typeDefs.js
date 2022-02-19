@@ -4,6 +4,7 @@ const typeDefs = gql`
   type User {
     _id: ID!
     username: String
+    firstName: String!
     email: String!
     friends: [User]
   }
@@ -21,8 +22,7 @@ const typeDefs = gql`
 
   type Query {
     getUser: User
-  }$
-
+  }
 
   
 type Mutation {
