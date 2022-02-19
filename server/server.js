@@ -3,7 +3,6 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const env = require('dotenv').config();
-const { mocks } = require('./data/mocks');
 
 //schema set up
 const { typeDefs, resolvers } = require('./schema');
@@ -20,7 +19,6 @@ const app = express();
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  mocks,
   context: authMiddleware,
 });
 

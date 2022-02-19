@@ -8,6 +8,12 @@ const typeDefs = gql`
     friends: [User]
   }
 
+  type Friend {
+    friendId: ID!
+    firstName: String!
+    lastName: String!
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -15,15 +21,8 @@ const typeDefs = gql`
 
   type Query {
     getUser: User
-    user(email: String, id: ID): User
-    messages(groupId: Int, userId: Int): [Message]
-    group(id: Int!): Group
-  }
+  }$
 
-
-  schema {
-    query: Query
-  }
 
   
 type Mutation {
@@ -31,8 +30,8 @@ type Mutation {
   login(email: String!, password: String!): Auth
   startProfile(name: String!, weight: Int!, age: Int!, height: Int!, sex: String!, goal: String!): User
 
-  addFriend(id: ID!, username: String!): User
-  removeFriend(id: ID!): 
+  addFriend(friendId: ID!): User
+  removeFriend(friendId: ID!): User
 }
 `;
 
