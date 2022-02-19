@@ -1,0 +1,16 @@
+.profileCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    background-color: #354152;
+    box-shadow: 0 0 250px #000;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #7e8ba3;
+}
+
+.profileCard ::placeholder {
+    opacity: 1;
+    color: #7e8ba3;
+}

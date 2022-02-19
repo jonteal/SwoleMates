@@ -37,7 +37,7 @@ const Profile = (props) => {
   return (
     <>
       <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
-        <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 loginCard">
+        <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 profileCard">
         <h2 className="text-3x1 font-bold mb-10 text-center font-fa loginTitle">
             PROFILE
           </h2>
@@ -55,7 +55,7 @@ const Profile = (props) => {
             <br />
             {/* <label className="profileLabel">Last Name: </label> */}
               <input
-                className="bg-gray-700 border-1  w-2/3 border-black"
+                className="bg-gray-700 border-1 w-2/3 m-b-1 border-black"
                 type="text"
                 name="lastName"
                 placeholder="Last Name"
@@ -65,7 +65,7 @@ const Profile = (props) => {
             <br />
             {/* <label className="profileLabel">Age: </label> */}
               <input
-                className="bg-gray-700  w-2/3 border-1 border-black"
+                className="bg-gray-700 w-2/3 border-1 border-black"
                 type="number"
                 min="0"
                 max="120"
@@ -76,7 +76,7 @@ const Profile = (props) => {
             <br />
             {/* <label className="profileLabel">Weight in lbs: </label> */}
               <input
-                className="bg-gray-700  w-2/3 border-1 border-black"
+                className="bg-gray-700 w-2/3 border-1 border-black"
                 type="number"
                 min="0"
                 name="weight"
@@ -87,7 +87,7 @@ const Profile = (props) => {
             <br />
             {/* <label className="profileLabel">Height in inches: </label> */}
               <input
-                className="bg-gray-700  w-2/3 border-1 border-black"
+                className="bg-gray-700 w-2/3 border-1 border-black"
                 type="number"
                 min="0"
                 max="11"
@@ -100,7 +100,7 @@ const Profile = (props) => {
             <br />
             {/* <label className="profileLabel">Birth Sex: </label> */}
             <select 
-              className="bg-gray-700  w-2/3 border-1 border-black"
+              className="bg-gray-700 w-2/3 border-1 border-black"
               onChange={(e) => setSex(e.target.value)}>
               <option selected value="" disabled selected>Birth Sex</option>
               <option value="female">Female</option>
@@ -110,7 +110,7 @@ const Profile = (props) => {
             {/* <label className="profileLabel">Lifestyle: </label> */}
 
             <select
-            className="bg-gray-700  w-2/3 border-1 border-black"
+            className="bg-gray-700 w-2/3 border-1 border-black"
               value={inputActive}
               onChange={(e) => setActive(e.target.value)}>
               <option selected value="" disabled selected>Lifestyle</option>
