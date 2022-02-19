@@ -1,7 +1,7 @@
 import React from "react";
 import './Mates.css';
 import { Grid } from 'semantic-ui-react';
-import PostCard from '../components/PostCard';
+import PostCard from '../PostCard/PostCard';
 
 import { useQuery } from "@apollo/client";
 

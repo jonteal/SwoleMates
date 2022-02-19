@@ -3,11 +3,11 @@ import { Button } from "react-bootstrap";
 import { Card, Icon, Label } from 'semantic-ui-react';
 import moment from 'moment';
 
-const PostCard = ({ post: { body, createdAt, id, firstName, likeCount, commentCount, likes }}) => {
+function PostCard ({ post: { body, createdAt, id, firstName, likeCount, commentCount, likes }}) {
     return (
         <Card>
             <Card.Content>
-                <Image />
+                {/* <Image /> */}
                 <Card.Header>{firstName}</Card.Header>
                 <Card.Meta>{moment(createdAt).fromNow()}</Card.Meta>
                 <Card.Description>{body}</Card.Description>
