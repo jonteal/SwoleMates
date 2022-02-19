@@ -4,13 +4,12 @@ const typeDefs = gql`
   type User {
     _id: ID!
     username: String
-    firstName: String!
     email: String!
-    friends: [User]
+    friends: [Friend]
   }
 
   type Friend {
-    friendId: ID!
+    friendId: ID
     firstName: String!
     lastName: String!
   }
