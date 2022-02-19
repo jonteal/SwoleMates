@@ -1,15 +1,15 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./loginForm.css";
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../utils/mutations';
-import Auth from '../../utils/auth';
-import SignupForm from '../SignupForm/SignupForm';
-import { Link } from 'react-router-dom'
-import {handleModal} from '../Welcome/Welcome'
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../utils/mutations";
+import Auth from "../../utils/auth";
+import SignupForm from "../SignupForm/SignupForm";
+import { Link } from "react-router-dom";
+import { handleModal } from "../Welcome/Welcome";
 
 const LoginForm = ({ handleModal }) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [validated] = useState(false);
+  const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
   const [login, { error }] = useMutation(LOGIN_USER);
@@ -39,6 +39,7 @@ const LoginForm = ({ handleModal }) => {
       });
 
       Auth.login(data.login.token);
+      window.location.pathname += "home";
     } catch (err) {
       console.error(err);
     }
@@ -62,8 +63,8 @@ const LoginForm = ({ handleModal }) => {
           >
             <defs>
               <linearGradient id="a" x1="0%" y1="0%" y2="0%">
-                <stop offset="0%" stop-color="#76D9F0" />
-                <stop offset="100%" stop-color="#096479" />
+                <stop offset="0%" stopColor="#76D9F0" />
+                <stop offset="100%" stopColor="#096479" />
               </linearGradient>
             </defs>
             <path
@@ -78,7 +79,7 @@ const LoginForm = ({ handleModal }) => {
           <form
             className="space-y-8"
             noValidate
-            validated={validated}
+            // validated={validated}
             onSubmit={handleFormSubmit}
           >
             {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>

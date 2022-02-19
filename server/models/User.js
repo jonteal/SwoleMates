@@ -39,7 +39,6 @@ const UserSchema = new Schema({
   },
   activity: {
     type: String,
-    required: true
   },
   goal: {
     type: String
