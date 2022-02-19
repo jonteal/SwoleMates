@@ -14,6 +14,11 @@ const resolvers = {
     },
 
     // new queries start here
+    // for now find all without date\user
+    exercises: async () => {
+   return Exercise.find();
+
+    }
   },
 
   Mutation: {

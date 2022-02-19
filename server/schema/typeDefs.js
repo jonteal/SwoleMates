@@ -28,7 +28,8 @@ const typeDefs = gql`
     repetitions: Int!,
     sets: Int!,
     weight: Int!,
-    caloriesBurnt: Int!
+    caloriesBurnt: Int!,
+    date: String!
   }
 
   type Auth {
@@ -37,6 +38,7 @@ const typeDefs = gql`
   }
   type Query {
     getUser: User
+    exercises: [Exercise]!
   }
   
 type Mutation {
@@ -52,17 +54,7 @@ type Mutation {
     email: String!, 
     password: String!
     ): Auth
-  addExercise(
-    id: Int!,
-    type: String!,
-    durationInMinutes: Int!,
-    cardioDistanceInMiles: Int!,
-    repetitions: Int!,
-    sets: Int!,
-    weight: Int!,
-    caloriesBurnt: Int!
-  ): Exercise
-
+ 
   addCardio(
     id: Int!,
     type: String!,

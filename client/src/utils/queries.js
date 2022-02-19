@@ -14,3 +14,12 @@ export const GET_WEIGHT = gql`
         }
     }
 `;
+
+export const QUERY_EXERCISES = gql`
+query allExercises {
+    exercises {
+      type
+    
+    }
+  }
+`;
