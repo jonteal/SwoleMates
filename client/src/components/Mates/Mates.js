@@ -10,7 +10,10 @@ import {
 } from "../../utils/queries";
 
 const Mates = () => {
-    const { loading, data: { getPosts: posts} } = useQuery(FETCH_POSTS_QUERY);
+    const { 
+        loading, 
+        data: { getPosts: posts} 
+    } = useQuery(FETCH_POSTS_QUERY);
 
     if (data) {
         console.log(data);
@@ -26,8 +29,8 @@ const Mates = () => {
                 <h1>Loading posts...</h1>
                 ) : (
                     posts && posts.map(post => (
-                        <Grid.Column key={post.id}>
-                            <PostCard post={post}/>
+                        <Grid.Column key={post.id} style={ margin }>
+                            <PostCard post={post} />
                         </Grid.Column>
                     ))
                 )}
