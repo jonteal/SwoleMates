@@ -3,23 +3,8 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID!
-    username: String!
     email: String!
-    savedWeight: Profile
-    height: Profile
   }
-
-  type Profile {
-    _id: ID!
-    firstName: String!
-    lastName: String!
-    weight: Float!
-    height: Int!
-    age: Int!
-    sex: String!
-    goal: String!
-  }
-
   type Exercise {
     _id: ID!
     type: String!
@@ -37,7 +22,6 @@ const typeDefs = gql`
     date: String!
     routine: [ID!]
   }
-
   type Auth {
     token: ID!
     user: User
@@ -48,58 +32,58 @@ const typeDefs = gql`
   }
   
 type Mutation {
-
- 
+  createUser(
+    email: String!, 
+    password: String!): Auth
+    
+  login(
+    email: String!, 
+    password: String!
+    ): Auth
+    
   startProfile(
     firstName: String!, 
     lastName: String!, 
     weight: Float!, 
     age: Int!, 
     height: Int!, 
-    sex: String!, 
+    sex: String!,
+    activity: String!, 
     goal: String!): User
-
-  createUser(
-    email: String!, 
-    password: String!
-    ): Auth
-  login(
-    email: String!, 
-    password: String!
-    ): Auth
- 
-  addCardio(
-    id: Int!,
-    type: String!,
-    durationInMinutes: String!,
-    cardioDistanceInMiles: String!,
-    date: String!
-  ): Exercise
-
-  addStrength(
-    id: Int!,
-    type: String!,
-    repetitions: String!, 
-    sets: String!, 
-    weight: String!,
-    date: String!
-  ): Exercise
-
-  addStretching(
-    id: Int!,
-    type: String!,
-    durationInMinutes: String!,
-    date: String!
     
-  ): Exercise
+  addCardio(
+    id: Int!,
+    type: String!,
+    durationInMinutes: String!,
+    cardioDistanceInMiles: String!,
+    date: String!
+  ): Exercise
 
-  addWorkout(
-    id: Int!,
-    date: String!,
-    routine: [ID!]
-  ): Workout
+  addStrength(
+    id: Int!,
+    type: String!,
+    repetitions: String!, 
+    sets: String!, 
+    weight: String!,
+    date: String!
+  ): Exercise
 
-  updateWeight(weightData: Float!): User
+  addStretching(
+    id: Int!,
+    type: String!,
+    durationInMinutes: String!,
+    date: String!
+  ): Exercise
+
+  addWorkout(
+    id: Int!,
+    date: String!,
+    routine: [ID!]
+  ): Workout
+
+updateWeight(
+    weight: Float!
+  ): User
 
 }
 `;

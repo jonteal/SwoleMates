@@ -37,15 +37,21 @@ const UserSchema = new Schema({
   sex: {
     type: String,
   },
+  activity: {
+
+    type: Number,
+  },
   goal: {
     type: String
   },
+
   // workouts: [
   //   {
   //     type: Schema.Types.ObjectId,
   //     ref: "Workout",
   //   },
   // ],
+
 });
 
 UserSchema.pre('save', async function (next) {
@@ -70,7 +76,7 @@ const profileSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  createdAt: String 
+  createdAt: String
 })
 
 module.exports = User;
