@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './quote.css';
 
-const API_KEY = "?api_key=LGWbmLROAcK7FCHQPr39sQeF";
-
 function Quote() {
     const [quote, setQuote] = useState('');
     const [loading, setLoading] = useState(true);
     const [author, setAuthor] = useState('');
 
     useEffect(() => {
-        fetch(`https://quotes.rest/quote/random.json${API_KEY}`)
+        fetch(`https://quotes.rest/quote/random.json${process.env.REACT_APP_API_KEY_QUOTE}`)
         .then(res=> res.json())
         .then(data=> {
         setQuote(data.contents.quotes[0].quote);
