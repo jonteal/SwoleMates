@@ -48,14 +48,16 @@ const resolvers = {
       }
       throw new Error({ msg: 'ID mismatch' })
     },
+    addExercise: async (parent, args) => {
+      const exercise = await Exercise.create(args);
+      return exercise;
+    }
+    //new mutations start here
   },
 
-  addExercise: async (parent, args) => {
-    const exercise = await Exercise.create(args);
-    return exercise;
-  }
 
-  //new mutations start here
+
+
 };
 
 module.exports = resolvers;

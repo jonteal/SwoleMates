@@ -41,14 +41,6 @@ type Mutation {
     sex: String!,
     activity: String!, 
     goal: String!): User
-  createUser(
-    email: String!, 
-    password: String!
-    ): Auth
-  login(
-    email: String!, 
-    password: String!
-    ): Auth
   addExercise(
     id: Int!,
     type: String!,
