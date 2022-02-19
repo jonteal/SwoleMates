@@ -41,20 +41,8 @@ const resolvers = {
 
       return { token, user };
     },
-
-    // startProfile: async (parent, args, context) => {
-    //   if (context.user) {
-    //     return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
-    //   }
-
-    //   throw new AuthenticationError({ msg: 'ID mismatch' })
-    // },
-    //   throw new Error({ msg: 'ID mismatch' })
-    // },
-
-  
-
-    addCardio: async (parent, {id, type, durationInMinutes, cardioDistanceInMiles, date}) => {
+    
+      addCardio: async (parent, {id, type, durationInMinutes, cardioDistanceInMiles, date}) => {
       console.log(`hello, these are args for cardio : ${id, type, durationInMinutes, cardioDistanceInMiles, date}`)
       const cardio = await Exercise.create({id, type, durationInMinutes, cardioDistanceInMiles, date});
       return cardio;
@@ -70,19 +58,22 @@ const resolvers = {
       return stretching;
     },
 
-    updateWeight: async (parent, { weightData }, context) => {
+    startProfile: async (parent, args, context) => {
       if (context.user) {
-        const updatedUser = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { savedWeight: weightData }},
-          { new: true }
-        );
-        return updatedUser
+        return User.findOneAndUpdate({ _id: context.user._id }, args, { new: true }) //return the user as the updated version
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new Error({ msg: 'ID mismatch' })
     },
+    addExercise: async (parent, args) => {
+      const exercise = await Exercise.create(args);
+      return exercise;
+    }
     //new mutations start here
   },
+
+
+
+
 };
 
 module.exports = resolvers;
