@@ -9,7 +9,6 @@ import { handleModal } from "../Welcome/Welcome";
 
 const LoginForm = ({ handleModal }) => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
   const [login, { error }] = useMutation(LOGIN_USER);
@@ -76,12 +75,7 @@ const LoginForm = ({ handleModal }) => {
           <h2 className="text-3x1 font-bold mb-10 text-center font-fa loginTitle">
             LOG IN
           </h2>
-          <form
-            className="space-y-8"
-            noValidate
-            // validated={validated}
-            onSubmit={handleFormSubmit}
-          >
+          <form className="space-y-8" noValidate onSubmit={handleFormSubmit}>
             {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                     Something went wrong with your login credentials!
                     </alert> */}
