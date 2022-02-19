@@ -51,6 +51,8 @@ const LoginForm = ({ handleModal }) => {
 
   return (
     <>
+
+
       <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
         <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 loginCard">
           <svg
@@ -125,6 +127,7 @@ const LoginForm = ({ handleModal }) => {
           </form>
         </div>
       </div>
+
     </>
   );
 };

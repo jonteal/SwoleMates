@@ -1,3 +1,55 @@
+.bottomToTop-appear {
+  animation: bottomToTop ease 2s;
+  -webkit-animation: bottomToTop ease 2s;
+  -moz-animation: bottomToTop ease 2s;
+  -o-animation: bottomToTop ease 2s;
+  -ms-animation: bottomToTop ease 2s;
+}
+@keyframes bottomToTop {
+  0% {
+    margin-top: 200%;
+  }
+  100% {
+    margin-top: 0%;
+  }
+}
+
+@-moz-keyframes bottomToTop {
+  0% {
+    margin-top: 200%;
+  }
+  100% {
+    margin-top: 0%;
+  }
+}
+
+@-webkit-keyframes bottomToTop {
+  0% {
+    margin-top: 200%;
+  }
+  100% {
+    margin-top: 0%;
+  }
+}
+
+@-o-keyframes bottomToTop {
+  0% {
+    margin-top: 200%;
+  }
+  100% {
+    margin-top: 0%;
+  }
+}
+
+@-ms-keyframes bottomToTop {
+  0% {
+    margin-top: 200%;
+  }
+  100% {
+    margin-top: 0%;
+  }
+}
+
 .welcomeMain {
     background-color: #354152;
 }
