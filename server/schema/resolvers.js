@@ -42,10 +42,10 @@ const resolvers = {
     
     // new queries start here
     // for now find all without date\user
-    allExercises: async () => {
-   return Exercise.find();
+    // allExercises: async () => {
+    // return Exercise.find();
 
-    }
+    // }
   },
     // new queries start here
   
