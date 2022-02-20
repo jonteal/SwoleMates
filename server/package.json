@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "watch": "nodemon server.js"
   },
   "keywords": [],
@@ -18,7 +18,7 @@
     "graphql": "^15.5.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.10",
-    "faker": "^4.1.0"
+    "mongoose-auto-increment": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"

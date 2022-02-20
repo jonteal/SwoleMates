@@ -37,6 +37,10 @@ const UserSchema = new Schema({
   sex: {
     type: String,
   },
+  activity: {
+
+    type: Number,
+  },
   goal: {
     type: String
   },
@@ -46,6 +50,14 @@ const UserSchema = new Schema({
       ref: 'User',
     }
   ]
+
+  // workouts: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Workout",
+  //   },
+  // ],
+
 });
 
 UserSchema.pre('save', async function (next) {
@@ -65,5 +77,16 @@ UserSchema.virtual('friendCount').get(function() {
 });
 
 const User = mongoose.model('User', UserSchema);
+
+
+
+// ====================================================
+
+const profileSchema = new Schema({
+  username: String,
+  password: String,
+  email: String,
+  createdAt: String
+})
 
 module.exports = User;

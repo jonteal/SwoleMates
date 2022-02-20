@@ -1,25 +1,17 @@
 import React, { useState, useEffect } from "react";
-
+import "./loginForm.css";
 import { useMutation } from "@apollo/client";
-import { ADD_USER } from "../../utils/mutations";
+import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
+import SignupForm from "../SignupForm/SignupForm";
 import { Link } from "react-router-dom";
+import { handleModal } from "../Welcome/Welcome";
 
-const SignupForm = () => {
-  const [userFormData, setUserFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-
+const LoginForm = ({ handleModal }) => {
+  const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [showAlert, setShowAlert] = useState(false);
 
-  const [createUser, { data, error }] = useMutation(ADD_USER);
-
-  const [inputPassword, setInputPassword] = useState("");
-  const [checkPassword, setCheckPassword] = useState("");
-  const [passwordMatch, setPasswordMatch] = useState(false);
-  const [passwordError, setPasswordError] = useState("");
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   useEffect(() => {
     error ? setShowAlert(true) : setShowAlert(false);
@@ -28,27 +20,12 @@ const SignupForm = () => {
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
-    setInputPassword(value);
-  };
-
-  const handlePasswordCheck = (event) => {
-    event.preventDefault();
-    inputPassword === checkPassword
-      ? setPasswordMatch(true)
-      : setPasswordMatch(false);
-    if (inputPassword !== checkPassword) {
-      setPasswordError("Your passwords do not match, try again");
-    } else {
-      setPasswordError("");
-    }
-    inputPassword === "" || checkPassword === ""
-      ? setPasswordMatch(false)
-      : setPasswordError("");
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
+    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -56,13 +33,12 @@ const SignupForm = () => {
     }
 
     try {
-      const { data } = await createUser({
+      const { data } = await login({
         variables: { ...userFormData },
       });
 
-      Auth.login(data.createUser.token);
-      console.log(window.location.pathname);
-      window.location.pathname = "/profile";
+      Auth.login(data.login.token);
+      window.location.pathname += "home";
     } catch (err) {
       console.error(err);
     }
@@ -76,6 +52,7 @@ const SignupForm = () => {
   return (
     <>
 
+
       <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
         <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 loginCard">
           <svg
@@ -87,8 +64,8 @@ const SignupForm = () => {
           >
             <defs>
               <linearGradient id="a" x1="0%" y1="0%" y2="0%">
-                <stop offset="0%" stop-color="#76D9F0" />
-                <stop offset="100%" stop-color="#096479" />
+                <stop offset="0%" stopColor="#76D9F0" />
+                <stop offset="100%" stopColor="#096479" />
               </linearGradient>
             </defs>
             <path
@@ -98,25 +75,27 @@ const SignupForm = () => {
           </svg>
 
           <h2 className="text-3x1 font-bold mb-10 text-center font-fa loginTitle">
-            SIGN UP
+            LOG IN
           </h2>
-
-          <form className="space-y-3" noValidate onSubmit={handleFormSubmit}>
-            {/* Email */}
-            <form>
+          <form className="space-y-8" noValidate onSubmit={handleFormSubmit}>
+            {/* <alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+                    Something went wrong with your login credentials!
+                    </alert> */}
+            <div>
               <label htmlFor="email"></label>
               <input
-                className="bg-gray-700 rounded-3xl border-1 border-black"
-                type="email"
+                className="bg-gray-700 rounded-3xl border-1 border-black m-0"
+                type="text"
                 placeholder="Email"
                 name="email"
                 onChange={handleInputChange}
                 value={userFormData.email}
                 required
               />
-            </form>
-            {/* Password */}
-            <form>
+              {/* <label type='invalid'>Email is required!</label> */}
+            </div>
+
+            <div>
               <label htmlFor="password"></label>
               <input
                 className="bg-gray-700 rounded-3xl border-1 border-black"
@@ -125,47 +104,32 @@ const SignupForm = () => {
                 name="password"
                 onChange={handleInputChange}
                 value={userFormData.password}
-                onBlur={handlePasswordCheck}
                 required
               />
-            </form>
-            <form>
-              <label htmlFor="passwordCheck"></label>
-
-              <input
-                className="bg-gray-700 rounded-3xl border-1 border-black"
-                type="password"
-                placeholder="Password"
-                name="passwordCheck"
-                onChange={(event) => setCheckPassword(event.target.value)}
-                onBlur={handlePasswordCheck}
-                required
-              />
-            </form>
-            {passwordMatch && <p>Your passwords match, great typing!</p>}
-            <p>{passwordError}</p>
-            {/* Submit Button */}
+              {/* <label type='invalid'>Password is required!</label> */}
+            </div>
             <button
               disabled={!(userFormData.email && userFormData.password)}
               type="submit"
               variant="success"
               className="loginBtn"
             >
-              Sign Up!
+              Log In
             </button>
             <p className="loginSignup">
-              Already have an account?{" "}
+              Don't have an account?{" "}
               <span>
-                <Link to="/login" className="underline cursor-pointer">
-                  Log in!
+                <Link to="/signup" className="underline cursor-pointer">
+                  Sign up!
                 </Link>
               </span>
             </p>
           </form>
         </div>
       </div>
+
     </>
   );
 };
 
-export default SignupForm;
+export default LoginForm;

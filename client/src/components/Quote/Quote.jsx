@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './quote.css';
 
 function Quote() {
     const [quote, setQuote] = useState('');
@@ -6,18 +7,22 @@ function Quote() {
     const [author, setAuthor] = useState('');
 
     useEffect(() => {
-        fetch('https://quotes.rest/qod?category=inspire&language=en')
+        fetch(`https://quotes.rest/quote/random.json${process.env.REACT_APP_API_KEY_QUOTE}`)
         .then(res=> res.json())
-        .then(data=>{
-        console.log(data);
+        .then(data=> {
         setQuote(data.contents.quotes[0].quote);
         setAuthor(data.contents.quotes[0].author);
 })
     }, [])
     return (
         <>
-        <h1>{quote}</h1>
-        <p>- {author}</p>
+        <div className="quote-container">
+            <div className="quote-card">
+                <h1 className="quote-header">Quote of the Day:</h1>
+                <h2 className="quote">{quote}</h2>
+                <p className="quote-author">- {author}</p>
+            </div>
+        </div>
         </>
     )
 }

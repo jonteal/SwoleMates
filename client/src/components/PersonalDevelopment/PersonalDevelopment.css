@@ -1,0 +1,33 @@
+.dev-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 18vh;
+    width: 85vw;
+}
+
+.dev-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dev-input {
+    resize: none;
+}
+
+.dev-btn {
+    background-color: #003d7a;
+    color: white;
+    margin-top: 10px;
+    border: solid black 1px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.dev-btn:hover {
+    background-color: aquamarine;
+    color: black;
+}
