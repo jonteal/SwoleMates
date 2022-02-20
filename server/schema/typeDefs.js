@@ -29,6 +29,28 @@ const typeDefs = gql`
   type Query {
     getUser: User
     allExercises: [Exercise]!
+    order(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
+    product(_id: ID!): Product
+    user: User
+  }
+
+  type Product {
+    _id: ID
+    name: String
+    description: String
+    image: String
+    quantity: Int
+    price: Float
+  }
+  type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
+
+  type Checkout {
+    session: ID
   }
 
   type Mutation {
@@ -74,6 +96,10 @@ const typeDefs = gql`
     addWorkout(id: Int!, date: String!, routine: [ID!]): Workout
 
     updateWeight(weight: Float!): User
+
+    addOrder(products: [ID]!): Order
+
+    updateProduct(_id: ID!, quantity: Int!): Product
   }
 `;
 
