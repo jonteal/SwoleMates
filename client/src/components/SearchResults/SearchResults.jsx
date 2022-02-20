@@ -4,6 +4,7 @@ import { ADD_FRIEND } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { addFriendIds, getAddedFriendIds} from '../../utils/localStorage';
+import { useQuery, gql } from '@apollo/client';
 
 const SearchResults = () => {
 
@@ -24,12 +25,69 @@ const SearchResults = () => {
         return () => addedFriendIds(addedFriendIds);
     });
 
+    // create method to search for users and set state on form submit
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+
+        if (!searchInput) {
+            return false;
+        }
+
+        try {
+            // !!!! HOW DO WE GRAB FROM GRAPHQL? !!!!!
+            const response = await fetch(`${searchInput}`);
+
+            if (!response.ok) {
+                throw new Error ('something went wrong!');
+            }
+
+            const { items } = await response.json();
+
+            const userData = items.map((user) => ({
+                userId: user.id
+            }));
+
+            setSearchedFriends(userData);
+            setSearchInput('');
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    // create function to handle adding a friend to our database
+    const handleAddFriend = async (friendId) => {
+        
+        // find the friend in 'searchedFriends' state by the matching id
+        const friendToAdd = searchedFriends.find((friend) => friend.friendId === friendId);
+
+        // get token
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const { data } = await addFriend({
+                variables: { friendData: friendToAdd },
+            });
+
+            // if friend succesfully saves to user's account, add friend id to state
+            setAddedFriendIds([...addedFriendIds, friendToAdd.friendId]);
+        } catch (err) {
+            console.console.error(err);
+        }
+    };
 
 
     return(
         <>
 
             <div className='mainContainer'>
+
+            <div className="searchBarContainer">
+                <input className="searchBar" placeholder="Search for a friend"></input>
+            </div>
 
             <div class="ui cards">
                 <div class="card">
