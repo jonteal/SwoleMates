@@ -8,10 +8,20 @@ const { Error } = require("mongoose");
 
 const resolvers = {
   Query: {
-    // TODO: add a getUser query that returns a specific user on demand, e.g. firstName/lastName, or email, or id
+    // getUser query that returns a specific user on demand, e.g. firstName/lastName, or email, or id
+    getUser: async (parent, args) => {
+      try {
+        const userData = await User.findOne(args).select(
+          "-__v -password"
+        ).populate("friends");
+        return userData;
+      } catch (err) {
+        console.log(err);
+      }
+    },
 
-    // TODO: rename to me {} so it clarifies this returns only info about current user
-    getUser: async (parent, args, context) => {
+    // getMe that returns only info about current user
+    getMe: async (parent, args, context) => {
       if (context.user) {
         try {
           const userData = await User.findOne({ _id: context.user._id }).select(
@@ -68,6 +78,7 @@ const resolvers = {
       throw new Error({ msg: "ID mismatch" });
     },
 
+    // ADD FRIEND
     addFriend: async (parent, { friendId }, context) => {
       if (context.user) {
         const addFriend = await User.findByIdAndUpdate(
@@ -80,6 +91,7 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
 
+    // REMOVE FRIEND
     removeFriend: async (parent, { friendId }, context) => {
       if (context.user) {
         const removeFriend = await User.findOneAndUpdate(
