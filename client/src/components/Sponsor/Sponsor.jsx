@@ -1,11 +1,11 @@
 import React from "react";
 import ProductList from "../ProductList/ProductList";
 import Cart from "../Cart/Cart";
-
+import './sponsor.css'
 
 const Sponsor = () => {
   return (
-    <div className="container">
+    <div className="sponsorContainer">
 
       <ProductList />
       <Cart />

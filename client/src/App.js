@@ -7,7 +7,7 @@ import { StoreProvider } from './utils/GlobalState';
 
 // import ComingSoon from './components/ComingSoon';
 import Dashboard from './components/Dashboard/Dashboard';
-// import Navbar from './components/Navbar/Navbar';
+import Navbar from './components/Navbar/Navbar';
 import MealPlanner from './components/MealPlanner/MealPlanner.jsx';
 import Profile from './components/Profile/Profile';
 import Foodbar from './components/Food/Food';
@@ -47,7 +47,7 @@ function App() {
         <Router>
           <div>
             <StoreProvider>
-              {/* <Navbar /> */}
+              <Navbar />
                 <Switch>
                   <Route exact path='/' component={Welcome} />
                   <Route exact path='/login' component={LoginForm} />
