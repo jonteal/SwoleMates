@@ -15,7 +15,7 @@ const MealPlanner = () => {
 
   //   Data fetch:
   const fetchMealPlan = (calories) => {
-    let fetchMealPlanUrl = `https://api.spoonacular.com/mealplanner/generate${process.env.REACT_APP_API_KEY}&time=day&targetCalories=${calories}`;
+    let fetchMealPlanUrl = `https://api.spoonacular.com/mealplanner/generate${process.env.REACT_APP_API_KEY_SPUNACULAR}&time=day&targetCalories=${calories}`;
     fetch(fetchMealPlanUrl)
       .then((res) => res.json())
       .then((data) => {

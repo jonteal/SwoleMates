@@ -6,8 +6,6 @@ const WorkoutSchema = new Schema({
   // add autoincrement id
   id: {
     type: Number,
-    required: true,
-    unique: true,
   },
   date: {
     type: Date,

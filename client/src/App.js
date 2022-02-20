@@ -9,6 +9,7 @@ import Profile from './components/Profile/Profile';
 import Foodbar from './components/Food/Food';
 import Quote from './components/Quote/Quote';
 import Exercise from './components/Tracker/Exercise';
+import Workout from './components/Tracker/Workout';
 import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
@@ -59,7 +60,9 @@ function App() {
             <Route exact path='/mealplan' component={MealPlanner} />
             <Route exact path='/exercise' component={Exercise} />
             <Route exact path='/sponsor' component={Sponsor} />
+            <Route exact path='/workout' component={Workout} />
             <Route render={WrongPage} />
+
           </Switch>
         </Router>
       </>

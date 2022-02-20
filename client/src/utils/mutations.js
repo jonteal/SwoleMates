@@ -23,6 +23,22 @@ export const LOGIN_USER = gql`
 `;
 
 
+export const ADD_WORKOUT = gql`
+mutation addWorkout(
+  $id: Int!
+  $date: String!
+  $routine: [ID!]
+) {
+  addWorkout(
+    id: $id
+    date: $date
+    routine: $routine
+  ) {
+    date
+  }
+}
+`;
+
 
 export const ADD_CARDIO = gql`
   mutation addCardio(
@@ -98,7 +114,7 @@ export const ADD_PROFILE = gql`
       sex: $sex
       goal: $goal
     ) {
-      firstName
+      _id
     }
   }
 `;
