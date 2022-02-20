@@ -31,8 +31,15 @@ const typeDefs = gql`
     allExercises: [Exercise]!
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
+    categories: [Category]
+    products(category: ID, name: String): [Product]
     product(_id: ID!): Product
     user: User
+  }
+
+  type Category {
+    _id: ID
+    name: String
   }
 
   type Product {
@@ -42,6 +49,7 @@ const typeDefs = gql`
     image: String
     quantity: Int
     price: Float
+    category: Category
   }
   type Order {
     _id: ID
