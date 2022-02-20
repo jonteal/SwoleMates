@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// FIND ME
 export const GET_WEIGHT = gql`
     query me {
         me {
@@ -25,6 +26,7 @@ query allExercises {
     }
 `;
 
+// FIND ANY USER BY ID OR EMAIL
 export const QUERY_USER = gql`
 query getUser {
     getUser {

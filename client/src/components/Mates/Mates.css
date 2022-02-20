@@ -1,9 +1,22 @@
 .search {
     border: 1px solid black;
+    margin-bottom: 5%;
+    width: 80vw;
 }
 
 .mainContainer {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 5%;
+}
+
+.searchResults {
+    border: 1px solid black;
+    margin: 5%;
+    width: 80%;
+}
+
+h1 {
+    text-align: center;
 }

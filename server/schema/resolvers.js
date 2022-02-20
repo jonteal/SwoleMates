@@ -130,7 +130,7 @@ const resolvers = {
       const stretching = await Exercise.create({ id, type, durationInMinutes, date });
       return stretching;
     },
- 
+
     addWorkout: async (parent, {id, date, routine}) => {
       console.log(`hello, these are args for workout: ${date, routine}`)
       const workout = await Workout.create({id, date, routine});

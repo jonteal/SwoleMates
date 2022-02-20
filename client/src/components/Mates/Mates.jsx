@@ -1,17 +1,30 @@
 import React from "react";
 import './mates.css';
-import ProfileCard from "../ProfileCard/ProfileCard";
+import PersonalProfile from "../PersonalProfile/personalProfile";
+import FriendsContainer from "../FriendsContainer/FriendsContainer";
+import 'semantic-ui-css/semantic.min.css';
 
 import { useQuery } from "@apollo/client";
+import SearchResults from "../SearchResults/SearchResults";
 
 
 const Mates = () => {
 
-    return (
+    return(
         <>
 
             <div className="mainContainer">
-                <input className="search" placeholder="Search"></input>
+                <div>
+                    <input className="search" placeholder="Search"></input>
+                </div>
+
+                <div className="personalProfile">
+                    <PersonalProfile />
+                </div>
+
+                <div className="searchResults">
+                    <FriendsContainer />
+                </div>
 
             </div>
         </>

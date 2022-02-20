@@ -1,0 +1,4 @@
+.friendsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}

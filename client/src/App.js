@@ -13,6 +13,7 @@ import Exercise from './components/Tracker/Exercise';
 import Workout from './components/Tracker/Workout';
 import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
 import Mates from './components/Mates/Mates';
+import SearchResults from './components/SearchResults/SearchResults';
 
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
@@ -61,7 +62,8 @@ function App() {
             <Route exact path='/personaldevelopment' component={PersonalDevelopment} />
             <Route exact path='/food' component={Foodbar} />
             <Route exact path='/mealplan' component={MealPlanner} />
-
+            <Route exact path='/mates' component={Mates} />
+            <Route exact path='/searchresults' component={{SearchResults}} />
             <Route exact path='/exercise' component={Exercise} />
             <Route exact path='/workout' component={Workout} />
             <Route render={WrongPage} />
