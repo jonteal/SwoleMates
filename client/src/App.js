@@ -7,7 +7,7 @@ import { StoreProvider } from './utils/GlobalState';
 
 // import ComingSoon from './components/ComingSoon';
 import Dashboard from './components/Dashboard/Dashboard';
-import Navbar from './components/Navbar/Navbar';
+// import Navbar from './components/Navbar/Navbar';
 import MealPlanner from './components/MealPlanner/MealPlanner.jsx';
 import Profile from './components/Profile/Profile';
 import Foodbar from './components/Food/Food';
@@ -20,6 +20,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import Welcome from './components/Welcome/Welcome';
 import WrongPage from './components/WrongPage/WrongPage';
 import Sponsor from './components/Sponsor/Sponsor';
+import Success from './pages/Success';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,7 +47,7 @@ function App() {
         <Router>
           <div>
             <StoreProvider>
-              <Navbar />
+              {/* <Navbar /> */}
                 <Switch>
                   <Route exact path='/' component={Welcome} />
                   <Route exact path='/login' component={LoginForm} />
@@ -60,6 +61,7 @@ function App() {
                   <Route exact path='/exercise' component={Exercise} />
                   <Route exact path='/sponsor' component={Sponsor} />
                   <Route exact path='/workout' component={Workout} />
+                  <Route exact path='/success' component={Success} />
                   <Route render={WrongPage} />
                 </Switch>
             </StoreProvider>
