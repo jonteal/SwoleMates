@@ -77,15 +77,15 @@ const SignupForm = () => {
         <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 loginCard">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="site__logo"
+            className="site__logo"
             width="56"
             height="84"
             viewBox="77.7 214.9 274.7 412"
           >
             <defs>
               <linearGradient id="a" x1="0%" y1="0%" y2="0%">
-                <stop offset="0%" stop-color="#76D9F0" />
-                <stop offset="100%" stop-color="#096479" />
+                <stop offset="0%" stopColor="#76D9F0" />
+                <stop offset="100%" stopColor="#096479" />
               </linearGradient>
             </defs>
             <path
@@ -98,7 +98,7 @@ const SignupForm = () => {
             SIGN UP
           </h2>
 
-          <form className="space-y-3" noValidate onSubmit={handleFormSubmit}>
+          <div className="space-y-3" noValidate onSubmit={handleFormSubmit}>
             {/* Email */}
             <form>
               <label htmlFor="email"></label>
@@ -158,7 +158,7 @@ const SignupForm = () => {
                 </Link>
               </span>
             </p>
-          </form>
+          </div>
         </div>
       </div>
     </>
