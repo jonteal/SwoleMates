@@ -22,7 +22,7 @@ function Success() {
       }
 
       setTimeout(() => {
-        window.location.assign('/');
+        window.location.assign('/home');
       }, 3000);
     }
 
