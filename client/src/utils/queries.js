@@ -18,9 +18,18 @@ export const GET_WEIGHT = gql`
 export const QUERY_EXERCISES = gql`
 query allExercises {
     allExercises {
-      type
-      _id
-   date
+        type
+        _id
+        date
+        }
     }
-  }
 `;
+
+export const QUERY_USER = gql`
+query getUser {
+    getUser {
+        _id
+        email
+    }
+}
+`

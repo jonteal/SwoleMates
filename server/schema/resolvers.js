@@ -1,4 +1,3 @@
-const { User } = require("../models");
 const {
   AuthenticationError,
   UserInputError,
@@ -6,9 +5,6 @@ const {
 const { signToken } = require("../utils/auth");
 const { Error } = require("mongoose");
 const { User, Exercise, Workout } = require('../models');
-const { AuthenticationError } = require('apollo-server-express');
-const { signToken } = require('../utils/auth');
-const { Error } = require('mongoose');
 
 const resolvers = {
   Query: {
