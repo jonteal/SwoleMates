@@ -14,7 +14,7 @@ const exercise = 200;
 const Home = () => {
     return (
     <>
-      <div className="card-container">
+      <div className="homeContainer">
         <div className="development shadow-2xl">
           <PersonalDevelopment />
         </div>
@@ -48,7 +48,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-        <div className="development">
+        <div className="quotation">
           <Quote />
         </div>
       </div>

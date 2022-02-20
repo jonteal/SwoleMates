@@ -44,11 +44,11 @@ class Weight extends Component {
                 : <div className="weight-card">
                 <h1 className="weight-header">Current Weight</h1>
                 <div className="current-weight">
-                    267.8 Lbs
+                    267.8 lbs
                 </div>
                 <button
                     onClick={() => this.setState({showForm: true}) } 
-                    className="weightButton filter drop-shadow-lg"
+                    className="weightBtn filter drop-shadow-lg"
                     type="button"
                     variant="success">
                         Update
