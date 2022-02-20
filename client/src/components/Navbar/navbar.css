@@ -1,14 +1,14 @@
 .navbar {
     font-family: 'Nunito', sans-serif;
     padding: 20px;
-    background-color: #003d7a;
+    background-color: #354152;
     height: 80px;
     display: flex;
     justify-content: start;
     align-items: center;
     font-size: 1.8rem;
     position: relative;
-    width: 100vw;
+    max-width: 100vw;
     z-index: 7;
 }
 
