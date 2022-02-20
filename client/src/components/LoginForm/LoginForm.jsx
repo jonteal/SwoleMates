@@ -38,7 +38,7 @@ const LoginForm = ({ handleModal }) => {
       });
 
       Auth.login(data.login.token);
-      // window.location.pathname += "home";
+      window.location.assign('/home');
     } catch (err) {
       console.error(err);
     }
@@ -108,15 +108,14 @@ const LoginForm = ({ handleModal }) => {
               />
               {/* <label type='invalid'>Password is required!</label> */}
             </div>
-            <Link
-              to="/home"
+            <button
               disabled={!(userFormData.email && userFormData.password)}
               type="submit"
               variant="success"
               className="loginBtn"
             >
               Log In
-            </Link>
+            </button>
             <p className="loginSignup">
               Don't have an account?{" "}
               <span>
