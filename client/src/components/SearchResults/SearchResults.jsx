@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './searchResults.css';
-import { ADD_FRIEND } from './utils/mutations';
-import Auth from '../utils/auth';
+import { ADD_FRIEND } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
+import { addFriendIds, getAddedFriendIds} from '../../utils/localStorage';
 
 const SearchResults = () => {
 
@@ -13,14 +14,14 @@ const SearchResults = () => {
     const  [searchInput, setSearchInput] = useState('');
 
     // create state to hold added friends values
-    const [addedFriendsIds, setAddedFriendsIds] = useState(getAddedFriendsIds());
+    const [addedFriendIds, setAddedFriendIds] = useState(getAddedFriendIds());
 
     // create mutation to add a friend to friends values
     const [addFriend, {error}] = useMutation(ADD_FRIEND);
 
     // set up useEffect hook to save 'addedFriendsIds' list to localStorage on component unmount
     useEffect(() => {
-        return () => addedFriendsIds(addedFriendsIds);
+        return () => addedFriendIds(addedFriendIds);
     });
 
 
