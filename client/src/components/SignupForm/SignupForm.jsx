@@ -11,7 +11,6 @@ const SignupForm = () => {
     password: "",
   });
 
-  const [validated] = useState(false);
 
   const [showAlert, setShowAlert] = useState(false);
 
@@ -53,7 +52,7 @@ const SignupForm = () => {
 
   return (
     <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
         <Alert
           dismissible
