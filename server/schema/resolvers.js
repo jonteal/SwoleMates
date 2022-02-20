@@ -88,7 +88,7 @@ const resolvers = {
         const product = await stripe.products.create({
           name: products[i].name,
           description: products[i].description,
-          images: [`${url}/images/${products[i].image}`],
+          images: [`${url}/images/MegaHeartLogo.png`],
         });
 
         const price = await stripe.prices.create({
@@ -108,7 +108,7 @@ const resolvers = {
         line_items,
         mode: "payment",
         success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`,
+        cancel_url: `${url}/sponsor`,
       });
 
       return { session: session.id };
