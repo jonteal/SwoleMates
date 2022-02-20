@@ -30,8 +30,8 @@ export const NavbarData = [
         cName: 'nav-text'
     },
     {
-        title: 'Donate',
-        path: '/donate',
+        title: 'Sponsor',
+        path: '/sponsor',
         icon: <MdIcons.MdOutlineAttachMoney />,
         cName: 'nav-text'
     },
