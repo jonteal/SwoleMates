@@ -4,6 +4,7 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
+    orders: [Order]
   }
   type Exercise {
     _id: ID!
@@ -106,7 +107,7 @@ const typeDefs = gql`
     updateWeight(weight: Float!): User
 
     addOrder(products: [ID]!): Order
-
+    
     updateProduct(_id: ID!, quantity: Int!): Product
   }
 `;
