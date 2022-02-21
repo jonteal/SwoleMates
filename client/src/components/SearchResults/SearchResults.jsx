@@ -34,7 +34,6 @@ const SearchResults = () => {
         }
 
         try {
-            // !!!! HOW DO WE GRAB FROM GRAPHQL? !!!!!
             const response = await fetch(`${searchInput}`);
 
             if (!response.ok) {
@@ -86,32 +85,65 @@ const SearchResults = () => {
             <div className='mainContainer'>
 
             <div className="searchBarContainer">
-                <input className="searchBar" placeholder="Search for a user"></input>
+                <h1>Search!</h1>
+                <form onSubmit={handleFormSubmit}>
+                    <input
+                        name='searchInput'
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                        type='text'
+                        placeholder='Search for a person'
+                    />
+                    <button type='submit'>
+                        Search
+                    </button>
+                </form>
             </div>
 
-            <div class="ui cards">
-                <div class="card">
-                    <div class="content">
-                        <div class="header">
-                            Ryan P.
-                        </div>
-                        <div class="meta">
-                            Followed by Val.
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        <div class="header">
-                            Laurel T.
-                        </div>
-                        <div class="meta">
-                            New Member
-                        </div>
-                        <div class="description">
-                            Laurel started following you.
-                        </div>
-                    </div>
+            <div className='searchResults'>
+                <h2>
+                    {searchedUsers.length
+                        ? `Viewing ${searchedUsers.length} results:`
+                        : 'Search for other Swole Mates!'}
+                </h2>
+
+                <div className='profileResults'>
+                    {searchedUsers.map((user) => {
+                        return(
+                            <div class="card">
+                                <div class="content">
+                                    <div class="header">
+                                        {/* Searched User's name */}
+                                    </div>
+
+                                    <div class="meta">
+                                        {/* Follower count */}
+                                        {/* {`Followed by ${user.followers.length} people`} */}
+                                    </div>
+
+                                    <div>
+                                        {/* Show if user already follows you? */}
+
+                                    </div>
+
+                                    <div>
+                                        {/* If we don't already follow them, give option to follow. */}
+                                        {Auth.loggedIn() && (
+                                            <button
+                                                disabled={addedUserIds?.some((addedUserId) => addedUserId === user.userId)}
+                                                onClick={() => handleAddFollow(user.userId)}>
+                                                {addedUserIds?.some((addedUserId) => addedUserId === user.userId)
+                                                ? 'You already follow this person.'
+                                                : 'Follow'}
+                                            </button>
+                                        )}
+                            
+                                    </div>
+                    
+                                </div>
+                            </div>
+                            )
+                        })}
                 </div>
             </div>
 
