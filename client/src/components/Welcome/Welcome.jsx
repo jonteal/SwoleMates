@@ -1,27 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import Login from "../LoginForm/LoginForm";
-import SwoleMates from "./SwoleMates";
+// import SwoleMates from "./SwoleMates";
 import "./welcome.css";
 import "./scrollbar.css";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 const Welcome = () => {
-  //represents whether the modal is open or not, start false bc modal closed initially
   const [openLogin, setLogin] = useState(false);
-  const [scrollTop, setScrollTop] = useState();
-  const [scrolling, setScrolling] = useState();
-  useEffect(() => {
-    const onScroll = (e) => {
-      setScrollTop(e.target.documentElement.scrollTop);
-      setScrolling(e.target.documentElement.scrollTop > scrollTop);
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [scrollTop]);
-  useEffect(() => {
-    console.log(scrolling);
-  }, [scrolling]);
 
   return (
     <>
@@ -84,11 +70,11 @@ const Welcome = () => {
             <CSSTransitionGroup
               transitionName="bottomToTop"
               transitionAppear={true}
-              transitionAppearTimeout={5000}
+              transitionAppearTimeout={2000}
               transitionEnter={false}
               transitionLeave={false}
             >
-              <Login onScroll={(event) => setScrolling(event)} />
+              <Login />
             </CSSTransitionGroup>
           </>
         )}

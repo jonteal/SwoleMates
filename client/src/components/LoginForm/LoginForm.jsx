@@ -8,13 +8,14 @@ import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [showAlert, setShowAlert] = useState(false);
 
   const [login, { error }] = useMutation(LOGIN_USER);
+  const [ newError, setError] = useState("")
 
   useEffect(() => {
-    error ? setShowAlert(true) : setShowAlert(false);
-  }, [error]);
+    console.log(error)
+    error ? setError("No account found, please sign up first.") : setError("")
+  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -115,6 +116,7 @@ const LoginForm = () => {
             >
               Log In
             </button>
+            <p>{newError}</p>
             <p className="loginSignup">
               Don't have an account?{" "}
               <span>
