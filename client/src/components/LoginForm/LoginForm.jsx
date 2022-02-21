@@ -3,11 +3,10 @@ import "./loginForm.css";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
-import SignupForm from "../SignupForm/SignupForm";
 import { Link } from "react-router-dom";
-import { handleModal } from "../Welcome/Welcome";
 
-const LoginForm = ({ handleModal }) => {
+
+const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [showAlert, setShowAlert] = useState(false);
 

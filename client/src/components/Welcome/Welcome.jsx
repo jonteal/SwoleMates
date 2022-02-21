@@ -25,6 +25,7 @@ const Welcome = () => {
     <>
       <div className="welcomeMain">
         {!openLogin && (
+
           <div className="welcomeContainer">
             <div className="container">
               <div className="shadows">
