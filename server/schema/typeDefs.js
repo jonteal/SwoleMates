@@ -4,7 +4,12 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
+<<<<<<< HEAD
     orders: [Order]
+=======
+    weight: Float!
+    goal: String!
+>>>>>>> main
   }
   type Exercise {
     _id: ID!

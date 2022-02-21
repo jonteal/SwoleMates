@@ -57,7 +57,7 @@ const LoginForm = ({ handleModal }) => {
         <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 loginCard">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="site__logo"
+            className="site__logo"
             width="56"
             height="84"
             viewBox="77.7 214.9 274.7 412"
