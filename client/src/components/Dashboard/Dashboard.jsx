@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <>
       <div className="homeContainer">
-      <div className="quotation">
+        <div className="quotation">
           <Quote />
         </div>
 
@@ -50,14 +50,10 @@ const Home = () => {
         <div className="weight shadow-2xl">
           <Weight />
         </div>
-        
+
         <div className="development shadow-2xl">
           <PersonalDevelopment />
         </div>
-
-
-
-
       </div>
     </>
   );

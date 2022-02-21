@@ -1,9 +1,10 @@
 import { gql } from "@apollo/client";
 
-export const GET_WEIGHT = gql`
+export const GET_PROFILE = gql`
     query getUser {
       getUser {
             weight
+            goal
         }
     }
 `;
