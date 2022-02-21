@@ -15,9 +15,6 @@ const Home = () => {
   return (
     <>
       <div className="homeContainer">
-      <div className="quotation">
-          <Quote />
-        </div>
 
         <div className="calories shadow-2xl">
           <div className="calories-title">
@@ -49,6 +46,10 @@ const Home = () => {
 
         <div className="weight shadow-2xl">
           <Weight />
+        </div>
+
+        <div className="quotation">
+          <Quote />
         </div>
         
         <div className="development shadow-2xl">
