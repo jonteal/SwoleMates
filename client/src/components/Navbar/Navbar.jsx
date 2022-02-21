@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as AiIcons from "react-icons/ai";
 import * as CgIcons from "react-icons/cg";
+import * as MdIcons from "react-icons/md";
 import { IconContext } from 'react-icons';
 import { NavbarData } from './navbarData';
 import './navbar.css';
@@ -10,7 +11,6 @@ import AuthService from '../../utils/auth'
 
 const Navbar = () => {
     const [sidebar, setSidebar] = useState(false)
-
     const showSidebar = () => setSidebar(!sidebar)
   return (
       <>
@@ -31,7 +31,7 @@ const Navbar = () => {
         <ul className="nav-menu-items" onClick={showSidebar}>
             {NavbarData.map((item, index) => {
                 return (
-                    <li key={index} className={item.cName}>
+                    <li key={index} className={item.cName} id={item.fName} >
                         <Link to={item.path}>
                             {item.icon}
                             <span>{item.title}</span>
@@ -39,6 +39,10 @@ const Navbar = () => {
                     </li>
                 )
             })}
+            <li className="logout" onClick={AuthService.logout}>
+                < MdIcons.MdLogout />
+                <span>Logout</span>
+            </li>
         </ul>
     </nav>
     </IconContext.Provider>
