@@ -47,7 +47,7 @@ function App() {
         <Router>
           <div>
             <StoreProvider>
-              {/* <Navbar /> */}
+              <Navbar />
                 <Switch>
                   <Route exact path='/' component={Welcome} />
                   <Route exact path='/login' component={LoginForm} />
