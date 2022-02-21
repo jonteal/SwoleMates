@@ -1,0 +1,80 @@
+import React from "react";
+import './followingContainer.css';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_WEIGHT } from '../../utils/queries';
+import { REMOVE_FOLLOW } from '../../utils/mutations';
+import Auth from '../../utils/auth';
+import { removeUserId, addUserIds } from '../../utils/localStorage';
+
+const FollowingContainer = () => {
+
+    const { loading, data } = useQuery(GET_WEIGHT);
+    const userData = data?.me || {};
+
+    const [unfollowUser, {error}] = useMutation(REMOVE_FOLLOW);
+
+    const handleUnfollowUser = async (userId) => {
+        const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+        if (!token) {
+            return false;
+        }
+
+        try {
+            const { data } = await unfollowUser({
+                variables: { userId },
+            });
+
+            removeUserId(userId);
+        } catch {
+            console.error(error);
+        }
+    };
+
+    if (loading) {
+        return <h2>Loading...</h2>
+    }
+
+    const addedUserIds = userData.addedUsers.map((user) => user.userId);
+    addUserIds(addedUserIds);
+
+
+    return(
+        <div className="mainContainer">
+        
+            <div>
+                <h1>My Friends</h1>
+            </div>
+
+            <div className="followingContainer">
+            <h2>
+                {userData.addedUsers.length
+                    ? `Viewing ${userData.addedUsers.length} saved ${userData.addedUsers.length === 1 ? 'user' : 'users'}:`
+                    : 'You have no added users!'}
+            </h2>
+
+            <div className="following">
+                {userData.addedUsers.map((user) => {
+                    return (
+                        <div key={user.userId}>
+                            <div>
+                                {/* I think we need to include names/usernames */}
+                                <div>{user}</div>
+                                <button onClick={() => handleUnfollowUser(user.userId)}>
+                                    Unfollow
+                                </button>
+                            </div>
+                            
+                        </div>
+                    )
+                })}
+                
+            
+            </div>
+        
+            </div>
+        </div>
+    )
+}
+
+export default FollowingContainer;
