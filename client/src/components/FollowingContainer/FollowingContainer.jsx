@@ -4,7 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_WEIGHT } from '../../utils/queries';
 import { REMOVE_FOLLOW } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-import { removeUserId, addUserIds } from '../../utils/localStorage';
+import { removeUserId, addUserId } from '../../utils/localStorage';
 
 const FollowingContainer = () => {
 
@@ -36,14 +36,14 @@ const FollowingContainer = () => {
     }
 
     const addedUserIds = userData.addedUsers.map((user) => user.userId);
-    addUserIds(addedUserIds);
+    addUserId(addedUserIds);
 
 
     return(
         <div className="mainContainer">
         
             <div>
-                <h1>My Friends</h1>
+                <h1>People I Follow</h1>
             </div>
 
             <div className="followingContainer">

@@ -6,7 +6,7 @@ export const getAddedUserIds = () => {
     return addedUserIds;
 }
 
-export const addUserIds = (userIdArr) => {
+export const addUserId = (userIdArr) => {
     if (userIdArr.length) {
         localStorage.setItem('add_users', JSON.stringify(userIdArr));
     } else {
