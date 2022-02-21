@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Login from "../LoginForm/LoginForm";
 import "./welcome.css";
+import './scrollbar.css';
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 const Welcome = () => {

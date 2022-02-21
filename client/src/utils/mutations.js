@@ -39,7 +39,6 @@ mutation addWorkout(
 }
 `;
 
-
 export const ADD_CARDIO = gql`
   mutation addCardio(
     $id: Int!

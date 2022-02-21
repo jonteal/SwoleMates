@@ -1,15 +1,15 @@
-.card-container {
-    background-color: #deeff5;
+.homeContainer {
+    background-color: #969aa1dc;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-    width: 100vw;
+    max-width: 100vw;
 }
 
 .development {
-    background-color: #faf4f0;
+    background-color: lightslategray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,7 @@
 }
 
 .weight {
-    background-color: #faf4f0;
+    background-color: lightslategray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +38,7 @@
 }
 
 .calories {
-    background-color: #faf4f0;
+    background-color: lightslategray;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,9 +55,23 @@
 .calories-consumed {
     width: 80vw;
     margin: 5px;
-    
 }
 
 .calories-burned {
     width: 80vw;
 }
+
+.quotation {
+    background-color: lightslategray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+    padding: 10px;
+    width: 85vw;
+    height: 30vh;
+    border: solid 1px black;
+    border-radius: 10px;
+    margin-bottom: 30px;    
+}
+

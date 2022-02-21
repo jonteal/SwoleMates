@@ -55,6 +55,7 @@ const CartItem = ({ item }) => {
             onChange={onChange}
           />
           <span
+          className='cursor-pointer'
             role="img"
             aria-label="trash"
             onClick={() => removeFromCart(item)}
