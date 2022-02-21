@@ -1,7 +1,7 @@
 import React from "react";
 import './mates.css';
 import PersonalProfile from "../PersonalProfile/personalProfile";
-import FriendsContainer from "../FriendsContainer/FriendsContainer";
+import FollowersContainer from "../FollowersContainer/FollowersContainer";
 import 'semantic-ui-css/semantic.min.css';
 
 import { useQuery } from "@apollo/client";
@@ -23,7 +23,7 @@ const Mates = () => {
                 </div>
 
                 <div className="searchResults">
-                    <FriendsContainer />
+                    <FollowersContainer />
                 </div>
 
             </div>

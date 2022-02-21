@@ -1,11 +1,11 @@
 import React from "react";
-import './friendsContainer.css';
+import './followersContainer.css';
 
 const FriendsContainer = () => {
     return(
         <>
         
-        <div className="friendsContainer">
+        <div className="followersContainer">
             <h1>My Friends</h1>
         </div>
         

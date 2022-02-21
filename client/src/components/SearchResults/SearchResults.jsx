@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import './searchResults.css';
-import { ADD_FRIEND } from '../../utils/mutations';
+import { ADD_FOLLOW } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
-import { addFriendIds, getAddedFriendIds} from '../../utils/localStorage';
+import { addUserIds, getAddedUserIds} from '../../utils/localStorage';
 import { useQuery, gql } from '@apollo/client';
 
 const SearchResults = () => {
 
-    // create state for holding returned searched friend data
-    const [searchedFriends, setSearchedFriends] = useState([]);
+    // create state for holding returned searched user data
+    const [searchedUsers, setSearchedUsers] = useState([]);
 
     // create state for holding our search field data
     const  [searchInput, setSearchInput] = useState('');
 
-    // create state to hold added friends values
-    const [addedFriendIds, setAddedFriendIds] = useState(getAddedFriendIds());
+    // create state to hold added users' values
+    const [addedUserIds, setAddedUserIds] = useState(getAddedUserIds());
 
-    // create mutation to add a friend to friends values
-    const [addFriend, {error}] = useMutation(ADD_FRIEND);
+    // create mutation to add a user to the user's values
+    const [addFollow, {error}] = useMutation(ADD_FOLLOW);
 
-    // set up useEffect hook to save 'addedFriendsIds' list to localStorage on component unmount
+    // set up useEffect hook to save 'addedUsersIds' list to localStorage on component unmount
     useEffect(() => {
-        return () => addedFriendIds(addedFriendIds);
+        return () => addedUserIds(addedUserIds);
     });
 
     // create method to search for users and set state on form submit
@@ -47,18 +47,18 @@ const SearchResults = () => {
                 userId: user.id
             }));
 
-            setSearchedFriends(userData);
+            setSearchedUsers(userData);
             setSearchInput('');
         } catch (err) {
             console.error(err);
         }
     };
 
-    // create function to handle adding a friend to our database
-    const handleAddFriend = async (friendId) => {
+    // create function to handle adding a user to our database
+    const handleAddFollow = async (userId) => {
         
-        // find the friend in 'searchedFriends' state by the matching id
-        const friendToAdd = searchedFriends.find((friend) => friend.friendId === friendId);
+        // find the user in 'searchedUsers' state by the matching id
+        const userToAdd = searchedUsers.find((user) => user.userId === userId);
 
         // get token
         const token = Auth.loggedIn() ? Auth.getToken() : null;
@@ -68,12 +68,12 @@ const SearchResults = () => {
         }
 
         try {
-            const { data } = await addFriend({
-                variables: { friendData: friendToAdd },
+            const { data } = await addFollow({
+                variables: { userData: userToAdd },
             });
 
-            // if friend succesfully saves to user's account, add friend id to state
-            setAddedFriendIds([...addedFriendIds, friendToAdd.friendId]);
+            // if user succesfully saves to user's account, add user id to state
+            setAddedUserIds([...addedUserIds, userToAdd.userId]);
         } catch (err) {
             console.console.error(err);
         }
@@ -86,7 +86,7 @@ const SearchResults = () => {
             <div className='mainContainer'>
 
             <div className="searchBarContainer">
-                <input className="searchBar" placeholder="Search for a friend"></input>
+                <input className="searchBar" placeholder="Search for a user"></input>
             </div>
 
             <div class="ui cards">
@@ -96,16 +96,7 @@ const SearchResults = () => {
                             Ryan P.
                         </div>
                         <div class="meta">
-                            Friends of Val.
-                        </div>
-                        <div class="description">
-                            Ryan wants to be your friend.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <div class="ui two buttons">
-                            <div class="ui basic green button">Approve</div>
-                            <div class="ui basic red button">Decline</div>
+                            Followed by Val.
                         </div>
                     </div>
                 </div>
@@ -118,13 +109,7 @@ const SearchResults = () => {
                             New Member
                         </div>
                         <div class="description">
-                            Laurel wants to be your friend.
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <div class="ui two buttons">
-                            <div class="ui basic green button">Approve</div>
-                            <div class="ui basic red button">Decline</div>
+                            Laurel started following you.
                         </div>
                     </div>
                 </div>

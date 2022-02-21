@@ -130,18 +130,18 @@ export const UPDATE_WEIGHT = gql`
   }
 `;
 
-export const ADD_FRIEND = gql`
-  mutation addFriend($friendId: ID!) {
-    addFriend(friendId: $friendId) {
+export const ADD_FOLLOW = gql`
+  mutation addFollow($userData: ID!) {
+    addFollow(userData: $userData) {
       _id
       email
     }
   }
 `
 
-export const REMOVE_FRIEND = gql`
-  mutation removeFriend($friendId: ID!) {
-    removeFriend(friendId: $friendId) {
+export const REMOVE_FOLLOW = gql`
+  mutation removeFollow($userId: ID!) {
+    removeFollow(userId: $userId) {
       _id
       email
     }

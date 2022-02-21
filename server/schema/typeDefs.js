@@ -4,14 +4,19 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
-    friends: [Friend]
+    followerCount: Int
+    following: [Following]
+    followers: [Followers]
   }
 
-  type Friend {
-    friendId: ID
-    firstName: String!
-    lastName: String!
+  type Following {
+    _id: ID!
   }
+
+  type Followers {
+    _id: ID!
+  }
+
   type Exercise {
     _id: ID!
     type: String!
@@ -87,8 +92,8 @@ type Mutation {
 
     allExercises: [Exercise]!
 
-    addFriend(friendId: ID!): User
-    removeFriend(friendId: ID!): User
+    followUser(userData: ID!): User
+    unfollowUser(userId: ID!): User
   }
 `;
 

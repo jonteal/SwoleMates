@@ -13,7 +13,7 @@ const resolvers = {
       try {
         const userData = await User.findOne(args).select(
           "-__v -password"
-        ).populate("friends");
+        ).populate("followers").populate("following");
         return userData;
       } catch (err) {
         console.log(err);
@@ -26,7 +26,7 @@ const resolvers = {
         try {
           const userData = await User.findOne({ _id: context.user._id }).select(
             "-__v -password"
-          ).populate("friends");
+          ).populate("followers").populate("following");
           return userData;
         } catch (err) {
           console.log(err);
@@ -84,28 +84,28 @@ const resolvers = {
       throw new Error({ msg: "ID mismatch" });
     },
 
-    // ADD FRIEND
-    addFriend: async (parent, { friendId }, context) => {
+    // ADD FOLLOW
+    followUser: async (parent, { userData }, context) => {
       if (context.user) {
-        const addFriend = await User.findByIdAndUpdate(
+        const addFollow = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $addToSet: { friends: friendId }},
+          { $push: { following: userData }},
           { new: true }
           );
-          return addFriend;
+          return addFollow;
       }
       throw new AuthenticationError('You need to be logged in!');
     },
 
-    // REMOVE FRIEND
-    removeFriend: async (parent, { friendId }, context) => {
+    // REMOVE FOLLOW
+    unfollowUser: async (parent, { userId }, context) => {
       if (context.user) {
-        const removeFriend = await User.findOneAndUpdate(
+        const removeFollow = await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { friends: friendId }},
+          { $pull: { following: { userId } } },
           { new: true }
         );
-        return removeFriend;
+        return removeFollow;
       }
       throw new AuthenticationError('You need to be logged in!');
     },

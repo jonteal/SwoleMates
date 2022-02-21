@@ -1,30 +1,30 @@
-export const getAddedFriendIds = () => {
-    const addedFriendIds = localStorage.getItem('added_friends')
-        ? JSON.parse(localStorage.getItem('added_friends'))
+export const getAddedUserIds = () => {
+    const addedUserIds = localStorage.getItem('added_users')
+        ? JSON.parse(localStorage.getItem('added_users'))
         : [];
 
-    return addedFriendIds;
+    return addedUserIds;
 }
 
-export const addFriendIds = (friendIdArr) => {
-    if (friendIdArr.length) {
-        localStorage.setItem('add_friends', JSON.stringify(friendIdArr));
+export const addUserIds = (userIdArr) => {
+    if (userIdArr.length) {
+        localStorage.setItem('add_users', JSON.stringify(userIdArr));
     } else {
-        localStorage.removeItem('add_friends');
+        localStorage.removeItem('add_users');
     }
 };
 
-export const removeFriendId = (friendId) => {
-    const addedFriendIds = localStorage.getItem('added_books')
-        ? JSON.parse(localStorage.getItem('added_friends'))
+export const removeUserId = (userId) => {
+    const addedUserIds = localStorage.getItem('added_users')
+        ? JSON.parse(localStorage.getItem('added_users'))
         : null;
 
-    if (!addedFriendIds) {
+    if (!addedUserIds) {
         return false;
     }
 
-    const updatedAddedFriendIds = addedFriendIds?.filter((addedFriendId) => addedFriendId !== friendId);
-    localStorage.setItem('added_friends', JSON.stringify(updatedAddedFriendIds));
+    const updatedAddedUserIds = addedUserIds?.filter((addedUserId) => addedUserId !== userId);
+    localStorage.setItem('added_users', JSON.stringify(updatedAddedUserIds));
 
     return true;
 };

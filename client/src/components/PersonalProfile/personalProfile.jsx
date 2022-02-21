@@ -7,7 +7,7 @@ const PersonalProfile = () => {
         <>
         <Card className="personalProfileCard"
             header='Eric Martin'
-            meta='Friend'
+            meta='User'
             description='Eric is a full stack web developer and enjoys spending time with his family.'
             // extra={extra}
         />
