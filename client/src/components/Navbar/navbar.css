@@ -118,24 +118,5 @@ span {
         font-size: 30px;
         justify-content: center;
     }
-
-    .navbar {
-        width: 100vw;
-        position: relative;
-        z-index: 7;
-        top: 0;
-    }
-
-    .nav-menu {
-        height: 0vh;
-        width: 0vw;
-    }
-
-    .nav-menu.active {
-        font-family: 'Nunito', sans-serif;
-        position: relative;
-        height: 47vh;
-        width: 47vw;
-    }
     
 }

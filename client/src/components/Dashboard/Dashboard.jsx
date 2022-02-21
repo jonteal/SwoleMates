@@ -15,7 +15,6 @@ const Home = () => {
   return (
     <>
       <div className="homeContainer">
-
         <div className="calories shadow-2xl">
           <div className="calories-title">
             Calories Consumed: <span>{data}/1500</span>
@@ -55,10 +54,6 @@ const Home = () => {
         <div className="development shadow-2xl">
           <PersonalDevelopment />
         </div>
-
-
-
-
       </div>
     </>
   );

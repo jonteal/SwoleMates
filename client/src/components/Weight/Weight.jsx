@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { GET_WEIGHT } from "../../utils/queries";
+import { GET_PROFILE } from "../../utils/queries";
 import { UPDATE_WEIGHT } from "../../utils/mutations";
 import "./weight.css";
 
@@ -9,7 +9,7 @@ const Weight = () => {
   const showForm = () => setForm(!form);
 
   const [updateWeight, { error }] = useMutation(UPDATE_WEIGHT);
-  const { data } = useQuery(GET_WEIGHT);
+  const { data } = useQuery(GET_PROFILE);
   //will write to database and then will see if it will update on the front end
   const handleSubmit = async (event) => {
     event.preventDefault();

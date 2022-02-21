@@ -47,7 +47,7 @@ function ProductList() {
   return (
     <div className="productContainer">
       <h2>Sponsor Us!</h2>
-      <p>Whatever exercise you buy, Valerii will do. Happy sponsoring! 💓</p>
+      <p>Whatever exercises you buy, Valerii will do. Happy sponsoring! 💓</p>
       {state.products.length ? (
         <div>
           {filterProducts().map((product) => (
@@ -58,6 +58,7 @@ function ProductList() {
               name={product.name}
               price={product.price}
               quantity={product.quantity}
+              className="productCard"
             />
           ))}
         </div>
