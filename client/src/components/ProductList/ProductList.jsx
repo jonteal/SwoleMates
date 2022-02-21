@@ -45,8 +45,9 @@ function ProductList() {
   }
 
   return (
-    <div className="my-2 productContainer">
+    <div className="productContainer">
       <h2>Sponsor Us!</h2>
+      <p>Whatever exercise you buy, Valerii will do. Happy sponsoring! 💓</p>
       {state.products.length ? (
         <div>
           {filterProducts().map((product) => (
