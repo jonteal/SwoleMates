@@ -4,8 +4,12 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
+<<<<<<< HEAD
+    orders: [Order]
+=======
     weight: Float!
     goal: String!
+>>>>>>> main
   }
   type Exercise {
     _id: ID!
@@ -31,6 +35,36 @@ const typeDefs = gql`
   type Query {
     getUser: User
     allExercises: [Exercise]!
+    order(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
+    categories: [Category]
+    products(category: ID, name: String): [Product]
+    product(_id: ID!): Product
+    user: User
+  }
+
+  type Category {
+    _id: ID
+    name: String
+  }
+
+  type Product {
+    _id: ID
+    name: String
+    description: String
+    image: String
+    quantity: Int
+    price: Float
+    category: Category
+  }
+  type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
+
+  type Checkout {
+    session: ID
   }
 
   type Mutation {
@@ -76,6 +110,10 @@ const typeDefs = gql`
     addWorkout(id: Int!, date: String!, routine: [ID!]): Workout
 
     updateWeight(weight: Float!): User
+
+    addOrder(products: [ID]!): Order
+    
+    updateProduct(_id: ID!, quantity: Int!): Product
   }
 `;
 

@@ -1,9 +1,16 @@
 import { gql } from '@apollo/client';
 
 export const GET_WEIGHT = gql`
-    query getUser {
-      getUser {
+    query me {
+        me {
+            _id
+            username
+            email
             weight
+            height
+            age
+            sex
+            goal
         }
     }
 `;
@@ -13,7 +20,13 @@ query allExercises {
     allExercises {
       type
       _id
-   date
+      date
+      durationInMinutes
+      cardioDistanceInMiles
+      repetitions
+      sets
+      weight
+      caloriesBurnt
     }
   }
 `;

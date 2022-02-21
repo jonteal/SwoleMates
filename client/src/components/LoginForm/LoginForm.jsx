@@ -38,7 +38,7 @@ const LoginForm = ({ handleModal }) => {
       });
 
       Auth.login(data.login.token);
-      window.location.pathname += "home";
+      window.location.assign('/home');
     } catch (err) {
       console.error(err);
     }

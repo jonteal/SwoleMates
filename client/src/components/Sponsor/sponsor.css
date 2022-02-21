@@ -1,0 +1,31 @@
+.sponsorContainer{
+    background-color: #354152;
+    text-align: center;
+    color: #7e8ba3;  
+}
+
+.productImage {
+    height: 150px;
+    border: black 2px solid;
+}
+
+.productContainer {
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width:100vw;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet; */
+}
+
+@media only screen and (max-width: 950px){
+    .productContainer {
+        display: flex;
+        flex-direction: column;
+        width:100vw;
+        align-items: center;
+        justify-content: center;
+        /* background-color: blueviolet; */
+    }
+    }
