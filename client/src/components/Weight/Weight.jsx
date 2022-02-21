@@ -4,11 +4,28 @@ import { GET_WEIGHT } from '../../utils/queries';
 import { UPDATE_WEIGHT } from '../../utils/mutations';
 import './weight.css';
 
-class Weight extends Component {
-    state= {showForm: false}
-
-    showForm = () => {
-        return (
+const Weight = () => {
+    const [form, setForm] = useState(false);
+    const showForm = () => setForm(!form)
+    return (
+        <>
+        {!form ? 
+        <div className="weight-container filter drop-shadow-lg"> 
+        <div className="weight-card">
+            <h1 className="weight-header">Current Weight</h1>
+            <div className="current-weight">
+                267.8 Lbs
+            </div>
+            <button
+                onClick={showForm} 
+                className="weightButton filter drop-shadow-lg"
+                type="button"
+                variant="success">
+                    Update
+            </button>
+            </div>
+            </div>
+            :
             <div className="weight-container filter drop-shadow-lg">
                 <div className="weight-card">
                     <h1 className="weight-header">Add Weight Here</h1>
@@ -21,7 +38,7 @@ class Weight extends Component {
                         required
                     />
                     <button
-                        onClick={() => this.setState({showForm: false}) } 
+                        onClick={showForm} 
                         className="weightButton filter drop-shadow-lg"
                         type="submit"
                         variant="success">
@@ -30,36 +47,9 @@ class Weight extends Component {
                     </form>
                 </div>
             </div>
-        );
-    }
-
-    render() {
-        return (
-        <>
-        <div className="weight-container filter drop-shadow-lg">
-            
-                {
-                this.state.showForm 
-                ? this.showForm() 
-                : <div className="weight-card">
-                <h1 className="weight-header">Current Weight</h1>
-                <div className="current-weight">
-                    267.8 Lbs
-                </div>
-                <button
-                    onClick={() => this.setState({showForm: true}) } 
-                    className="weightButton filter drop-shadow-lg"
-                    type="button"
-                    variant="success">
-                        Update
-                </button>
-                </div>
-                }
-            </div>
-        
+        }
         </>
-        );
-    };
+    )
 }
  
 export default Weight;
