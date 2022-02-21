@@ -23,18 +23,14 @@ const Workout = () => {
   const allExercises =
     data?.allExercises.filter((exercise) => exercise.date === date) || [];
 
-  console.log(allExercises);
+
 
   // submit your workout for the day OR update it if it exists;
   const handleSubmit = async (event) => {
-    console.log(date);
-    console.log(allExercises);
-
-    // console.log(exercises[0]._id);
-
+  
+ 
     event.preventDefault();
     try {
-      console.log("try adding workout?");
       const { data } = await addWorkout({
         // Execute mutation and pass in defined parameter data as variables
         variables: {
@@ -59,7 +55,7 @@ const Workout = () => {
         <ul>
 
           {exercise.type === "cardio" && (
-            <div>
+            <div key={exercise._id}>
               <p>Exercise type is: {exercise.type} </p>
               <br></br>
               <p>Duration: {exercise.durationInMinutes} minutes;</p>
@@ -70,7 +66,7 @@ const Workout = () => {
           )}
 
           {exercise.type === "strength" && (
-            <div>
+            <div key={exercise._id}>
               <p>Exercise type is: {exercise.type} </p>
               <br></br>
               <p>Repetitions made: {exercise.repetitions} reps;</p>
@@ -82,7 +78,7 @@ const Workout = () => {
           )}
 
           {exercise.type === "stretching" && (
-            <div>
+            <div key={exercise._id}>
               <p>Exercise type is: {exercise.type} </p>
               <br></br>
               <p>Duration: {exercise.durationInMinutes} minutes;</p>
@@ -93,7 +89,7 @@ const Workout = () => {
         </ul>
       ))}
 
-      <button onClick={(e) => handleSubmit(e)}>"Save workout to dashboard"</button>
+      <button onClick={(e) => handleSubmit(e)}>"Save and update workout on the dashboard"</button>
     </div>
   );
 };

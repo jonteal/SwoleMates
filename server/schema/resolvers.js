@@ -10,6 +10,7 @@ const { AuthenticationError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { Error } = require("mongoose");
 const stripe = require("stripe")(process.env.STRIPE_KEY);
+const dateCheck = new Date().toISOString().split("T")[0];
 
 const resolvers = {
   Query: {
@@ -201,10 +202,38 @@ const resolvers = {
       return stretching;
     },
 
-    addWorkout: async (parent, { id, date, routine }) => {
-      console.log(`hello, these are args for workout: ${(date, routine)}`);
-      const workout = await Workout.create({ id, date, routine });
-      return workout;
+    addWorkout: async (parent, { id, date, routine }, context) => {
+      //   if(Workout.date === dateCheck){
+      //     console.log("If")
+      //     console.log(Workout.date);
+      //     console.log(dateCheck);
+      //     const workout = await Workout.findOneAndUpdate({date}, {
+      //       $push: {routine}},
+      //       {returnOriginal: false}
+      //     )
+      // }
+      //   else{
+      //     console.log("else")
+      //     console.log(parent);
+      //     console.log(dateCheck);
+      //     const workout = await Workout.create({ id, date, routine });
+      //   return workout
+      //   }
+      const workout = await Workout.findOne({date: dateCheck});
+      if(workout){
+        console.log("If")
+        const updatedWorkout = await Workout.findOneAndUpdate({date}, {
+                $addToSet: {routine}},
+                {new: true}
+              )
+              return updatedWorkout 
+      }
+      else {
+        console.log("else")
+        const newWorkout = await Workout.create({ id, date, routine }); 
+        return newWorkout;
+      }
+
     },
 
     updateWeight: async (parent, { weightData }, context) => {
@@ -223,30 +252,30 @@ const resolvers = {
     //   return exercise;
     // }
     //new mutations start here
-      //stripe mutations
-  addOrder: async (parent, { products }, context) => {
-    console.log(context);
-    if (context.user) {
-      const order = new Order({ products });
+    //stripe mutations
+    addOrder: async (parent, { products }, context) => {
+      console.log(context);
+      if (context.user) {
+        const order = new Order({ products });
 
-      await User.findByIdAndUpdate(context.user._id, {
-        $push: { orders: order },
-      });
+        await User.findByIdAndUpdate(context.user._id, {
+          $push: { orders: order },
+        });
 
-      return order;
-    }
+        return order;
+      }
 
-    throw new AuthenticationError("Not logged in");
-  },
-  updateProduct: async (parent, { _id, quantity }) => {
-    const decrement = Math.abs(quantity) * -1;
+      throw new AuthenticationError("Not logged in");
+    },
+    updateProduct: async (parent, { _id, quantity }) => {
+      const decrement = Math.abs(quantity) * -1;
 
-    return await Product.findByIdAndUpdate(
-      _id,
-      { $inc: { quantity: decrement } },
-      { new: true }
-    );
-  },
+      return await Product.findByIdAndUpdate(
+        _id,
+        { $inc: { quantity: decrement } },
+        { new: true }
+      );
+    },
   },
 };
 
