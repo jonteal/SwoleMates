@@ -98,9 +98,9 @@ const SignupForm = () => {
             SIGN UP
           </h2>
 
-          <div className="space-y-3" noValidate onSubmit={handleFormSubmit}>
+          <form className="space-y-3" noValidate onSubmit={handleFormSubmit}>
             {/* Email */}
-            <form>
+            <div>
               <label htmlFor="email"></label>
               <input
                 className="bg-gray-700 rounded-3xl border-1 border-black"
@@ -111,9 +111,9 @@ const SignupForm = () => {
                 value={userFormData.email}
                 required
               />
-            </form>
-            {/* Password */}
-            <form>
+            </div>
+            <div>
+              {/* Password */}
               <label htmlFor="password"></label>
               <input
                 className="bg-gray-700 rounded-3xl border-1 border-black"
@@ -125,10 +125,9 @@ const SignupForm = () => {
                 onBlur={handlePasswordCheck}
                 required
               />
-            </form>
-            <form>
+            </div>
+            <div>
               <label htmlFor="passwordCheck"></label>
-
               <input
                 className="bg-gray-700 rounded-3xl border-1 border-black"
                 type="password"
@@ -138,27 +137,27 @@ const SignupForm = () => {
                 onBlur={handlePasswordCheck}
                 required
               />
-            </form>
-            {passwordMatch && <p>Your passwords match, great typing!</p>}
-            <p>{passwordError}</p>
-            {/* Submit Button */}
-            <button
-              disabled={!(userFormData.email && userFormData.password)}
-              type="submit"
-              variant="success"
-              className="loginBtn"
-            >
-              Sign Up!
-            </button>
-            <p className="loginSignup">
-              Already have an account?{" "}
-              <span>
-                <Link to="/login" className="underline cursor-pointer">
-                  Log in!
-                </Link>
-              </span>
-            </p>
-          </div>
+              {passwordMatch && <p>Your passwords match, great typing!</p>}
+              <p>{passwordError}</p>
+              {/* Submit Button */}
+              <button
+                disabled={!(userFormData.email && userFormData.password)}
+                type="submit"
+                variant="success"
+                className="loginBtn"
+              >
+                Sign Up!
+              </button>
+            </div>
+          </form>
+          <p className="loginSignup">
+            Already have an account?{" "}
+            <span>
+              <Link to="/login" className="underline cursor-pointer">
+                Log in!
+              </Link>
+            </span>
+          </p>
         </div>
       </div>
     </>
