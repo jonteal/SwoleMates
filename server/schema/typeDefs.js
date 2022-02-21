@@ -11,12 +11,12 @@ const typeDefs = gql`
   type Exercise {
     _id: ID!
     type: String!
-    durationInMinutes: String!
-    cardioDistanceInMiles: String!
-    repetitions: Int!
-    sets: Int!
-    weight: Int!
-    caloriesBurnt: Int!
+    durationInMinutes: String
+    cardioDistanceInMiles: String
+    repetitions: Int
+    sets: Int
+    weight: Int
+    caloriesBurnt: Int
     date: String!
   }
 

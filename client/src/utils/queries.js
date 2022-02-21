@@ -21,6 +21,12 @@ export const QUERY_EXERCISES = gql`
       type
       _id
       date
+      durationInMinutes
+      cardioDistanceInMiles
+      repetitions
+      sets
+      weight
+      caloriesBurnt
     }
   }
 `;
