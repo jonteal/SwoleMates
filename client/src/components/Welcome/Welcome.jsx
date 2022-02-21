@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Login from "../LoginForm/LoginForm";
+import SwoleMates from "./SwoleMates";
 import "./welcome.css";
-import './scrollbar.css';
+import "./scrollbar.css";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 const Welcome = () => {
@@ -26,7 +27,6 @@ const Welcome = () => {
     <>
       <div className="welcomeMain">
         {!openLogin && (
-
           <div className="welcomeContainer">
             <div className="container">
               <div className="shadows">
@@ -45,9 +45,12 @@ const Welcome = () => {
 
             <div>
               <div className="flex justify-center items-end">
-                <div className="animate-bounce p-2 w-10 h-10 ring-1 ring-black shadow-lg rounded-full flex items-center justify-center cursor-pointer bounceArrow" onClick={() => {
-                setLogin(true);
-              }}>
+                <div
+                  className="animate-bounce p-2 w-10 h-10 ring-1 ring-black shadow-lg rounded-full flex items-center justify-center cursor-pointer bounceArrow"
+                  onClick={() => {
+                    setLogin(true);
+                  }}
+                >
                   <svg
                     className="w-6 h-6 text-violet-500"
                     fill="none"
@@ -60,7 +63,6 @@ const Welcome = () => {
                     <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                   </svg>
                 </div>
-                
               </div>
             </div>
 
@@ -69,15 +71,26 @@ const Welcome = () => {
         )}
 
         {openLogin && (
-          <CSSTransitionGroup
-            transitionName="bottomToTop"
-            transitionAppear={true}
-            transitionAppearTimeout={5000}
-            transitionEnter={false}
-            transitionLeave={false}
-          >
-            <Login onScroll={(event) => setScrolling(event)} />
-          </CSSTransitionGroup>
+          <>
+            {/* <CSSTransitionGroup
+              transitionName="topToBottom"
+              transitionAppear={true}
+              transitionAppearTimeout={5000}
+              transitionEnter={false}
+              transitionLeave={false}
+            >
+              <SwoleMates />
+            </CSSTransitionGroup> */}
+            <CSSTransitionGroup
+              transitionName="bottomToTop"
+              transitionAppear={true}
+              transitionAppearTimeout={5000}
+              transitionEnter={false}
+              transitionLeave={false}
+            >
+              <Login onScroll={(event) => setScrolling(event)} />
+            </CSSTransitionGroup>
+          </>
         )}
       </div>
     </>
