@@ -15,10 +15,6 @@ const Home = () => {
   return (
     <>
       <div className="homeContainer">
-        <div className="quotation">
-          <Quote />
-        </div>
-
         <div className="calories shadow-2xl">
           <div className="calories-title">
             Calories Consumed: <span>{data}/1500</span>
@@ -51,6 +47,10 @@ const Home = () => {
           <Weight />
         </div>
 
+        <div className="quotation">
+          <Quote />
+        </div>
+        
         <div className="development shadow-2xl">
           <PersonalDevelopment />
         </div>
