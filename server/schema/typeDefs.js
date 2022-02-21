@@ -4,6 +4,8 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
+    weight: Float!
+    goal: String!
   }
   type Exercise {
     _id: ID!
