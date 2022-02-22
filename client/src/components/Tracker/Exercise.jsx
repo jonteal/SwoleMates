@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/client";
+import { Link } from 'react-router-dom';
 
 import {
   ADD_CARDIO,
@@ -7,7 +8,7 @@ import {
   ADD_STRETCHING,
 } from "../../utils/mutations";
 
-import './tracker.css'
+import "./tracker.css";
 
 const Exercise = (props) => {
   const [type, setType] = useState("");
@@ -25,9 +26,9 @@ const Exercise = (props) => {
 
   // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_EXERCISE mutation
   // const [addExercise, { error }] = useMutation(ADD_EXERCISE);
-   const [addCardio, { error }] = useMutation(ADD_CARDIO);
-  const [addStrength, {  }] = useMutation(ADD_STRENGTH);
-  const [addStretching, {  }] = useMutation(ADD_STRETCHING);
+  const [addCardio, { error }] = useMutation(ADD_CARDIO);
+  const [addStrength, {}] = useMutation(ADD_STRENGTH);
+  const [addStretching, {}] = useMutation(ADD_STRETCHING);
 
   function handleSelect(event) {
     setType(event.target.value);
@@ -36,7 +37,6 @@ const Exercise = (props) => {
   }
 
   const handleSubmit = async (event) => {
-
     event.preventDefault();
     if (type == "cardio") {
       try {
@@ -47,10 +47,9 @@ const Exercise = (props) => {
             type,
             durationInMinutes,
             cardioDistanceInMiles,
-            date
+            date,
           },
         });
-
       } catch (err) {
         console.error(err);
       }
@@ -65,18 +64,16 @@ const Exercise = (props) => {
             repetitions,
             sets,
             weight,
-            date
+            date,
             // date,
           },
         });
-
       } catch (err) {
         console.error(err);
       }
     }
 
     if (type == "stretching") {
-
       try {
         const { data } = await addStretching({
           // Execute mutation and pass in defined parameter data as variables
@@ -84,7 +81,7 @@ const Exercise = (props) => {
             id,
             type,
             durationInMinutes,
-            date
+            date,
 
             // date,
           },
@@ -97,10 +94,10 @@ const Exercise = (props) => {
 
   return (
     <>
-    <div className="logBg">
-    <div className="logContainer">
-      <h2  className="logTitle">Log Workout:</h2>
-      <svg
+      <div className="logBg">
+        <div className="logContainer">
+          <h2 className="logTitle">Log Workout:</h2>
+          <svg
             xmlns="http://www.w3.org/2000/svg"
             className="site__logo"
             width="56"
@@ -119,100 +116,113 @@ const Exercise = (props) => {
             />
           </svg>
 
-      <form
-        onSubmit={(e) => {
-          handleSubmit(e);
-        }}
-      >
-        <select value={type} onChange={handleSelect}>
-        <option selected value="" disabled selected >
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e);
+              window.location.assign('/exercise');
+            }}
+          >
+            <select
+              value={type}
+              onChange={handleSelect}
+              className="border-black mb-1 mt-2 w-full"
+            >
+              <option selected value="" disabled selected>
                 Workout Type:
               </option>
-          <option value="cardio">Cardio</option>
-          <option value="strength">Strength</option>
-          <option value="stretching">Stretching</option>
-        </select>
+              <option value="cardio">Cardio</option>
+              <option value="strength">Strength</option>
+              <option value="stretching">Stretching</option>
+            </select>
 
-        <br />
-        <div>
-          {type == "cardio" ? (
+            <br />
             <div>
-              <input
-                className="border-black m-0"
-                type="number"
-                min="0"
-                name="durationInMinutes"
-                value={durationInMinutes}
-                placeholder="Duration in minutes"
-                onChange={(e) => setDurationInMinutes(e.target.value)}
-              />
-              <br />
-              <input
-                type="number"
-                min="0"
-                name="cardioDistanceInMiles"
-                value={cardioDistanceInMiles}
-                placeholder="Total distance in miles"
+              {type == "cardio" ? (
+                <div>
+                  <input
+                    className="border-black mb-1"
+                    type="number"
+                    min="0"
+                    name="durationInMinutes"
+                    value={durationInMinutes}
+                    placeholder="Duration in minutes"
+                    onChange={(e) => setDurationInMinutes(e.target.value)}
+                  />
+                  <br />
+                  <input
+                    type="number"
+                    className="border-black mb-1"
+                    min="0"
+                    name="cardioDistanceInMiles"
+                    value={cardioDistanceInMiles}
+                    placeholder="Total distance in miles"
+                    onChange={(e) => setCardioDistanceInMiles(e.target.value)}
+                  />
+                  <br />
 
-                onChange={(e) => setCardioDistanceInMiles(e.target.value)}
-              />
-              <br />
-              <input type="submit" value="Save" />
+                    <input
+                      className="logWorkoutBtn"
+                      type="submit"
+                      value="Save"
+                    />
+
+                </div>
+              ) : type == "strength" ? (
+                <div>
+                  <input
+                    className="border-black mb-1"
+                    type="number"
+                    min="0"
+                    name="repetitions"
+                    value={repetitions}
+                    placeholder="Total Reps"
+                    onChange={(e) => setRepetitions(e.target.value)}
+                  />
+                  <br />
+
+                  <input
+                    className="border-black mb-1"
+                    type="number"
+                    min="0"
+                    name="sets"
+                    value={sets}
+                    placeholder="Total Sets"
+                    onChange={(e) => setSets(e.target.value)}
+                  />
+
+                  <br />
+                  <input
+                    className="border-black mb-1"
+                    type="number"
+                    min="0"
+                    name="weight"
+                    value={weight}
+                    placeholder="Weights in pounds"
+                    onChange={(e) => setWeight(e.target.value)}
+                  />
+                  <br />
+                  <input className="logWorkoutBtn" type="submit" value="Save" />
+                </div>
+              ) : type == "stretching" ? (
+                <div>
+                  <input
+                    className="border-black mb-1"
+                    type="number"
+                    min="0"
+                    name="durationInMinutes"
+                    value={durationInMinutes}
+                    placeholder="Duration in minutes"
+                    onChange={(e) => setDurationInMinutes(e.target.value)}
+                  />
+                  <br />
+                  <input className="logWorkoutBtn" type="submit" value="Save" />
+                </div>
+              ) : null}
             </div>
-          ) : type == "strength" ? (
-            <div>
-              <input
-                type="number"
-                min="0"
-                name="repetitions"
-                value={repetitions}
-                placeholder="Total Reps"
-                onChange={(e) => setRepetitions(e.target.value)}
-              />
-              <br />
 
-              <input
-                type="number"
-                min="0"
-                name="sets"
-                value={sets}
-                placeholder="Total Sets"
-
-                onChange={(e) => setSets(e.target.value)}
-              />
-
-              <br />
-              <input
-                type="number"
-                min="0"
-                name="weight"
-                value={weight}
-                placeholder="Weights in pounds"
-
-                onChange={(e) => setWeight(e.target.value)}
-              />
-              <br />
-              <input type="submit" value="Save" />
-            </div>
-          ) : type == "stretching" ? (
-            <div>
-              <input
-                type="number"
-                min="0"
-                name="durationInMinutes"
-                value={durationInMinutes}
-                placeholder="Duration in minutes"
-                onChange={(e) => setDurationInMinutes(e.target.value)}
-              />
-              <br />
-              <input type="submit" value="Save" />
-            </div>
-          ) : null}
+            <br />
+          </form>
         </div>
-
-        <br />
-      </form>
-      </div>
       </div>
     </>
   );
