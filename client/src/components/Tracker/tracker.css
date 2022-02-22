@@ -147,3 +147,13 @@
   .logWorkoutBtn:hover {
       opacity: 1;
   }
+
+  
+  @media only screen and (max-width: 450px){
+.workoutImg{
+    display: none;
+}
+.cardLeft{
+    display: none;
+}
+  }
