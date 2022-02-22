@@ -21,9 +21,11 @@ const SignupForm = () => {
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [passwordError, setPasswordError] = useState("");
 
-  useEffect(() => {
-    error ? setShowAlert(true) : setShowAlert(false);
-  }, [error]);
+  //   useEffect(() => {
+  //     console.log(error)
+  //     error ==="E11000 duplicate key" ? setPasswordError("User already exists, please log in.") : setPasswordError("")
+  //   }
+  //  );
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -43,6 +45,9 @@ const SignupForm = () => {
     }
     inputPassword === "" || checkPassword === ""
       ? setPasswordMatch(false)
+      : setPasswordError("");
+    inputPassword.length < 7
+      ? setPasswordError("Password must be at least 8 characters.")
       : setPasswordError("");
   };
 

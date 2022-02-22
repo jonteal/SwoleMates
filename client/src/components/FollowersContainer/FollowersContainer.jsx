@@ -1,14 +1,14 @@
 import React from "react";
 import './followersContainer.css';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_WEIGHT } from "../../utils/queries";
+import { QUERY_USER } from "../../utils/queries";
 import { FOLLOW_UNFOLLOW } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import { addUserId, removeUserId } from '../../utils/localStorage';
 
 const FollowersContainer = () => {
 
-    const { loading, data } = useQuery(GET_WEIGHT);
+    const { loading, data } = useQuery(QUERY_USER);
     const userData = data?.me || {};
 
     const [followUser, {error}] = useMutation(FOLLOW_UNFOLLOW);

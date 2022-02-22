@@ -39,7 +39,6 @@ mutation addWorkout(
 }
 `;
 
-
 export const ADD_CARDIO = gql`
   mutation addCardio(
     $id: Int!
@@ -126,6 +125,25 @@ export const UPDATE_WEIGHT = gql`
       username
       email
       savedWeight
+    }
+  }
+`;
+
+
+export const ADD_ORDER = gql`
+  mutation addOrder($products: [ID]!) {
+    addOrder(products: $products) {
+      purchaseDate
+      products {
+        _id
+        name
+        description
+        price
+        quantity
+        category {
+          name
+        }
+      }
     }
   }
 `;

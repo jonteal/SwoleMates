@@ -24,14 +24,13 @@ const Profile = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-
     console.log(inputForm);
 
     try {
       const { data } = await addProfile({
         variables: inputForm,
       });
+      window.location.assign('/home');
     } catch (err) {
       console.log(err);
     }
@@ -181,11 +180,11 @@ const Profile = (props) => {
               <option value="maintain">Maintain</option>
             </select>
             <br />
-            <Link to="/home">
+
               <button className="loginBtn" onClick={(e) => handleSubmit(e)}>
                 Submit
               </button>
-            </Link>
+
           </form>
         </div>
       </div>

@@ -1,15 +1,16 @@
-const {
-  AuthenticationError,
-  UserInputError,
-} = require("apollo-server-express");
+const { AuthenticationError, UserInputError } = require("apollo-server-express");
 const { signToken } = require("../utils/auth");
 const { Error } = require("mongoose");
-const { User, Exercise, Workout } = require('../models');
+const { User, Exercise, Workout, Order, Product, Category } = require('../models');
 const Auth = require('../utils/auth');
+const stripe = require("stripe")(process.env.STRIPE_KEY);
+const dateCheck = new Date().toISOString().split("T")[0];
 
 const resolvers = {
+
   Query: {
-    // getUser query that returns a specific user on demand, e.g. firstName/lastName, or email, or id
+
+    // getUser query that returns a specific user on demand, e.g. firstName/lastName, or email, or id      
     getUsers: async (parent, args) => {
       try {
         const userData = await User.findOne(args).select(
@@ -48,10 +49,93 @@ const resolvers = {
     
     // new queries start here
     // for now find all without date\user
-    // allExercises: async () => {
-    // return Exercise.find();
+    allExercises: async () => {
+      return Exercise.find();
+    },
 
-    // }
+    //stripe queries
+    categories: async () => {
+      return await Category.find();
+    },
+    products: async (parent, { category, name }) => {
+      const params = {};
+
+      if (category) {
+        params.category = category;
+      }
+
+      if (name) {
+        params.name = {
+          $regex: name,
+        };
+      }
+
+      return await Product.find(params).populate("category");
+    },
+    product: async (parent, { _id }) => {
+      return await Product.findById(_id).populate("category");
+    },
+    user: async (parent, args, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: "orders.products",
+          populate: "category",
+        });
+
+        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+        return user;
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
+    order: async (parent, { _id }, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: "orders.products",
+          populate: "category",
+        });
+
+        return user.orders.id(_id);
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
+      const order = new Order({ products: args.products });
+      const line_items = [];
+
+      const { products } = await order.populate("products").execPopulate();
+
+      for (let i = 0; i < products.length; i++) {
+        const product = await stripe.products.create({
+          name: products[i].name,
+          description: products[i].description,
+        });
+
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: products[i].price * 100,
+          currency: "usd",
+        });
+
+        line_items.push({
+          price: price.id,
+          quantity: 1,
+        });
+      }
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items,
+        mode: "payment",
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/sponsor`,
+      });
+
+      return { session: session.id };
+    },
   },
     // new queries start here
   
@@ -135,58 +219,94 @@ const resolvers = {
 
 
 
-
-    // ADD FOLLOW
-    // followUser: async (parent, { userData }, context) => {
-    //   if (context.user) {
-    //     const addFollow = await User.findByIdAndUpdate(
-    //       { _id: context.user._id },
-    //       { $push: { following: userData }},
-    //       { new: true }
-    //       );
-    //       return addFollow;
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
-
-    // REMOVE FOLLOW
-    // unfollowUser: async (parent, { userId }, context) => {
-    //   if (context.user) {
-    //     const removeFollow = await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $pull: { following: { userId } } },
-    //       { new: true }
-    //     );
-    //     return removeFollow;
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
-    
-
-
-
-
-
     addCardio: async (parent, { id, type, durationInMinutes, cardioDistanceInMiles, date }) => {
       console.log(`hello, these are args for cardio : ${id, type, durationInMinutes, cardioDistanceInMiles, date}`)
       const cardio = await Exercise.create({ id, type, durationInMinutes, cardioDistanceInMiles, date });
+      throw new AuthenticationError({ msg: "ID mismatch" });
+    },
+
+    addCardio: async (
+      parent,
+      { id, type, durationInMinutes, cardioDistanceInMiles, date }
+    ) => {
+      console.log(
+        `hello, these are args for cardio : ${
+          (id, type, durationInMinutes, cardioDistanceInMiles, date)
+        }`
+      );
+      const cardio = await Exercise.create({
+        id,
+        type,
+        durationInMinutes,
+        cardioDistanceInMiles,
+        date,
+      });
       return cardio;
     },
-    addStrength: async (parent, { id, type, repetitions, sets, weight, date }) => {
-      console.log(`hello, these are args for strength: ${id, type, repetitions, sets, weight, date}`)
-      const strength = await Exercise.create({ id, type, repetitions, sets, weight, date });
+    addStrength: async (
+      parent,
+      { id, type, repetitions, sets, weight, date }
+    ) => {
+      console.log(
+        `hello, these are args for strength: ${
+          (id, type, repetitions, sets, weight, date)
+        }`
+      );
+      const strength = await Exercise.create({
+        id,
+        type,
+        repetitions,
+        sets,
+        weight,
+        date,
+      });
       return strength;
     },
     addStretching: async (parent, { id, type, durationInMinutes, date }) => {
-      console.log(`hello, these are args for stretching: ${id, type, durationInMinutes}`)
-      const stretching = await Exercise.create({ id, type, durationInMinutes, date });
+      console.log(
+        `hello, these are args for stretching: ${(id, type, durationInMinutes)}`
+      );
+      const stretching = await Exercise.create({
+        id,
+        type,
+        durationInMinutes,
+        date,
+      });
       return stretching;
     },
 
-    addWorkout: async (parent, {id, date, routine}) => {
-      console.log(`hello, these are args for workout: ${date, routine}`)
-      const workout = await Workout.create({id, date, routine});
-      return workout;
+    addWorkout: async (parent, { id, date, routine }, context) => {
+      //   if(Workout.date === dateCheck){
+      //     console.log("If")
+      //     console.log(Workout.date);
+      //     console.log(dateCheck);
+      //     const workout = await Workout.findOneAndUpdate({date}, {
+      //       $push: {routine}},
+      //       {returnOriginal: false}
+      //     )
+      // }
+      //   else{
+      //     console.log("else")
+      //     console.log(parent);
+      //     console.log(dateCheck);
+      //     const workout = await Workout.create({ id, date, routine });
+      //   return workout
+      //   }
+      const workout = await Workout.findOne({date: dateCheck});
+      if(workout){
+        console.log("If")
+        const updatedWorkout = await Workout.findOneAndUpdate({date}, {
+                $addToSet: {routine}},
+                {new: true}
+              )
+              return updatedWorkout 
+      }
+      else {
+        console.log("else")
+        const newWorkout = await Workout.create({ id, date, routine }); 
+        return newWorkout;
+      }
+
     },
 
     updateWeight: async (parent, { weightData }, context) => {
@@ -196,22 +316,40 @@ const resolvers = {
           { $push: { savedWeight: weightData } },
           { new: true }
         );
-        return updatedUser
+        return updatedUser;
       }
-      throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError("You need to be logged in!");
     },
     // addExercise: async (parent, args) => {
     //   const exercise = await Exercise.create(args);
     //   return exercise;
     // }
     //new mutations start here
+    //stripe mutations
+    addOrder: async (parent, { products }, context) => {
+      console.log(context);
+      if (context.user) {
+        const order = new Order({ products });
+
+        await User.findByIdAndUpdate(context.user._id, {
+          $push: { orders: order },
+        });
+
+        return order;
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
+    updateProduct: async (parent, { _id, quantity }) => {
+      const decrement = Math.abs(quantity) * -1;
+
+      return await Product.findByIdAndUpdate(
+        _id,
+        { $inc: { quantity: decrement } },
+        { new: true }
+      );
+    },
   },
-
-}
-//   throw new AuthenticationError({ msg: 'ID mismatch' })
-// },
-
-
-
+};
 
 module.exports = resolvers;

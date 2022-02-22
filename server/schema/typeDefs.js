@@ -7,6 +7,7 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
     followerCount: Int
+    orders: [Order]
     weight: Float!
     goal: String!
     following: [User]
@@ -16,12 +17,12 @@ const typeDefs = gql`
   type Exercise {
     _id: ID!
     type: String!
-    durationInMinutes: String!
-    cardioDistanceInMiles: String!
-    repetitions: Int!
-    sets: Int!
-    weight: Int!
-    caloriesBurnt: Int!
+    durationInMinutes: String
+    cardioDistanceInMiles: String
+    repetitions: Int
+    sets: Int
+    weight: Int
+    caloriesBurnt: Int
     date: String!
   }
 
@@ -39,6 +40,38 @@ const typeDefs = gql`
     getUsers: [User]
     getMe(_id: ID!): User
     getSearchedUser(email: String): [User]
+    getUser: User
+    allExercises: [Exercise]!
+    order(_id: ID!): Order
+    checkout(products: [ID]!): Checkout
+    categories: [Category]
+    products(category: ID, name: String): [Product]
+    product(_id: ID!): Product
+    user: User
+  }
+
+  type Category {
+    _id: ID
+    name: String
+  }
+
+  type Product {
+    _id: ID
+    name: String
+    description: String
+    image: String
+    quantity: Int
+    price: Float
+    category: Category
+  }
+  type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
+
+  type Checkout {
+    session: ID
   }
 
   
@@ -91,6 +124,9 @@ type Mutation {
 
     followUnfollow(_id: ID!): User
     
+    addOrder(products: [ID]!): Order
+    
+    updateProduct(_id: ID!, quantity: Int!): Product
   }
 `;
 

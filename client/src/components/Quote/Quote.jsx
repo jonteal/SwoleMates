@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
 import './quote.css';
 
 function Quote() {
     const [quote, setQuote] = useState('');
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     const [author, setAuthor] = useState('');
 
     useEffect(() => {

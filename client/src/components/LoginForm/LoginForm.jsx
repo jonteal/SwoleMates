@@ -3,19 +3,19 @@ import "./loginForm.css";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
-import SignupForm from "../SignupForm/SignupForm";
 import { Link } from "react-router-dom";
-import { handleModal } from "../Welcome/Welcome";
 
-const LoginForm = ({ handleModal }) => {
+
+const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
-  const [showAlert, setShowAlert] = useState(false);
 
   const [login, { error }] = useMutation(LOGIN_USER);
+  const [ newError, setError] = useState("")
 
   useEffect(() => {
-    error ? setShowAlert(true) : setShowAlert(false);
-  }, [error]);
+    console.log(error)
+    error ? setError("No account found, please sign up first.") : setError("")
+  });
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -38,7 +38,7 @@ const LoginForm = ({ handleModal }) => {
       });
 
       Auth.login(data.login.token);
-      window.location.pathname += "home";
+      window.location.assign('/home');
     } catch (err) {
       console.error(err);
     }
@@ -116,6 +116,7 @@ const LoginForm = ({ handleModal }) => {
             >
               Log In
             </button>
+            <p>{newError}</p>
             <p className="loginSignup">
               Don't have an account?{" "}
               <span>
