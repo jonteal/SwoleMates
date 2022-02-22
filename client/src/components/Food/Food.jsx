@@ -12,6 +12,8 @@ const FoodBar = () => {
 
   const [foodItem, setFoodItem] = useState("");
   const [foodSearch, setFoodSearch] = useState("");
+  const [searchedTitle, setSearchedTitle] = useState("");
+
 
   const [recipes, setRecipes] = useState("");
   const [recipeCalories, setRecipeCalories] = useState("");
@@ -47,6 +49,8 @@ const FoodBar = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        // setSearchedTitle(data.)
+        setSearchedTitle(data.originalName);
         setCalories(data.nutrition.nutrients[17].amount);
         setSugars(data.nutrition.nutrients[19].amount);
         setProtein(data.nutrition.nutrients[31].amount);
@@ -64,6 +68,7 @@ const FoodBar = () => {
     try {
       setFoodSearch(foodItem);
       fetchFood(foodItem);
+      setFoodItem("")
     } catch (err) {
       window.location.assign("/food");
       console.log(err);
@@ -104,6 +109,7 @@ const FoodBar = () => {
   function handleSubmitRecipe(e) {
     e.preventDefault();
     fetchRecipe(foodItem);
+    setFoodItem("")
   }
 
   return (
@@ -135,13 +141,10 @@ const FoodBar = () => {
             </div>
           ) : foodSearch ? (
             <div>
-              <p>Here some information about a {foodItem}</p>
+              <p>Nutrition values per serving of {searchedTitle}:</p>
               <div>
                 <div className="foodbar-text">
-                  <h2> Amount of calories in the food item: {foodCalories}</h2>
-                  <h2>Here is some more info about nutrients for : </h2>
-
-                  <br />
+                  <h2> Calories: {foodCalories}</h2>
                   <h2> Sugars: {foodSugars} </h2>
                   <h2> Sodium: {foodSodium}</h2>
                   <h2> Fat: {foodFat}</h2>
