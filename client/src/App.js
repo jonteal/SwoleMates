@@ -20,6 +20,7 @@ import WrongPage from './components/WrongPage/WrongPage';
 import Sponsor from './components/Sponsor/Sponsor';
 import Success from './pages/Success';
 import Tracker from './components/Tracker/Tracker'
+import Exercise from './components/Tracker/Exercise'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -60,6 +61,7 @@ function App() {
                   <Route exact path='/exercise' component={Tracker} />
                   <Route exact path='/sponsor' component={Sponsor} />
                   <Route exact path='/success' component={Success} />
+                  <Route exact path='/logworkout' component={Exercise} />
                   <Route render={WrongPage} />
                 </Switch>
             </StoreProvider>
