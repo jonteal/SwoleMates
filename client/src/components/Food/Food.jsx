@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const FoodBar = () => {
   // Setting up states to later use fetched data;
-
+  const [error, setError] = useState("");
   const [foodCalories, setCalories] = useState("");
   const [foodSugars, setSugars] = useState("");
   const [foodProtein, setProtein] = useState("");
@@ -21,7 +21,16 @@ const FoodBar = () => {
     fetch(fetchFoodUrl)
       .then((res) => res.json())
       .then((data) => {
-        fetchNutrients(data.results[0].id);
+        if (!data.results[0]) {
+          setError(
+            "Please, check your spelling and enter an actual food item! "
+          );
+          console.log("enter  legit item pls");
+        } else {
+          console.log("else" + data.results[0].id);
+          setError("");
+          fetchNutrients(data.results[0].id);
+        }
       });
   };
 
@@ -46,7 +55,7 @@ const FoodBar = () => {
       setFoodSearch(foodItem);
       fetchFood(foodItem);
     } catch (err) {
-      window.location.assign('/food');
+      window.location.assign("/food");
       console.log(err);
     }
   };
@@ -65,8 +74,11 @@ const FoodBar = () => {
         <button onClick={(e) => handleSubmit(e)}>Find info </button>
         <br />
       </form>
-
-      {foodSearch ? (
+      {error ? (
+        <div>
+          <p>{error}</p>
+        </div>
+      ) : foodSearch ? (
         <div>
           <p>Here some information about a {foodItem}</p>
           <div>
