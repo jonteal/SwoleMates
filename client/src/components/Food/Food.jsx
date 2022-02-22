@@ -14,7 +14,6 @@ const FoodBar = () => {
   const [foodSearch, setFoodSearch] = useState("");
   const [searchedTitle, setSearchedTitle] = useState("");
 
-
   const [recipes, setRecipes] = useState("");
   const [recipeCalories, setRecipeCalories] = useState("");
   const [recipeCarbs, setRecipeCarbs] = useState("");
@@ -68,7 +67,7 @@ const FoodBar = () => {
     try {
       setFoodSearch(foodItem);
       fetchFood(foodItem);
-      setFoodItem("")
+      setFoodItem("");
     } catch (err) {
       window.location.assign("/food");
       console.log(err);
@@ -109,7 +108,7 @@ const FoodBar = () => {
   function handleSubmitRecipe(e) {
     e.preventDefault();
     fetchRecipe(foodItem);
-    setFoodItem("")
+    setFoodItem("");
   }
 
   return (
@@ -187,16 +186,18 @@ const FoodBar = () => {
             </div>
           ) : null}
           <br />
-         
+
           <div>
-          {recipeCalories ? <div> 
-            <p>Nutrition per serving:</p>
-            <br />
-            <p>Calories : {recipeCalories}</p>
-            <p>Fats : {recipeFats}</p>
-            <p>Carbs : {recipeCarbs}</p>
-            <p>Proteins : {recipeProteins}</p>
-            </div> : null}
+            {recipeCalories ? (
+              <div>
+                <p>Nutrition per serving:</p>
+                <br />
+                <p>Calories : {recipeCalories}</p>
+                <p>Fats : {recipeFats}</p>
+                <p>Carbs : {recipeCarbs}</p>
+                <p>Proteins : {recipeProteins}</p>
+              </div>
+            ) : null}
           </div>
         </div>
       ) : null}
