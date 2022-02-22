@@ -130,20 +130,17 @@ export const UPDATE_WEIGHT = gql`
   }
 `;
 
-export const ADD_FOLLOW = gql`
-  mutation addFollow($userData: ID!) {
-    addFollow(userData: $userData) {
+export const FOLLOW_UNFOLLOW = gql`
+  mutation followUnfollow($otherUserId: ID!) {
+    followUnfollow(otherUserId: $otherUserId) {
       _id
-      email
+      username
+      following {
+        _id
+      }
+      followers {
+        _id
+      }
     }
   }
-`
-
-export const REMOVE_FOLLOW = gql`
-  mutation removeFollow($userId: ID!) {
-    removeFollow(userId: $userId) {
-      _id
-      email
-    }
-  }
-`
+`;

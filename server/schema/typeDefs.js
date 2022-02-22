@@ -4,17 +4,13 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
+    firstName: String!
+    lastName: String!
     followerCount: Int
-    following: [Following]
-    followers: [Followers]
-  }
-
-  type Following {
-    _id: ID!
-  }
-
-  type Followers {
-    _id: ID!
+    weight: Float!
+    goal: String!
+    following: [User]
+    followers: [User]
   }
 
   type Exercise {
@@ -40,8 +36,9 @@ const typeDefs = gql`
   }
 
   type Query {
-    getUser: User
-    getMe: User
+    getUsers: [User]
+    getMe(_id: ID!): User
+    getSearchedUser(email: String): [User]
   }
 
   
@@ -92,8 +89,8 @@ type Mutation {
 
     allExercises: [Exercise]!
 
-    followUser(userData: ID!): User
-    unfollowUser(userId: ID!): User
+    followUnfollow(_id: ID!): User
+    
   }
 `;
 

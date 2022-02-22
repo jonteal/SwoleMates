@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './searchResults.css';
-import { ADD_FOLLOW } from '../../utils/mutations';
+import { FOLLOW_UNFOLLOW } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { addUserIds, getAddedUserIds} from '../../utils/localStorage';
@@ -18,7 +18,7 @@ const SearchResults = () => {
     const [addedUserIds, setAddedUserIds] = useState(getAddedUserIds());
 
     // create mutation to add a user to the user's values
-    const [addFollow, {error}] = useMutation(ADD_FOLLOW);
+    const [addFollow, {error}] = useMutation(FOLLOW_UNFOLLOW);
 
     // set up useEffect hook to save 'addedUsersIds' list to localStorage on component unmount
     useEffect(() => {

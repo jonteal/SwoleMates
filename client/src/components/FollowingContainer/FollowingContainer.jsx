@@ -2,7 +2,7 @@ import React from "react";
 import './followingContainer.css';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_WEIGHT } from '../../utils/queries';
-import { REMOVE_FOLLOW } from '../../utils/mutations';
+import { FOLLOW_UNFOLLOW } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 import { removeUserId, addUserId } from '../../utils/localStorage';
 
@@ -11,7 +11,7 @@ const FollowingContainer = () => {
     const { loading, data } = useQuery(GET_WEIGHT);
     const userData = data?.me || {};
 
-    const [unfollowUser, {error}] = useMutation(REMOVE_FOLLOW);
+    const [unfollowUser, {error}] = useMutation(FOLLOW_UNFOLLOW);
 
     const handleUnfollowUser = async (userId) => {
         const token = Auth.loggedIn() ? Auth.getToken() : null;

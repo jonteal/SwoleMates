@@ -2,7 +2,7 @@ import React from "react";
 import './followersContainer.css';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_WEIGHT } from "../../utils/queries";
-import { ADD_FOLLOW } from "../../utils/mutations";
+import { FOLLOW_UNFOLLOW } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import { addUserId, removeUserId } from '../../utils/localStorage';
 
@@ -11,7 +11,7 @@ const FollowersContainer = () => {
     const { loading, data } = useQuery(GET_WEIGHT);
     const userData = data?.me || {};
 
-    const [followUser, {error}] = useMutation(ADD_FOLLOW);
+    const [followUser, {error}] = useMutation(FOLLOW_UNFOLLOW);
 
     // Might want an event handler if we just want to select one of our followers
     // and navigate to their page

@@ -5,11 +5,12 @@ const {
 const { signToken } = require("../utils/auth");
 const { Error } = require("mongoose");
 const { User, Exercise, Workout } = require('../models');
+const Auth = require('../utils/auth');
 
 const resolvers = {
   Query: {
     // getUser query that returns a specific user on demand, e.g. firstName/lastName, or email, or id
-    getUser: async (parent, args) => {
+    getUsers: async (parent, args) => {
       try {
         const userData = await User.findOne(args).select(
           "-__v -password"
@@ -33,6 +34,15 @@ const resolvers = {
         }
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+
+    getSearchedUser: async (parent, { email }) => {
+      try {
+        const user = await User.find ({ email });
+        return user;
+      } catch (error) {
+        throw new Error(error);
+      }
     },
 
     
@@ -84,31 +94,73 @@ const resolvers = {
       throw new Error({ msg: "ID mismatch" });
     },
 
-    // ADD FOLLOW
-    followUser: async (parent, { userData }, context) => {
-      if (context.user) {
-        const addFollow = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { following: userData }},
-          { new: true }
-          );
-          return addFollow;
+
+    followUnfollow: async (_, { _id }, context) => {
+      try {
+        // const { _id } = Auth(context);
+        const otherUser = await User.findById(_id).populate(
+          "following followers"
+        );
+        const user = await User.findById(context.user._id).populate("following followers");
+        if (otherUser.followers.find((m) => m._id == user._id.toString())) {
+          
+          return await User.findByIdAndUpdate(
+            _id,
+            {
+              $pull: { followers: user._id },
+            },
+            { new: true },
+            (result) => {
+              User.findByIdAndUpdate(
+                user._id,
+                {
+                  $pull: { following: _id },
+                },
+                { new: true }
+              ).populate("following followers");
+            }
+          ).populate("following followers");
+        } else {          
+          otherUser.followers.push(context.user._id);
+          user.following.push(_id);
+          otherUser.save();
+          user.save();
+          return user, otherUser;
+        }
+      } catch (error) {
+        throw new Error(error);
       }
-      throw new AuthenticationError('You need to be logged in!');
     },
 
+
+
+
+
+    // ADD FOLLOW
+    // followUser: async (parent, { userData }, context) => {
+    //   if (context.user) {
+    //     const addFollow = await User.findByIdAndUpdate(
+    //       { _id: context.user._id },
+    //       { $push: { following: userData }},
+    //       { new: true }
+    //       );
+    //       return addFollow;
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
+
     // REMOVE FOLLOW
-    unfollowUser: async (parent, { userId }, context) => {
-      if (context.user) {
-        const removeFollow = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { following: { userId } } },
-          { new: true }
-        );
-        return removeFollow;
-      }
-      throw new AuthenticationError('You need to be logged in!');
-    },
+    // unfollowUser: async (parent, { userId }, context) => {
+    //   if (context.user) {
+    //     const removeFollow = await User.findOneAndUpdate(
+    //       { _id: context.user._id },
+    //       { $pull: { following: { userId } } },
+    //       { new: true }
+    //     );
+    //     return removeFollow;
+    //   }
+    //   throw new AuthenticationError('You need to be logged in!');
+    // },
     
 
 
