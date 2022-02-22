@@ -12,15 +12,9 @@ const exerciseData = [{ bgcolor: "#00695c", completed: 40 }];
 const exercise = 200;
 
 const Home = () => {
-    return (
+  return (
     <>
       <div className="homeContainer">
-        <div className="development shadow-2xl">
-          <PersonalDevelopment />
-        </div>
-        <div className="weight shadow-2xl">
-          <Weight />
-        </div>
         <div className="calories shadow-2xl">
           <div className="calories-title">
             Calories Consumed: <span>{data}/1500</span>
@@ -48,8 +42,17 @@ const Home = () => {
             ))}
           </div>
         </div>
+
+        <div className="weight shadow-2xl">
+          <Weight />
+        </div>
+
         <div className="quotation">
           <Quote />
+        </div>
+        
+        <div className="development shadow-2xl">
+          <PersonalDevelopment />
         </div>
       </div>
     </>

@@ -1,33 +1,34 @@
-.sponsorContainer{
-    background-color: #354152;
-    text-align: center;
-    color: #7e8ba3;  
+.sponsorContainer {
+  background-color: whitesmoke;
+  text-align: center;
+  color: #7e8ba3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .productImage {
-    height: 150px;
-    border: black 2px solid;
+  height: 150px;
+  width: 200px;
+  border: black 2px solid;
+}
+
+.productContainer img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .sponsorBtn {
-    background-image: linear-gradient(160deg, #096479 0%, #76D9F0 100%);
-    color: #fff;
-    width: 50%;
-    border-radius: 10px;
-    padding: 2px 5px;
-    opacity: .5;
-  }
+  background-image: linear-gradient(160deg, #096479 0%, #76d9f0 100%);
+  color: #fff;
+  width: 50%;
+  border-radius: 10px;
+  padding: 2px 5px;
+  opacity: 0.5;
+  margin-bottom: 10px;
+}
 
-  .sponsorBtn:hover {
-      opacity: 1;
-  }
-
-@media only screen and (max-width: 950px){
-    .productContainer {
-        display: flex;
-        flex-direction: column;
-        max-width:100vw;
-        align-items: center;
-        justify-content: center;
-    }
-    }
+.sponsorBtn:hover {
+  opacity: 1;
+}
