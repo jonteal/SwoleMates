@@ -7,6 +7,8 @@ import {
   ADD_STRETCHING,
 } from "../../utils/mutations";
 
+import './tracker.css'
+
 const Exercise = (props) => {
   const [type, setType] = useState("");
   const [durationInMinutes, setDurationInMinutes] = useState("");
@@ -31,36 +33,13 @@ const Exercise = (props) => {
     setType(event.target.value);
     setDate(currentDate);
     setID(ID);
-    console.log(date);
-    console.log(ID);
   }
 
   const handleSubmit = async (event) => {
-    console.log("handle");
-    console.log(date);
+
     event.preventDefault();
     if (type == "cardio") {
-      alert(
-        "Your exercise was submitted! \n" +
-          "\n " +
-          "Exercise type: " +
-          type +
-          ";" +
-          "\n " +
-          "\n " +
-          "Exercise duration: " +
-          durationInMinutes +
-          " minutes" +
-          "\n " +
-          "Distance of cardio: " +
-          cardioDistanceInMiles +
-          " miles" +
-          "\n " +
-          "\n " +
-          "Check calories burnt on your dashboard!"
-      );
       try {
-        console.log("try?");
         const { data } = await addCardio({
           // Execute mutation and pass in defined parameter data as variables
           variables: {
@@ -71,38 +50,13 @@ const Exercise = (props) => {
             date
           },
         });
-        console.log(data);
-        console.log("Data where are u bish");
+
       } catch (err) {
         console.error(err);
       }
     }
     if (type == "strength") {
-      alert(
-        "Your exercise was submitted! \n" +
-          "\n " +
-          "Exercise type: " +
-          type +
-          ";" +
-          "\n " +
-          "\n " +
-          "Repetitions for weighted exercises: " +
-          repetitions +
-          " reps" +
-          "\n " +
-          "Number of sets: " +
-          sets +
-          " sets" +
-          "\n " +
-          "Used weights: " +
-          weight +
-          " lbs" +
-          "\n " +
-          "\n " +
-          "Check out your dashboard!"
-      );
       try {
-        console.log("try?");
         const { data } = await addStrength({
           // Execute mutation and pass in defined parameter data as variables
           variables: {
@@ -115,31 +69,15 @@ const Exercise = (props) => {
             // date,
           },
         });
-        console.log(data);
-        console.log("Data where are u bish");
+
       } catch (err) {
         console.error(err);
       }
     }
 
     if (type == "stretching") {
-      alert(
-        "Your exercise was submitted! \n" +
-          "\n " +
-          "Exercise type: " +
-          type +
-          ";" +
-          "\n " +
-          "\n " +
-          "Exercise duration: " +
-          durationInMinutes +
-          "minutes" +
-          "\n " +
-          "\n " +
-          "Check out your dashboard!"
-      );
+
       try {
-        console.log("try?");
         const { data } = await addStretching({
           // Execute mutation and pass in defined parameter data as variables
           variables: {
@@ -151,8 +89,6 @@ const Exercise = (props) => {
             // date,
           },
         });
-        console.log(data);
-        console.log("Data where are u bish");
       } catch (err) {
         console.error(err);
       }
@@ -161,7 +97,9 @@ const Exercise = (props) => {
 
   return (
     <>
-      Please, enter your exercise details below!
+    <div className="logBg">
+    <div className="logContainer">
+      Log Workout Below:
       <form
         onSubmit={(e) => {
           handleSubmit(e);
@@ -171,7 +109,7 @@ const Exercise = (props) => {
         <select value={type} onChange={handleSelect}>
           <option value="empty"></option>
           <option value="cardio">Cardio</option>
-          <option value="strength">Strength training</option>
+          <option value="strength">Strength</option>
           <option value="stretching">Stretching</option>
         </select>
 
@@ -179,7 +117,7 @@ const Exercise = (props) => {
         <div>
           {type == "cardio" ? (
             <div>
-              <p>I am form cardio </p>
+              <p>Logging a cardio workout </p>
               <label>Exercise duration:</label>
               <input
                 type="number"
@@ -204,7 +142,7 @@ const Exercise = (props) => {
             </div>
           ) : type == "strength" ? (
             <div>
-              <p>I am form strength </p>
+              <p>Logging a strength workout </p>
               <label>Repetitions for weighted exercises:</label>
               <input
                 type="number"
@@ -239,7 +177,7 @@ const Exercise = (props) => {
             </div>
           ) : type == "stretching" ? (
             <div>
-              <p>I am form stretching </p>
+              <p>Logging a stretch session </p>
               <label>Exercise duration:</label>
               <input
                 type="number"
@@ -257,6 +195,8 @@ const Exercise = (props) => {
 
         <br />
       </form>
+      </div>
+      </div>
     </>
   );
 };
