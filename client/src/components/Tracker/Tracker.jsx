@@ -9,7 +9,7 @@ const Tracker = () => {
         <div className="trackerContainer">
             <DisplaySwole />
         </div>
-        <LogSwole />
+        {/* <LogSwole /> */}
         </>
 
     )

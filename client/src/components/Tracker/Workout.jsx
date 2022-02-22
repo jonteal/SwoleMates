@@ -5,9 +5,12 @@ import { useQuery } from "@apollo/client";
 import { QUERY_EXERCISES } from "../../utils/queries";
 import { ADD_WORKOUT } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
-import './tracker.css'
+import "./tracker.css";
+import Shoes from "../../media/shoes.jpg";
+import Yoga from "../../media/yoga.jpg";
+import Weights from "../../media/weights.jpg";
 
-import { Transition } from 'react-transition-group';
+import { Transition } from "react-transition-group";
 
 // import { GET_WORKOUT } from "../../utils/mutations";
 
@@ -47,48 +50,57 @@ const Workout = () => {
         <ul className="workoutContainer">
           {exercise.type === "cardio" && (
             <div key={exercise._id} className="cardioCard">
-              <p>Exercise type is: {exercise.type} </p>
-              <br></br>
-              <p>Duration: {exercise.durationInMinutes} minutes;</p>
-              <p>Distance: {exercise.cardioDistanceInMiles} miles;</p>
-              <p>
-                Calories burnt:{" "}
-                {(exercise.durationInMinutes * (13.5 * 3.5 * 70)) / 200} kcal;{" "}
-              </p>
-              <br></br>
+              <div className="cardLeft">
+                <img src={Shoes} alt="cardio" className="workoutImg" />
+              </div>
+              <div className="cardRight">
+                <p className="workoutTitle">Cardio Training</p>
+                <p>Duration: {exercise.durationInMinutes} minutes</p>
+                <p>Distance: {exercise.cardioDistanceInMiles} miles</p>
+                <p>
+                  Calories burnt:{" "}
+                  {(exercise.durationInMinutes * (13.5 * 3.5 * 70)) / 200} kcal{" "}
+                </p>
+              </div>
             </div>
           )}
 
           {exercise.type === "strength" && (
             <div key={exercise._id} className="strengthCard">
-              <p>Exercise type is: {exercise.type} </p>
-              <br></br>
-              <p>Repetitions made: {exercise.repetitions} reps;</p>
-              <p>Sets: {exercise.sets} sets;</p>
-              <p>Weight used: {exercise.weight} lbs;</p>
-
-              <br></br>
+              <div className="cardLeft">
+                <img src={Weights} alt="strength" className="workoutImg" />
+              </div>
+              <div className="cardRight">
+              <p className="workoutTitle">Strength Training</p>
+              <p>Total Reps: {exercise.repetitions} reps</p>
+              <p>Sets: {exercise.sets} sets</p>
+              <p>Weight used: {exercise.weight} lbs</p>
+            </div>
             </div>
           )}
 
           {exercise.type === "stretching" && (
             <div key={exercise._id} className="stretchCard">
-              <p>Exercise type is: {exercise.type} </p>
-              <br></br>
-              <p>Duration: {exercise.durationInMinutes} minutes;</p>
+              <div className="cardLeft">
+                <img src={Yoga} alt="stretch" className="workoutImg" />
+              </div>
+
+              <div className="cardRight">
+              <p className="workoutTitle">Stretching</p>
+              <p>Duration: {exercise.durationInMinutes} minutes</p>
               <p>
                 Calories burnt:{" "}
-                {(exercise.durationInMinutes * (3.5 * 3.5 * 70)) / 200} kcal;{" "}
+                {(exercise.durationInMinutes * (3.5 * 3.5 * 70)) / 200} kcal{" "}
               </p>
-              <br></br>
+            </div>
             </div>
           )}
         </ul>
       ))}
 
-      <button onClick={(e) => handleSubmit(e)}>
+      {/* <button onClick={(e) => handleSubmit(e)}>
         "Save and update workout on the dashboard"
-      </button>
+      </button> */}
     </div>
   );
 };

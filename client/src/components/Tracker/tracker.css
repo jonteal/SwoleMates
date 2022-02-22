@@ -7,28 +7,44 @@
 .workoutContainer{
     width: 60vw;
     height: auto;
-    /* background-color: blueviolet; */
     display: flex;
     justify-content: center;
 }
 
-.cardioCard{
-    background-color: lightblue;
+.cardioCard,
+.strengthCard,
+.stretchCard {
     width: 100%;
 	border-radius: 10px;
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-}
-.strengthCard{
-    background-color: lightslategray;
-    width: 100%;
-	border-radius: 10px;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-
-}
-.stretchCard{
-    background-color: lightgreen;
-    width: 100%;
-	border-radius: 10px;
-	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
 }
 
+.cardioCard:hover,
+.strengthCard:hover,
+.stretchCard:hover {
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.582);
+    cursor: pointer;
+}
+
+
+.workoutImg{
+    height: 150px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.cardLeft{
+    /* background-color: blue; */
+    flex: 1;
+}
+
+.cardRight{
+    flex: 3;
+    padding-left: 20px;
+}
+
+.workoutTitle{
+    font-size: 2rem;
+}
