@@ -102,3 +102,33 @@
     margin-left: 10px;
     margin-bottom: 10px;
 }
+
+.logBg {
+    background-color: white;
+    color:#7e8ba3;
+    width: 100vw;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logContainer{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.logTitle{
+    color: #7e8ba3;
+    font-size: 2.75rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+}
