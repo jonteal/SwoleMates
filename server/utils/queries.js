@@ -18,3 +18,18 @@ query getUser {
     }
 }
 `
+
+export const GET_ME = gql`
+query getMe ($id: ID!) {
+    getMe (_id: $id) {
+      _id
+      email
+      firstName
+      lastName
+      followerCount
+      goal
+      following
+      followers
+  }
+}
+`

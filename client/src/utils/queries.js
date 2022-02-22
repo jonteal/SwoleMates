@@ -94,3 +94,29 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const GET_SEARCHED_USER = gql`
+query getSearchedUser ($email: String!) {
+    getSearchedUser (email: $email) {
+        _id
+        email
+    	  firstName
+    	  lastName
+  }
+}
+`
+
+export const GET_ME = gql`
+query getMe ($id: ID!) {
+    getMe (_id: $id) {
+      _id
+      email
+      firstName
+      lastName
+      followerCount
+      goal
+      following
+      followers
+  }
+}
+`

@@ -1,6 +1,6 @@
 import React from "react";
 import './mates.css';
-import PersonalProfile from "../PersonalProfile/personalProfile";
+import PersonalProfile from "../PersonalProfile/PersonalProfile";
 import FollowersContainer from "../FollowersContainer/FollowersContainer";
 import FollowingContainer from "../FollowingContainer/FollowingContainer";
 import 'semantic-ui-css/semantic.min.css';
