@@ -147,6 +147,7 @@ const Exercise = (props) => {
                     value={durationInMinutes}
                     placeholder="Duration in minutes"
                     onChange={(e) => setDurationInMinutes(e.target.value)}
+                    required
                   />
                   <br />
                   <input
@@ -157,6 +158,7 @@ const Exercise = (props) => {
                     value={cardioDistanceInMiles}
                     placeholder="Total distance in miles"
                     onChange={(e) => setCardioDistanceInMiles(e.target.value)}
+                    required
                   />
                   <br />
 
@@ -177,6 +179,7 @@ const Exercise = (props) => {
                     value={repetitions}
                     placeholder="Total Reps"
                     onChange={(e) => setRepetitions(e.target.value)}
+                    required
                   />
                   <br />
 
@@ -188,6 +191,7 @@ const Exercise = (props) => {
                     value={sets}
                     placeholder="Total Sets"
                     onChange={(e) => setSets(e.target.value)}
+                    required
                   />
 
                   <br />
@@ -199,6 +203,7 @@ const Exercise = (props) => {
                     value={weight}
                     placeholder="Weights in pounds"
                     onChange={(e) => setWeight(e.target.value)}
+                    required
                   />
                   <br />
                   <input className="logWorkoutBtn" type="submit" value="Save" />
@@ -213,6 +218,7 @@ const Exercise = (props) => {
                     value={durationInMinutes}
                     placeholder="Duration in minutes"
                     onChange={(e) => setDurationInMinutes(e.target.value)}
+                    required
                   />
                   <br />
                   <input className="logWorkoutBtn" type="submit" value="Save" />
