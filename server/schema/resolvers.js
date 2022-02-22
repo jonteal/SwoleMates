@@ -89,7 +89,6 @@ const resolvers = {
         const product = await stripe.products.create({
           name: products[i].name,
           description: products[i].description,
-          images: [`${url}/images/MegaHeartLogo.png`],
         });
 
         const price = await stripe.prices.create({
