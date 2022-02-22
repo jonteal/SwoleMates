@@ -119,12 +119,11 @@ export const ADD_PROFILE = gql`
 `;
 
 export const UPDATE_WEIGHT = gql`
-  mutation updateWeight($weightData: Float!) {
-    updateWeight(weightData: $weightData) {
+  mutation updateWeight($weight: Float!) {
+    updateWeight(weight: $weight) {
       _id
-      username
       email
-      savedWeight
+      weight
     }
   }
 `;

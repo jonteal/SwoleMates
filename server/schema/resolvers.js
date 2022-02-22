@@ -157,8 +157,7 @@ const resolvers = {
       { id, type, durationInMinutes, cardioDistanceInMiles, date }
     ) => {
       console.log(
-        `hello, these are args for cardio : ${
-          (id, type, durationInMinutes, cardioDistanceInMiles, date)
+        `hello, these are args for cardio : ${(id, type, durationInMinutes, cardioDistanceInMiles, date)
         }`
       );
       const cardio = await Exercise.create({
@@ -175,8 +174,7 @@ const resolvers = {
       { id, type, repetitions, sets, weight, date }
     ) => {
       console.log(
-        `hello, these are args for strength: ${
-          (id, type, repetitions, sets, weight, date)
+        `hello, these are args for strength: ${(id, type, repetitions, sets, weight, date)
         }`
       );
       const strength = await Exercise.create({
@@ -219,28 +217,29 @@ const resolvers = {
       //     const workout = await Workout.create({ id, date, routine });
       //   return workout
       //   }
-      const workout = await Workout.findOne({date: dateCheck});
-      if(workout){
+      const workout = await Workout.findOne({ date: dateCheck });
+      if (workout) {
         console.log("If")
-        const updatedWorkout = await Workout.findOneAndUpdate({date}, {
-                $addToSet: {routine}},
-                {new: true}
-              )
-              return updatedWorkout 
+        const updatedWorkout = await Workout.findOneAndUpdate({ date }, {
+          $addToSet: { routine }
+        },
+          { new: true }
+        )
+        return updatedWorkout
       }
       else {
         console.log("else")
-        const newWorkout = await Workout.create({ id, date, routine }); 
+        const newWorkout = await Workout.create({ id, date, routine });
         return newWorkout;
       }
 
     },
 
-    updateWeight: async (parent, { weightData }, context) => {
+    updateWeight: async (parent, { weight }, context) => {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { savedWeight: weightData } },
+          { weight: weight },
           { new: true }
         );
         return updatedUser;
