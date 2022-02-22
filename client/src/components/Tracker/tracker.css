@@ -124,3 +124,11 @@
     text-align: center;
     padding: 4rem 2rem;
 }
+
+.logTitle{
+    color: #7e8ba3;
+    font-size: 2.75rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+}

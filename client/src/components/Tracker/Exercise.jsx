@@ -99,15 +99,35 @@ const Exercise = (props) => {
     <>
     <div className="logBg">
     <div className="logContainer">
-      Log Workout Below:
+      <h2  className="logTitle">Log Workout:</h2>
+      <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="site__logo"
+            width="56"
+            height="84"
+            viewBox="77.7 214.9 274.7 412"
+          >
+            <defs>
+              <linearGradient id="a" x1="0%" y1="0%" y2="0%">
+                <stop offset="0%" stopColor="#76D9F0" />
+                <stop offset="100%" stopColor="#096479" />
+              </linearGradient>
+            </defs>
+            <path
+              fill="url(#a)"
+              d="M215 214.9c-83.6 123.5-137.3 200.8-137.3 275.9 0 75.2 61.4 136.1 137.3 136.1s137.3-60.9 137.3-136.1c0-75.1-53.7-152.4-137.3-275.9z"
+            />
+          </svg>
+
       <form
         onSubmit={(e) => {
           handleSubmit(e);
         }}
       >
-        <label>Select workout type:</label>
         <select value={type} onChange={handleSelect}>
-          <option value="empty"></option>
+        <option selected value="" disabled selected>
+                Workout Type:
+              </option>
           <option value="cardio">Cardio</option>
           <option value="strength">Strength</option>
           <option value="stretching">Stretching</option>
@@ -117,76 +137,72 @@ const Exercise = (props) => {
         <div>
           {type == "cardio" ? (
             <div>
-              <p>Logging a cardio workout </p>
-              <label>Exercise duration:</label>
               <input
                 type="number"
                 min="0"
                 name="durationInMinutes"
                 value={durationInMinutes}
+                placeholder="Duration in minutes"
                 onChange={(e) => setDurationInMinutes(e.target.value)}
               />
-              minutes;
               <br />
-              <label>Distance of cardio:</label>
               <input
                 type="number"
                 min="0"
                 name="cardioDistanceInMiles"
                 value={cardioDistanceInMiles}
+                placeholder="Total distance in miles"
+
                 onChange={(e) => setCardioDistanceInMiles(e.target.value)}
               />
-              miles;
               <br />
               <input type="submit" value="Save" />
             </div>
           ) : type == "strength" ? (
             <div>
-              <p>Logging a strength workout </p>
-              <label>Repetitions for weighted exercises:</label>
               <input
                 type="number"
                 min="0"
                 name="repetitions"
                 value={repetitions}
+                placeholder="Total Reps"
                 onChange={(e) => setRepetitions(e.target.value)}
               />
-              reps;
               <br />
-              <label>Number of sets:</label>
+
               <input
                 type="number"
                 min="0"
                 name="sets"
                 value={sets}
+                placeholder="Total Sets"
+
                 onChange={(e) => setSets(e.target.value)}
               />
-              sets;
+
               <br />
-              <label>Used weights:</label>
               <input
                 type="number"
                 min="0"
                 name="weight"
                 value={weight}
+                placeholder="Weights in pounds"
+
                 onChange={(e) => setWeight(e.target.value)}
               />
-              lbs;
               <br />
               <input type="submit" value="Save" />
             </div>
           ) : type == "stretching" ? (
             <div>
-              <p>Logging a stretch session </p>
-              <label>Exercise duration:</label>
               <input
                 type="number"
                 min="0"
                 name="durationInMinutes"
                 value={durationInMinutes}
+                placeholder="Duration in minutes"
                 onChange={(e) => setDurationInMinutes(e.target.value)}
               />
-              minutes;
               <br />
               <input type="submit" value="Save" />
             </div>
