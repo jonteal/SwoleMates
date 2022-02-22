@@ -125,7 +125,7 @@ const Exercise = (props) => {
         }}
       >
         <select value={type} onChange={handleSelect}>
-        <option selected value="" disabled selected>
+        <option selected value="" disabled selected >
                 Workout Type:
               </option>
           <option value="cardio">Cardio</option>
@@ -138,6 +138,7 @@ const Exercise = (props) => {
           {type == "cardio" ? (
             <div>
               <input
+                className="border-black m-0"
                 type="number"
                 min="0"
                 name="durationInMinutes"
