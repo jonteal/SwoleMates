@@ -55,6 +55,7 @@ const Workout = () => {
               </div>
               <div className="cardRight">
                 <p className="workoutTitle">Cardio Training</p>
+                <p>Date logged: {exercise.date}</p>
                 <p>Duration: {exercise.durationInMinutes} minutes</p>
                 <p>Distance: {exercise.cardioDistanceInMiles} miles</p>
                 <p>
@@ -72,6 +73,7 @@ const Workout = () => {
               </div>
               <div className="cardRight">
               <p className="workoutTitle">Strength Training</p>
+              <p>Date logged: {exercise.date}</p>
               <p>Total Reps: {exercise.repetitions} reps</p>
               <p>Sets: {exercise.sets} sets</p>
               <p>Weight used: {exercise.weight} lbs</p>
@@ -87,6 +89,7 @@ const Workout = () => {
 
               <div className="cardRight">
               <p className="workoutTitle">Stretching</p>
+              <p>Date logged: {exercise.date}</p>
               <p>Duration: {exercise.durationInMinutes} minutes</p>
               <p>
                 Calories burnt:{" "}
