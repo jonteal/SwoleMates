@@ -12,8 +12,6 @@ import MealPlanner from './components/MealPlanner/MealPlanner.jsx';
 import Profile from './components/Profile/Profile';
 import Foodbar from './components/Food/Food';
 import Quote from './components/Quote/Quote';
-import Exercise from './components/Tracker/Exercise';
-import Workout from './components/Tracker/Workout';
 import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
 import SignupForm from './components/SignupForm/SignupForm';
 import LoginForm from './components/LoginForm/LoginForm';
@@ -21,6 +19,7 @@ import Welcome from './components/Welcome/Welcome';
 import WrongPage from './components/WrongPage/WrongPage';
 import Sponsor from './components/Sponsor/Sponsor';
 import Success from './pages/Success';
+import Tracker from './components/Tracker/Tracker'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -58,9 +57,8 @@ function App() {
                   <Route exact path='/personaldevelopment' component={PersonalDevelopment} />
                   <Route exact path='/food' component={Foodbar} />
                   <Route exact path='/mealplan' component={MealPlanner} />
-                  <Route exact path='/exercise' component={Exercise} />
+                  <Route exact path='/exercise' component={Tracker} />
                   <Route exact path='/sponsor' component={Sponsor} />
-                  <Route exact path='/workout' component={Workout} />
                   <Route exact path='/success' component={Success} />
                   <Route render={WrongPage} />
                 </Switch>

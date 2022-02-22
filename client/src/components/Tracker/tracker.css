@@ -1,0 +1,34 @@
+.trackerContainer{
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+}
+
+.workoutContainer{
+    width: 60vw;
+    height: auto;
+    /* background-color: blueviolet; */
+    display: flex;
+    justify-content: center;
+}
+
+.cardioCard{
+    background-color: lightblue;
+    width: 100%;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+.strengthCard{
+    background-color: lightslategray;
+    width: 100%;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+
+}
+.stretchCard{
+    background-color: lightgreen;
+    width: 100%;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
