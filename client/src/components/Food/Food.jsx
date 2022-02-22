@@ -8,6 +8,7 @@ const FoodBar = () => {
   const [foodProtein, setProtein] = useState("");
   const [foodFat, setFat] = useState("");
   const [foodSodium, setSodium] = useState("");
+  const [type, setType] = useState("");
 
   const [foodItem, setFoodItem] = useState("");
   const [foodSearch, setFoodSearch] = useState("");
@@ -49,6 +50,10 @@ const FoodBar = () => {
       });
   };
 
+  function handleSelect(event) {
+    setType(event.target.value);
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -61,41 +66,91 @@ const FoodBar = () => {
   };
 
   return (
-    <div className="foodItem">
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <label>Type a food item to search for nutrition information </label>
-        <input
-          type="text"
-          name="foodItem"
-          value={foodItem}
-          onChange={(e) => setFoodItem(e.target.value)}
-        />
-        <br />
-        <button onClick={(e) => handleSubmit(e)}>Find info </button>
-        <br />
-      </form>
-      {error ? (
-        <div>
-          <p>{error}</p>
-        </div>
-      ) : foodSearch ? (
-        <div>
-          <p>Here some information about a {foodItem}</p>
-          <div>
-            <div className="foodbar-text">
-              <h2> We have that many cal: {foodCalories}</h2>
-              <h2>Here is some more info about nutrients for : </h2>
+    <form
+      onSubmit={(e) => {
+        handleSubmit(e);
+      }}
+    >
+      <label>Select search option</label>
+      <select value={type} onChange={handleSelect}>
+        <option value="empty"></option>
+        <option value="single">Single Item</option>
+        <option value="recipe">Recipe</option>
+      </select>
 
-              <br />
-              <h2> Sugars: {foodSugars} </h2>
-              <h2> Sodium: {foodSodium}</h2>
-              <h2> Fat: {foodFat}</h2>
-              <h2> Protein: {foodProtein} </h2>
+      <br />
+      {type == "single" ? (
+        <div className="foodItem">
+          <label>Type a food item to search for nutrition information </label>
+          <input
+            type="text"
+            name="foodItem"
+            value={foodItem}
+            onChange={(e) => setFoodItem(e.target.value)}
+          />
+          <br />
+          <button onClick={(e) => handleSubmit(e)}>Find info </button>
+          <br />
+
+          {error ? (
+            <div>
+              <p>{error}</p>
             </div>
-          </div>
+          ) : foodSearch ? (
+            <div>
+              <p>Here some information about a {foodItem}</p>
+              <div>
+                <div className="foodbar-text">
+                  <h2> Amount of calories in the food item: {foodCalories}</h2>
+                  <h2>Here is some more info about nutrients for : </h2>
+
+                  <br />
+                  <h2> Sugars: {foodSugars} </h2>
+                  <h2> Sodium: {foodSodium}</h2>
+                  <h2> Fat: {foodFat}</h2>
+                  <h2> Protein: {foodProtein} </h2>
+                </div>
+              </div>
+            </div>
+          ) : null}
+        </div>
+      ) : type == "recipe" ? (
+        <div className="foodItem">
+          <label>Type a food item to search for nutrition information </label>
+          <input
+            type="text"
+            name="foodItem"
+            value={foodItem}
+            onChange={(e) => setFoodItem(e.target.value)}
+          />
+          <br />
+          <button onClick={(e) => handleSubmit(e)}>Find info </button>
+          <br />
+
+          {error ? (
+            <div>
+              <p>{error}</p>
+            </div>
+          ) : foodSearch ? (
+            <div>
+              <p>Here some information about a {foodItem}</p>
+              <div>
+                <div className="foodbar-text">
+                  <h2> Amount of calories in the food item: {foodCalories}</h2>
+                  <h2>Here is some more info about nutrients for : </h2>
+
+                  <br />
+                  <h2> Sugars: {foodSugars} </h2>
+                  <h2> Sodium: {foodSodium}</h2>
+                  <h2> Fat: {foodFat}</h2>
+                  <h2> Protein: {foodProtein} </h2>
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
       ) : null}
-    </div>
+    </form>
   );
 };
 
