@@ -5,14 +5,22 @@ import { useQuery } from "@apollo/client";
 import { QUERY_EXERCISES } from "../../utils/queries";
 import { ADD_WORKOUT } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
+import "./tracker.css";
+import Shoes from "../../media/shoes.jpg";
+import Yoga from "../../media/yoga.jpg";
+import Weights from "../../media/weights.jpg";
+
+import { Transition } from "react-transition-group";
 
 // import { GET_WORKOUT } from "../../utils/mutations";
 
 const Workout = () => {
+
   // date to find exercises to display;
   // import all exercises here (for the day)
   // useQuery to pull the data;
   // calculate calories
+
   const { loading, data } = useQuery(QUERY_EXERCISES);
   const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
 
@@ -37,7 +45,6 @@ const Workout = () => {
   const handleSubmit = async (event) => {
     const calories = allExercises.map((exercise) => exercise.caloriesBurnt);
     const totalCalories = Math.round(calories.reduce((a, b) => a + b, 0));
-
     event.preventDefault();
     try {
       console.log(caloriesBurnt);
@@ -61,52 +68,59 @@ const Workout = () => {
 
   return (
     <div>
-      <p> Hello! </p>
-      <br></br>
       {allExercises.map((exercise) => (
-        <ul>
+        <ul className="workoutContainer">
           {exercise.type === "cardio" && (
-            <div key={exercise._id}>
-              <p>Exercise type is: {exercise.type} </p>
-              <br></br>
-              <p>Duration: {exercise.durationInMinutes} minutes;</p>
-              <p>Distance: {exercise.cardioDistanceInMiles} miles;</p>
-              <p>Calories burnt: {exercise.caloriesBurnt} kcal; </p>
-              <br></br>
+            <div key={exercise._id} className="cardioCard">
+              <div className="cardLeft">
+                <img src={Shoes} alt="cardio" className="workoutImg" />
+              </div>
+              <div className="cardRight">
+                <p className="workoutTitle">Cardio Training</p>
+                <p>Date logged: {exercise.date}</p>
+                <p>Duration: {exercise.durationInMinutes} minutes</p>
+                <p>Distance: {exercise.cardioDistanceInMiles} miles</p>
+                <p>Calories burnt: {exercise.caloriesBurnt} kcal </p>
+              </div>
             </div>
           )}
 
           {exercise.type === "strength" && (
-            <div key={exercise._id}>
-              <p>Exercise type is: {exercise.type} </p>
-              <br></br>
-              <p>Repetitions made: {exercise.repetitions} reps;</p>
-              <p>Sets: {exercise.sets} sets;</p>
-              <p>Weight used: {exercise.weight} lbs;</p>
-
-              <br></br>
+            <div key={exercise._id} className="strengthCard">
+              <div className="cardLeft">
+                <img src={Weights} alt="strength" className="workoutImg" />
+              </div>
+              <div className="cardRight">
+              <p className="workoutTitle">Strength Training</p>
+              <p>Date logged: {exercise.date}</p>
+              <p>Total Reps: {exercise.repetitions} reps</p>
+              <p>Sets: {exercise.sets} sets</p>
+              <p>Weight used: {exercise.weight} lbs</p>
+            </div>
             </div>
           )}
 
           {exercise.type === "stretching" && (
-            <div key={exercise._id}>
-              <p>Exercise type is: {exercise.type} </p>
-              <br></br>
-              <p>Duration: {exercise.durationInMinutes} minutes;</p>
-              <p>Calories burnt: {exercise.caloriesBurnt} kcal; </p>
-              <br></br>
+
+            <div key={exercise._id} className="stretchCard">
+              <div className="cardLeft">
+                <img src={Yoga} alt="stretch" className="workoutImg" />
+              </div>
+
+              <div className="cardRight">
+              <p className="workoutTitle">Stretching</p>
+              <p>Date logged: {exercise.date}</p>
+              <p>Duration: {exercise.durationInMinutes} minutes</p>
+              <p>Calories burnt: {exercise.caloriesBurnt} kcal </p>
+            </div>
             </div>
           )}
         </ul>
       ))}
 
-      <button
-        onClick={(e) => {
-          handleSubmit(e);
-        }}
-      >
+      {/* <button onClick={(e) => handleSubmit(e)}>
         "Save and update workout on the dashboard"
-      </button>
+      </button> */}
     </div>
   );
 };
