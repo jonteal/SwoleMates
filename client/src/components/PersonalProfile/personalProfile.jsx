@@ -4,6 +4,8 @@ import './personalProfile.css';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from "../../utils/queries";
 import auth from "../../utils/auth";
+
+// Personal Profile component - Displays user's profile
 const PersonalProfile = () => {
 
     const { loading, data } = useQuery(GET_ME, {
