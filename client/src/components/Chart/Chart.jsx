@@ -9,7 +9,7 @@ const BarChart = () => {
   const [chart, setChart] = useState("");
   const [button, setButton] = useState("Generate Chart");
 
-  const [workoutDates, setWorkoutDates] = useState({ });
+  const [workoutDates, setWorkoutDates] = useState("");
 
   const {loading, data} =  useQuery(QUERY_WORKOUTS);
 
@@ -23,13 +23,15 @@ const BarChart = () => {
 //    const dates = data.allWorkouts.map();
 
     const allWorkouts = data?.allWorkouts[0].date 
-
+    const dateCheck = new Date().toISOString().split("T")[0];
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!chart) {
       setChart("Ready");
       setButton("Close Chart");
-      console.log(data.allWorkouts)
+      setWorkoutDates(data.allWorkouts[0].date)
+      console.log(data.allWorkouts[0].date)
+      
     } else {
       setChart("");
       setButton("Generate Chart");
@@ -46,7 +48,7 @@ const BarChart = () => {
         <Bar
           data={{
             //   label => maped dates;
-            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            labels: [workoutDates, "Blue", "Yellow", "Green", "Purple", "Orange"],
             datasets: [
               {
                 label: "# of Votes",
