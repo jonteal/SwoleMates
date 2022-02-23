@@ -30,6 +30,11 @@ const resolvers = {
       return Exercise.find();
     },
 
+    allWorkouts: async () => {
+      return Workout.find();
+    },
+    
+
     //stripe queries
     categories: async () => {
       return await Category.find();
@@ -153,19 +158,15 @@ const resolvers = {
 
     addCardio: async (
       parent,
-      { id, type, durationInMinutes, cardioDistanceInMiles, date }
+      { id, type, durationInMinutes, cardioDistanceInMiles, date, caloriesBurnt }
     ) => {
-      console.log(
-        `hello, these are args for cardio : ${
-          (id, type, durationInMinutes, cardioDistanceInMiles, date)
-        }`
-      );
       const cardio = await Exercise.create({
         id,
         type,
         durationInMinutes,
         cardioDistanceInMiles,
         date,
+        caloriesBurnt
       });
       return cardio;
     },
@@ -173,11 +174,7 @@ const resolvers = {
       parent,
       { id, type, repetitions, sets, weight, date }
     ) => {
-      console.log(
-        `hello, these are args for strength: ${
-          (id, type, repetitions, sets, weight, date)
-        }`
-      );
+     
       const strength = await Exercise.create({
         id,
         type,
@@ -188,58 +185,43 @@ const resolvers = {
       });
       return strength;
     },
-    addStretching: async (parent, { id, type, durationInMinutes, date }) => {
-      console.log(
-        `hello, these are args for stretching: ${(id, type, durationInMinutes)}`
-      );
+    addStretching: async (parent, { id, type, durationInMinutes, date, caloriesBurnt }) => {
+
       const stretching = await Exercise.create({
         id,
         type,
         durationInMinutes,
         date,
+        caloriesBurnt
       });
       return stretching;
     },
 
-    addWorkout: async (parent, { id, date, routine }, context) => {
-      //   if(Workout.date === dateCheck){
-      //     console.log("If")
-      //     console.log(Workout.date);
-      //     console.log(dateCheck);
-      //     const workout = await Workout.findOneAndUpdate({date}, {
-      //       $push: {routine}},
-      //       {returnOriginal: false}
-      //     )
-      // }
-      //   else{
-      //     console.log("else")
-      //     console.log(parent);
-      //     console.log(dateCheck);
-      //     const workout = await Workout.create({ id, date, routine });
-      //   return workout
-      //   }
-      const workout = await Workout.findOne({date: dateCheck});
-      if(workout){
-        console.log("If")
+    addWorkout: async (parent, { id, date, routine, caloriesBurnt }, context) => {
+
+      const workout = await Workout.findOne({ date: dateCheck });
+      if (workout) {
         const updatedWorkout = await Workout.findOneAndUpdate({date}, {
-                $addToSet: {routine}},
-                {new: true}
+                $addToSet: {routine},
+                $set: {caloriesBurnt}},
+                {new: true},
+                
               )
               return updatedWorkout 
       }
       else {
-        console.log("else")
-        const newWorkout = await Workout.create({ id, date, routine }); 
+        const newWorkout = await Workout.create({ id, date, routine, caloriesBurnt }); 
+
         return newWorkout;
       }
 
     },
 
-    updateWeight: async (parent, { weightData }, context) => {
+    updateWeight: async (parent, { weight }, context) => {
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { savedWeight: weightData } },
+          { weight: weight },
           { new: true }
         );
         return updatedUser;
@@ -253,7 +235,7 @@ const resolvers = {
     //new mutations start here
     //stripe mutations
     addOrder: async (parent, { products }, context) => {
-      console.log(context);
+      
       if (context.user) {
         const order = new Order({ products });
 
