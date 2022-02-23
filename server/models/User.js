@@ -45,13 +45,12 @@ const UserSchema = new Schema({
   goal: {
     type: String
   },
-
-  // workouts: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Workout",
-  //   },
-  // ],
+  workouts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Workout",
+    },
+  ],
   orders: [Order.schema]
 });
 
