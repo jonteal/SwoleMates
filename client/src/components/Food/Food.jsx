@@ -220,7 +220,7 @@ const FoodBar = () => {
             ) : null}
             <br />
 
-            {/* <div>
+            <div>
               {recipeCalories ? (
                 <div>
                   <p>Nutrition per serving:</p>
@@ -234,7 +234,7 @@ const FoodBar = () => {
                   <a href = {recipeUrl} target="_blank">Get recipe!</a>
                 </div>
               ) : null}
-            </div> */}
+            </div>
           </div>
         ) : null}
       </div>
