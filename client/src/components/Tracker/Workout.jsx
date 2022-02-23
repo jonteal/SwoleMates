@@ -26,7 +26,7 @@ const Workout = () => {
 
     useEffect(()=>{
       setCaloriesBurnt(Math.round((allExercises.map((exercise) => exercise.caloriesBurnt)).reduce((a, b) => a + b, 0))) 
-      console.log(caloriesBurnt)
+      
     }, )
  
 
@@ -40,10 +40,8 @@ const Workout = () => {
     
     event.preventDefault();
     try {
-      
-      console.log(Math.round((allExercises.map((exercise) => exercise.caloriesBurnt)).reduce((a, b) => a + b, 0)))
-      
       console.log(caloriesBurnt)
+     
       const { data } = await addWorkout({
         // Execute mutation and pass in defined parameter data as variables
         variables: {

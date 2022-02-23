@@ -226,8 +226,10 @@ const resolvers = {
       if(workout){
         console.log("If")
         const updatedWorkout = await Workout.findOneAndUpdate({date}, {
-                $addToSet: {routine}},
-                {new: true}
+                $addToSet: {routine},
+                $set: {caloriesBurnt}},
+                {new: true},
+                
               )
               return updatedWorkout 
       }

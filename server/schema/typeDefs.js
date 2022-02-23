@@ -108,7 +108,12 @@ const typeDefs = gql`
       caloriesBurnt: Float!
     ): Exercise
 
-    addWorkout(id: Int!, date: String!, routine: [ID!], caloriesBurnt: Float): Workout
+    addWorkout(
+      id: Int!
+      date: String!
+      routine: [ID!]
+      caloriesBurnt: Float
+      ): Workout
 
     updateWeight(weight: Float!): User
 
