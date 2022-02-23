@@ -22,6 +22,9 @@ import WrongPage from './components/WrongPage/WrongPage';
 import Sponsor from './components/Sponsor/Sponsor';
 import Success from './pages/Success';
 
+
+import BarChart from './components/Chart/Chart';
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -62,6 +65,9 @@ function App() {
                   <Route exact path='/sponsor' component={Sponsor} />
                   <Route exact path='/workout' component={Workout} />
                   <Route exact path='/success' component={Success} />
+
+                  <Route exact path='/test' component={BarChart} />
+
                   <Route render={WrongPage} />
                 </Switch>
             </StoreProvider>
