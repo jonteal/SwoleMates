@@ -32,6 +32,7 @@ const typeDefs = gql`
   type Query {
     getUser: User
     allExercises: [Exercise]!
+    allWorkouts: [Workout]!
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
     categories: [Category]

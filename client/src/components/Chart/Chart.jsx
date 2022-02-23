@@ -2,16 +2,34 @@ import React, { useState, useEffect } from "react";
 import Chart from "chart.js/auto";
 // press control+space in an empty {} import to see options;
 import { Bar } from "react-chartjs-2";
+import { useQuery } from "@apollo/client";
+import { QUERY_WORKOUTS } from "../../utils/queries";
 
 const BarChart = () => {
   const [chart, setChart] = useState("");
   const [button, setButton] = useState("Generate Chart");
+
+  const [workoutDates, setWorkoutDates] = useState({ });
+
+  const {loading, data} =  useQuery(QUERY_WORKOUTS);
+
+
+//   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
+  
+//   const allWorkouts =
+//   data?.allWorkouts.filter((workout) => workout.date === date) || [];
+
+
+//    const dates = data.allWorkouts.map();
+
+    const allWorkouts = data?.allWorkouts[0].date 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!chart) {
       setChart("Ready");
       setButton("Close Chart");
+      console.log(data.allWorkouts)
     } else {
       setChart("");
       setButton("Generate Chart");

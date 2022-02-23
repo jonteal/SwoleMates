@@ -30,6 +30,11 @@ const resolvers = {
       return Exercise.find();
     },
 
+    allWorkouts: async () => {
+      return Workout.find();
+    },
+    
+
     //stripe queries
     categories: async () => {
       return await Category.find();
