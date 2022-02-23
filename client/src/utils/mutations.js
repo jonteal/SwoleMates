@@ -28,11 +28,13 @@ mutation addWorkout(
   $id: Int!
   $date: String!
   $routine: [ID!]
+  $caloriesBurnt: Float
 ) {
   addWorkout(
     id: $id
     date: $date
     routine: $routine
+    caloriesBurnt: $caloriesBurnt
   ) {
     date
   }

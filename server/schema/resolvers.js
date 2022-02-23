@@ -205,7 +205,7 @@ const resolvers = {
       return stretching;
     },
 
-    addWorkout: async (parent, { id, date, routine }, context) => {
+    addWorkout: async (parent, { id, date, routine, caloriesBurnt }, context) => {
       //   if(Workout.date === dateCheck){
       //     console.log("If")
       //     console.log(Workout.date);
@@ -233,7 +233,7 @@ const resolvers = {
       }
       else {
         console.log("else")
-        const newWorkout = await Workout.create({ id, date, routine }); 
+        const newWorkout = await Workout.create({ id, date, routine, caloriesBurnt }); 
         return newWorkout;
       }
 
