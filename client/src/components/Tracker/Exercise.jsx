@@ -19,6 +19,7 @@ const Exercise = (props) => {
   const [weight, setWeight] = useState("");
   const [date, setDate] = useState("");
   const [id, setID] = useState("");
+  const [caloriesBurnt, setCaloriesBurnt] = useState("");
 
   // Current date:
   var currentDate = new Date().toISOString().split("T")[0];
@@ -38,6 +39,8 @@ const Exercise = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log(caloriesBurnt);
+
     if (type == "cardio") {
       try {
         const { data } = await addCardio({
@@ -48,6 +51,7 @@ const Exercise = (props) => {
             durationInMinutes,
             cardioDistanceInMiles,
             date,
+            caloriesBurnt,
           },
         });
       } catch (err) {
@@ -65,7 +69,6 @@ const Exercise = (props) => {
             sets,
             weight,
             date,
-            // date,
           },
         });
       } catch (err) {
@@ -82,8 +85,7 @@ const Exercise = (props) => {
             type,
             durationInMinutes,
             date,
-
-            // date,
+            caloriesBurnt
           },
         });
       } catch (err) {
@@ -146,7 +148,10 @@ const Exercise = (props) => {
                     name="durationInMinutes"
                     value={durationInMinutes}
                     placeholder="Duration in minutes"
-                    onChange={(e) => setDurationInMinutes(e.target.value)}
+                onChange={(e) => {
+                  setDurationInMinutes(e.target.value);
+                  setCaloriesBurnt((e.target.value * (13.5 * 3.5 * 70)) / 200);
+                }}
                     required
                   />
                   <br />
@@ -217,13 +222,17 @@ const Exercise = (props) => {
                     name="durationInMinutes"
                     value={durationInMinutes}
                     placeholder="Duration in minutes"
-                    onChange={(e) => setDurationInMinutes(e.target.value)}
+                    onChange={(e) => {
+                  setDurationInMinutes(e.target.value);
+                  setCaloriesBurnt((e.target.value * (3.5 * 3.5 * 70)) / 200);
+                }}
                     required
                   />
                   <br />
                   <input className="logWorkoutBtn" type="submit" value="Save" />
                 </div>
               ) : null}
+
             </div>
 
             <br />

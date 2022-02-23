@@ -43,7 +43,10 @@ const ExerciseSchema = new Schema({
     type: Number,
     required: false,
     trim: true,
-  }
+  },
+  caloriesBurnt:{
+    type: Number
+  },
 });
 
 

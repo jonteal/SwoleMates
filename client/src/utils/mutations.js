@@ -28,11 +28,13 @@ mutation addWorkout(
   $id: Int!
   $date: String!
   $routine: [ID!]
+  $caloriesBurnt: Float
 ) {
   addWorkout(
     id: $id
     date: $date
     routine: $routine
+    caloriesBurnt: $caloriesBurnt
   ) {
     date
   }
@@ -46,6 +48,7 @@ export const ADD_CARDIO = gql`
     $durationInMinutes: String!
     $cardioDistanceInMiles: String!
     $date: String!
+    $caloriesBurnt: Float!
   ) {
     addCardio(
       id: $id
@@ -53,6 +56,7 @@ export const ADD_CARDIO = gql`
       durationInMinutes: $durationInMinutes
       cardioDistanceInMiles: $cardioDistanceInMiles
       date: $date
+      caloriesBurnt: $caloriesBurnt
     ) {
       type
     }
@@ -87,8 +91,9 @@ export const ADD_STRETCHING = gql`
     $type: String!
     $durationInMinutes: String!
     $date: String!
+    $caloriesBurnt: Float!
   ) {
-    addStretching(id: $id, type: $type, durationInMinutes: $durationInMinutes, date: $date) {
+    addStretching(id: $id, type: $type, durationInMinutes: $durationInMinutes, date: $date,  caloriesBurnt: $caloriesBurnt) {
       type
     }
   }
