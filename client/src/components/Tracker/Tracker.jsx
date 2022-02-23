@@ -1,6 +1,5 @@
 import React from "react";
 import "./tracker.css";
-import LogSwole from "./Exercise";
 import DisplaySwole from "./Workout";
 import { Link } from 'react-router-dom'
 
