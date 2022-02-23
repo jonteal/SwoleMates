@@ -20,9 +20,9 @@ const PersonalProfile = () => {
     return (
         <>
         <Card className="personalProfileCard"
-            header={data?.firstName}
+            header={data}
             meta='User'
-            description='Eric is a full stack web developer and enjoys spending time with his family.'
+            description='Jon is a web developer and likes brownies.'
             // extra={extra}
         />
 
