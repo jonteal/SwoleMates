@@ -155,6 +155,7 @@ const FoodBar = () => {
               value={foodItem}
               placeholder="Insert food item"
               onChange={(e) => setFoodItem(e.target.value)}
+              required
             />
             <br />
             <button className="foodBtn" onClick={(e) => handleSubmit(e)}>
@@ -183,16 +184,17 @@ const FoodBar = () => {
           </div>
         ) : type == "recipe" ? (
           <div className="foodItem">
-            <label>Type recipe query </label>
             <input
               className="border-black mb-1"
               type="text"
               name="foodItem"
               value={foodItem}
+              placeholder="Insert recipe"
               onChange={(e) => setFoodItem(e.target.value)}
+              required
             />
             <br />
-            <button onClick={(e) => handleSubmitRecipe(e)}>
+            <button className="foodBtn" onClick={(e) => handleSubmitRecipe(e)}>
               Find recipes!{" "}
             </button>
             <br />
