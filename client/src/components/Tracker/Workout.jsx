@@ -10,7 +10,6 @@ import { useMutation } from "@apollo/client";
 
 const Workout = () => {
   // date to find exercises to display;
-
   // import all exercises here (for the day)
   // useQuery to pull the data;
   // calculate calories

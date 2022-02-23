@@ -111,7 +111,6 @@ const Exercise = (props) => {
             sets,
             weight,
             date,
-            // date,
           },
         });
         console.log(data);
@@ -146,9 +145,7 @@ const Exercise = (props) => {
             type,
             durationInMinutes,
             date,
-            caloriesBurnt,
-
-            // date,
+            caloriesBurnt
           },
         });
         console.log(data);
