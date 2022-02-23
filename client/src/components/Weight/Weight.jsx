@@ -9,12 +9,27 @@ const Weight = () => {
   const showForm = () => setForm(!form);
 
   const [updateWeight, { error }] = useMutation(UPDATE_WEIGHT);
-  const { data } = useQuery(GET_PROFILE);
+  let { loading, _, data } = useQuery(GET_PROFILE);
+  const [currentWeight, setWeight] = useState(0);
+
+  let displayWeight
+
+  if (currentWeight == 0) {
+    displayWeight = <div className="current-weight">{data?.getUser.weight} lbs</div>
+  } else {
+    displayWeight = <div className="current-weight">{currentWeight} lbs</div>
+  }
+
+
   //will write to database and then will see if it will update on the front end
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const db_update = await updateWeight(event.target.value);
+    const db_update = await updateWeight({
+      variables: { weight: currentWeight },
+    });
+    console.log(db_update.data.updateWeight.weight);
+    setWeight(db_update.data.updateWeight.weight)
+    setForm(!form);
     return db_update;
   };
 
@@ -24,7 +39,7 @@ const Weight = () => {
         <div className="weight-container filter drop-shadow-lg">
           <div className="weight-card">
             <h1 className="weight-header">Current Weight</h1>
-            <div className="current-weight">{data?.getUser.weight} lbs</div>
+            {displayWeight}
             <button
               onClick={showForm}
               className="weightButton filter drop-shadow-lg"
@@ -42,13 +57,15 @@ const Weight = () => {
             <form className="weight-form" onSubmit={handleSubmit}>
               <input
                 className="weight-input"
-                type="text"
+                type="number"
                 placeholder="200 lbs"
                 name="weight"
+                onChange={(e) => {
+                  setWeight(parseFloat(e.target.value));
+                }}
                 required
               />
               <button
-                onClick={showForm}
                 className="weightButton filter drop-shadow-lg"
                 type="submit"
                 variant="success"
