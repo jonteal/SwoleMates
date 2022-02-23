@@ -14,6 +14,14 @@ const typeDefs = gql`
     followers: [User]
   }
 
+  type Following {
+    _id: ID!
+  }
+
+  type Followers {
+    _id: ID!
+  }
+
   type Exercise {
     _id: ID!
     type: String!

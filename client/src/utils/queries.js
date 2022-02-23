@@ -113,10 +113,7 @@ query getMe ($id: ID!) {
       email
       firstName
       lastName
-      followerCount
       goal
-      following
-      followers
   }
 }
 `
