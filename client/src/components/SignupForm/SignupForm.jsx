@@ -10,25 +10,30 @@ const SignupForm = () => {
     password: "",
   });
 
-  const [showAlert, setShowAlert] = useState(false);
-
   const [createUser, { data, error }] = useMutation(ADD_USER);
-
+  const [validated] = useState(false);
+  const [inputEmail, setInputEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [inputPassword, setInputPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [passwordError, setPasswordError] = useState("");
 
-  //   useEffect(() => {
-  //     console.log(error)
-  //     error ==="E11000 duplicate key" ? setPasswordError("User already exists, please log in.") : setPasswordError("")
-  //   }
-  //  );
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
+    setInputEmail(value);
     setInputPassword(value);
+    setCheckPassword(value);
+  };
+
+  const handleEmailCheck = (event) => {
+    event.preventDefault();
+    if (!/\S+@\S+\.\S+/.test(inputEmail)) {
+      setEmailError('Please enter a valid email address!');
+    } else {
+      setEmailError("");
+    }
   };
 
   const handlePasswordCheck = (event) => {
@@ -40,11 +45,11 @@ const SignupForm = () => {
       setPasswordError("Your passwords do not match, try again");
     } else {
       setPasswordError("");
-    }
+    };
     inputPassword === "" || checkPassword === ""
       ? setPasswordMatch(false)
       : setPasswordError("");
-    inputPassword.length < 7
+    inputPassword.length < 8
       ? setPasswordError("Password must be at least 8 characters.")
       : setPasswordError("");
   };
@@ -103,7 +108,7 @@ const SignupForm = () => {
             SIGN UP
           </h2>
 
-          <form className="space-y-3" noValidate onSubmit={handleFormSubmit}>
+          <form className="space-y-3" validated={validated} onSubmit={handleFormSubmit}>
             {/* Email */}
             <div>
               <label htmlFor="email"></label>
@@ -114,8 +119,10 @@ const SignupForm = () => {
                 name="email"
                 onChange={handleInputChange}
                 value={userFormData.email}
+                onBlur={handleEmailCheck}
                 required
               />
+              <p>{emailError}</p>
             </div>
             <div>
               {/* Password */}
@@ -136,13 +143,12 @@ const SignupForm = () => {
               <input
                 className="bg-gray-700 rounded-3xl border-1 border-black"
                 type="password"
-                placeholder="Password"
+                placeholder="Confirm Password"
                 name="passwordCheck"
-                onChange={(event) => setCheckPassword(event.target.value)}
+                onChange={handleInputChange}
                 onBlur={handlePasswordCheck}
                 required
               />
-              {passwordMatch && <p>Your passwords match, great typing!</p>}
               <p>{passwordError}</p>
               {/* Submit Button */}
               <button
