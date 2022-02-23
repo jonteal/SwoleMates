@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./food.css";
 
 const FoodBar = () => {
   // Setting up states to later use fetched data;
@@ -76,8 +77,7 @@ const FoodBar = () => {
 
   const fetchRecipe = (foodItem) => {
     let fetchRecipeUrl = `https://api.spoonacular.com/recipes/autocomplete?query=${foodItem}&number=10&${process.env.REACT_APP_API_KEY_SPOONACULAR}`;
-    // https://api.spoonacular.com/recipes/autocomplete?query=burger&number=10&apiKey=f8a19463536b4ffb8c05cdb882afb0c8
-    console.log(foodItem);
+
     fetch(fetchRecipeUrl)
       .then((res) => res.json())
       .then((data) => {
@@ -112,95 +112,127 @@ const FoodBar = () => {
   }
 
   return (
-    <div>
-      <label>Select search option</label>
-      <select value={type} onChange={handleSelect}>
-        <option value="empty"></option>
-        <option value="single">Single Item</option>
-        <option value="recipe">Recipe</option>
-      </select>
-
-      <br />
-      {type == "single" ? (
-        <div className="foodItem">
-          <label>Type a food item to search for nutrition information </label>
-          <input
-            type="text"
-            name="foodItem"
-            value={foodItem}
-            onChange={(e) => setFoodItem(e.target.value)}
+    <div className="foodBg">
+      <div className="foodContainer">
+        <h2 className="foodTitle">Log Food:</h2>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="site__logo"
+          width="56"
+          height="84"
+          viewBox="77.7 214.9 274.7 412"
+        >
+          <defs>
+            <linearGradient id="a" x1="0%" y1="0%" y2="0%">
+              <stop offset="0%" stopColor="#76D9F0" />
+              <stop offset="100%" stopColor="#096479" />
+            </linearGradient>
+          </defs>
+          <path
+            fill="url(#a)"
+            d="M215 214.9c-83.6 123.5-137.3 200.8-137.3 275.9 0 75.2 61.4 136.1 137.3 136.1s137.3-60.9 137.3-136.1c0-75.1-53.7-152.4-137.3-275.9z"
           />
-          <br />
-          <button onClick={(e) => handleSubmit(e)}>Find info </button>
-          <br />
+        </svg>
 
-          {error ? (
-            <div>
-              <p>{error}</p>
-            </div>
-          ) : foodSearch ? (
-            <div>
-              <p>Nutrition values per serving of {searchedTitle}:</p>
+        <select
+          className="border-black mb-1 mt-2"
+          value={type}
+          onChange={handleSelect}
+        >
+          <option selected value="" disabled selected>
+            Food Search Options:
+          </option>
+          <option value="single">Single Item</option>
+          <option value="recipe">Recipe</option>
+        </select>
+
+        {type == "single" ? (
+          <div className="foodItem">
+            <input
+              className="border-black mb-1"
+              type="text"
+              name="foodItem"
+              value={foodItem}
+              placeholder="Insert food item"
+              onChange={(e) => setFoodItem(e.target.value)}
+            />
+            <br />
+            <button className="foodBtn" onClick={(e) => handleSubmit(e)}>
+              Find info{" "}
+            </button>
+            <br />
+
+            {error ? (
               <div>
-                <div className="foodbar-text">
-                  <h2> Calories: {foodCalories}</h2>
-                  <h2> Sugars: {foodSugars} </h2>
-                  <h2> Sodium: {foodSodium}</h2>
-                  <h2> Fat: {foodFat}</h2>
-                  <h2> Protein: {foodProtein} </h2>
-                </div>
+                <p>{error}</p>
               </div>
-            </div>
-          ) : null}
-        </div>
-      ) : type == "recipe" ? (
-        <div className="foodItem">
-          <label>Type recipe query </label>
-          <input
-            type="text"
-            name="foodItem"
-            value={foodItem}
-            onChange={(e) => setFoodItem(e.target.value)}
-          />
-          <br />
-          <button onClick={(e) => handleSubmitRecipe(e)}>Find recipes! </button>
-          <br />
-
-          <br />
-          {error ? (
-            <div>
-              <p>{error}</p>
-            </div>
-          ) : recipes ? (
-            <div>
-              <p>Click on the recipe to render some more information!</p>
-              <br />
-              {recipes.map((recipe) => (
-                <div key={recipe.id}>
-                  <button onClick={() => fetchRecipeNutrients(recipe.id)}>
-                    - {recipe.title}
-                  </button>
-                  <br />
-                </div>
-              ))}
-            </div>
-          ) : null}
-          <br />
-
-          <div>
-            {recipeCalories ? (
+            ) : foodSearch ? (
               <div>
-                <p>Nutrition per serving:</p>
-                <br />
-                <p>Calories : {recipeCalories}</p>
-                <p>Fats : {recipeFats}</p>
-                <p>Carbs : {recipeCarbs}</p>
-                <p>Proteins : {recipeProteins}</p>
+                <p>Nutrition values per serving of {searchedTitle}:</p>
+                <div>
+                  <div className="foodbar-text">
+                    <h2> Calories: {foodCalories}</h2>
+                    <h2> Sugars: {foodSugars} </h2>
+                    <h2> Sodium: {foodSodium}</h2>
+                    <h2> Fat: {foodFat}</h2>
+                    <h2> Protein: {foodProtein} </h2>
+                  </div>
+                </div>
               </div>
             ) : null}
           </div>
-        </div>
-      ) : null}
+        ) : type == "recipe" ? (
+          <div className="foodItem">
+            <label>Type recipe query </label>
+            <input
+              className="border-black mb-1"
+              type="text"
+              name="foodItem"
+              value={foodItem}
+              onChange={(e) => setFoodItem(e.target.value)}
+            />
+            <br />
+            <button onClick={(e) => handleSubmitRecipe(e)}>
+              Find recipes!{" "}
+            </button>
+            <br />
+
+            <br />
+            {error ? (
+              <div>
+                <p>{error}</p>
+              </div>
+            ) : recipes ? (
+              <div>
+                <p>Click on the recipe to render some more information!</p>
+                <br />
+                {recipes.map((recipe) => (
+                  <div key={recipe.id}>
+                    <button onClick={() => fetchRecipeNutrients(recipe.id)}>
+                      - {recipe.title}
+                    </button>
+                    <br />
+                  </div>
+                ))}
+              </div>
+            ) : null}
+            <br />
+
+            <div>
+              {recipeCalories ? (
+                <div>
+                  <p>Nutrition per serving:</p>
+                  <br />
+                  <p>Calories : {recipeCalories}</p>
+                  <p>Fats : {recipeFats}</p>
+                  <p>Carbs : {recipeCarbs}</p>
+                  <p>Proteins : {recipeProteins}</p>
+                </div>
+              ) : null}
+            </div>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };
