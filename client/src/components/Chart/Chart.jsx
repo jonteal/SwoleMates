@@ -10,18 +10,20 @@ const BarChart = () => {
   const [button, setButton] = useState("Generate Chart");
 
   const [workoutDates, setWorkoutDates] = useState({});
+  const [workoutCalories, setWorkoutCalories] = useState({});
 
   const { loading, data } = useQuery(QUERY_WORKOUTS);
 
-  const allWorkouts = data?.allWorkouts.map((workout) => workout.date);
+  const allWorkoutDates = data?.allWorkouts.map((workout) => workout.date);
+  const allWorkoutCalories = data?.allWorkouts.map((workout) => workout.caloriesBurnt);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!chart) {
       setChart("Ready");
       setButton("Close Chart");
-      setWorkoutDates(allWorkouts);
-      console.log(allWorkouts);
+      setWorkoutDates(allWorkoutDates);
+      setWorkoutCalories(allWorkoutCalories);
     } else {
       setChart("");
       setButton("Generate Chart");
@@ -37,11 +39,12 @@ const BarChart = () => {
         {chart === "Ready" ? (
           <Bar
             data={{
+
               labels: workoutDates,
               datasets: [
                 {
                   label: "Calories burnt",
-                  data: [12, 19, 3, 5, 2, 3],
+                  data: allWorkoutCalories,
                   backgroundColor: [
                     "rgba(255, 99, 132, 0.2)",
                     "rgba(54, 162, 235, 0.2)",
