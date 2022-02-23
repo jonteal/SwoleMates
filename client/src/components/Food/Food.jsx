@@ -30,7 +30,7 @@ const FoodBar = () => {
       .then((data) => {
         if (!data.results[0]) {
           setError(
-            "Please, check your spelling and enter an actual food item! "
+            "Please, check your spelling and enter an actual food item!"
           );
           console.log("enter  legit item pls");
         } else {
@@ -83,7 +83,7 @@ const FoodBar = () => {
       .then((data) => {
         if (!data) {
           setError("Please, check your spelling or enter different recipe");
-          console.log("enter  legit recipe pls");
+          console.log("enter legit recipe pls");
         } else {
           setRecipes(data);
           setError("");
