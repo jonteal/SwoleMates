@@ -172,14 +172,14 @@ const FoodBar = () => {
               </div>
             ) : foodSearch ? (
               <div>
-                <p>Nutrition values per serving of {searchedTitle}:</p>
+                <p className="foodSubTitle">{searchedTitle}:</p>
                 <div>
-                  <div className="foodbar-text">
-                    <h2> Calories: {foodCalories}</h2>
-                    <h2> Sugars: {foodSugars} </h2>
-                    <h2> Sodium: {foodSodium}</h2>
-                    <h2> Fat: {foodFat}</h2>
-                    <h2> Protein: {foodProtein} </h2>
+                  <div className="foodText">
+                    <p> Calories: {foodCalories}</p>
+                    <p> Sugars: {foodSugars} </p>
+                    <p> Sodium: {foodSodium}</p>
+                    <p> Fat: {foodFat}</p>
+                    <p> Protein: {foodProtein} </p>
                   </div>
                 </div>
               </div>
@@ -196,13 +196,10 @@ const FoodBar = () => {
               onChange={(e) => setFoodItem(e.target.value)}
               required
             />
-            <br />
+
             <button className="foodBtn" onClick={(e) => handleSubmitRecipe(e)}>
               Find recipes!{" "}
             </button>
-            <br />
-
-            <br />
             {error ? (
               <div>
                 <p>{error}</p>

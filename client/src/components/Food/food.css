@@ -35,6 +35,16 @@
     text-transform: uppercase;
 }
 
+.foodSubTitle{
+    color: #7e8ba3;
+    font-size: 2rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+
+
 .foodBtn {
     background-image: linear-gradient(160deg, #096479 0%, #76D9F0 100%);
     color: #fff;
@@ -48,6 +58,10 @@
 
   .foodBtn:hover {
       opacity: 1;
+  }
+
+  .foodText {
+      text-align: left;
   }
 
   
