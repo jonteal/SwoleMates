@@ -8,7 +8,10 @@ const WorkoutSchema = new Schema({
     type: Number,
   },
   date: {
-    type: Date,
+    type: String,
+  },
+  caloriesBurnt:{
+    type: Number
   },
   routine: [
     {

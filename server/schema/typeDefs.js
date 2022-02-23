@@ -30,13 +30,14 @@ const typeDefs = gql`
     repetitions: Int
     sets: Int
     weight: Int
-    caloriesBurnt: Int
+    caloriesBurnt: Float
     date: String!
   }
 
   type Workout {
     id: Int!
     date: String!
+    caloriesBurnt: Float
     routine: [ID!]
   }
   type Auth {
@@ -50,6 +51,7 @@ const typeDefs = gql`
     getSearchedUser(email: String): [User]
     getUser: User
     allExercises: [Exercise]!
+    allWorkouts: [Workout]!
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout
     categories: [Category]
@@ -106,6 +108,7 @@ type Mutation {
       durationInMinutes: String!
       cardioDistanceInMiles: String!
       date: String!
+      caloriesBurnt: Float!
     ): Exercise
 
     addStrength(
@@ -122,9 +125,15 @@ type Mutation {
       type: String!
       durationInMinutes: String!
       date: String!
+      caloriesBurnt: Float!
     ): Exercise
 
-    addWorkout(id: Int!, date: String!, routine: [ID!]): Workout
+    addWorkout(
+      id: Int!
+      date: String!
+      routine: [ID!]
+      caloriesBurnt: Float
+      ): Workout
 
     updateWeight(weight: Float!): User
 
