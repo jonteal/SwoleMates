@@ -10,6 +10,9 @@ const WorkoutSchema = new Schema({
   date: {
     type: String,
   },
+  caloriesBurnt:{
+    type: Number
+  },
   routine: [
     {
       type: Schema.Types.ObjectId,

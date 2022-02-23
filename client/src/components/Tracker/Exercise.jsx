@@ -16,7 +16,8 @@ const Exercise = (props) => {
   const [weight, setWeight] = useState("");
   const [date, setDate] = useState("");
   const [id, setID] = useState("");
-
+  const [caloriesBurnt, setCaloriesBurnt] = useState("")
+ 
   // Current date:
   var currentDate = new Date().toISOString().split("T")[0];
   var ID = Math.floor(Math.random() * 10000000);
@@ -32,14 +33,16 @@ const Exercise = (props) => {
     setDate(currentDate);
     setID(ID);
     console.log(date);
-    console.log(ID);
+    
   }
 
   const handleSubmit = async (event) => {
-    console.log("handle");
-    console.log(date);
+    
     event.preventDefault();
+    console.log(caloriesBurnt)
+    
     if (type == "cardio") {
+      
       alert(
         "Your exercise was submitted! \n" +
           "\n " +
@@ -68,11 +71,11 @@ const Exercise = (props) => {
             type,
             durationInMinutes,
             cardioDistanceInMiles,
-            date
+            date,
+            caloriesBurnt
           },
         });
-        console.log(data);
-        console.log("Data where are u bish");
+
       } catch (err) {
         console.error(err);
       }
@@ -146,7 +149,8 @@ const Exercise = (props) => {
             id,
             type,
             durationInMinutes,
-            date
+            date,
+            caloriesBurnt
 
             // date,
           },
@@ -165,6 +169,8 @@ const Exercise = (props) => {
       <form
         onSubmit={(e) => {
           handleSubmit(e);
+          
+          
         }}
       >
         <label>Select workout type:</label>
@@ -186,7 +192,7 @@ const Exercise = (props) => {
                 min="0"
                 name="durationInMinutes"
                 value={durationInMinutes}
-                onChange={(e) => setDurationInMinutes(e.target.value)}
+                onChange={(e) => {setDurationInMinutes(e.target.value); setCaloriesBurnt(e.target.value*(13.5*3.5*70)/200)}}
               />
               minutes;
               <br />
@@ -200,6 +206,7 @@ const Exercise = (props) => {
               />
               miles;
               <br />
+            
               <input type="submit" value="Save" />
             </div>
           ) : type == "strength" ? (
@@ -246,7 +253,7 @@ const Exercise = (props) => {
                 min="0"
                 name="durationInMinutes"
                 value={durationInMinutes}
-                onChange={(e) => setDurationInMinutes(e.target.value)}
+                onChange={(e) => {setDurationInMinutes(e.target.value); setCaloriesBurnt(e.target.value*(3.5*3.5*70)/200)}}
               />
               minutes;
               <br />

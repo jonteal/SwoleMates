@@ -29,7 +29,7 @@ export const QUERY_WORKOUTS = gql`
 query allWorkouts {
   allWorkouts {
     date
-    routine
+    caloriesBurnt
   }
 }
 `;

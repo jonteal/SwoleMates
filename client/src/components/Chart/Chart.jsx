@@ -37,7 +37,6 @@ const BarChart = () => {
         {chart === "Ready" ? (
           <Bar
             data={{
-              //   label => maped dates;
               labels: workoutDates,
               datasets: [
                 {

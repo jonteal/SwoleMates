@@ -158,19 +158,17 @@ const resolvers = {
 
     addCardio: async (
       parent,
-      { id, type, durationInMinutes, cardioDistanceInMiles, date }
+      { id, type, durationInMinutes, cardioDistanceInMiles, date, caloriesBurnt }
     ) => {
-      console.log(
-        `hello, these are args for cardio : ${
-          (id, type, durationInMinutes, cardioDistanceInMiles, date)
-        }`
-      );
+      
+   
       const cardio = await Exercise.create({
         id,
         type,
         durationInMinutes,
         cardioDistanceInMiles,
         date,
+        caloriesBurnt
       });
       return cardio;
     },
@@ -193,7 +191,7 @@ const resolvers = {
       });
       return strength;
     },
-    addStretching: async (parent, { id, type, durationInMinutes, date }) => {
+    addStretching: async (parent, { id, type, durationInMinutes, date, caloriesBurnt }) => {
       console.log(
         `hello, these are args for stretching: ${(id, type, durationInMinutes)}`
       );
@@ -202,6 +200,7 @@ const resolvers = {
         type,
         durationInMinutes,
         date,
+        caloriesBurnt
       });
       return stretching;
     },

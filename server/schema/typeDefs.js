@@ -16,13 +16,14 @@ const typeDefs = gql`
     repetitions: Int
     sets: Int
     weight: Int
-    caloriesBurnt: Int
+    caloriesBurnt: Float
     date: String!
   }
 
   type Workout {
     id: Int!
     date: String!
+    caloriesBurnt: Float
     routine: [ID!]
   }
   type Auth {
@@ -87,6 +88,7 @@ const typeDefs = gql`
       durationInMinutes: String!
       cardioDistanceInMiles: String!
       date: String!
+      caloriesBurnt: Float!
     ): Exercise
 
     addStrength(
@@ -103,6 +105,7 @@ const typeDefs = gql`
       type: String!
       durationInMinutes: String!
       date: String!
+      caloriesBurnt: Float!
     ): Exercise
 
     addWorkout(id: Int!, date: String!, routine: [ID!]): Workout
