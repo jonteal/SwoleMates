@@ -15,7 +15,9 @@ const BarChart = () => {
   const { loading, data } = useQuery(QUERY_WORKOUTS);
 
   const allWorkoutDates = data?.allWorkouts.map((workout) => workout.date);
-  const allWorkoutCalories = data?.allWorkouts.map((workout) => workout.caloriesBurnt);
+  const allWorkoutCalories = data?.allWorkouts.map(
+    (workout) => workout.caloriesBurnt
+  );
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -39,7 +41,6 @@ const BarChart = () => {
         {chart === "Ready" ? (
           <Bar
             data={{
-
               labels: workoutDates,
               datasets: [
                 {

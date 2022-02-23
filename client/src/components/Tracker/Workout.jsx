@@ -24,31 +24,32 @@ const Workout = () => {
   const allExercises =
     data?.allExercises.filter((exercise) => exercise.date === date) || [];
 
-    useEffect(()=>{
-      setCaloriesBurnt(Math.round((allExercises.map((exercise) => exercise.caloriesBurnt)).reduce((a, b) => a + b, 0))) 
-      
-    }, )
- 
+  useEffect(() => {
+    setCaloriesBurnt(
+      Math.round(
+        allExercises
+          .map((exercise) => exercise.caloriesBurnt)
+          .reduce((a, b) => a + b, 0)
+      )
+    );
+  });
 
   // submit your workout for the day OR update it if it exists;
   const handleSubmit = async (event) => {
-  
-    const calories = (allExercises.map((exercise) => exercise.caloriesBurnt))
-    const totalCalories = Math.round(calories.reduce((a, b) => a + b, 0))
-    
+    const calories = allExercises.map((exercise) => exercise.caloriesBurnt);
+    const totalCalories = Math.round(calories.reduce((a, b) => a + b, 0));
 
-    
     event.preventDefault();
     try {
-      console.log(caloriesBurnt)
-     
+      console.log(caloriesBurnt);
+
       const { data } = await addWorkout({
         // Execute mutation and pass in defined parameter data as variables
         variables: {
           id,
           date,
           routine: allExercises.map(({ _id }) => _id),
-          caloriesBurnt
+          caloriesBurnt,
         },
       });
       console.log(data);
@@ -65,7 +66,6 @@ const Workout = () => {
       <br></br>
       {allExercises.map((exercise) => (
         <ul>
-
           {exercise.type === "cardio" && (
             <div key={exercise._id}>
               <p>Exercise type is: {exercise.type} </p>
@@ -84,7 +84,7 @@ const Workout = () => {
               <p>Repetitions made: {exercise.repetitions} reps;</p>
               <p>Sets: {exercise.sets} sets;</p>
               <p>Weight used: {exercise.weight} lbs;</p>
-              
+
               <br></br>
             </div>
           )}
@@ -101,7 +101,13 @@ const Workout = () => {
         </ul>
       ))}
 
-      <button onClick={(e) => {handleSubmit(e); }}>"Save and update workout on the dashboard"</button>
+      <button
+        onClick={(e) => {
+          handleSubmit(e);
+        }}
+      >
+        "Save and update workout on the dashboard"
+      </button>
     </div>
   );
 };

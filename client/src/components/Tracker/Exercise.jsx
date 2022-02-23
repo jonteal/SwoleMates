@@ -16,33 +16,30 @@ const Exercise = (props) => {
   const [weight, setWeight] = useState("");
   const [date, setDate] = useState("");
   const [id, setID] = useState("");
-  const [caloriesBurnt, setCaloriesBurnt] = useState("")
- 
+  const [caloriesBurnt, setCaloriesBurnt] = useState("");
+
   // Current date:
   var currentDate = new Date().toISOString().split("T")[0];
   var ID = Math.floor(Math.random() * 10000000);
 
   // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_EXERCISE mutation
   // const [addExercise, { error }] = useMutation(ADD_EXERCISE);
-   const [addCardio, { error }] = useMutation(ADD_CARDIO);
-  const [addStrength, {  }] = useMutation(ADD_STRENGTH);
-  const [addStretching, {  }] = useMutation(ADD_STRETCHING);
+  const [addCardio, { error }] = useMutation(ADD_CARDIO);
+  const [addStrength, {}] = useMutation(ADD_STRENGTH);
+  const [addStretching, {}] = useMutation(ADD_STRETCHING);
 
   function handleSelect(event) {
     setType(event.target.value);
     setDate(currentDate);
     setID(ID);
     console.log(date);
-    
   }
 
   const handleSubmit = async (event) => {
-    
     event.preventDefault();
-    console.log(caloriesBurnt)
-    
+    console.log(caloriesBurnt);
+
     if (type == "cardio") {
-      
       alert(
         "Your exercise was submitted! \n" +
           "\n " +
@@ -72,10 +69,9 @@ const Exercise = (props) => {
             durationInMinutes,
             cardioDistanceInMiles,
             date,
-            caloriesBurnt
+            caloriesBurnt,
           },
         });
-
       } catch (err) {
         console.error(err);
       }
@@ -114,7 +110,7 @@ const Exercise = (props) => {
             repetitions,
             sets,
             weight,
-            date
+            date,
             // date,
           },
         });
@@ -150,7 +146,7 @@ const Exercise = (props) => {
             type,
             durationInMinutes,
             date,
-            caloriesBurnt
+            caloriesBurnt,
 
             // date,
           },
@@ -169,8 +165,6 @@ const Exercise = (props) => {
       <form
         onSubmit={(e) => {
           handleSubmit(e);
-          
-          
         }}
       >
         <label>Select workout type:</label>
@@ -192,7 +186,10 @@ const Exercise = (props) => {
                 min="0"
                 name="durationInMinutes"
                 value={durationInMinutes}
-                onChange={(e) => {setDurationInMinutes(e.target.value); setCaloriesBurnt(e.target.value*(13.5*3.5*70)/200)}}
+                onChange={(e) => {
+                  setDurationInMinutes(e.target.value);
+                  setCaloriesBurnt((e.target.value * (13.5 * 3.5 * 70)) / 200);
+                }}
               />
               minutes;
               <br />
@@ -206,7 +203,6 @@ const Exercise = (props) => {
               />
               miles;
               <br />
-            
               <input type="submit" value="Save" />
             </div>
           ) : type == "strength" ? (
@@ -253,7 +249,10 @@ const Exercise = (props) => {
                 min="0"
                 name="durationInMinutes"
                 value={durationInMinutes}
-                onChange={(e) => {setDurationInMinutes(e.target.value); setCaloriesBurnt(e.target.value*(3.5*3.5*70)/200)}}
+                onChange={(e) => {
+                  setDurationInMinutes(e.target.value);
+                  setCaloriesBurnt((e.target.value * (3.5 * 3.5 * 70)) / 200);
+                }}
               />
               minutes;
               <br />
