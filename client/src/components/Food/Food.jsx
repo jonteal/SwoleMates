@@ -20,6 +20,7 @@ const FoodBar = () => {
   const [recipeCarbs, setRecipeCarbs] = useState("");
   const [recipeFats, setRecipeFats] = useState("");
   const [recipeProteins, setRecipeProteins] = useState("");
+  const [recipeUrl, setRecipeUrl] = useState("");
   // Set up info grab from the user - input line that saves value to our foodSearchItem;
 
   //   First API call to get food ID;
@@ -85,6 +86,7 @@ const FoodBar = () => {
           setError("Please, check your spelling or enter different recipe");
           console.log("enter legit recipe pls");
         } else {
+          
           setRecipes(data);
           setError("");
         }
@@ -102,6 +104,7 @@ const FoodBar = () => {
         setRecipeCarbs(data.nutrition.nutrients[3].amount);
         setRecipeFats(data.nutrition.nutrients[1].amount);
         setRecipeProteins(data.nutrition.nutrients[8].amount);
+        setRecipeUrl(data.sourceUrl);
       });
   };
 
@@ -210,10 +213,10 @@ const FoodBar = () => {
                 <br />
                 {recipes.map((recipe) => (
                   <div key={recipe.id}>
-                    <button onClick={() => fetchRecipeNutrients(recipe.id)}>
+                    <button  onClick={() => fetchRecipeNutrients(recipe.id)}>
                       - {recipe.title}
                     </button>
-                    <br />
+  
                   </div>
                 ))}
               </div>
@@ -229,6 +232,9 @@ const FoodBar = () => {
                   <p>Fats : {recipeFats}</p>
                   <p>Carbs : {recipeCarbs}</p>
                   <p>Proteins : {recipeProteins}</p>
+                  <br />
+                  <br />
+                  <a href = {recipeUrl} target="_blank">Get recipe!</a>
                 </div>
               ) : null}
             </div>
