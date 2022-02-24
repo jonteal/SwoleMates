@@ -210,9 +210,14 @@ const resolvers = {
         return updatedWorkout
       }
       else {
-        const newWorkout = await Workout.create({ id, date, routine, caloriesBurnt });
-
-        return newWorkout;
+        try {
+          const newWorkout = await Workout.create({ id, date, routine, caloriesBurnt, userId: context.user._id });
+          console.log(typeof newWorkout._id)
+          const updatedUser = await User.findByIdAndUpdate({ _id: context.user._id }, { $addToSet: { "workouts": newWorkout._id } }, { new: true });
+          return { newWorkout, updatedUser };
+        } catch (err) {
+          console.log(err)
+        }
       }
     },
 

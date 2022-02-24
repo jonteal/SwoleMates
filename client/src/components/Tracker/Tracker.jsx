@@ -1,13 +1,13 @@
 import React from "react";
 import "./tracker.css";
-import DisplaySwole from "./Workout";
+import Workout from "./Workout";
 import { Link } from 'react-router-dom'
 
 const Tracker = () => {
   return (
     <>
       <div className="trackerContainer">
-        <DisplaySwole />
+        <Workout />
       </div>
 
       <div className="workoutBtn">
