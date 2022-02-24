@@ -212,7 +212,6 @@ const resolvers = {
       else {
         try {
           const newWorkout = await Workout.create({ id, date, routine, caloriesBurnt, userId: context.user._id });
-          console.log(typeof newWorkout._id)
           const updatedUser = await User.findByIdAndUpdate({ _id: context.user._id }, { $addToSet: { "workouts": newWorkout._id } }, { new: true });
           return { newWorkout, updatedUser };
         } catch (err) {
@@ -232,10 +231,6 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    // addExercise: async (parent, args) => {
-    //   const exercise = await Exercise.create(args);
-    //   return exercise;
-    // }
     //new mutations start here
     //stripe mutations
     addOrder: async (parent, { products }, context) => {
