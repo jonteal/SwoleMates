@@ -34,17 +34,29 @@ const PersonalProfile = () => {
     return (
         <>
             <Card className="personalProfileCard"
-            header={user.firstName}
-            meta='User'
-            description={user.goal}
-            // extra={extra}
+                header={user.firstName}
+                meta='User'
+                description={user.goal}
+                // extra={extra}
             />
+            <div>
             <h1>Followers</h1>
-            <ul>
-            {followers.map(follower => (
-                <li key={follower._id}>{`${follower.firstName} ${follower.lastName}`}</li>
-            ))}
-            </ul>
+                <ul>
+                {followers.map(follower => (
+                    <li key={follower._id}>{`${follower.firstName} ${follower.lastName}`}</li>
+                ))}
+                </ul>
+            </div>
+
+            {/* <h1>Following</h1>
+                <ul>
+                {followers.map(follower => (
+                    <li key={follower._id}>{`${follower.firstName} ${follower.lastName}`}</li>
+                ))}
+                </ul>
+            </div> */}
+
+
 
         </>
     )
