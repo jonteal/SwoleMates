@@ -206,12 +206,12 @@ const FoodBar = () => {
               </div>
             ) : recipes ? (
               <div>
-                <p>Click on the recipe to render some more information!</p>
+                <p>Select desired recipe:</p>
                 <br />
                 {recipes.map((recipe) => (
-                  <div key={recipe.id}>
-                    <button  onClick={() => fetchRecipeNutrients(recipe.id)}>
-                      - {recipe.title}
+                  <div key={recipe.id} className="recipeContainer">
+                    <button className="recipeBtn" onClick={() => fetchRecipeNutrients(recipe.id)}>
+                    • {recipe.title}
                     </button>
   
                   </div>
