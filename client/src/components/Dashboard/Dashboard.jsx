@@ -5,6 +5,8 @@ import Weight from "../Weight/Weight";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import "./dashboard.css";
 
+import BarChart from "../Chart/Chart";
+
 const progressData = [{ bgcolor: "#6a1b9a", completed: 80 }];
 const data = 1200;
 
@@ -15,32 +17,9 @@ const Home = () => {
   return (
     <>
       <div className="homeContainer">
-        <div className="calories shadow-2xl">
-          <div className="calories-title">
-            Calories Consumed: <span>{data}/1500</span>
-          </div>
-          <div className="calories-consumed">
-            {" "}
-            {progressData.map((item, idx) => (
-              <ProgressBar
-                key={idx}
-                bgcolor={item.bgcolor}
-                completed={item.completed}
-              />
-            ))}
-          </div>
-          <div className="calories-title">
-            Calories Burned: <span>{exercise}/500</span>
-          </div>
-          <div className="calories-burned">
-            {exerciseData.map((item, idx) => (
-              <ProgressBar
-                key={idx}
-                bgcolor={item.bgcolor}
-                completed={item.completed}
-              />
-            ))}
-          </div>
+        <div className="chart">
+         <BarChart/>
+         
         </div>
 
         <div className="weight shadow-2xl">
