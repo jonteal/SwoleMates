@@ -8,14 +8,13 @@ const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({
     email: "",
     password: "",
+    checkPassword: ""
   });
 
   const [createUser, { data, error }] = useMutation(ADD_USER);
   const [validated] = useState(false);
   const [inputEmail, setInputEmail] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [inputPassword, setInputPassword] = useState("");
-  const [checkPassword, setCheckPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [passwordError, setPasswordError] = useState("");
 
@@ -23,8 +22,6 @@ const SignupForm = () => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
     setInputEmail(value);
-    setInputPassword(value);
-    setCheckPassword(value);
   };
 
   const handleEmailCheck = (event) => {
@@ -38,25 +35,27 @@ const SignupForm = () => {
 
   const handlePasswordCheck = (event) => {
     event.preventDefault();
-    inputPassword === checkPassword
+    userFormData.password === userFormData.checkPassword
       ? setPasswordMatch(true)
       : setPasswordMatch(false);
-    if (inputPassword !== checkPassword) {
+    if (userFormData.password !== userFormData.checkPassword) {
       setPasswordError("Your passwords do not match, try again");
     } else {
       setPasswordError("");
     };
-    inputPassword === "" || checkPassword === ""
+    userFormData.password === "" || userFormData.checkPassword === ""
       ? setPasswordMatch(false)
       : setPasswordError("");
-    inputPassword.length < 8
+    userFormData.password.length < 8
       ? setPasswordError("Password must be at least 8 characters.")
       : setPasswordError("");
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    if (passwordMatch === false) {
+      return
+    } 
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -144,9 +143,10 @@ const SignupForm = () => {
                 className="bg-gray-700 rounded-3xl border-1 border-black"
                 type="password"
                 placeholder="Confirm Password"
-                name="passwordCheck"
+                name="checkPassword"
                 onChange={handleInputChange}
                 onBlur={handlePasswordCheck}
+                value={userFormData.checkPassword}
                 required
               />
               <p>{passwordError}</p>
