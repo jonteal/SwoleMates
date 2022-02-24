@@ -15,6 +15,7 @@ const Weight = () => {
   let displayWeight
 
   if (currentWeight == 0) {
+    console.log(data);
     displayWeight = <div className="current-weight">{data?.getUser.weight} lbs</div>
   } else {
     displayWeight = <div className="current-weight">{currentWeight} lbs</div>
@@ -36,22 +37,23 @@ const Weight = () => {
   return (
     <>
       {!form ? (
-        <div className="weight-container filter drop-shadow-lg">
-          <div className="weight-card">
-            <h1 className="weight-header">Current Weight</h1>
-            {displayWeight}
+
+          <div className="weightCard">
+            <h1 className="weightHeader">Current Weight</h1>
+
+            <h2 className="currentWeight">{displayWeight}</h2>
             <button
               onClick={showForm}
-              className="weightButton filter drop-shadow-lg"
+              className="weightBtn"
               type="button"
               variant="success"
             >
               Update
             </button>
           </div>
-        </div>
+
       ) : (
-        <div className="weight-container filter drop-shadow-lg">
+        <div className="weight-container">
           <div className="weight-card">
             <h1 className="weight-header">Add Weight Here</h1>
             <form className="weight-form" onSubmit={handleSubmit}>
@@ -66,7 +68,7 @@ const Weight = () => {
                 required
               />
               <button
-                className="weightButton filter drop-shadow-lg"
+                className="weightBtn"
                 type="submit"
                 variant="success"
               >

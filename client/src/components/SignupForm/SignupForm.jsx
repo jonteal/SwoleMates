@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
@@ -83,6 +84,7 @@ const SignupForm = () => {
 
   return (
     <>
+
       <div className="min-h-screen max-h-screen max-w-screen flex justify-center items-center loginBg">
         <div className="xl:w-1/3 xl:h-1/2 w-10/12 h-10/12 loginCard">
           <svg

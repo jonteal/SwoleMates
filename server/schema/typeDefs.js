@@ -4,10 +4,24 @@ const typeDefs = gql`
   type User {
     _id: ID!
     email: String!
+    firstName: String!
+    lastName: String!
+    followerCount: Int
     orders: [Order]
     weight: Float!
     goal: String!
+    following: [User]
+    followers: [User]
   }
+
+  type Following {
+    _id: ID!
+  }
+
+  type Followers {
+    _id: ID!
+  }
+
   type Exercise {
     _id: ID!
     type: String!
@@ -31,7 +45,11 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+
   type Query {
+    getUsers: [User]
+    getMe(_id: ID!): User
+    getSearchedUser(email: String): [User]
     getUser: User
     allExercises: [Exercise]!
     allWorkouts: [Workout]!
@@ -67,7 +85,9 @@ const typeDefs = gql`
     session: ID
   }
 
-  type Mutation {
+  
+type Mutation {
+
     createUser(email: String!, password: String!): Auth
 
     login(email: String!, password: String!): Auth
@@ -118,6 +138,10 @@ const typeDefs = gql`
 
     updateWeight(weight: Float!): User
 
+    allExercises: [Exercise]!
+
+    followUnfollow(_id: ID!): User
+    
     addOrder(products: [ID]!): Order
     
     updateProduct(_id: ID!, quantity: Int!): Product

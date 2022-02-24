@@ -10,7 +10,6 @@ import Shoes from "../../media/shoes.jpg";
 import Yoga from "../../media/yoga.jpg";
 import Weights from "../../media/weights.jpg";
 
-import { Transition } from "react-transition-group";
 
 // import { GET_WORKOUT } from "../../utils/mutations";
 

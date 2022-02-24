@@ -133,6 +133,7 @@ export const UPDATE_WEIGHT = gql`
   }
 `;
 
+
 export const ADD_ORDER = gql`
   mutation addOrder($products: [ID]!) {
     addOrder(products: $products) {
@@ -146,6 +147,20 @@ export const ADD_ORDER = gql`
         category {
           name
         }
+      }
+    }
+  }
+`;
+
+export const FOLLOW_UNFOLLOW = gql`
+  mutation followUnfollow($otherUserId: ID!) {
+    followUnfollow(otherUserId: $otherUserId) {
+      _id
+      following {
+        _id
+      }
+      followers {
+        _id
       }
     }
   }

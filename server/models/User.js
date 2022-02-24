@@ -51,6 +51,18 @@ const UserSchema = new Schema({
       ref: "Workout",
     },
   ],
+  following: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
+  followers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
   orders: [Order.schema]
 });
 
@@ -65,6 +77,14 @@ UserSchema.pre('save', async function (next) {
 UserSchema.methods.isCorrectPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
+
+UserSchema.virtual('followingCount').get(function () {
+  return this.followingCount.length;
+});
+
+UserSchema.virtual('followerCount').get(function () {
+  return this.followerCount.length;
+})
 
 const User = mongoose.model('User', UserSchema);
 
