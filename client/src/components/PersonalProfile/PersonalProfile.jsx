@@ -48,13 +48,14 @@ const PersonalProfile = () => {
                 </ul>
             </div>
 
-            {/* <h1>Following</h1>
+            <div>
+            <h1>Following</h1>
                 <ul>
-                {followers.map(follower => (
-                    <li key={follower._id}>{`${follower.firstName} ${follower.lastName}`}</li>
+                {following.map(following => (
+                    <li key={following._id}>{`${following.firstName} ${following.lastName}`}</li>
                 ))}
                 </ul>
-            </div> */}
+            </div>
 
 
 
