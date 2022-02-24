@@ -3,23 +3,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.quote-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 85vw;
+    /* background-color: aquamarine; */
 }
 
 .quote-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #7e8ba3;
+    font-size: 2rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
     text-align: center;
-    margin: 5px;
-    padding: 5px;
 }
 
 .quote {
@@ -27,4 +20,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    max-width: 100%;
+    padding: 5px;
+    font-style: italic;
 }

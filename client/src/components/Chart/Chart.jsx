@@ -34,7 +34,7 @@ const BarChart = () => {
       setWorkoutCalories(allWorkoutCalories);
     } else {
       setChart("");
-      setButton("Generate Chart");
+      setButton("Expand Chart");
     }
   };
 
@@ -81,8 +81,8 @@ const BarChart = () => {
                 },
               },
             }}
-            height={300}
-            width={2400}
+            height={"100vh"}
+            width={null}
             options={{
               maintainAspectRatio: false,
             }}

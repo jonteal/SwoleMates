@@ -7,10 +7,13 @@
     height: 20vh;
 }
 
-.weight-header {
-    display: flex;
-    margin: 5px 5px 5px 5px;
-    padding: 5px 5px 5px 5px;
+.weightHeader{
+    color: #7e8ba3;
+    font-size: 2rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .weight-input {

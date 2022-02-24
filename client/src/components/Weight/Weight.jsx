@@ -38,7 +38,7 @@ const Weight = () => {
       {!form ? (
         <div className="weight-container filter drop-shadow-lg">
           <div className="weight-card">
-            <h1 className="weight-header">Current Weight</h1>
+            <h1 className="weightHeader">Current Weight</h1>
             {displayWeight}
             <button
               onClick={showForm}

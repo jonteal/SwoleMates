@@ -1,13 +1,28 @@
-.homeContainer {
-  background-color: whitesmoke;
+
+
+.homeContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  max-width: 100vw;
 }
 
-.development {
+.homeCard{
+  width: 60vw;
+	border-radius: 10px;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+.homeCard:hover{
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.582);
+  cursor: default;
+}
+
+
+
+/* .development {
   background-color: lightslategray;
   display: flex;
   align-items: center;
@@ -86,4 +101,10 @@
   border-radius: 10px;
   margin-bottom: 30px;
 }
+ */
 
+ @media only screen and (max-width: 450px){
+  .homeCard{
+      width: 90%;
+  }
+    }

@@ -11,8 +11,8 @@ const PersonalDevelopment = () => {
 
 
   return (
-    <div className="dev-container filter drop-shadow-lg">
-      <h2>Goal:</h2>
+    <div className="dev-container">
+      <h2 className="goalHeader">Goal:</h2>
       <p>Your current is to {data?.getUser.goal} weight.</p>
     </div>
   );
