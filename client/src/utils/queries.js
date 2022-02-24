@@ -122,8 +122,16 @@ query getMe ($id: ID!) {
       firstName
       lastName
       goal
-      followers
-      following
+      followers {
+        _id
+        firstName
+        lastName
+      }
+      following{
+        _id
+        firstName
+        lastName
+      }
   }
 }
 `
