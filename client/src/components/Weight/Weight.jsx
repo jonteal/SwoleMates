@@ -36,13 +36,13 @@ const Weight = () => {
   return (
     <>
       {!form ? (
-        <div className="weight-container filter drop-shadow-lg">
+        <div className="weight-container">
           <div className="weight-card">
             <h1 className="weightHeader">Current Weight</h1>
             {displayWeight}
             <button
               onClick={showForm}
-              className="weightButton filter drop-shadow-lg"
+              className="weightBtn"
               type="button"
               variant="success"
             >
@@ -51,7 +51,7 @@ const Weight = () => {
           </div>
         </div>
       ) : (
-        <div className="weight-container filter drop-shadow-lg">
+        <div className="weight-container">
           <div className="weight-card">
             <h1 className="weight-header">Add Weight Here</h1>
             <form className="weight-form" onSubmit={handleSubmit}>
@@ -66,7 +66,7 @@ const Weight = () => {
                 required
               />
               <button
-                className="weightButton filter drop-shadow-lg"
+                className="weightBtn"
                 type="submit"
                 variant="success"
               >
