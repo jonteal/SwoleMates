@@ -17,6 +17,7 @@ const SignupForm = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [passwordError, setPasswordError] = useState("");
+  const [matchPasswordError, setMatchPasswordError] = useState("");
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -39,9 +40,9 @@ const SignupForm = () => {
       ? setPasswordMatch(true)
       : setPasswordMatch(false);
     if (userFormData.password !== userFormData.checkPassword) {
-      setPasswordError("Your passwords do not match, try again");
+      setMatchPasswordError("Your passwords do not match, try again");
     } else {
-      setPasswordError("");
+      setMatchPasswordError("");
     };
     userFormData.password === "" || userFormData.checkPassword === ""
       ? setPasswordMatch(false)
@@ -150,6 +151,7 @@ const SignupForm = () => {
                 required
               />
               <p>{passwordError}</p>
+              <p>{matchPasswordError}</p>
               {/* Submit Button */}
               <button
                 disabled={!(userFormData.email && userFormData.password)}
