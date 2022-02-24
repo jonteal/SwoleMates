@@ -60,6 +60,7 @@ function App() {
                   <Route exact path='/' component={Welcome} />
                   <Route exact path='/login' component={LoginForm} />
                   <Route exact path='/signup' component={SignupForm} />
+                  <Route exact path='/notfound' component={WrongPage} />
                   <PrivateRoute exact path='/home' component={Dashboard} />
                   <PrivateRoute exact path='/profile' component={Profile} />
                   <PrivateRoute exact path='/quote' component={Quote} />
@@ -71,8 +72,7 @@ function App() {
                   <PrivateRoute exact path='/success' component={Success} />   
                   <PrivateRoute exact path='/logworkout' component={Exercise} />
                   <PrivateRoute exact path='/test' component={BarChart} />
-                  <Redirect from="*" to="/" />
-                  <Route render={WrongPage} />
+                  <Redirect from="*" to="/notfound" />
                 </Switch>
             </StoreProvider>
           </div>
