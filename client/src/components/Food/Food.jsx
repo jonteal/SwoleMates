@@ -21,6 +21,8 @@ const FoodBar = () => {
   const [recipeFats, setRecipeFats] = useState("");
   const [recipeProteins, setRecipeProteins] = useState("");
   const [recipeUrl, setRecipeUrl] = useState("");
+  const [recipeTitle, setRecipeTitle] = useState("");
+  const [recipeImg, setRecipeImg] = useState("");
   // Set up info grab from the user - input line that saves value to our foodSearchItem;
 
   //   First API call to get food ID;
@@ -86,7 +88,6 @@ const FoodBar = () => {
           setError("Please, check your spelling or enter different recipe");
           console.log("enter legit recipe pls");
         } else {
-          
           setRecipes(data);
           setError("");
         }
@@ -99,12 +100,14 @@ const FoodBar = () => {
     fetch(fetchFoodUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log(data.image);
         setRecipeCalories(data.nutrition.nutrients[0].amount);
         setRecipeCarbs(data.nutrition.nutrients[3].amount);
         setRecipeFats(data.nutrition.nutrients[1].amount);
         setRecipeProteins(data.nutrition.nutrients[8].amount);
         setRecipeUrl(data.sourceUrl);
+        setRecipeTitle(data.title);
+        setRecipeImg(data.image);
       });
   };
 
@@ -172,14 +175,14 @@ const FoodBar = () => {
               </div>
             ) : foodSearch ? (
               <div>
-                <p>Nutrition values per serving of {searchedTitle}:</p>
+                <p className="foodSubTitle">{searchedTitle}:</p>
                 <div>
-                  <div className="foodbar-text">
-                    <h2> Calories: {foodCalories}</h2>
-                    <h2> Sugars: {foodSugars} </h2>
-                    <h2> Sodium: {foodSodium}</h2>
-                    <h2> Fat: {foodFat}</h2>
-                    <h2> Protein: {foodProtein} </h2>
+                  <div className="foodText">
+                    <p> Calories: {foodCalories}</p>
+                    <p> Sugars: {foodSugars} </p>
+                    <p> Sodium: {foodSodium}</p>
+                    <p> Fat: {foodFat}</p>
+                    <p> Protein: {foodProtein} </p>
                   </div>
                 </div>
               </div>
@@ -196,27 +199,26 @@ const FoodBar = () => {
               onChange={(e) => setFoodItem(e.target.value)}
               required
             />
-            <br />
+
             <button className="foodBtn" onClick={(e) => handleSubmitRecipe(e)}>
               Find recipes!{" "}
             </button>
-            <br />
-
-            <br />
             {error ? (
               <div>
                 <p>{error}</p>
               </div>
             ) : recipes ? (
               <div>
-                <p>Click on the recipe to render some more information!</p>
+                <h3 className="foodSubTitle">Select a recipe:</h3>
                 <br />
                 {recipes.map((recipe) => (
-                  <div key={recipe.id}>
-                    <button  onClick={() => fetchRecipeNutrients(recipe.id)}>
-                      - {recipe.title}
+                  <div key={recipe.id} className="recipeContainer">
+                    <button
+                      className="recipeBtn"
+                      onClick={() => fetchRecipeNutrients(recipe.id)}
+                    >
+                      • {recipe.title}
                     </button>
-  
                   </div>
                 ))}
               </div>
@@ -226,15 +228,20 @@ const FoodBar = () => {
             <div>
               {recipeCalories ? (
                 <div>
-                  <p>Nutrition per serving:</p>
-                  <br />
-                  <p>Calories : {recipeCalories}</p>
-                  <p>Fats : {recipeFats}</p>
-                  <p>Carbs : {recipeCarbs}</p>
-                  <p>Proteins : {recipeProteins}</p>
-                  <br />
-                  <br />
-                  <a href = {recipeUrl} target="_blank">Get recipe!</a>
+                  <a href={recipeUrl} target="_blank">
+                  <h3 className="foodSubTitleRecipe">
+                      {recipeTitle}
+                  </h3>
+                  <div className="foodImageContainer">
+                    <img className="foodImage" src={recipeImg} alt={recipeTitle} />
+                  </div>
+                  </a>
+                  <div className="foodText">
+                    <p>Calories : {recipeCalories}</p>
+                    <p>Fats : {recipeFats}</p>
+                    <p>Carbs : {recipeCarbs}</p>
+                    <p>Proteins : {recipeProteins}</p>
+                  </div>
                 </div>
               ) : null}
             </div>
