@@ -156,8 +156,7 @@ const resolvers = {
       { id, type, durationInMinutes, cardioDistanceInMiles, date }
     ) => {
       console.log(
-        `hello, these are args for cardio : ${
-          (id, type, durationInMinutes, cardioDistanceInMiles, date)
+        `hello, these are args for cardio : ${(id, type, durationInMinutes, cardioDistanceInMiles, date)
         }`
       );
       const cardio = await Exercise.create({
@@ -174,8 +173,7 @@ const resolvers = {
       { id, type, repetitions, sets, weight, date }
     ) => {
       console.log(
-        `hello, these are args for strength: ${
-          (id, type, repetitions, sets, weight, date)
+        `hello, these are args for strength: ${(id, type, repetitions, sets, weight, date)
         }`
       );
       const strength = await Exercise.create({
@@ -202,37 +200,21 @@ const resolvers = {
     },
 
     addWorkout: async (parent, { id, date, routine }, context) => {
-      //   if(Workout.date === dateCheck){
-      //     console.log("If")
-      //     console.log(Workout.date);
-      //     console.log(dateCheck);
-      //     const workout = await Workout.findOneAndUpdate({date}, {
-      //       $push: {routine}},
-      //       {returnOriginal: false}
-      //     )
-      // }
-      //   else{
-      //     console.log("else")
-      //     console.log(parent);
-      //     console.log(dateCheck);
-      //     const workout = await Workout.create({ id, date, routine });
-      //   return workout
-      //   }
-      const workout = await Workout.findOne({date: dateCheck});
-      if(workout){
+      const workout = await Workout.findOne({ date: dateCheck });
+      if (workout) {
         console.log("If")
-        const updatedWorkout = await Workout.findOneAndUpdate({date}, {
-                $addToSet: {routine}},
-                {new: true}
-              )
-              return updatedWorkout 
+        const updatedWorkout = await Workout.findOneAndUpdate({ date }, {
+          $addToSet: { routine }
+        },
+          { new: true }
+        )
+        return updatedWorkout
       }
       else {
         console.log("else")
-        const newWorkout = await Workout.create({ id, date, routine }); 
+        const newWorkout = await Workout.create({ id, date, routine, userId: context.user._id });
         return newWorkout;
       }
-
     },
 
     updateWeight: async (parent, { weightData }, context) => {

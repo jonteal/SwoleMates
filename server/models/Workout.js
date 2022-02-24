@@ -10,6 +10,10 @@ const WorkoutSchema = new Schema({
   date: {
     type: Date,
   },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
   routine: [
     {
       type: Schema.Types.ObjectId,

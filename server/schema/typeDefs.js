@@ -24,6 +24,7 @@ const typeDefs = gql`
     id: Int!
     date: String!
     routine: [ID!]
+    userId: ID!
   }
   type Auth {
     token: ID!
@@ -104,7 +105,7 @@ const typeDefs = gql`
       date: String!
     ): Exercise
 
-    addWorkout(id: Int!, date: String!, routine: [ID!]): Workout
+    addWorkout(id: Int!, date: String!, routine: [ID!], userId: ID!): Workout
 
     updateWeight(weight: Float!): User
 
