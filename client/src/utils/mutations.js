@@ -156,7 +156,6 @@ export const FOLLOW_UNFOLLOW = gql`
   mutation followUnfollow($otherUserId: ID!) {
     followUnfollow(otherUserId: $otherUserId) {
       _id
-      username
       following {
         _id
       }
