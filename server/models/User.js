@@ -45,6 +45,12 @@ const UserSchema = new Schema({
   goal: {
     type: String
   },
+  workouts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Workout",
+    },
+  ],
   following: [
     {
       type: Schema.Types.ObjectId,
@@ -57,13 +63,6 @@ const UserSchema = new Schema({
       ref: 'User',
     }
   ],
-
-  // workouts: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Workout",
-  //   },
-  // ],
   orders: [Order.schema]
 });
 
@@ -79,11 +78,11 @@ UserSchema.methods.isCorrectPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-UserSchema.virtual('followingCount').get(function() {
+UserSchema.virtual('followingCount').get(function () {
   return this.followingCount.length;
 });
 
-UserSchema.virtual('followerCount').get(function() {
+UserSchema.virtual('followerCount').get(function () {
   return this.followerCount.length;
 })
 

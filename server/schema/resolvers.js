@@ -66,7 +66,7 @@ const resolvers = {
     allWorkouts: async () => {
       return Workout.find();
     },
-    
+
 
     //stripe queries
     categories: async () => {
@@ -258,7 +258,6 @@ const resolvers = {
       parent,
       { id, type, repetitions, sets, weight, date }
     ) => {
-     
       const strength = await Exercise.create({
         id,
         type,
@@ -285,20 +284,24 @@ const resolvers = {
 
       const workout = await Workout.findOne({ date: dateCheck });
       if (workout) {
-        const updatedWorkout = await Workout.findOneAndUpdate({date}, {
-                $addToSet: {routine},
-                $set: {caloriesBurnt}},
-                {new: true},
-                
-              )
-              return updatedWorkout 
+        const updatedWorkout = await Workout.findOneAndUpdate({ date }, {
+          $addToSet: { routine },
+          $set: { caloriesBurnt }
+        },
+          { new: true },
+
+        )
+        return updatedWorkout
       }
       else {
-        const newWorkout = await Workout.create({ id, date, routine, caloriesBurnt }); 
-
-        return newWorkout;
+        try {
+          const newWorkout = await Workout.create({ id, date, routine, caloriesBurnt, userId: context.user._id });
+          const updatedUser = await User.findByIdAndUpdate({ _id: context.user._id }, { $addToSet: { "workouts": newWorkout._id } }, { new: true });
+          return { newWorkout, updatedUser };
+        } catch (err) {
+          console.log(err)
+        }
       }
-
     },
 
     updateWeight: async (parent, { weight }, context) => {
@@ -312,14 +315,10 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    // addExercise: async (parent, args) => {
-    //   const exercise = await Exercise.create(args);
-    //   return exercise;
-    // }
     //new mutations start here
     //stripe mutations
     addOrder: async (parent, { products }, context) => {
-      
+
       if (context.user) {
         const order = new Order({ products });
 
