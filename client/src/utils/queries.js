@@ -25,6 +25,15 @@ export const QUERY_EXERCISES = gql`
   }
 `;
 
+export const QUERY_WORKOUTS = gql`
+query allWorkouts {
+  allWorkouts {
+    date
+    caloriesBurnt
+  }
+}
+`;
+
 export const QUERY_PRODUCTS = gql`
   query getProducts($category: ID) {
     products(category: $category) {

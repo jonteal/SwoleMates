@@ -8,50 +8,55 @@ const SignupForm = () => {
   const [userFormData, setUserFormData] = useState({
     email: "",
     password: "",
+    checkPassword: ""
   });
 
-  const [showAlert, setShowAlert] = useState(false);
-
   const [createUser, { data, error }] = useMutation(ADD_USER);
-
-  const [inputPassword, setInputPassword] = useState("");
-  const [checkPassword, setCheckPassword] = useState("");
+  const [validated] = useState(false);
+  const [inputEmail, setInputEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [passwordError, setPasswordError] = useState("");
-
-  //   useEffect(() => {
-  //     console.log(error)
-  //     error ==="E11000 duplicate key" ? setPasswordError("User already exists, please log in.") : setPasswordError("")
-  //   }
-  //  );
+  const [matchPasswordError, setMatchPasswordError] = useState("");
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
-    setInputPassword(value);
+    setInputEmail(value);
+  };
+
+  const handleEmailCheck = (event) => {
+    event.preventDefault();
+    if (!/\S+@\S+\.\S+/.test(inputEmail)) {
+      setEmailError('Please enter a valid email address!');
+    } else {
+      setEmailError("");
+    }
   };
 
   const handlePasswordCheck = (event) => {
     event.preventDefault();
-    inputPassword === checkPassword
+    userFormData.password === userFormData.checkPassword
       ? setPasswordMatch(true)
       : setPasswordMatch(false);
-    if (inputPassword !== checkPassword) {
-      setPasswordError("Your passwords do not match, try again");
+    if (userFormData.password !== userFormData.checkPassword) {
+      setMatchPasswordError("Your passwords do not match, try again");
     } else {
-      setPasswordError("");
-    }
-    inputPassword === "" || checkPassword === ""
+      setMatchPasswordError("");
+    };
+    userFormData.password === "" || userFormData.checkPassword === ""
       ? setPasswordMatch(false)
       : setPasswordError("");
-    inputPassword.length < 7
+    userFormData.password.length < 8
       ? setPasswordError("Password must be at least 8 characters.")
       : setPasswordError("");
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    if (passwordMatch === false) {
+      return
+    } 
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -103,7 +108,7 @@ const SignupForm = () => {
             SIGN UP
           </h2>
 
-          <form className="space-y-3" noValidate onSubmit={handleFormSubmit}>
+          <form className="space-y-3" validated={validated} onSubmit={handleFormSubmit}>
             {/* Email */}
             <div>
               <label htmlFor="email"></label>
@@ -114,8 +119,10 @@ const SignupForm = () => {
                 name="email"
                 onChange={handleInputChange}
                 value={userFormData.email}
+                onBlur={handleEmailCheck}
                 required
               />
+              <p>{emailError}</p>
             </div>
             <div>
               {/* Password */}
@@ -136,14 +143,15 @@ const SignupForm = () => {
               <input
                 className="bg-gray-700 rounded-3xl border-1 border-black"
                 type="password"
-                placeholder="Password"
-                name="passwordCheck"
-                onChange={(event) => setCheckPassword(event.target.value)}
+                placeholder="Confirm Password"
+                name="checkPassword"
+                onChange={handleInputChange}
                 onBlur={handlePasswordCheck}
+                value={userFormData.checkPassword}
                 required
               />
-              {passwordMatch && <p>Your passwords match, great typing!</p>}
               <p>{passwordError}</p>
+              <p>{matchPasswordError}</p>
               {/* Submit Button */}
               <button
                 disabled={!(userFormData.email && userFormData.password)}

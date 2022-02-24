@@ -15,25 +15,47 @@ import { Transition } from "react-transition-group";
 // import { GET_WORKOUT } from "../../utils/mutations";
 
 const Workout = () => {
+
+  // date to find exercises to display;
+  // import all exercises here (for the day)
+  // useQuery to pull the data;
+  // calculate calories
+
   const { loading, data } = useQuery(QUERY_EXERCISES);
   const [addWorkout, { error }] = useMutation(ADD_WORKOUT);
 
   const [date, setDate] = useState(new Date().toISOString().split("T")[0]);
   const [id, setID] = useState(Math.floor(Math.random() * 10000000));
+  const [caloriesBurnt, setCaloriesBurnt] = useState("");
 
   const allExercises =
     data?.allExercises.filter((exercise) => exercise.date === date) || [];
 
+  useEffect(() => {
+    setCaloriesBurnt(
+      Math.round(
+        allExercises
+          .map((exercise) => exercise.caloriesBurnt)
+          .reduce((a, b) => a + b, 0)
+      )
+    );
+  });
+
   // submit your workout for the day OR update it if it exists;
   const handleSubmit = async (event) => {
+    const calories = allExercises.map((exercise) => exercise.caloriesBurnt);
+    const totalCalories = Math.round(calories.reduce((a, b) => a + b, 0));
     event.preventDefault();
     try {
+      console.log(caloriesBurnt);
+
       const { data } = await addWorkout({
         // Execute mutation and pass in defined parameter data as variables
         variables: {
           id,
           date,
           routine: allExercises.map(({ _id }) => _id),
+          caloriesBurnt,
         },
       });
       console.log(data);
@@ -55,12 +77,10 @@ const Workout = () => {
               </div>
               <div className="cardRight">
                 <p className="workoutTitle">Cardio Training</p>
+                <p>Date logged: {exercise.date}</p>
                 <p>Duration: {exercise.durationInMinutes} minutes</p>
                 <p>Distance: {exercise.cardioDistanceInMiles} miles</p>
-                <p>
-                  Calories burnt:{" "}
-                  {(exercise.durationInMinutes * (13.5 * 3.5 * 70)) / 200} kcal{" "}
-                </p>
+                <p>Calories burnt: {exercise.caloriesBurnt} kcal </p>
               </div>
             </div>
           )}
@@ -72,6 +92,7 @@ const Workout = () => {
               </div>
               <div className="cardRight">
               <p className="workoutTitle">Strength Training</p>
+              <p>Date logged: {exercise.date}</p>
               <p>Total Reps: {exercise.repetitions} reps</p>
               <p>Sets: {exercise.sets} sets</p>
               <p>Weight used: {exercise.weight} lbs</p>
@@ -80,6 +101,7 @@ const Workout = () => {
           )}
 
           {exercise.type === "stretching" && (
+
             <div key={exercise._id} className="stretchCard">
               <div className="cardLeft">
                 <img src={Yoga} alt="stretch" className="workoutImg" />
@@ -87,11 +109,9 @@ const Workout = () => {
 
               <div className="cardRight">
               <p className="workoutTitle">Stretching</p>
+              <p>Date logged: {exercise.date}</p>
               <p>Duration: {exercise.durationInMinutes} minutes</p>
-              <p>
-                Calories burnt:{" "}
-                {(exercise.durationInMinutes * (3.5 * 3.5 * 70)) / 200} kcal{" "}
-              </p>
+              <p>Calories burnt: {exercise.caloriesBurnt} kcal </p>
             </div>
             </div>
           )}
