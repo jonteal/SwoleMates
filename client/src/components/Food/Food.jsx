@@ -34,11 +34,9 @@ const FoodBar = () => {
       .then((data) => {
         if (!data.results[0]) {
           setError(
-            "Please, check your spelling and enter an actual food item!"
+            "Please check your spelling and try again."
           );
-          console.log("enter  legit item pls");
         } else {
-          console.log("else" + data.results[0].id);
           setError("");
           fetchNutrients(data.results[0].id);
         }
@@ -51,7 +49,6 @@ const FoodBar = () => {
     fetch(fetchFoodUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         // setSearchedTitle(data.)
         setSearchedTitle(data.originalName);
         setCalories(data.nutrition.nutrients[17].amount);
@@ -85,8 +82,7 @@ const FoodBar = () => {
       .then((res) => res.json())
       .then((data) => {
         if (!data) {
-          setError("Please, check your spelling or enter different recipe");
-          console.log("enter legit recipe pls");
+          setError("Please check your spelling or enter a different recipe.");
         } else {
           setRecipes(data);
           setError("");
@@ -100,7 +96,6 @@ const FoodBar = () => {
     fetch(fetchFoodUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.image);
         setRecipeCalories(data.nutrition.nutrients[0].amount);
         setRecipeCarbs(data.nutrition.nutrients[3].amount);
         setRecipeFats(data.nutrition.nutrients[1].amount);
