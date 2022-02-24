@@ -234,7 +234,6 @@ const FoodBar = () => {
                   </h3>
                   <div className="foodImageContainer">
                     <img className="foodImage" src={recipeImg} alt={recipeTitle} />
-                    
                   </div>
                   </a>
                   <div className="foodText">
