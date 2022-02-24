@@ -1,0 +1,4 @@
+.followingContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
