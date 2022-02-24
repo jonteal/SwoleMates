@@ -17,21 +17,20 @@ const Home = () => {
   return (
     <>
       <div className="homeContainer">
-        <div className="chart">
-         <BarChart/>
-         
+        <div className="homeCard">
+          <BarChart />
         </div>
 
-        <div className="weight shadow-2xl">
+        <div className="homeCard">
           <Weight />
         </div>
 
-        <div className="quotation">
-          <Quote />
-        </div>
-        
-        <div className="development shadow-2xl">
+        <div className="homeCard">
           <PersonalDevelopment />
+        </div>
+
+        <div className="homeCard">
+          <Quote />
         </div>
       </div>
     </>
