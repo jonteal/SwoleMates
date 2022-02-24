@@ -36,10 +36,11 @@ const Weight = () => {
   return (
     <>
       {!form ? (
-        <div className="weight-container">
-          <div className="weight-card">
+
+          <div className="weightCard">
             <h1 className="weightHeader">Current Weight</h1>
-            {displayWeight}
+
+            <h2 className="currentWeight">{displayWeight}</h2>
             <button
               onClick={showForm}
               className="weightBtn"
@@ -49,7 +50,7 @@ const Weight = () => {
               Update
             </button>
           </div>
-        </div>
+
       ) : (
         <div className="weight-container">
           <div className="weight-card">

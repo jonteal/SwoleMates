@@ -18,8 +18,7 @@ const Home = () => {
     <>
       <div className="homeContainer">
         <div className="homeCard">
-         <BarChart/>
-         
+          <BarChart />
         </div>
 
         <div className="homeCard">
@@ -27,11 +26,11 @@ const Home = () => {
         </div>
 
         <div className="homeCard">
-          <Quote />
-        </div>
-        
-        <div className="homeCard">
           <PersonalDevelopment />
+        </div>
+
+        <div className="homeCard">
+          <Quote />
         </div>
       </div>
     </>

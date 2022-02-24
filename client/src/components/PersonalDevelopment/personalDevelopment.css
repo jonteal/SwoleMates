@@ -15,3 +15,7 @@
     text-transform: uppercase;
     text-align: center;
 }
+
+.currentGoal{
+    font-size: 1.25rem;
+}

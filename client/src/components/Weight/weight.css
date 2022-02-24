@@ -28,3 +28,11 @@
 .weightBtn:hover {
   opacity: 1;
 }
+
+.weightCard{
+    text-align: center;
+}
+
+.currentWeight{
+    font-size: 1.25rem;
+}
