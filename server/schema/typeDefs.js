@@ -40,6 +40,7 @@ const typeDefs = gql`
     date: String!
     caloriesBurnt: Float
     routine: [ID!]
+    userId: ID!
   }
   type Auth {
     token: ID!

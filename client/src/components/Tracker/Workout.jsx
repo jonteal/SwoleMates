@@ -90,12 +90,12 @@ const Workout = () => {
                 <img src={Weights} alt="strength" className="workoutImg" />
               </div>
               <div className="cardRight">
-              <p className="workoutTitle">Strength Training</p>
-              <p>Date logged: {exercise.date}</p>
-              <p>Total Reps: {exercise.repetitions} reps</p>
-              <p>Sets: {exercise.sets} sets</p>
-              <p>Weight used: {exercise.weight} lbs</p>
-            </div>
+                <p className="workoutTitle">Strength Training</p>
+                <p>Date logged: {exercise.date}</p>
+                <p>Total Reps: {exercise.repetitions} reps</p>
+                <p>Sets: {exercise.sets} sets</p>
+                <p>Weight used: {exercise.weight} lbs</p>
+              </div>
             </div>
           )}
 
@@ -107,19 +107,19 @@ const Workout = () => {
               </div>
 
               <div className="cardRight">
-              <p className="workoutTitle">Stretching</p>
-              <p>Date logged: {exercise.date}</p>
-              <p>Duration: {exercise.durationInMinutes} minutes</p>
-              <p>Calories burnt: {exercise.caloriesBurnt} kcal </p>
-            </div>
+                <p className="workoutTitle">Stretching</p>
+                <p>Date logged: {exercise.date}</p>
+                <p>Duration: {exercise.durationInMinutes} minutes</p>
+                <p>Calories burnt: {exercise.caloriesBurnt} kcal </p>
+              </div>
             </div>
           )}
         </ul>
       ))}
 
-      {/* <button onClick={(e) => handleSubmit(e)}>
+      <button onClick={(e) => handleSubmit(e)}>
         "Save and update workout on the dashboard"
-      </button> */}
+      </button>
     </div>
   );
 };

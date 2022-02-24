@@ -13,6 +13,10 @@ const WorkoutSchema = new Schema({
   caloriesBurnt:{
     type: Number
   },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
   routine: [
     {
       type: Schema.Types.ObjectId,
