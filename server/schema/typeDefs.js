@@ -15,11 +15,11 @@ const typeDefs = gql`
   }
 
   type Following {
-    _id: ID!
+    _id: ID
   }
 
   type Followers {
-    _id: ID!
+    _id: ID
   }
 
   type Exercise {
@@ -47,7 +47,7 @@ const typeDefs = gql`
 
   type Query {
     getUsers: [User]
-    getMe(_id: ID!): User
+    getMe(_id: ID): User
     getSearchedUser(email: String): [User]
     getUser: User
     allExercises: [Exercise]!

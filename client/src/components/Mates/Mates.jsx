@@ -15,21 +15,22 @@ const Mates = () => {
         <>
 
             <div className="mainContainer">
-                <div>
+                <h1>Mates</h1>
+                {/* <div>
                     <SearchResults/>
-                </div>
+                </div> */}
 
                 <div className="personalProfile">
                     <PersonalProfile />
                 </div>
 
-                <div className="searchResults">
+                {/* <div className="searchResults">
                     <a><FollowersContainer />Followers</a>
-                </div>
+                </div> */}
 
-                <div className="searchResults">
+                {/* <div className="searchResults">
                     <a><FollowingContainer />Following</a>
-                </div> 
+                </div>  */}
 
             </div>
         </>

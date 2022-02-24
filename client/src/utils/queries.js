@@ -115,8 +115,8 @@ query getSearchedUser ($email: String!) {
 `
 
 export const GET_ME = gql`
-query getMe ($id: ID!) {
-    getMe (_id: $id) {
+query getMe {
+    getMe {
       _id
       email
       firstName

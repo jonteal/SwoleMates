@@ -3,14 +3,15 @@ import { Card, Icon } from 'semantic-ui-react';
 import './personalProfile.css';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from "../../utils/queries";
-import auth from "../../utils/auth";
+import AuthService from "../../utils/auth";
 
 // Personal Profile component - Displays user's profile
 const PersonalProfile = () => {
     const [user, setUser] = useState({});
 
+    console.log(AuthService.getProfile());
     const { loading, data } = useQuery(GET_ME, {
-        variables: { id: auth.getProfile().data._id }
+        variables: { id: AuthService.getProfile().data._id }
     });
     
     useEffect(() => {
@@ -22,7 +23,7 @@ const PersonalProfile = () => {
     }, [data])
 
     console.log("---- fetched user ---");
-    console.log(user);
+    console.log(data);
 
     if (loading) {
         return <p>Loading</p>

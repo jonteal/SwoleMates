@@ -64,6 +64,8 @@ function App() {
                   <PrivateRoute exact path='/profile' component={Profile} />
                   <PrivateRoute exact path='/quote' component={Quote} />
                   <PrivateRoute exact path='/personaldevelopment' component={PersonalDevelopment} />
+                  <PrivateRoute exact path='/mates' component={Mates} />
+                  <PrivateRoute exact path='/personalprofile' component={PersonalProfile} />
                   <PrivateRoute exact path='/food' component={Foodbar} />
                   <PrivateRoute exact path='/mealplan' component={MealPlanner} />
                   <PrivateRoute exact path='/exercise' component={Tracker} />
