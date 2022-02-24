@@ -2,3 +2,8 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.followingList {
+    display: flex;
+    justify-content: center;
+}

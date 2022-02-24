@@ -1,3 +1,22 @@
 .personalProfileCard {
     border: 1px solid black;
 }
+
+.header {
+    text-align: center;
+}
+
+.description {
+    text-align: center;
+}
+
+.followerBox {
+    border: solid rgb(201, 201, 201) 1px;
+    border-radius: 2%;
+    margin-bottom: 5%;
+}
+
+.followingBox {
+    border: solid rgb(201, 201, 201) 1px;
+    border-radius: 2%;
+}

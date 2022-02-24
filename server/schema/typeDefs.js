@@ -7,6 +7,7 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
     followerCount: Int
+    followingCount: Int
     orders: [Order]
     weight: Float!
     goal: String!

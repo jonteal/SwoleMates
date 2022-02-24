@@ -14,8 +14,8 @@ import Quote from './components/Quote/Quote';
 import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
 import Mates from './components/Mates/Mates';
 import SearchResults from './components/SearchResults/SearchResults';
-import FollowingContainer from './components/FollowingContainer/FollowingContainer';
-import FollowersContainer from './components/FollowersContainer/FollowersContainer';
+import Following from './components/FollowingContainer/FollowingContainer';
+import Followers from './components/FollowersContainer/FollowersContainer';
 
 import SignupForm from './components/SignupForm/SignupForm';
 import LoginForm from './components/LoginForm/LoginForm';
@@ -66,6 +66,8 @@ function App() {
                   <PrivateRoute exact path='/personaldevelopment' component={PersonalDevelopment} />
                   <PrivateRoute exact path='/mates' component={Mates} />
                   <PrivateRoute exact path='/personalprofile' component={PersonalProfile} />
+                  <PrivateRoute exact path='/following' component={Following} />
+                  <PrivateRoute exact path='/followers' component={Followers} />
                   <PrivateRoute exact path='/food' component={Foodbar} />
                   <PrivateRoute exact path='/mealplan' component={MealPlanner} />
                   <PrivateRoute exact path='/exercise' component={Tracker} />

@@ -24,7 +24,7 @@ const Mates = () => {
                     <PersonalProfile />
                 </div>
 
-                {/* <div className="searchResults">
+                {/* <div>
                     <a><FollowersContainer />Followers</a>
                 </div> */}
 

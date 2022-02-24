@@ -1,0 +1,19 @@
+.followerList {
+    display: flex;
+    justify-content: center;
+}
+
+/* .followUnfollowBtn {
+    cursor: pointer;
+    border: 1px solid black;
+    width: 30%;
+} */
+
+.ui-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.dataRight {
+    text-align: end;
+}
