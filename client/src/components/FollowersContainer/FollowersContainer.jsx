@@ -5,6 +5,7 @@ import { GET_ME } from "../../utils/queries";
 import { FOLLOW_UNFOLLOW } from "../../utils/mutations";
 import AuthService from "../../utils/auth";
 import { addUserId, removeUserId } from '../../utils/localStorage';
+import { Link } from 'react-router-dom';
 
 const FollowersContainer = () => {
 
@@ -66,7 +67,7 @@ const FollowersContainer = () => {
                         </a>
                         </div>
 
-                        <button className="followUnfollowBtn ui button">
+                        <button className="followUnfollowBtn ui button" {...followers?.includes(follower._id) ? "Unfollow" : "Follow"}>
                             Follow
                         </button>
                     </div>
@@ -74,6 +75,12 @@ const FollowersContainer = () => {
                     </li>
                 ))}
                 </ul>
+
+                
+            </div>
+
+            <div className="homeBtnContainer">
+                <Link to='/personalprofile'><button class="ui primary basic button">Back to Me</button></Link>
             </div>
 
 

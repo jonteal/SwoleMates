@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Card, Icon } from 'semantic-ui-react';
+import { Button, Card, Icon } from 'semantic-ui-react';
 import './personalProfile.css';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from "../../utils/queries";
 import AuthService from "../../utils/auth";
 import FollowersContainer from "../FollowersContainer/FollowersContainer";
 import FollowingContainer from "../FollowingContainer/FollowingContainer";
+import { Link } from 'react-router-dom';
 
 // Personal Profile component - Displays user's profile
 const PersonalProfile = () => {
@@ -36,6 +37,8 @@ const PersonalProfile = () => {
 
     return (
         <>
+
+        <div className="personalProfileMain">
             <Card className="personalProfileCard"
                 header={user.firstName}
                 // meta='User'
@@ -43,22 +46,27 @@ const PersonalProfile = () => {
                 // extra={extra}
             />
             <div className="followerBox">
-            <a href={FollowersContainer}><h1>Followers</h1></a>
+            <Link to="/followers"><h1>Followers</h1></Link>
                 <ul>
                 {followers.map(follower => (
-                    <li key={follower._id}>{`${follower.firstName} ${follower.lastName}`}</li>
+                    <Link><li key={follower._id}>{`${follower.firstName} ${follower.lastName}`}</li></Link>
                 ))}
                 </ul>
             </div>
 
             <div className="followingBox">
-            <a href={FollowingContainer}><h1>Following</h1></a>
+            <Link to="/following"><h1>Following</h1></Link>
                 <ul>
                 {following.map(following => (
-                    <li key={following._id}>{`${following.firstName} ${following.lastName}`}</li>
+                    <Link><li key={following._id}>{`${following.firstName} ${following.lastName}`}</li></Link>
                 ))}
                 </ul>
             </div>
+
+        </div>
+            
+
+
 
 
 

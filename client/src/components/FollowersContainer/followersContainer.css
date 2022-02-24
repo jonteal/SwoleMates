@@ -17,3 +17,17 @@
 .dataRight {
     text-align: end;
 }
+
+.homeBtnContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* .button {
+    margin-top: 5%;
+} */
+
+.ui.button {
+    margin: 5%;
+}

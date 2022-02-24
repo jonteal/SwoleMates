@@ -7,3 +7,7 @@
     display: flex;
     justify-content: center;
 }
+
+.ui.button {
+    margin: 5%;
+}

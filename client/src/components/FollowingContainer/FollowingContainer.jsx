@@ -5,6 +5,7 @@ import { GET_ME } from '../../utils/queries';
 import { FOLLOW_UNFOLLOW } from '../../utils/mutations';
 import AuthService from '../../utils/auth';
 import { removeUserId, addUserId } from '../../utils/localStorage';
+import { Link } from "react-router-dom";
 
 const FollowingContainer = () => {
 
@@ -65,6 +66,12 @@ const FollowingContainer = () => {
                     </li>
                 ))}
                 </ul>
+
+
+            </div>
+
+            <div className="homeBtnContainer">
+                <Link to='/personalprofile'><button class="ui primary basic button">Back to Me</button></Link>
             </div>
 
 
