@@ -1,130 +1,125 @@
 .errorBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  max-height: 90vh;
+  margin-top: 10vh;
 }
 
 .error {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    font-size: 128px;
-    height: 15vh;
-    width: 30vw;
-    font-family: 'Nunito', sans-serif;
-    color: #354152;
-    padding-top: 5px;
+  text-align: center;
+  font-size: 7rem;
+  font-family: "Nunito", sans-serif;
+  color: #354152;
 }
 
 .imageBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+.imageBox img {
+  height: 50vh;
 }
 
 .messageBox {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    font-family: 'Nunito', sans-serif;
-    font-size: 30px;
+  font-family: "Nunito", sans-serif;
+  font-size: 1.5rem;
 }
 
 .message {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-    .funnyMessage {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 30px;
-    }
+.funnyMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    .infoMessage {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding-bottom: 30px;
-    }
+.infoMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-    .goBack {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 10px;
-        text-decoration: none;
-    }
+.goBack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding-top: 15px;
+}
 
-.button:hover {
-    color: #354152;
-    cursor: pointer;
+.goBack:hover {
+  color: #354152;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {
-    .errorBox {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-}
+  .errorBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .error {
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        text-align: center;
-        font-size: 96px;
-        height: 15vh;
-        width: 100vw;
-        font-family: 'Nunito', sans-serif;
-        color: #354152;
-        padding-top: 5px;
-}
+  .error {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    font-size: 96px;
+    height: 15vh;
+    width: 100vw;
+    font-family: "Nunito", sans-serif;
+    color: #354152;
+    padding-top: 5px;
+  }
 
-    .message {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-self: center;
-        text-align: center;
-        font-size: 20px;
-    }
+  .message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 20px;
+  }
 
-    .funnyMessage {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 10px;
-    }
+  .funnyMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
 
-    .infoMessage {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding-bottom: 20px;
-    }
+  .infoMessage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 20px;
+  }
 
-    .goBack {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding-bottom: 10px;
-        text-decoration: none;
-    }
+  .goBack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    text-decoration: none;
+  }
 
-    .button:hover {
-        color: #354152;
-        cursor: pointer;
-    }
+  .button:hover {
+    color: #354152;
+    cursor: pointer;
+  }
 
+  
+.imageBox img {
+    height: 200px;
+  }
 }
