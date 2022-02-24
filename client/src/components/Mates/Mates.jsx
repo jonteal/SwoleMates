@@ -16,9 +16,7 @@ const Mates = () => {
 
             <div className="mainContainer">
                 <h1>Mates</h1>
-                {/* <div>
-                    <SearchResults/>
-                </div> */}
+                
 
                 <div className="personalProfile">
                     <PersonalProfile />
@@ -31,6 +29,10 @@ const Mates = () => {
                 {/* <div className="searchResults">
                     <a><FollowingContainer />Following</a>
                 </div>  */}
+
+                {/* <div>
+                    <SearchResults/>
+                </div> */}
 
             </div>
         </>

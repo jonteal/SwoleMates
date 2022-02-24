@@ -49,6 +49,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -68,8 +69,7 @@ function App() {
                   <PrivateRoute exact path='/personalprofile' component={PersonalProfile} />
                   <PrivateRoute exact path='/following' component={Following} />
                   <PrivateRoute exact path='/followers' component={Followers} />
-                  {/* <PrivateRoute exact path='/followers/:id' component={} /> */}
-
+                  <PrivateRoute exact path='/searchresults/:id' component={SearchResults} />
                   <PrivateRoute exact path='/food' component={Foodbar} />
                   <PrivateRoute exact path='/mealplan' component={MealPlanner} />
                   <PrivateRoute exact path='/exercise' component={Tracker} />

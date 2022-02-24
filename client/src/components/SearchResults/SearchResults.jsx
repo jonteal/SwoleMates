@@ -5,6 +5,9 @@ import Auth from '../../utils/auth';
 import { useMutation } from '@apollo/client';
 import { addUserIds, getAddedUserIds} from '../../utils/localStorage';
 import { useQuery, gql } from '@apollo/client';
+import { matchPath } from "react-router";
+import { Link } from 'react-router-dom';
+
 
 const SearchResults = () => {
 
@@ -35,6 +38,13 @@ const SearchResults = () => {
 
         try {
             const response = await fetch(`${searchInput}`);
+
+            // FOUND ON REACT DOCS
+            // const match = matchPath("/users/?", {
+            //     path: "/users/:id",
+            //     exact: true,
+            //     strict: false
+            // });
 
             if (!response.ok) {
                 throw new Error ('something went wrong!');
@@ -85,18 +95,22 @@ const SearchResults = () => {
             <div className='mainContainer'>
 
             <div className="searchBarContainer">
-                <h1>Search!</h1>
-                <form onSubmit={handleFormSubmit}>
+                <h1>Search for a SwoleMate!</h1>
+                <form className='searchForm' onSubmit={handleFormSubmit}>
                     <input
                         name='searchInput'
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
                         type='text'
-                        placeholder='Search for a person'
+                        placeholder='Search for a user'
                     />
-                    <button type='submit'>
+                    <button type='submit' className="ui secondary basic button">
                         Search
                     </button>
+
+                    <div className="homeBtnContainer">
+                        <Link to='/personalprofile'><button class="ui primary basic button">Back to Me</button></Link>
+                    </div>
                 </form>
             </div>
 
@@ -104,7 +118,7 @@ const SearchResults = () => {
                 <h2>
                     {searchedUsers.length
                         ? `Viewing ${searchedUsers.length} results:`
-                        : 'Search for other Swole Mates!'}
+                        : ''}
                 </h2>
 
                 <div className='profileResults'>
@@ -129,7 +143,7 @@ const SearchResults = () => {
                                     <div>
                                         {/* If we don't already follow them, give option to follow. */}
                                         {Auth.loggedIn() && (
-                                            <button
+                                            <button className="ui secondary basic button"
                                                 disabled={addedUserIds?.some((addedUserId) => addedUserId === user.userId)}
                                                 onClick={() => handleAddFollow(user.userId)}>
                                                 {addedUserIds?.some((addedUserId) => addedUserId === user.userId)

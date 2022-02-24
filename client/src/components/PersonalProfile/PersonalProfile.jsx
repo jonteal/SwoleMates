@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 const PersonalProfile = () => {
     const [user, setUser] = useState({});
 
-    // console.log(AuthService.getProfile());
     const { loading, data } = useQuery(GET_ME, {
         variables: { id: AuthService.getProfile().data._id }
     });
@@ -20,13 +19,9 @@ const PersonalProfile = () => {
     useEffect(() => {
         if (data) {
             setUser(data.getMe);
-            console.log("---- fetched data ---");
-            console.log(data);
         }
     }, [data])
 
-    console.log("---- fetched user ---");
-    console.log(data);
 
     if (loading) {
         return <p>Loading</p>
@@ -47,20 +42,20 @@ const PersonalProfile = () => {
             />
             <div className="followerBox">
             <Link to="/followers"><h1>Followers</h1></Link>
-                <ul>
+                {/* <ul>
                 {followers.map(follower => (
                     <Link><li key={follower._id}>{`${follower.firstName} ${follower.lastName}`}</li></Link>
                 ))}
-                </ul>
+                </ul> */}
             </div>
 
             <div className="followingBox">
             <Link to="/following"><h1>Following</h1></Link>
-                <ul>
+                {/* <ul>
                 {following.map(following => (
                     <Link><li key={following._id}>{`${following.firstName} ${following.lastName}`}</li></Link>
                 ))}
-                </ul>
+                </ul> */}
             </div>
 
         </div>
