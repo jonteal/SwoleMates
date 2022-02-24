@@ -15,6 +15,7 @@ const Weight = () => {
   let displayWeight
 
   if (currentWeight == 0) {
+    console.log(data);
     displayWeight = <div className="current-weight">{data?.getUser.weight} lbs</div>
   } else {
     displayWeight = <div className="current-weight">{currentWeight} lbs</div>
