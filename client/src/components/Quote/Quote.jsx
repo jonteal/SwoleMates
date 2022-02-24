@@ -18,11 +18,11 @@ function Quote() {
     return (
         <>
         <div className="quote-container">
-            <div className="quote-card">
+
                 <h1 className="quote-header">Quote of the Day:</h1>
-                <h2 className="quote">{quote}</h2>
-                <p className="quote-author">- {author}</p>
-            </div>
+                <h2 className="quote">"{quote}"</h2>
+                <p className="quote">- {author}</p>
+
         </div>
         </>
     )
