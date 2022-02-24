@@ -13,12 +13,18 @@ import Profile from './components/Profile/Profile';
 import Foodbar from './components/Food/Food';
 import Quote from './components/Quote/Quote';
 import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
+import Mates from './components/Mates/Mates';
+import SearchResults from './components/SearchResults/SearchResults';
+import FollowingContainer from './components/FollowingContainer/FollowingContainer';
+import FollowersContainer from './components/FollowersContainer/FollowersContainer';
+
 import SignupForm from './components/SignupForm/SignupForm';
 import LoginForm from './components/LoginForm/LoginForm';
 import Welcome from './components/Welcome/Welcome';
 import WrongPage from './components/WrongPage/WrongPage';
 import Sponsor from './components/Sponsor/Sponsor';
 import Success from './pages/Success';
+import PersonalProfile from './components/PersonalProfile/PersonalProfile';
 import Tracker from './components/Tracker/Tracker'
 import Exercise from './components/Tracker/Exercise'
 
@@ -57,6 +63,11 @@ function App() {
                   <Route exact path='/signup' component={SignupForm} />
                   <Route exact path='/home' component={Dashboard} />
                   <Route exact path='/profile' component={Profile} />
+                  <Route exact path='/mates' component={Mates} />
+                  <Route exact path='.searchresults' component={SearchResults} />
+                  <Route exact path='/personalprofile' component={PersonalProfile} />
+                  <Route exact path='/following' component={FollowingContainer} />
+                  <Route exact path='/followers' component={FollowersContainer} />
                   <Route exact path='/quote' component={Quote} />
                   <Route exact path='/personaldevelopment' component={PersonalDevelopment} />
                   <Route exact path='/food' component={Foodbar} />

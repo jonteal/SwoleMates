@@ -22,7 +22,7 @@ export const QUERY_EXERCISES = gql`
       weight
       caloriesBurnt
     }
-  }
+    }
 `;
 
 export const QUERY_WORKOUTS = gql`
@@ -102,3 +102,36 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const GET_SEARCHED_USER = gql`
+query getSearchedUser ($email: String!) {
+    getSearchedUser (email: $email) {
+        _id
+        email
+    	  firstName
+    	  lastName
+  }
+}
+`
+
+export const GET_ME = gql`
+query getMe ($id: ID!) {
+    getMe (_id: $id) {
+      _id
+      email
+      firstName
+      lastName
+      goal
+      followers {
+        _id
+        firstName
+        lastName
+      }
+      following{
+        _id
+        firstName
+        lastName
+      }
+  }
+}
+`
