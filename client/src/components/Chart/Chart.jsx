@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-// This import is nesseccary to make all the graphs datasets work properly;
+// This import is necessary to make all the graphs datasets work properly;
 import Chart from "chart.js/auto";
+import './chart.css'
 
 // press control+space in an empty {} import to see options of graphs;
 import { Bar } from "react-chartjs-2";
