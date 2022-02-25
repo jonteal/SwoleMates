@@ -6,8 +6,37 @@ import { FOLLOW_UNFOLLOW } from '../../utils/mutations';
 import AuthService from '../../utils/auth';
 import { removeUserId, addUserId } from '../../utils/localStorage';
 import { Link } from "react-router-dom";
+import { GET_PROFILE } from '../../utils/queries';
+import Account from "../Account/Account";
 
 const FollowingContainer = () => {
+
+    // const [followedUserIds, setFollowedUserIds] = useState(getFollowedUserIds());
+
+
+    // const [followUnfollow, {error}] = useMutation(FOLLOW_UNFOLLOW);
+
+    // handlefollowUnfollow = async (userId) => {
+    //     const userToAdd = following.find((user) => user.userId === userId);
+
+    //     const token = AuthService.loggedIn() ? AuthService.getToken() : null;
+
+    //     if (!token) {
+    //         return false;
+    //     }
+
+    //     try {
+    //         const { data } = await followUnfollow({
+    //             variables: { userData: userToAdd },
+    //         });
+
+    //         setFollowedUserIds([...followedUserIds, userToAdd.userId]);
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // }
+
+
 
 
     const [user, setUser] = useState({});
@@ -24,7 +53,7 @@ const FollowingContainer = () => {
     }, [data])
 
     if (loading) {
-        return <p>Loading</p>
+        return <p>Loading...</p>
     }
 
     // const followers = user?.followers || [];
@@ -34,8 +63,6 @@ const FollowingContainer = () => {
         <>
             <h1>People I follow</h1>
 
-            
-
             <div className="followingList">
                 <ul>
                 {following.map(following => (
@@ -43,7 +70,7 @@ const FollowingContainer = () => {
                     
                     <div className="ui card">
                         <div className="content">
-                            <a className="header">{`${following.firstName} ${following.lastName}`}</a>
+                            <Link to={`/account/${Account._id}`} className="header">{`${following.firstName} ${following.lastName}`}</Link>
                         </div>
                         <div className="extra content">
                         <a>
@@ -57,7 +84,11 @@ const FollowingContainer = () => {
                         
                         </div>
 
-                        <button className="followUnfollowBtn ui button">
+                        <button className="followUnfollowBtn ui button"
+                        
+                        
+                        
+                        >
                             Follow
                         </button>
 
@@ -70,8 +101,9 @@ const FollowingContainer = () => {
 
             </div>
 
+            {/* Back to Personal Profile */}
             <div className="homeBtnContainer">
-                <Link to='/personalprofile'><button class="ui primary basic button">Back to Me</button></Link>
+                <Link to='/personalprofile'><button className="ui primary basic button">Back to Me</button></Link>
             </div>
 
 

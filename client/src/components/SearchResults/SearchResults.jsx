@@ -84,7 +84,7 @@ const SearchResults = () => {
             // if user succesfully saves to user's account, add user id to state
             setAddedUserIds([...addedUserIds, userToAdd.userId]);
         } catch (err) {
-            console.console.error(err);
+            console.error(err);
         }
     };
 

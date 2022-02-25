@@ -24,7 +24,7 @@ const PersonalProfile = () => {
 
 
     if (loading) {
-        return <p>Loading</p>
+        return <p>Loading...</p>
     }
 
     const followers = user?.followers || [];
@@ -34,28 +34,21 @@ const PersonalProfile = () => {
         <>
 
         <div className="personalProfileMain">
+
+            {/* Profile Card */}
             <Card className="personalProfileCard"
                 header={user.firstName}
-                // meta='User'
                 description={`My current goal is to ${user.goal}!`}
-                // extra={extra}
             />
+
+            {/* Logged in user's Followers */}
             <div className="followerBox">
-            <Link to="/followers"><h1>Followers</h1></Link>
-                {/* <ul>
-                {followers.map(follower => (
-                    <Link><li key={follower._id}>{`${follower.firstName} ${follower.lastName}`}</li></Link>
-                ))}
-                </ul> */}
+                <Link to="/followers"><h1>Followers</h1></Link>
             </div>
 
+            {/* People the Logged in User is Following*/}
             <div className="followingBox">
-            <Link to="/following"><h1>Following</h1></Link>
-                {/* <ul>
-                {following.map(following => (
-                    <Link><li key={following._id}>{`${following.firstName} ${following.lastName}`}</li></Link>
-                ))}
-                </ul> */}
+                <Link to="/following"><h1>Following</h1></Link>
             </div>
 
         </div>

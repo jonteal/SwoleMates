@@ -47,6 +47,18 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
+    getAccount: async (parent, { firstName }, context) => {
+      if (context.user) {
+      try {
+        const user = await User.find ({ firstName });
+        return user;
+      } catch (error) {
+        throw new Error(error);
+      }
+    }
+    throw new AuthenticationError('You need to be logged in to search for other users!');
+    },
+
     getSearchedUser: async (parent, { email }) => {
       try {
         const user = await User.find ({ email });

@@ -9,6 +9,7 @@ export const GET_PROFILE = gql`
     }
 `;
 
+
 export const QUERY_EXERCISES = gql`
   query allExercises {
     allExercises {
@@ -134,4 +135,22 @@ query getMe {
       }
   }
 }
+`
+
+export const GET_ACCOUNT = gql`
+  query getAccount {
+    getAccount {
+      _id
+      email
+      firstName
+      lastName
+      goal
+      following {
+        _id
+      }
+      followers {
+        _id
+      }
+    }
+  }
 `

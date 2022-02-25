@@ -33,3 +33,21 @@ query getMe ($id: ID!) {
   }
 }
 `
+
+export const GET_ACCOUNT = gql`
+  query getAccount {
+    getAccount {
+      _id
+      email
+      firstName
+      lastName
+      goal
+      following {
+        _id
+      }
+      followers {
+        _id
+      }
+    }
+  }
+`

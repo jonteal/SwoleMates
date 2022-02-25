@@ -50,6 +50,7 @@ const typeDefs = gql`
   type Query {
     getUsers: [User]
     getMe(_id: ID): User
+    getAccount(firstName: String): [User]
     getSearchedUser(email: String): [User]
     getUser: User
     allExercises: [Exercise]!
