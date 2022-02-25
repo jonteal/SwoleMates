@@ -6,7 +6,7 @@ const MealPlanner = () => {
   const [foodPlan, setPlan] = useState([]);
 
   //   Calories are calculated based on our BMR;
-  var calories = 2000;
+  let calories = 2000;
 
   //   Initiating data fetch from Spunacular API:
   useEffect(() => {
@@ -19,6 +19,7 @@ const MealPlanner = () => {
     fetch(fetchMealPlanUrl)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setPlan(data.week);
       });
   };
@@ -30,24 +31,24 @@ const MealPlanner = () => {
         {Object.keys(foodPlan).map((key, index) => (
           <>
             <div className="mealDay">
+              <h1 className="innerDay" key={key}>
+                {key}:
+              </h1>
 
-              <h1 className="innerDay" key={key}>{key}:</h1>
-            <ul>
               {foodPlan[key].meals.map((meal) => (
-                <div key={meal.sourceUrl.id}>
-                  <li>
-                    <a href={meal.sourceUrl} target="_blank">
-                      - {meal.title};
-                    </a>
-                  </li>
+                <div className="mealRecipes" key={meal.sourceUrl.id}>
+                  <h2 className="mealName">{meal.title}</h2>
+                  <p>Servings: {meal.servings}</p>
+                  <p>Time: {meal.readyInMinutes} min</p>
+                  <a href={meal.sourceUrl} target="_blank" className="getMeal">
+                    See Full Recipe
+                  </a>
                 </div>
               ))}
-            </ul>
             </div>
-
           </>
         ))}
-      </div> 
+      </div>
     </div>
   );
 };

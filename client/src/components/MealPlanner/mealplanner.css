@@ -1,33 +1,84 @@
 .mealContainer{
-    background-color: chartreuse;
     min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .mealCalendar{
-    background-color: pink;
     height: 80vh;
     display: flex;
     flex-direction: row;
-    /* width: 100vw; */
+    width: 80vw;
 }
 
 .mealDay{
     display: flex;
     flex-direction: column;
-    background-color: yellow;
     width: 100vw;
-    border: black 1px solid;
+    /* border: black 1px solid; */
 }
 
 .innerDay{
-    /* background-color: rgb(49, 49, 221); */
-    border-bottom: black 1px solid;
+    background-color: #7e8ba3;
+    /* border-bottom: black 1px solid; */
+    text-transform: capitalize;
+    font-size: 1.5rem;
+    color: white;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .mealPlanTitle{
     color: #7e8ba3;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 100;
     margin: 0 0 1rem;
+    padding-top: 1rem;
     text-transform: uppercase;
     text-align: center;
 }
+
+.mealRecipes{
+box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.315);
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  min-height: 25%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mealRecipes:hover{
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.582);
+    cursor: default;
+}
+
+.mealName{
+    /* background-color: aqua; */
+    font-size: 1.15rem;
+    text-transform: capitalize;
+}
+
+.getMeal:hover{
+cursor: pointer;
+text-decoration: underline;
+}
+
+  
+@media only screen and (max-width: 850px){
+
+    .mealContainer{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+    }
+
+    .mealCalendar{
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+    }
+      }
