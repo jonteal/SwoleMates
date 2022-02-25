@@ -1,5 +1,3 @@
-
-
 .homeContainer{
   display: flex;
   flex-direction: column;
@@ -19,89 +17,6 @@
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.582);
   cursor: default;
 }
-
-
-
-/* .development {
-  background-color: lightslategray;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 15px;
-  padding: 10px;
-  width: 85vw;
-  height: 20vh;
-  border: solid 1px black;
-  border-radius: 10px;
-  margin-bottom: 30px;
-}
-
-.weight {
-  background-color: lightslategray;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black;
-  width: 85vw;
-  height: 20vh;
-  border-radius: 10px;
-  margin: 15px;
-  padding: 10px;
-  margin-bottom: 30px;
-}
-
-.calories {
-  background-color: lightslategray;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black;
-  width: 85vw;
-  height: 20vh;
-  border-radius: 10px;
-  margin: 15px;
-  padding: 10px;
-  margin-bottom: 30px;
-}
-
-.calories-consumed {
-  width: 80vw;
-  margin: 5px;
-}
-
-.calories-burned {
-  width: 80vw;
-}
-
-.quotation {
-  background-color: lightslategray;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 15px;
-  padding: 10px;
-  width: 85vw;
-  height: 30vh;
-  border: solid 1px black;
-  border-radius: 10px;
-  margin-bottom: 30px;
-}
-
-.chart {
-  background-color: lightslategray;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 15px;
-  padding: 10px;
-  width: 85vw;
-  height: 30vh;
-  border: solid 1px black;
-  border-radius: 10px;
-  margin-bottom: 30px;
-}
- */
 
  @media only screen and (max-width: 450px){
   .homeCard{

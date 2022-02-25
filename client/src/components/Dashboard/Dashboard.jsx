@@ -16,7 +16,7 @@ const exercise = 200;
 const Home = () => {
   return (
     <>
-      <div className="homeContainer">
+      <div className="pt-5 homeContainer">
         <div className="homeCard">
           <BarChart />
         </div>
@@ -29,7 +29,7 @@ const Home = () => {
           <PersonalDevelopment />
         </div>
 
-        <div className="homeCard">
+        <div className="pb-5 homeCard">
           <Quote />
         </div>
       </div>
