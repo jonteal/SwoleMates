@@ -2,7 +2,7 @@
 
 <a name="descsection"></a>
 ## Description
-Coming Soon...
+Here at SwoleMate we are passionate about two things: Getting swole and finding mates (mates as in friends, ya perv). This application is a MERN stack single-page application and utilizes ReactJS, tailwindCSS, GraphQL, MongoDB, JWT, PWA, Stripe, and so much more... Enjoy not only tracking your workouts and researching your food macro-nutrients, but also lurking your friends. Sign up today to find your one true swole mate 💓
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -44,9 +44,14 @@ git clone https://github.com/jonteal/SwoleMates.git
 ```
 npm install || npm i
 ```
+* Seed the data base
+```
+npm run seed
+```
+
 * Run the project by typing the following in the terminal:
 ```
-npm run start
+npm run develop
 ```
 
 <a name="licensesection"></a>
@@ -79,17 +84,23 @@ git push origin yourname-branch
 
   <a name="testsection"></a>
 ## Tests
-No tests at this time
+Run tests using just in the client folder, simply type:
+```
+npm run test
+```
 
   <a name="questionssection"></a>
 ## Collaborators?
-  Meet the team:
+  Meet the swole mates who created this app:
 
-  INSERT TEAM MATES, EMAILS, and GITHUBS HERE
+* Eric Martin
+* Jon Jackson
+* Laurel Thorburn
+* Ryan Paragas
+* Valerii Bihun
 
   Questions/comments/concerns? Please send an email to codinglaurel@gmail.com
   
-
   <a name="picsection"></a>
   ## Screenshots
   ![Screenshot of COMING SOON](./comingsoon)
