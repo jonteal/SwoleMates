@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-color: aquamarine; */
 }
 
 .quote-header {
@@ -23,5 +22,6 @@
     max-width: 100%;
     padding: 5px;
     font-style: italic;
-    font-size: 1rem;
+    font-weight: 100;
+    font-size: 1.25rem;
 }

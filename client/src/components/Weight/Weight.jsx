@@ -55,10 +55,10 @@ const Weight = () => {
       ) : (
         <div className="weight-container">
           <div className="weight-card">
-            <h1 className="weight-header">Add Weight Here</h1>
+            <h1 className="weightHeader">Update Weight</h1>
             <form className="weight-form" onSubmit={handleSubmit}>
               <input
-                className="weight-input"
+              className="weightInput"
                 type="number"
                 placeholder="200 lbs"
                 name="weight"
