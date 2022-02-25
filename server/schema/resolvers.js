@@ -235,7 +235,6 @@ const resolvers = {
 
 
     addCardio: async (parent, { id, type, durationInMinutes, cardioDistanceInMiles, date }) => {
-      console.log(`hello, these are args for cardio : ${id, type, durationInMinutes, cardioDistanceInMiles, date}`)
       const cardio = await Exercise.create({ id, type, durationInMinutes, cardioDistanceInMiles, date });
       throw new AuthenticationError({ msg: "ID mismatch" });
     },

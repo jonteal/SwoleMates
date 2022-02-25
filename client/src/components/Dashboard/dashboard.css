@@ -17,6 +17,38 @@
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.582);
   cursor: default;
 }
+.recipeHomeCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipeHeader {
+  color: #7e8ba3;
+  font-size: 2rem;
+  font-weight: 100;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.recipeHomeBtn {
+  background-image: linear-gradient(160deg, #096479 0%, #76d9f0 100%);
+  color: #fff;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  padding: 2px 5px;
+  opacity: 0.5;
+  width: 245px;
+  text-align: center;
+}
+
+.recipeHomeBtn:hover {
+  opacity: 1;
+}
+
+
 
  @media only screen and (max-width: 450px){
   .homeCard{
