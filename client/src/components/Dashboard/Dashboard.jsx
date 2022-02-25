@@ -14,6 +14,12 @@ const exerciseData = [{ bgcolor: "#00695c", completed: 40 }];
 const exercise = 200;
 
 const Home = () => {
+
+  const handleFoodSubmit = (e) => {
+    e.preventDefault();
+    window.location.pathname = "/mealplan";
+  };
+
   return (
     <>
       <div className="pt-5 homeContainer">
@@ -27,6 +33,15 @@ const Home = () => {
 
         <div className="homeCard">
           <PersonalDevelopment />
+        </div>
+
+        <div className="homeCard">
+          <div className="recipeHomeCard">
+            <h1 className="recipeHeader">Explore New Recipes</h1>
+            <button to="/mealplan" className="recipeHomeBtn" onClick={handleFoodSubmit}>
+              Feed me
+            </button>
+          </div>
         </div>
 
         <div className="pb-5 homeCard">

@@ -1,16 +1,16 @@
-.chartContainer{
-display: flex;
-flex-direction: column;
-width: 100%;
+.chartContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.chartBtnContainer{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.chartBtnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.chartHeader{
+.chartHeader {
   color: #7e8ba3;
   font-size: 2rem;
   font-weight: 100;
@@ -20,7 +20,7 @@ width: 100%;
 }
 
 .chartClose {
-    display:flex;
+  display: flex;
 }
 
 .chartExpand {
@@ -28,7 +28,7 @@ width: 100%;
   color: #fff;
   margin-top: 1rem;
   margin-bottom: 1rem;
-  width:25%;
+  width: 245px;
   border-radius: 10px;
   padding: 2px 5px;
   opacity: 0.5;
