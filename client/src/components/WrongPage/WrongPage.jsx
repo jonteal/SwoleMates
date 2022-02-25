@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import workoutFail from "../../media/workout-fail.jpeg";
+import workoutFail from '../../media/workout-fail.jpg';
 import "./wrongPage.css";
 
 const WrongPage = () => {
@@ -22,7 +22,7 @@ const WrongPage = () => {
               The page you're looking for doesn't exist.
             </span>
             <span className="goBack">
-              <Link to="/" className="button">
+              <Link to="/home" className="button">
                 Go Back
               </Link>
             </span>
