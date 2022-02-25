@@ -1,7 +1,22 @@
+.chartContainer{
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+
 .chartBtnContainer{
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.chartHeader{
+  color: #7e8ba3;
+  font-size: 2rem;
+  font-weight: 100;
+  margin: 0 0 1rem;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .chartClose {

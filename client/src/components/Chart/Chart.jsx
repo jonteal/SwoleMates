@@ -35,14 +35,16 @@ const BarChart = () => {
       setWorkoutCalories(allWorkoutCalories);
     } else {
       setChart("");
-      setButton("   Expand Chart   ");
+      setButton("Expand Chart");
     }
   };
 
   return (
+    <>
+    <div className="chartContainer">
+        <h1 className="chartHeader">Calorie Chart:</h1>
     <div className="chartBtnContainer">
     {/* // button to show\hide graph */}
-      <br />
       <button className={button === "X" ? "chartClose" : "chartExpand" } onClick={(e) => handleSubmit(e)}>{button} </button>
       <br />
       <div>
@@ -91,6 +93,8 @@ const BarChart = () => {
         ) : null}
       </div>
     </div>
+    </div>
+    </>
   );
 };
 
