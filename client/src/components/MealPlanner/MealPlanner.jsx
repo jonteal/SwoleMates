@@ -19,7 +19,6 @@ const MealPlanner = () => {
     fetch(fetchMealPlanUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setPlan(data.week);
       });
   };

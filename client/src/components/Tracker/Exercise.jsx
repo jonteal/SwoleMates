@@ -41,7 +41,6 @@ const Exercise = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(caloriesBurnt);
 
     if (type == "cardio") {
       try {
