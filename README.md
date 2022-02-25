@@ -2,7 +2,7 @@
 
 <a name="descsection"></a>
 ## Description
-Here at SwoleMate we are passionate about two things: Getting swole and finding mates (mates as in friends, ya perv). This application is a MERN stack, single-page application and utilizes ReactJS, tailwindCSS, Node JS, ExpressJS, GraphQL, MongoDB, JWT, PWA, Stripe, Spoonacular API, Qupte API, and so much more... Enjoy not only tracking your workouts and researching your food's macro-nutrients, but also lurking your friends. Sign up today to find your one true swole mate 💓
+Here at SwoleMate we are passionate about two things: Getting swole and finding mates (mates as in friends, ya perv). This application is a MERN stack, single-page application and utilizes ReactJS, tailwindCSS, Node JS, ExpressJS, GraphQL, MongoDB, JWT, PWA, Stripe, Spoonacular API, Quote API, and so much more... Enjoy not only tracking your workouts and researching your food's macro-nutrients, but also lurking your friends. Sign up today to find your one true swole mate 💓
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -23,14 +23,39 @@ Here at SwoleMate we are passionate about two things: Getting swole and finding 
 <a name="usersection"></a>
 ## User Story
 ```
-Coming Soon...
+AS A swole mate,
+I WANT a site where I can track both my own and my mate's exercises, weight, calories
+SO THAT I can find my one true swole mate and expand my fitness journey
 
 ```
 
 <a name="acceptancesection"></a>
 ## Acceptance Criteria
 ```
-Coming Soon...
+Given an unauthenticated user
+WHEN I arrive at the website
+THEN I am presented with a welcome page that transitions to a login page
+IF I don't have an account, I can click sign up and be routed to the sign up page
+THEN I am able to sign up by entering a unique email and a password twice that must match and be at least 8 characters
+WHEN I have an account, I login with my authentication
+IF I enter my login information, I am rerouted to the home page, else I receive an error that my username and/or password is incorrect
+
+Given an authenticated user
+WHEN I select login, I am routed to the home page
+THEN I am presented with a dashboard of my calorie chart, current weight, my fitness goal, and inspirational quotes
+WHEN I click on the navigation bar, I am able to go to the food, exercise, mates, or sponsor page
+WHEN I click on 'Food' in the nav bar 
+THEN I am presented with an option to see weekly meal recipes or view nutrients for single food items or recipes
+WHEN I click on 'Exercise' in the nav bar 
+THEN I am presented with my logged workouts and am able to log my cardio, strength, and/or stretching sessions
+WHEN I click on 'Mates' in the nav bar 
+THEN I am presented with NEED ME***
+WHEN I click on 'Sponsor' in the nav bar 
+THEN I am presented with a list of exercises I can purchase securely using Stripe payment
+WHEN I go to an invalid route
+THEN I am presented with a 404 error and an option re route back to the home page
+WHEN I click logout or am idle on the site for too long
+Then I am redirected to login page
 ```
 
 <a name="installsection"></a>

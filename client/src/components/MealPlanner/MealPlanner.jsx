@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
+import "./mealplanner.css";
 
 const MealPlanner = () => {
-
   //   Setting up a state to save fetched data:
   const [foodPlan, setPlan] = useState([]);
 
   //   Calories are calculated based on our BMR;
-  var calories = 2000;
+  let calories = 2000;
 
   //   Initiating data fetch from Spunacular API:
   useEffect(() => {
@@ -19,35 +19,33 @@ const MealPlanner = () => {
     fetch(fetchMealPlanUrl)
       .then((res) => res.json())
       .then((data) => {
-        
+        console.log(data);
         setPlan(data.week);
       });
   };
 
   return (
-    <div className="">
-      <p>Meal planner for the week! </p>
-      <p>Just click to get the recipe.</p>
-      <div>
+    <div className="mealContainer">
+      <p className="mealPlanTitle">Weekly Recipes </p>
+      <div className="mealCalendar">
         {Object.keys(foodPlan).map((key, index) => (
           <>
-            <div>
-              <br />
-              <h1 key={key}>Meals for {key}:</h1>
-              <br />
-            </div>
-            <ul>
+            <div className="mealDay">
+              <h1 className="innerDay" key={key}>
+                {key}:
+              </h1>
+
               {foodPlan[key].meals.map((meal) => (
-                <div key={meal.sourceUrl.id}>
-                  <li>
-                    <a href={meal.sourceUrl} target="_blank">
-                      - {meal.title};
-                    </a>
-                  </li>
+                <div className="mealRecipes" key={meal.sourceUrl.id}>
+                  <h2 className="mealName">{meal.title}</h2>
+                  <p>Servings: {meal.servings}</p>
+                  <p>Time: {meal.readyInMinutes} min</p>
+                  <a href={meal.sourceUrl} target="_blank" className="getMeal">
+                    See Full Recipe
+                  </a>
                 </div>
               ))}
-            </ul>
-            <br />
+            </div>
           </>
         ))}
       </div>

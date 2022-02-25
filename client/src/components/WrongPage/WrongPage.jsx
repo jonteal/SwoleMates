@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import workoutFail from '../../media/workout-fail.jpg';
+import workoutFail from '../../media/workout-fail.png';
 import "./wrongPage.css";
 
 const WrongPage = () => {

@@ -118,9 +118,6 @@ const Workout = () => {
         </ul>
       ))}
 
-      <button onClick={(e) => handleSubmit(e)}>
-        "Save and update workout on the dashboard"
-      </button>
     </div>
   );
 };
