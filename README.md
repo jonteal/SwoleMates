@@ -2,7 +2,7 @@
 
 <a name="descsection"></a>
 ## Description
-Here at SwoleMate we are passionate about two things: Getting swole and finding mates (mates as in friends, ya perv). This application is a MERN stack single-page application and utilizes ReactJS, tailwindCSS, Node JS, ExpressJS, GraphQL, MongoDB, JWT, PWA, Stripe, Spoonacular API, Qupte API, and so much more... Enjoy not only tracking your workouts and researching your food macro-nutrients, but also lurking your friends. Sign up today to find your one true swole mate 💓
+Here at SwoleMate we are passionate about two things: Getting swole and finding mates (mates as in friends, ya perv). This application is a MERN stack, single-page application and utilizes ReactJS, tailwindCSS, Node JS, ExpressJS, GraphQL, MongoDB, JWT, PWA, Stripe, Spoonacular API, Qupte API, and so much more... Enjoy not only tracking your workouts and researching your food's macro-nutrients, but also lurking your friends. Sign up today to find your one true swole mate 💓
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -84,7 +84,7 @@ git push origin yourname-branch
 
   <a name="testsection"></a>
 ## Tests
-Run tests using just in the client folder, simply type:
+Run tests using jest in the client folder, simply type:
 ```
 npm run test
 ```
@@ -93,11 +93,11 @@ npm run test
 ## Collaborators?
   Meet the swole mates who created this app:
 
-* Eric Martin
-* Jon Jackson
-* Laurel Thorburn
-* Ryan Paragas
-* Valerii Bihun
+* Eric Martin: [GitHub](https://github.com/EMtheDM)
+* Jon Jackson: [GitHub](https://github.com/jonteal)
+* Laurel Thorburn: [GitHub](https://github.com/laurelthorburn)
+* Ryan Paragas: [GitHub](https://github.com/ParagasR)
+* Valerii Bihun: [GitHub](https://github.com/Valllerian)
 
   Questions/comments/concerns? Please send an email to codinglaurel@gmail.com
   
