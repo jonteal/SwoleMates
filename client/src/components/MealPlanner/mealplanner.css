@@ -41,7 +41,7 @@
 }
 
 .mealRecipes{
-box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.315);
+/* box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.315); */
   margin: 5px;
   display: flex;
   flex-direction: column;
@@ -52,7 +52,11 @@ box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.315);
 
 .mealRecipes:hover{
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.582);
-    cursor: default;
+    cursor: pointer;
+}
+
+.mealRecipes p {
+    margin: 0;
 }
 
 .mealName{
@@ -61,9 +65,13 @@ box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.315);
     text-transform: capitalize;
 }
 
-.getMeal:hover{
-cursor: pointer;
-text-decoration: underline;
+.mealDay a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.mealDay a:hover{
+text-decoration: none;
 }
 
   

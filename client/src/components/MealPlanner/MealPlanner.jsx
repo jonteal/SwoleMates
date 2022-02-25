@@ -35,14 +35,14 @@ const MealPlanner = () => {
               </h1>
 
               {foodPlan[key].meals.map((meal) => (
+                <a href={meal.sourceUrl} target="_blank" className="getMeal">
                 <div className="mealRecipes" key={meal.sourceUrl.id}>
                   <h2 className="mealName">{meal.title}</h2>
                   <p>Servings: {meal.servings}</p>
                   <p>Time: {meal.readyInMinutes} min</p>
-                  <a href={meal.sourceUrl} target="_blank" className="getMeal">
-                    See Full Recipe
-                  </a>
+                    <p>Click for recipe</p>
                 </div>
+                </a>
               ))}
             </div>
           </>
