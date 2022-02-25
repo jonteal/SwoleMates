@@ -11,16 +11,18 @@ const typeDefs = gql`
     orders: [Order]
     weight: Float!
     goal: String!
-    following: [User]
+    following: [Following]
     followers: [User]
   }
 
   type Following {
     _id: ID
+    user: [User]
   }
 
   type Followers {
     _id: ID
+    user: User
   }
 
   type Exercise {

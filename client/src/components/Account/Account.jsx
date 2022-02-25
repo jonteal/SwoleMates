@@ -17,6 +17,8 @@ const Account = () => {
         variables: { id: AuthService.getProfile().data._id }
     });
 
+    // Implement useEffect to enace setUser state update if data 
+    // is present. 
     useEffect(() => {
         if (data) {
             setUser(data.getAccount);

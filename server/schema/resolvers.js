@@ -62,6 +62,7 @@ const resolvers = {
     getSearchedUser: async (parent, { email }) => {
       try {
         const user = await User.find ({ email });
+        console.log(user);
         return user;
       } catch (error) {
         throw new Error(error);

@@ -38,14 +38,16 @@ const FollowingContainer = () => {
 
 
 
-
+    // Declare user variable, setUser method to update state of user
     const [user, setUser] = useState({});
 
-    // console.log(AuthService.getProfile());
+    // Implement useQuery to enact the GET_ME query using 
+    // id as the variable that filters the data
     const { loading, data } = useQuery(GET_ME, {
         variables: { id: AuthService.getProfile().data._id }
     });
     
+    // 
     useEffect(() => {
         if (data) {
             setUser(data.getMe);
