@@ -24,9 +24,8 @@ Here at SwoleMate we are passionate about two things: Getting swole and finding 
 ## User Story
 ```
 AS A swole mate,
-I WANT a site where I can track both my own and my mate's exercises, weight, calories
-SO THAT I can find my one true swole mate and expand my fitness journey
-
+I WANT a site where I can track both mine and my mate's exercises, weight, calories, and goals
+SO THAT I can find my one true swole mate and continue to grow my fitness journey
 ```
 
 <a name="acceptancesection"></a>
@@ -35,7 +34,7 @@ SO THAT I can find my one true swole mate and expand my fitness journey
 Given an unauthenticated user
 WHEN I arrive at the website
 THEN I am presented with a welcome page that transitions to a login page
-IF I don't have an account, I can click sign up and be routed to the sign up page
+IF I don't have an account, I can click sign up and be routed to the sign up page and profile page
 THEN I am able to sign up by entering a unique email and a password twice that must match and be at least 8 characters
 WHEN I have an account, I login with my authentication
 IF I enter my login information, I am rerouted to the home page, else I receive an error that my username and/or password is incorrect
@@ -69,7 +68,7 @@ git clone https://github.com/jonteal/SwoleMates.git
 ```
 npm install || npm i
 ```
-* Seed the data base
+* Seed the database
 ```
 npm run seed
 ```
@@ -109,6 +108,7 @@ git push origin yourname-branch
 
   <a name="testsection"></a>
 ## Tests
+
 Run tests using jest in the client folder, simply type:
 ```
 npm run test
