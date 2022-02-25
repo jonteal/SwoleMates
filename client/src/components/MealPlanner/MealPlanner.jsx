@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import "./mealplanner.css";
 
 const MealPlanner = () => {
-
   //   Setting up a state to save fetched data:
   const [foodPlan, setPlan] = useState([]);
 
@@ -19,23 +19,19 @@ const MealPlanner = () => {
     fetch(fetchMealPlanUrl)
       .then((res) => res.json())
       .then((data) => {
-        
         setPlan(data.week);
       });
   };
 
   return (
-    <div className="">
-      <p>Meal planner for the week! </p>
-      <p>Just click to get the recipe.</p>
-      <div>
+    <div className="mealContainer">
+      <p className="mealPlanTitle">Weekly Recipes </p>
+      <div className="mealCalendar">
         {Object.keys(foodPlan).map((key, index) => (
           <>
-            <div>
-              <br />
-              <h1 key={key}>Meals for {key}:</h1>
-              <br />
-            </div>
+            <div className="mealDay">
+
+              <h1 className="innerDay" key={key}>{key}:</h1>
             <ul>
               {foodPlan[key].meals.map((meal) => (
                 <div key={meal.sourceUrl.id}>
@@ -47,10 +43,11 @@ const MealPlanner = () => {
                 </div>
               ))}
             </ul>
-            <br />
+            </div>
+
           </>
         ))}
-      </div>
+      </div> 
     </div>
   );
 };

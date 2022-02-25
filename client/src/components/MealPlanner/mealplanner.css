@@ -1,0 +1,33 @@
+.mealContainer{
+    background-color: chartreuse;
+    min-height: 90vh;
+}
+
+.mealCalendar{
+    background-color: pink;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    /* width: 100vw; */
+}
+
+.mealDay{
+    display: flex;
+    flex-direction: column;
+    background-color: yellow;
+    width: 100vw;
+    border: black 1px solid;
+}
+
+.innerDay{
+    /* background-color: rgb(49, 49, 221); */
+    border-bottom: black 1px solid;
+}
+.mealPlanTitle{
+    color: #7e8ba3;
+    font-size: 2rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    text-align: center;
+}
