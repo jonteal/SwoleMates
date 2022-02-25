@@ -15,7 +15,6 @@ import { Transition } from "react-transition-group";
 // import { GET_WORKOUT } from "../../utils/mutations";
 
 const Workout = () => {
-
   // date to find exercises to display;
   // import all exercises here (for the day)
   // useQuery to pull the data;
@@ -32,6 +31,11 @@ const Workout = () => {
     data?.allExercises.filter((exercise) => exercise.date === date) || [];
 
   useEffect(() => {
+    calCalculator();
+    handleSubmit();
+  }, [data]);
+
+  const calCalculator = async () => {
     setCaloriesBurnt(
       Math.round(
         allExercises
@@ -39,23 +43,21 @@ const Workout = () => {
           .reduce((a, b) => a + b, 0)
       )
     );
-  });
+  };
 
   // submit your workout for the day OR update it if it exists;
   const handleSubmit = async (event) => {
     const calories = allExercises.map((exercise) => exercise.caloriesBurnt);
     const totalCalories = Math.round(calories.reduce((a, b) => a + b, 0));
-    event.preventDefault();
+    // event.preventDefault();
     try {
-      console.log(caloriesBurnt);
-
       const { data } = await addWorkout({
         // Execute mutation and pass in defined parameter data as variables
         variables: {
           id,
           date,
           routine: allExercises.map(({ _id }) => _id),
-          caloriesBurnt,
+          caloriesBurnt: totalCalories,
         },
       });
       console.log(data);
@@ -91,28 +93,27 @@ const Workout = () => {
                 <img src={Weights} alt="strength" className="workoutImg" />
               </div>
               <div className="cardRight">
-              <p className="workoutTitle">Strength Training</p>
-              <p>Date logged: {exercise.date}</p>
-              <p>Total Reps: {exercise.repetitions} reps</p>
-              <p>Sets: {exercise.sets} sets</p>
-              <p>Weight used: {exercise.weight} lbs</p>
-            </div>
+                <p className="workoutTitle">Strength Training</p>
+                <p>Date logged: {exercise.date}</p>
+                <p>Total Reps: {exercise.repetitions} reps</p>
+                <p>Sets: {exercise.sets} sets</p>
+                <p>Weight used: {exercise.weight} lbs</p>
+              </div>
             </div>
           )}
 
           {exercise.type === "stretching" && (
-
             <div key={exercise._id} className="stretchCard">
               <div className="cardLeft">
                 <img src={Yoga} alt="stretch" className="workoutImg" />
               </div>
 
               <div className="cardRight">
-              <p className="workoutTitle">Stretching</p>
-              <p>Date logged: {exercise.date}</p>
-              <p>Duration: {exercise.durationInMinutes} minutes</p>
-              <p>Calories burnt: {exercise.caloriesBurnt} kcal </p>
-            </div>
+                <p className="workoutTitle">Stretching</p>
+                <p>Date logged: {exercise.date}</p>
+                <p>Duration: {exercise.durationInMinutes} minutes</p>
+                <p>Calories burnt: {exercise.caloriesBurnt} kcal </p>
+              </div>
             </div>
           )}
         </ul>
