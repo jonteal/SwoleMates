@@ -46,8 +46,13 @@
     padding-left: 20px;
 }
 
+.cardRight p {
+    margin: 0;
+}
+
 .workoutTitle{
     font-size: 2rem;
+    margin: 0;
 }
 
 .button-30 {
@@ -110,7 +115,6 @@
     height: 85vh;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .logContainer{
