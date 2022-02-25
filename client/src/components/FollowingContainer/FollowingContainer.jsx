@@ -8,7 +8,6 @@ import { removeUserId, addUserId } from '../../utils/localStorage';
 import { Link } from "react-router-dom";
 import { GET_PROFILE } from '../../utils/queries';
 import Account from "../Account/Account";
-import mongoose from 'mongoose';
 
 const FollowingContainer = () => {
 
@@ -24,13 +23,13 @@ const FollowingContainer = () => {
 
     const [followButton, {error}] = useMutation(FOLLOW_UNFOLLOW);
 
-    // NEED TO SEND _ID AS OBJECT.ID
+    // ========= CHECK SENT AND RETURNED DATA ===========
     const handleFollow = async (event) => {
         event.preventDefault();
 
-        console.log(event.target.id);
+        console.log((event.target.id));
         const db_following = await followButton({
-            variables: {_id: mongoose.Types.ObjectId(event.target.id)}
+            variables: {_id: event.target.id}
         })
 
         console.log(db_following);
@@ -95,7 +94,7 @@ const FollowingContainer = () => {
 
             {/* Back to Personal Profile */}
             <div className="homeBtnContainer">
-                <Link to='/personalprofile'><button className="ui primary basic button">Back to Me</button></Link>
+                <Link to='/mates'><button className="ui primary basic button">Back to Me</button></Link>
             </div>
 
 

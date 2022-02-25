@@ -153,7 +153,7 @@ export const ADD_ORDER = gql`
 `;
 
 export const FOLLOW_UNFOLLOW = gql`
-  mutation followUnfollow($_id: ID!) {
+  mutation followUnfollow($_id: String!) {
     followUnfollow(_id: $_id) {
       _id
       following {

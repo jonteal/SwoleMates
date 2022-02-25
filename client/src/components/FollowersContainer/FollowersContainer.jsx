@@ -80,7 +80,7 @@ const FollowersContainer = () => {
             </div>
 
             <div className="homeBtnContainer">
-                <Link to='/personalprofile'><button className="ui primary basic button">Back to Me</button></Link>
+                <Link to='/mates'><button className="ui primary basic button">Back to Me</button></Link>
             </div>
 
 

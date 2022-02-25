@@ -142,7 +142,7 @@ type Mutation {
 
     allExercises: [Exercise]!
 
-    followUnfollow(_id: ID!): User
+    followUnfollow(_id: String!): User
     
     addOrder(products: [ID]!): Order
     

@@ -5,6 +5,7 @@ const { User, Exercise, Workout, Order, Product, Category } = require('../models
 const Auth = require('../utils/auth');
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 const dateCheck = new Date().toISOString().split("T")[0];
+const Mongoose = require("mongoose");
 
 const resolvers = {
 
@@ -209,7 +210,7 @@ const resolvers = {
 
     followUnfollow: async (_, { _id }, context) => {
       try {
-        // const { _id } = Auth(context);
+        _id = Mongoose.Types.ObjectId(_id);
         const otherUser = await User.findById(_id).populate(
           "following followers"
         );

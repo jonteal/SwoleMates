@@ -17,7 +17,7 @@ const Search = () => {
         variables: { email: searchInput }
     });
 
-    const [userstate, setUserstate] = useState(<div>Search for user</div>);
+    const [userstate, setUserstate] = useState(<div></div>);
 
     let searchedUser = userstate;
 
@@ -29,12 +29,12 @@ const Search = () => {
         
         if (data?.getSearchedUser[0]._id) {
             console.log("user exists");
-            setUserstate(<><div>{data?.getSearchedUser[0].firstName}</div>                        
+            setUserstate(<><div>{`${data?.getSearchedUser[0].firstName} ${data?.getSearchedUser[0].lastName}`}</div>                        
                 <button className="followUnfollowBtn ui button">Follow</button></>);
             
 
         } else {
-            console.log("user no exists");
+            console.log("user does not exists");
         
             setUserstate(<div>No Search Results Found</div>);
             console.log(searchedUser);
@@ -56,7 +56,7 @@ const Search = () => {
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
                         type='text'
-                        placeholder='Search for a user'
+                        placeholder='Search by email'
                     />
                     <button type='submit' className="ui secondary basic button">
                         Search
@@ -65,24 +65,12 @@ const Search = () => {
 
 
                     <div className="ui card">
-                        <div className="content">
-                            {/* Will link to the user's profile page */}
-                            {/* <Link to={`/account/${Account._id}`} className="header">{`${following.firstName} ${following.lastName}`}</Link> */}
-                        </div>
-
                         <div>{searchedUser}</div>
-
-
                     </div>
 
-
-
-
-                    {/* <div className="homeBtnContainer">
-                        <Link to='/personalprofile'><button className="ui primary basic button">Back to Me</button></Link>
-                    </div> */}
-
-
+                    <div className="homeBtnContainer">
+                        <Link to='/mates'><button className="ui primary basic button">Back to Me</button></Link>
+                    </div>
 
                 </form>
             </div>
