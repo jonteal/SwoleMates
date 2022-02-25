@@ -9,19 +9,20 @@ const Mates = () => {
 
     return(
         <>
-
-            <div className="mainContainer">
-                <h1>Mates</h1>
+                <div className="matesBg pt-10">
+                <h1>Welcome, Mate</h1>
+            <div className="matesContainer pt-5">
                 
 
                 <div className="personalProfile">
                     <PersonalProfile />
                 </div>
 
-                <div className="searchMate">         
+                {/* <div className="searchMate">         
                     <Link to="/search"><h2>Search for a SwoleMate</h2></Link>
-                </div>
+                </div> */}
 
+            </div>
             </div>
         </>
     )
