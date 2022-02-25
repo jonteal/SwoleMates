@@ -103,7 +103,11 @@ npm run test
   
   <a name="picsection"></a>
   ## Screenshots
-  ![Screenshot of COMING SOON](./comingsoon)
+  ![Screenshot of Welcome Page Transitioning to Login Page](./media/Login.gif)
+  ![Screenshot of Food Page ](./media/food.png)
+  ![Screenshot of Workout Page](./media/workout.png)
+  ![Screenshot of Stripe Checkout](./media/stripe.png)
+  ![Screenshot of 404 Error Page](./media/error.png)
 
 
   <a name="linksection"></a>
