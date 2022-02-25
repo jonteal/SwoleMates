@@ -26,9 +26,8 @@ import Success from './pages/Success';
 import PersonalProfile from './components/PersonalProfile/PersonalProfile';
 import Tracker from './components/Tracker/Tracker'
 import Exercise from './components/Tracker/Exercise'
-
-
 import BarChart from './components/Chart/Chart';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',

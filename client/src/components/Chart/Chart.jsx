@@ -30,7 +30,7 @@ const BarChart = () => {
     event.preventDefault();
     if (!chart) {
       setChart("Ready");
-      setButton("Close Chart");
+      setButton("X");
       setWorkoutDates(allWorkoutDates);
       setWorkoutCalories(allWorkoutCalories);
     } else {
@@ -43,7 +43,7 @@ const BarChart = () => {
     <div>
     {/* // button to show\hide graph */}
       <br />
-      <button onClick={(e) => handleSubmit(e)}>{button} </button>
+      <button className="" onClick={(e) => handleSubmit(e)}>{button} </button>
       <br />
       <div>
         {chart === "Ready" ? (
