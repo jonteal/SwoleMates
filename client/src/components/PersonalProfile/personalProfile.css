@@ -1,3 +1,33 @@
+.personalProfileMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+}
+
 .personalProfileCard {
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    text-align: center;
+}
+
+.description {
+    text-align: center;
+}
+
+.followerBox {
+    border: solid rgb(201, 201, 201) 1px;
+    border-radius: 2%;
+    margin-bottom: 5%;
+    width: 80vw;
+}
+
+.followingBox {
+    border: solid rgb(201, 201, 201) 1px;
+    border-radius: 2%;
+    width: 80vw;
 }

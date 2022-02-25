@@ -5,6 +5,7 @@ const { User, Exercise, Workout, Order, Product, Category } = require('../models
 const Auth = require('../utils/auth');
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 const dateCheck = new Date().toISOString().split("T")[0];
+const Mongoose = require("mongoose");
 
 const resolvers = {
 
@@ -47,9 +48,22 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
 
+    getAccount: async (parent, { firstName }, context) => {
+      if (context.user) {
+      try {
+        const user = await User.find ({ firstName });
+        return user;
+      } catch (error) {
+        throw new Error(error);
+      }
+    }
+    throw new AuthenticationError('You need to be logged in to search for other users!');
+    },
+
     getSearchedUser: async (parent, { email }) => {
       try {
         const user = await User.find ({ email });
+        console.log(user);
         return user;
       } catch (error) {
         throw new Error(error);
@@ -196,7 +210,7 @@ const resolvers = {
 
     followUnfollow: async (_, { _id }, context) => {
       try {
-        // const { _id } = Auth(context);
+        _id = Mongoose.Types.ObjectId(_id);
         const otherUser = await User.findById(_id).populate(
           "following followers"
         );

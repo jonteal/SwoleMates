@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Card, Icon } from 'semantic-ui-react';
+import { Button, Card, Icon } from 'semantic-ui-react';
 import './personalProfile.css';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from "../../utils/queries";
-import auth from "../../utils/auth";
+import AuthService from "../../utils/auth";
+import FollowersContainer from "../FollowersContainer/FollowersContainer";
+import FollowingContainer from "../FollowingContainer/FollowingContainer";
+import { Link } from 'react-router-dom';
 
 // Personal Profile component - Displays user's profile
 const PersonalProfile = () => {
     const [user, setUser] = useState({});
 
     const { loading, data } = useQuery(GET_ME, {
-        variables: { id: auth.getProfile().data._id }
+        variables: { id: AuthService.getProfile().data._id }
     });
     
     useEffect(() => {
         if (data) {
             setUser(data.getMe);
-            console.log("---- fetched data ---");
-            console.log(data);
         }
     }, [data])
 
-    console.log("---- fetched user ---");
-    console.log(user);
 
     if (loading) {
-        return <p>Loading</p>
+        return <p>Loading...</p>
     }
 
     const followers = user?.followers || [];
@@ -33,28 +32,29 @@ const PersonalProfile = () => {
 
     return (
         <>
+
+        <div className="personalProfileMain">
+
+            {/* Profile Card */}
             <Card className="personalProfileCard"
                 header={user.firstName}
-                meta='User'
-                description={user.goal}
-                // extra={extra}
+                description={`My current goal is to ${user.goal}!`}
             />
-            <div>
-            <h1>Followers</h1>
-                <ul>
-                {followers.map(follower => (
-                    <li key={follower._id}>{`${follower.firstName} ${follower.lastName}`}</li>
-                ))}
-                </ul>
+
+            {/* Logged in user's Followers */}
+            <div className="followerBox">
+                <Link to="/followers"><h1>Followers</h1></Link>
             </div>
 
-            {/* <h1>Following</h1>
-                <ul>
-                {followers.map(follower => (
-                    <li key={follower._id}>{`${follower.firstName} ${follower.lastName}`}</li>
-                ))}
-                </ul>
-            </div> */}
+            {/* People the Logged in User is Following*/}
+            <div className="followingBox">
+                <Link to="/following"><h1>Following</h1></Link>
+            </div>
+
+        </div>
+            
+
+
 
 
 

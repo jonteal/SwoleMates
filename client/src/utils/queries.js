@@ -9,6 +9,7 @@ export const GET_PROFILE = gql`
     }
 `;
 
+
 export const QUERY_EXERCISES = gql`
   query allExercises {
     allExercises {
@@ -107,7 +108,6 @@ export const GET_SEARCHED_USER = gql`
 query getSearchedUser ($email: String!) {
     getSearchedUser (email: $email) {
         _id
-        email
     	  firstName
     	  lastName
   }
@@ -115,8 +115,8 @@ query getSearchedUser ($email: String!) {
 `
 
 export const GET_ME = gql`
-query getMe ($id: ID!) {
-    getMe (_id: $id) {
+query getMe {
+    getMe {
       _id
       email
       firstName
@@ -134,4 +134,22 @@ query getMe ($id: ID!) {
       }
   }
 }
+`
+
+export const GET_ACCOUNT = gql`
+  query getAccount {
+    getAccount {
+      _id
+      email
+      firstName
+      lastName
+      goal
+      following {
+        _id
+      }
+      followers {
+        _id
+      }
+    }
+  }
 `

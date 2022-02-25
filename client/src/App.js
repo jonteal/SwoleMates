@@ -13,10 +13,10 @@ import Foodbar from './components/Food/Food';
 import Quote from './components/Quote/Quote';
 import PersonalDevelopment from './components/PersonalDevelopment/PersonalDevelopment';
 import Mates from './components/Mates/Mates';
-import SearchResults from './components/SearchResults/SearchResults';
-import FollowingContainer from './components/FollowingContainer/FollowingContainer';
-import FollowersContainer from './components/FollowersContainer/FollowersContainer';
-
+import Search from './components/Search/Search';
+import Following from './components/FollowingContainer/FollowingContainer';
+import Followers from './components/FollowersContainer/FollowersContainer';
+import Account from './components/Account/Account';
 import SignupForm from './components/SignupForm/SignupForm';
 import LoginForm from './components/LoginForm/LoginForm';
 import Welcome from './components/Welcome/Welcome';
@@ -48,6 +48,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -62,6 +63,15 @@ function App() {
                   <Route exact path='/notfound' component={WrongPage} />
                   <PrivateRoute exact path='/home' component={Dashboard} />
                   <PrivateRoute exact path='/profile' component={Profile} />
+                  
+                  <PrivateRoute exact path='/quote' component={Quote} />
+                  <PrivateRoute exact path='/personaldevelopment' component={PersonalDevelopment} />
+                  <PrivateRoute exact path='/mates' component={Mates} />
+                  <PrivateRoute exact path='/personalprofile' component={PersonalProfile} />
+                  <PrivateRoute exact path='/following' component={Following} />
+                  <PrivateRoute exact path='/followers' component={Followers} />
+                  <PrivateRoute exact path='/search' component={Search} />
+                  {/* <PrivateRoute exact path='/account/:id' component={Account} /> */}
                   <PrivateRoute exact path='/food' component={Foodbar} />
                   <PrivateRoute exact path='/mealplan' component={MealPlanner} />
                   <PrivateRoute exact path='/exercise' component={Tracker} />

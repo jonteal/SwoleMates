@@ -1,12 +1,8 @@
 import React from "react";
 import './mates.css';
 import PersonalProfile from "../PersonalProfile/PersonalProfile";
-import FollowersContainer from "../FollowersContainer/FollowersContainer";
-import FollowingContainer from "../FollowingContainer/FollowingContainer";
 import 'semantic-ui-css/semantic.min.css';
-
-import { useQuery } from "@apollo/client";
-import SearchResults from "../SearchResults/SearchResults";
+import { Link } from "react-router-dom";
 
 
 const Mates = () => {
@@ -15,21 +11,16 @@ const Mates = () => {
         <>
 
             <div className="mainContainer">
-                <div>
-                    <SearchResults/>
-                </div>
+                <h1>Mates</h1>
+                
 
                 <div className="personalProfile">
                     <PersonalProfile />
                 </div>
 
-                <div className="searchResults">
-                    <a><FollowersContainer />Followers</a>
+                <div className="searchMate">         
+                    <Link to="/search"><h2>Search for a SwoleMate</h2></Link>
                 </div>
-
-                <div className="searchResults">
-                    <a><FollowingContainer />Following</a>
-                </div> 
 
             </div>
         </>

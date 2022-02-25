@@ -7,6 +7,7 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
     followerCount: Int
+    followingCount: Int
     orders: [Order]
     weight: Float!
     goal: String!
@@ -15,11 +16,11 @@ const typeDefs = gql`
   }
 
   type Following {
-    _id: ID!
+    _id: ID
   }
 
   type Followers {
-    _id: ID!
+    _id: ID
   }
 
   type Exercise {
@@ -48,7 +49,8 @@ const typeDefs = gql`
 
   type Query {
     getUsers: [User]
-    getMe(_id: ID!): User
+    getMe(_id: ID): User
+    getAccount(firstName: String): [User]
     getSearchedUser(email: String): [User]
     getUser: User
     allExercises: [Exercise]!
@@ -140,7 +142,7 @@ type Mutation {
 
     allExercises: [Exercise]!
 
-    followUnfollow(_id: ID!): User
+    followUnfollow(_id: String!): User
     
     addOrder(products: [ID]!): Order
     

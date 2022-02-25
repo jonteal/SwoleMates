@@ -11,10 +11,12 @@
     margin-top: 5%;
 }
 
-.searchResults {
-    border: 1px solid black;
+.searchMate {
+    border: 1px solid rgb(201, 201, 201);
     margin: 5%;
     width: 80%;
+    border-radius: 2%;
+    text-align: center;
 }
 
 h1 {
