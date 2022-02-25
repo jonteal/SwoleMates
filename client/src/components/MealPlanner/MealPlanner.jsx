@@ -15,13 +15,11 @@ const MealPlanner = () => {
 
   //   Data fetch:
   const fetchMealPlan = (calories) => {
-    let fetchMealPlanUrl = `https://api.spoonacular.com/mealplanner/generate${process.env.REACT_APP_API_KEY_SPUNACULAR}&time=day&targetCalories=${calories}`;
+    let fetchMealPlanUrl = `https://api.spoonacular.com/mealplanner/generate?${process.env.REACT_APP_API_KEY_SPOONACULAR}&time=day&targetCalories=${calories}`;
     fetch(fetchMealPlanUrl)
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data.week);
-        // console.log(data.week.length);
-        // console.log(data.week.monday.meals[0].sourceUrl);
+        
         setPlan(data.week);
       });
   };
