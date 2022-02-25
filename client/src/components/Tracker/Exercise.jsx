@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { Link } from 'react-router-dom';
 
 import {
@@ -7,7 +7,7 @@ import {
   ADD_STRENGTH,
   ADD_STRETCHING,
 } from "../../utils/mutations";
-
+import { GET_PROFILE } from "../../utils/queries";
 import "./tracker.css";
 
 const Exercise = (props) => {
@@ -28,8 +28,10 @@ const Exercise = (props) => {
   // Invoke `useMutation()` hook to return a Promise-based function and data about the ADD_EXERCISE mutation
   // const [addExercise, { error }] = useMutation(ADD_EXERCISE);
   const [addCardio, { error }] = useMutation(ADD_CARDIO);
-  const [addStrength, {}] = useMutation(ADD_STRENGTH);
-  const [addStretching, {}] = useMutation(ADD_STRETCHING);
+  const [addStrength, { }] = useMutation(ADD_STRENGTH);
+  const [addStretching, { }] = useMutation(ADD_STRETCHING);
+
+  const { loading, _, data } = useQuery(GET_PROFILE);
 
   function handleSelect(event) {
     setType(event.target.value);
@@ -148,10 +150,10 @@ const Exercise = (props) => {
                     name="durationInMinutes"
                     value={durationInMinutes}
                     placeholder="Duration in minutes"
-                onChange={(e) => {
-                  setDurationInMinutes(e.target.value);
-                  setCaloriesBurnt((e.target.value * (13.5 * 3.5 * 70)) / 200);
-                }}
+                    onChange={(e) => {
+                      setDurationInMinutes(e.target.value);
+                      setCaloriesBurnt((e.target.value * (13.5 * 3.5 * data?.getUser.weight)) / 200); //change the 70 to the weight
+                    }}
                     required
                   />
                   <br />
@@ -167,11 +169,11 @@ const Exercise = (props) => {
                   />
                   <br />
 
-                    <input
-                      className="logWorkoutBtn"
-                      type="submit"
-                      value="Save"
-                    />
+                  <input
+                    className="logWorkoutBtn"
+                    type="submit"
+                    value="Save"
+                  />
 
                 </div>
               ) : type == "strength" ? (
@@ -223,9 +225,9 @@ const Exercise = (props) => {
                     value={durationInMinutes}
                     placeholder="Duration in minutes"
                     onChange={(e) => {
-                  setDurationInMinutes(e.target.value);
-                  setCaloriesBurnt((e.target.value * (3.5 * 3.5 * 70)) / 200);
-                }}
+                      setDurationInMinutes(e.target.value);
+                      setCaloriesBurnt((e.target.value * (3.5 * 3.5 * data?.getUser.weight)) / 200); // change the 70 to user weight
+                    }}
                     required
                   />
                   <br />

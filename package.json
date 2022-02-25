@@ -17,7 +17,10 @@
     "chart.js": "^3.7.1",
     "create-react-app": "^5.0.0",
     "dotenv": "^16.0.0",
+    "moment": "^2.29.1",
     "mongoose-auto-increment": "^5.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.2",
     "react-chartjs-2": "^4.0.1",
     "react-transition-group": "^1.2.1"
   },

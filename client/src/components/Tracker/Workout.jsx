@@ -10,7 +10,6 @@ import Shoes from "../../media/shoes.jpg";
 import Yoga from "../../media/yoga.jpg";
 import Weights from "../../media/weights.jpg";
 
-import { Transition } from "react-transition-group";
 
 // import { GET_WORKOUT } from "../../utils/mutations";
 
@@ -119,9 +118,9 @@ const Workout = () => {
         </ul>
       ))}
 
-      {/* <button onClick={(e) => handleSubmit(e)}>
+      <button onClick={(e) => handleSubmit(e)}>
         "Save and update workout on the dashboard"
-      </button> */}
+      </button>
     </div>
   );
 };

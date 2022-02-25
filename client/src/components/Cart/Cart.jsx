@@ -84,9 +84,9 @@ const Cart = () => {
 
           <div className="flex-row space-between">
             <strong>Total: ${calculateTotal()}</strong>
-
+            <br />
             {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
+              <button className="checkoutBtn" onClick={submitCheckout}>Checkout</button>
             ) : (
               <span>(log in to check out)</span>
             )}
