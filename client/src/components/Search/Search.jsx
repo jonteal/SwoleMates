@@ -4,6 +4,7 @@ import Auth from '../../utils/auth';
 // import { useMutation } from '@apollo/client';
 import { useQuery, gql } from '@apollo/client';
 import { GET_SEARCHED_USER } from '../../utils/queries';
+import { Link } from 'react-router-dom';
 
 
 const Search = () => {
@@ -12,31 +13,34 @@ const Search = () => {
     // create state for holding our search field data
     const  [searchInput, setSearchInput] = useState('');
 
-    const { loading, data } = useQuery();
-
-
-    // set up useEffect hook to save 'addedUsersIds' list to localStorage on component unmount
-    useEffect(() => {
+    const { loading, data } = useQuery(GET_SEARCHED_USER, {
+        variables: { email: searchInput }
     });
+
+    const [userstate, setUserstate] = useState(<div>Search for user</div>);
+
+    let searchedUser = userstate;
+
 
     // create method to search for users and set state on form submit
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log(data?.getSearchedUser[0]._id);
+        
+        if (data?.getSearchedUser[0]._id) {
+            console.log("user exists");
+            setUserstate(<><div>{data?.getSearchedUser[0].firstName}</div>                        
+                <button className="followUnfollowBtn ui button">Follow</button></>);
+            
 
-        if (!searchInput) {
-            return false;
+        } else {
+            console.log("user no exists");
+        
+            setUserstate(<div>No Search Results Found</div>);
+            console.log(searchedUser);
+            
         }
-
-        try {
-            useQuery(GET_SEARCHED_USER, {
-                variables: { email: searchInput }
-            })
-
-            console.log(data);
-            setSearchInput('');
-        } catch (err) {
-            console.error(err);
-        }
+        
     };
 
     return(
@@ -58,9 +62,28 @@ const Search = () => {
                         Search
                     </button>
 
-                    <div className="homeBtnContainer">
-                        {/* <Link to='/personalprofile'><button class="ui primary basic button">Back to Me</button></Link> */}
+
+
+                    <div className="ui card">
+                        <div className="content">
+                            {/* Will link to the user's profile page */}
+                            {/* <Link to={`/account/${Account._id}`} className="header">{`${following.firstName} ${following.lastName}`}</Link> */}
+                        </div>
+
+                        <div>{searchedUser}</div>
+
+
                     </div>
+
+
+
+
+                    {/* <div className="homeBtnContainer">
+                        <Link to='/personalprofile'><button className="ui primary basic button">Back to Me</button></Link>
+                    </div> */}
+
+
+
                 </form>
             </div>
 

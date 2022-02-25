@@ -108,7 +108,6 @@ export const GET_SEARCHED_USER = gql`
 query getSearchedUser ($email: String!) {
     getSearchedUser (email: $email) {
         _id
-        email
     	  firstName
     	  lastName
   }
