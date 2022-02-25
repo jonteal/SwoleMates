@@ -8,36 +8,11 @@ import { removeUserId, addUserId } from '../../utils/localStorage';
 import { Link } from "react-router-dom";
 import { GET_PROFILE } from '../../utils/queries';
 import Account from "../Account/Account";
+import mongoose from 'mongoose';
 
 const FollowingContainer = () => {
 
-    // const [followedUserIds, setFollowedUserIds] = useState(getFollowedUserIds());
-
-
-    // const [followUnfollow, {error}] = useMutation(FOLLOW_UNFOLLOW);
-
-    // handlefollowUnfollow = async (userId) => {
-    //     const userToAdd = following.find((user) => user.userId === userId);
-
-    //     const token = AuthService.loggedIn() ? AuthService.getToken() : null;
-
-    //     if (!token) {
-    //         return false;
-    //     }
-
-    //     try {
-    //         const { data } = await followUnfollow({
-    //             variables: { userData: userToAdd },
-    //         });
-
-    //         setFollowedUserIds([...followedUserIds, userToAdd.userId]);
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // }
-
-
-
+    
     // Declare user variable, setUser method to update state of user
     const [user, setUser] = useState({});
 
@@ -46,6 +21,21 @@ const FollowingContainer = () => {
     const { loading, data } = useQuery(GET_ME, {
         variables: { id: AuthService.getProfile().data._id }
     });
+
+    const [followButton, {error}] = useMutation(FOLLOW_UNFOLLOW);
+
+    // NEED TO SEND _ID AS OBJECT.ID
+    const handleFollow = async (event) => {
+        event.preventDefault();
+
+        console.log(event.target.id);
+        const db_following = await followButton({
+            variables: {_id: mongoose.Types.ObjectId(event.target.id)}
+        })
+
+        console.log(db_following);
+        return db_following;
+    }
     
     // 
     useEffect(() => {
@@ -60,6 +50,7 @@ const FollowingContainer = () => {
 
     // const followers = user?.followers || [];
     const following = user?.following || [];
+
 
     return (
         <>
@@ -80,16 +71,15 @@ const FollowingContainer = () => {
                             22 Followers
                         </a>
                         <a>
-                        <i className="user icon dataRight"></i>
+                        <i className="user icon"></i>
                             15 Following
                         </a>
                         
                         </div>
 
                         <button className="followUnfollowBtn ui button"
-                        
-                        
-                        
+                            id={following._id}
+                            onClick={handleFollow}
                         >
                             Follow
                         </button>
