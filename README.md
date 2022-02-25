@@ -2,7 +2,7 @@
 
 <a name="descsection"></a>
 ## Description
-Coming Soon...
+Here at SwoleMate we are passionate about two things: Getting swole and finding mates (mates as in friends, ya perv). This application is a MERN stack, single-page application and utilizes ReactJS, tailwindCSS, Node JS, ExpressJS, GraphQL, MongoDB, JWT, PWA, Stripe, Spoonacular API, Quote API, and so much more... Enjoy not only tracking your workouts and researching your food's macro-nutrients, but also lurking your friends. Sign up today to find your one true swole mate 💓
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -23,14 +23,38 @@ Coming Soon...
 <a name="usersection"></a>
 ## User Story
 ```
-Coming Soon...
-
+AS A swole mate,
+I WANT a site where I can track both mine and my mate's exercises, weight, calories, and goals
+SO THAT I can find my one true swole mate and continue to grow my fitness journey
 ```
 
 <a name="acceptancesection"></a>
 ## Acceptance Criteria
 ```
-Coming Soon...
+Given an unauthenticated user
+WHEN I arrive at the website
+THEN I am presented with a welcome page that transitions to a login page
+IF I don't have an account, I can click sign up and be routed to the sign up page and profile page
+THEN I am able to sign up by entering a unique email and a password twice that must match and be at least 8 characters
+WHEN I have an account, I login with my authentication
+IF I enter my login information, I am rerouted to the home page, else I receive an error that my username and/or password is incorrect
+
+Given an authenticated user
+WHEN I select login, I am routed to the home page
+THEN I am presented with a dashboard of my calorie chart, current weight, my fitness goal, and inspirational quotes
+WHEN I click on the navigation bar, I am able to go to the food, exercise, mates, or sponsor page
+WHEN I click on 'Food' in the nav bar 
+THEN I am presented with an option to see weekly meal recipes or view nutrients for single food items or recipes
+WHEN I click on 'Exercise' in the nav bar 
+THEN I am presented with my logged workouts and am able to log my cardio, strength, and/or stretching sessions
+WHEN I click on 'Mates' in the nav bar 
+THEN I am presented with NEED ME***
+WHEN I click on 'Sponsor' in the nav bar 
+THEN I am presented with a list of exercises I can purchase securely using Stripe payment
+WHEN I go to an invalid route
+THEN I am presented with a 404 error and an option re route back to the home page
+WHEN I click logout or am idle on the site for too long
+Then I am redirected to login page
 ```
 
 <a name="installsection"></a>
@@ -44,9 +68,14 @@ git clone https://github.com/jonteal/SwoleMates.git
 ```
 npm install || npm i
 ```
+* Seed the database
+```
+npm run seed
+```
+
 * Run the project by typing the following in the terminal:
 ```
-npm run start
+npm run develop
 ```
 
 <a name="licensesection"></a>
@@ -79,20 +108,31 @@ git push origin yourname-branch
 
   <a name="testsection"></a>
 ## Tests
-No tests at this time
+
+Run tests using jest in the client folder, simply type:
+```
+npm run test
+```
 
   <a name="questionssection"></a>
 ## Collaborators?
-  Meet the team:
+  Meet the swole mates who created this app:
 
-  INSERT TEAM MATES, EMAILS, and GITHUBS HERE
+* Eric Martin: [GitHub](https://github.com/EMtheDM)
+* Jon Jackson: [GitHub](https://github.com/jonteal)
+* Laurel Thorburn: [GitHub](https://github.com/laurelthorburn)
+* Ryan Paragas: [GitHub](https://github.com/ParagasR)
+* Valerii Bihun: [GitHub](https://github.com/Valllerian)
 
   Questions/comments/concerns? Please send an email to codinglaurel@gmail.com
   
-
   <a name="picsection"></a>
   ## Screenshots
-  ![Screenshot of COMING SOON](./comingsoon)
+  ![Screenshot of Welcome Page Transitioning to Login Page](./media/Login.gif)
+  ![Screenshot of Food Page ](./media/food.png)
+  ![Screenshot of Workout Page](./media/workout.png)
+  ![Screenshot of Stripe Checkout](./media/stripe.png)
+  ![Screenshot of 404 Error Page](./media/error.png)
 
 
   <a name="linksection"></a>
@@ -104,155 +144,17 @@ No tests at this time
 
   <a name="creditsection"></a>
 ## Resources/Credit
-* COMING SOON
+* https://stackoverflow.com/questions/49108136/importing-env-variable-react-front-end
+* https://www.w3schools.com/howto/howto_css_shake_image.asp
+* https://github.com/reactjs/react-transition-group/tree/v1-stable
+* https://github.com/azmenak/react-stripe-checkout
+* https://athemes.com/collections/best-css-frameworks/
+* https://www.npmjs.com/package/@craco/craco
+* https://v2.tailwindcss.com/docs/guides/create-react-app
+* https://reactjs.org/docs/forms.html
+* https://stackoverflow.com/questions/7372067/is-there-any-way-to-prevent-input-type-number-getting-negative-values
+* https://www.csusm.edu/ipa/surveys/inclusive-language-guidelines.html
+* https://stackoverflow.com/questions/3828554/how-to-allow-input-type-file-to-accept-only-image-file
 
 
-23 Final Project: MERN Stack Single-Page Application
-Projects have played a key role in your journey to becoming a full-stack web developer. As you apply for development jobs, your portfolio is absolutely vital to opening doors to opportunities. Your portfolio showcases high-quality deployed examples of your work, and you can use your finished projects for that very purpose.
 
-This project is a fantastic opportunity to show employers your collaborative skills and coding abilities, especially in the context of a scalable, user-focused MERN app. Remember that employers want to see what you can do, but they also want to see how you work with other developers. The more examples of deployed collaborative work you have in your portfolio, the more likely you are to get an interview and a job.
-
-Project Requirements
-Your group will use everything you’ve learned throughout this course to create a MERN stack single-page application that works with real-world data to solve a real-world challenge, with a focus on data and user demand. This project will provide you with the best opportunity to demonstrate your problem-solving skills, which employers will want to see during interviews. Once again, the user story and acceptance criteria will depend on the project that you create, but your project must fulfill the following requirements:
-
-Use React for the front end.
-
-Use GraphQL with a Node.js and Express.js server.
-
-Use MongoDB and the Mongoose ODM for the database.
-
-Use queries and mutations for retrieving, adding, updating, and deleting data.
-
-Be deployed using Heroku (with data).
-
-Have a polished UI.
-
-Be responsive.
-
-Be interactive (i.e., accept and respond to user input).
-
-Include authentication (JWT).
-
-Protect sensitive API key information on the server.
-
-Have a clean repository that meets quality coding standards (file structure, naming conventions, best practices for class and id naming conventions, indentation, high-quality comments, etc.).
-
-Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
-
-CSS Styling
-Instead of using a CSS library like Bootstrap, consider one of the following suggestions:
-
-Look into the concept of CSS-in-JS, which abstracts CSS to the component level, using JavaScript to describe styles in a declarative and maintainable way. Some popular libraries include styled-components and Emotion.
-
-Try using a component library, such as Semantic UI, Chakra UI, or Ant Design.
-
-Create all the CSS for your application just using CSS.
-
-Ultimately, it doesn't matter which of these options you choose—it just needs to look professional and be mobile-friendly.
-
-Payment Platform
-Consider integrating the Stripe payment platform. Even if you don’t create an e-commerce application, you could set up your site to accept charitable donations.
-
-Bonus
-Although this is not a requirement for your project, see if you can also implement functionality to meet the minimum requirements of a PWA:
-
-Uses a web manifest
-
-Uses a service worker for offline functionality
-
-Is installable
-
-Presentation Requirements
-Use this project presentation template to address the following:
-
-Elevator pitch: a one minute description of your application
-
-Concept: What is your user story? What was your motivation for development?
-
-Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
-
-Demo: Show your stuff!
-
-Directions for Future Development
-
-Links to the deployed application and the GitHub repository. Use the Guide to Deploy with Heroku and MongoDB Atlas on The Full-Stack Blog if you need a reminder on how to deploy to Heroku.
-
-Grading Requirements
-This project is graded based on the following criteria:
-
-Technical Acceptance Criteria: 25%
-Satisfies the following code requirements:
-
-Application uses React for the front end.
-
-Application has a GraphQL API with a Node.js and Express.js server, and uses queries and mutations for retrieving, adding, updating, and deleting data.
-
-Application uses MongoDB and the Mongoose ODM for the database and protects sensitive API key information on the server.
-
-Application includes user authentication using JWT.
-
-Concept 10%
-Application should be a unique and novel idea.
-
-Your group should clearly and concisely articulate your project idea.
-
-Deployment: 20%
-Application deployed at live URL on Heroku and loads with no errors.
-
-Application GitHub URL submitted.
-
-Repository Quality: 10%
-Repository has a unique name.
-
-Repository follows best practices for file structure and naming conventions.
-
-Repository follows best practices for class and id naming conventions, indentation, quality comments, etc.
-
-Repository contains multiple descriptive commit messages.
-
-Repository contains a high-quality README file with description, screenshot, and link to deployed application.
-
-Application Quality: 15%
-Application user experience is intuitive and easy to navigate.
-
-Application user interface style is clean and polished.
-
-Application is responsive.
-
-Presentation 10%
-Your group should present using Google Slides, Powerpoint, or a similar presentation software.
-
-Every group member should speak during the presentation.
-
-Your presentation should follow the Project Presentation Template.
-
-Collaboration 10%
-There are no major disparities in the number of GitHub contributions between group members.
-Bonus
-Fulfilling all three of the following requirements to turn your app into a PWA will add 10 points to your grade. Note that the highest grade you can achieve is still a 100:
-
-Uses a web manifest
-
-Uses a service worker for offline functionality
-
-Is installable
-
-How to Submit Your MERN Stack Single-Page Application
-Each member of your group is required to submit the following for review:
-
-The URL of the deployed application.
-
-The URL of the GitHub repository, with a unique name and a README describing the project.
-
-
-
-
-
-
-
-
-
-# REFERENCES
-
-3 MACROS
-https://www.bodybuilding.com/content/macro-math-3-keys-to-dialing-in-your-macro-ratios.html

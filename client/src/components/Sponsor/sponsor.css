@@ -14,6 +14,14 @@
   border: black 2px solid;
 }
 
+.productTitle{
+  color: #7e8ba3;
+  font-size: 1.5rem;
+  font-weight: 100;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+
 .productContainer img {
   display: block;
   margin-left: auto;
@@ -32,4 +40,17 @@
 
 .sponsorBtn:hover {
   opacity: 1;
+}
+
+.productCard p{
+  color: #7e8ba3;
+  font-size: 1rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.productCard span {
+  margin: 0;
+  padding: 0;
 }

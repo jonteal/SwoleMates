@@ -24,7 +24,6 @@ const Profile = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputForm);
 
     try {
       const { data } = await addProfile({

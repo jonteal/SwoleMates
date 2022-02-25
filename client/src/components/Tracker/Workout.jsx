@@ -14,7 +14,6 @@ import Weights from "../../media/weights.jpg";
 // import { GET_WORKOUT } from "../../utils/mutations";
 
 const Workout = () => {
-
   // date to find exercises to display;
   // import all exercises here (for the day)
   // useQuery to pull the data;
@@ -31,6 +30,11 @@ const Workout = () => {
     data?.allExercises.filter((exercise) => exercise.date === date) || [];
 
   useEffect(() => {
+    calCalculator();
+    handleSubmit();
+  }, [data]);
+
+  const calCalculator = async () => {
     setCaloriesBurnt(
       Math.round(
         allExercises
@@ -38,23 +42,21 @@ const Workout = () => {
           .reduce((a, b) => a + b, 0)
       )
     );
-  });
+  };
 
   // submit your workout for the day OR update it if it exists;
   const handleSubmit = async (event) => {
     const calories = allExercises.map((exercise) => exercise.caloriesBurnt);
     const totalCalories = Math.round(calories.reduce((a, b) => a + b, 0));
-    event.preventDefault();
+    // event.preventDefault();
     try {
-      console.log(caloriesBurnt);
-
       const { data } = await addWorkout({
         // Execute mutation and pass in defined parameter data as variables
         variables: {
           id,
           date,
           routine: allExercises.map(({ _id }) => _id),
-          caloriesBurnt,
+          caloriesBurnt: totalCalories,
         },
       });
       console.log(data);
@@ -100,7 +102,6 @@ const Workout = () => {
           )}
 
           {exercise.type === "stretching" && (
-
             <div key={exercise._id} className="stretchCard">
               <div className="cardLeft">
                 <img src={Yoga} alt="stretch" className="workoutImg" />
@@ -117,9 +118,6 @@ const Workout = () => {
         </ul>
       ))}
 
-      <button onClick={(e) => handleSubmit(e)}>
-        "Save and update workout on the dashboard"
-      </button>
     </div>
   );
 };

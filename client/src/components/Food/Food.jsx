@@ -34,11 +34,9 @@ const FoodBar = () => {
       .then((data) => {
         if (!data.results[0]) {
           setError(
-            "Please, check your spelling and enter an actual food item!"
+            "Please check your spelling and try again."
           );
-          console.log("enter  legit item pls");
         } else {
-          console.log("else" + data.results[0].id);
           setError("");
           fetchNutrients(data.results[0].id);
         }
@@ -51,7 +49,6 @@ const FoodBar = () => {
     fetch(fetchFoodUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         // setSearchedTitle(data.)
         setSearchedTitle(data.originalName);
         setCalories(data.nutrition.nutrients[17].amount);
@@ -85,8 +82,7 @@ const FoodBar = () => {
       .then((res) => res.json())
       .then((data) => {
         if (!data) {
-          setError("Please, check your spelling or enter different recipe");
-          console.log("enter legit recipe pls");
+          setError("Please check your spelling or enter a different recipe.");
         } else {
           setRecipes(data);
           setError("");
@@ -100,7 +96,6 @@ const FoodBar = () => {
     fetch(fetchFoodUrl)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.image);
         setRecipeCalories(data.nutrition.nutrients[0].amount);
         setRecipeCarbs(data.nutrition.nutrients[3].amount);
         setRecipeFats(data.nutrition.nutrients[1].amount);
@@ -118,7 +113,7 @@ const FoodBar = () => {
   }
 
   return (
-    <div className="foodBg">
+    <div className="pt-5 foodBg">
       <div className="foodContainer">
         <h2 className="foodTitle">Log Food:</h2>
         <svg
@@ -141,7 +136,7 @@ const FoodBar = () => {
         </svg>
 
         <select
-          className="border-black mb-1 mt-2"
+          className="border-black mb-1 mt-2 foodInputW"
           value={type}
           onChange={handleSelect}
         >
@@ -153,9 +148,9 @@ const FoodBar = () => {
         </select>
 
         {type == "single" ? (
-          <div className="foodItem">
+          <div>
             <input
-              className="border-black mb-1"
+              className="border-black mb-1 foodInputW"
               type="text"
               name="foodItem"
               value={foodItem}
@@ -164,7 +159,7 @@ const FoodBar = () => {
               required
             />
             <br />
-            <button className="foodBtn" onClick={(e) => handleSubmit(e)}>
+            <button className="foodBtn foodInputW" onClick={(e) => handleSubmit(e)}>
               Find info{" "}
             </button>
             <br />
@@ -189,9 +184,10 @@ const FoodBar = () => {
             ) : null}
           </div>
         ) : type == "recipe" ? (
-          <div className="foodItem">
+          <div>
+            <div className="foodCard">
             <input
-              className="border-black mb-1"
+              className="border-black mb-1 foodInputW"
               type="text"
               name="foodItem"
               value={foodItem}
@@ -199,10 +195,10 @@ const FoodBar = () => {
               onChange={(e) => setFoodItem(e.target.value)}
               required
             />
-
-            <button className="foodBtn" onClick={(e) => handleSubmitRecipe(e)}>
+            <button className="foodBtn foodInputW" onClick={(e) => handleSubmitRecipe(e)}>
               Find recipes!{" "}
             </button>
+</div>
             {error ? (
               <div>
                 <p>{error}</p>

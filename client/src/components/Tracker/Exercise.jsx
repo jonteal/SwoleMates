@@ -41,7 +41,6 @@ const Exercise = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(caloriesBurnt);
 
     if (type == "cardio") {
       try {
@@ -98,7 +97,7 @@ const Exercise = (props) => {
 
   return (
     <>
-      <div className="logBg">
+      <div className="logBg pt-5">
         <div className="logContainer">
           <h2 className="logTitle">Log Workout:</h2>
           <svg

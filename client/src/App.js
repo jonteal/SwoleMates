@@ -26,9 +26,8 @@ import Success from './pages/Success';
 import PersonalProfile from './components/PersonalProfile/PersonalProfile';
 import Tracker from './components/Tracker/Tracker'
 import Exercise from './components/Tracker/Exercise'
-
-
 import BarChart from './components/Chart/Chart';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -61,8 +60,10 @@ function App() {
                   <Route exact path='/' component={Welcome} />
                   <Route exact path='/login' component={LoginForm} />
                   <Route exact path='/signup' component={SignupForm} />
+                  <Route exact path='/notfound' component={WrongPage} />
                   <PrivateRoute exact path='/home' component={Dashboard} />
                   <PrivateRoute exact path='/profile' component={Profile} />
+<<<<<<< HEAD
                   <PrivateRoute exact path='/quote' component={Quote} />
                   <PrivateRoute exact path='/personaldevelopment' component={PersonalDevelopment} />
                   <PrivateRoute exact path='/mates' component={Mates} />
@@ -71,15 +72,15 @@ function App() {
                   <PrivateRoute exact path='/followers' component={Followers} />
                   <PrivateRoute exact path='/search' component={Search} />
                   {/* <PrivateRoute exact path='/account/:id' component={Account} /> */}
+=======
+>>>>>>> 6e34d657c80b051661c73e906cc117c39f69e663
                   <PrivateRoute exact path='/food' component={Foodbar} />
                   <PrivateRoute exact path='/mealplan' component={MealPlanner} />
                   <PrivateRoute exact path='/exercise' component={Tracker} />
                   <PrivateRoute exact path='/sponsor' component={Sponsor} />
                   <PrivateRoute exact path='/success' component={Success} />   
                   <PrivateRoute exact path='/logworkout' component={Exercise} />
-                  <PrivateRoute exact path='/test' component={BarChart} />
-                  <Redirect from="*" to="/" />
-                  <Route render={WrongPage} />
+                  <Redirect from="*" to="/notfound" />
                 </Switch>
             </StoreProvider>
           </div>

@@ -11,7 +11,7 @@ import { QUERY_WORKOUTS } from "../../utils/queries";
 
 const BarChart = () => {
   const [chart, setChart] = useState("");
-  const [button, setButton] = useState("Generate Chart");
+  const [button, setButton] = useState("Expand Chart");
 
 //   setting up states for graphs data;
   const [workoutDates, setWorkoutDates] = useState({});
@@ -30,7 +30,7 @@ const BarChart = () => {
     event.preventDefault();
     if (!chart) {
       setChart("Ready");
-      setButton("Close Chart");
+      setButton("X");
       setWorkoutDates(allWorkoutDates);
       setWorkoutCalories(allWorkoutCalories);
     } else {
@@ -40,10 +40,12 @@ const BarChart = () => {
   };
 
   return (
-    <div>
+    <>
+    <div className="chartContainer">
+        <h1 className="chartHeader">Calorie Chart:</h1>
+    <div className="chartBtnContainer">
     {/* // button to show\hide graph */}
-      <br />
-      <button onClick={(e) => handleSubmit(e)}>{button} </button>
+      <button className={button === "X" ? "chartClose" : "chartExpand" } onClick={(e) => handleSubmit(e)}>{button} </button>
       <br />
       <div>
         {chart === "Ready" ? (
@@ -91,6 +93,8 @@ const BarChart = () => {
         ) : null}
       </div>
     </div>
+    </div>
+    </>
   );
 };
 

@@ -13,7 +13,7 @@ const PersonalDevelopment = () => {
   return (
     <div className="dev-container">
       <h2 className="goalHeader">Goal:</h2>
-      <p className="currentGoal">Your current is to {data?.getUser.goal} weight.</p>
+      <p className="currentGoal">Your current goal is to {data?.getUser.goal} weight.</p>
     </div>
   );
 };

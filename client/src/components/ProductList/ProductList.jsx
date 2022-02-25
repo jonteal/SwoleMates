@@ -46,14 +46,14 @@ function ProductList() {
 
   return (
     <div className="productContainer">
-      <p className="italic mb-2">
+      <p className="productTitle">
         Whatever exercises you buy, Valerii will do.
         <br />
         Happy sponsoring! 💓
       </p>
 
       {state.products.length ? (
-        <div>
+        <div className="productCard">
           {filterProducts().map((product) => (
             <ProductItem
               key={product._id}
