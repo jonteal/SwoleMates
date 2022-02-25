@@ -62,15 +62,12 @@ function App() {
                   <Route exact path='/notfound' component={WrongPage} />
                   <PrivateRoute exact path='/home' component={Dashboard} />
                   <PrivateRoute exact path='/profile' component={Profile} />
-                  <PrivateRoute exact path='/quote' component={Quote} />
-                  <PrivateRoute exact path='/personaldevelopment' component={PersonalDevelopment} />
                   <PrivateRoute exact path='/food' component={Foodbar} />
                   <PrivateRoute exact path='/mealplan' component={MealPlanner} />
                   <PrivateRoute exact path='/exercise' component={Tracker} />
                   <PrivateRoute exact path='/sponsor' component={Sponsor} />
                   <PrivateRoute exact path='/success' component={Success} />   
                   <PrivateRoute exact path='/logworkout' component={Exercise} />
-                  <PrivateRoute exact path='/test' component={BarChart} />
                   <Redirect from="*" to="/notfound" />
                 </Switch>
             </StoreProvider>
