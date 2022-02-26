@@ -31,7 +31,6 @@ const Profile = (props) => {
       });
       window.location.assign('/home');
     } catch (err) {
-      console.log(err);
     }
   };
 
@@ -180,9 +179,9 @@ const Profile = (props) => {
             </select>
             <br />
 
-              <button className="loginBtn" onClick={(e) => handleSubmit(e)}>
-                Submit
-              </button>
+            <button className="loginBtn" onClick={(e) => handleSubmit(e)}>
+              Submit
+            </button>
 
           </form>
         </div>

@@ -25,8 +25,6 @@ const Account = () => {
         }
     }, [data]);
 
-    console.log(data);
-
     const { id } = useParams();
 
     // Show "Loading" until page loads
@@ -36,35 +34,35 @@ const Account = () => {
 
     return (
         <>
-        <h1>Hello</h1>
+            <h1>Hello</h1>
 
-        <div className="personalProfileMain">
+            <div className="personalProfileMain">
 
-            {/* Profile Card */}
-            <Card className="personalProfileCard"
-                header={user.firstName}
-                description={`My current goal is to ${user.goal}!`}
-            />
+                {/* Profile Card */}
+                <Card className="personalProfileCard"
+                    header={user.firstName}
+                    description={`My current goal is to ${user.goal}!`}
+                />
 
-            {/* User's Followers */}
-            <div className="followerBox">
-                <Link to="/followers"><h1>Followers</h1></Link>
+                {/* User's Followers */}
+                <div className="followerBox">
+                    <Link to="/followers"><h1>Followers</h1></Link>
+                </div>
+
+                {/* People the User is Following*/}
+                <div className="followingBox">
+                    <Link to="/following"><h1>Following</h1></Link>
+                </div>
+
+
+
+                {/* Back to Personal Profile */}
+                <div className="homeBtnContainer">
+                    <Link to='/personalprofile'><button className="ui primary basic button">Back to Me</button></Link>
+                </div>
+
             </div>
 
-            {/* People the User is Following*/}
-            <div className="followingBox">
-                <Link to="/following"><h1>Following</h1></Link>
-            </div>
-
-
-
-        {/* Back to Personal Profile */}
-        <div className="homeBtnContainer">
-            <Link to='/personalprofile'><button className="ui primary basic button">Back to Me</button></Link>
-        </div>
-
-        </div>
-        
         </>
     )
 }

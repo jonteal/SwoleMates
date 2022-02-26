@@ -50,27 +50,26 @@ const resolvers = {
 
     getAccount: async (parent, { firstName }, context) => {
       if (context.user) {
-      try {
-        const user = await User.find ({ firstName });
-        return user;
-      } catch (error) {
-        throw new Error(error);
+        try {
+          const user = await User.find({ firstName });
+          return user;
+        } catch (error) {
+          throw new Error(error);
+        }
       }
-    }
-    throw new AuthenticationError('You need to be logged in to search for other users!');
+      throw new AuthenticationError('You need to be logged in to search for other users!');
     },
 
     getSearchedUser: async (parent, { email }) => {
       try {
-        const user = await User.find ({ email });
-        console.log(user);
+        const user = await User.find({ email });
         return user;
       } catch (error) {
         throw new Error(error);
       }
     },
 
-    
+
     // new queries start here
     // for now find all without date\user
     allExercises: async () => {
@@ -166,8 +165,8 @@ const resolvers = {
       return { session: session.id };
     },
   },
-    // new queries start here
-  
+  // new queries start here
+
 
   Mutation: {
     // CREATE USER
@@ -215,10 +214,8 @@ const resolvers = {
           "following followers"
         );
         const user = await User.findById(context.user._id).populate("following followers");
-        console.log(user._id);
-        console.log(_id);
         if (otherUser.followers.find((m) => m._id == user._id.toString())) {
-          
+
           const updatedOtherUser = await User.findByIdAndUpdate(
             _id,
             {
@@ -236,7 +233,7 @@ const resolvers = {
           );
 
           // return [updatedOtherUser, updatedUser]
-        } else {          
+        } else {
           otherUser.followers.push(context.user._id);
           user.following.push(_id);
           otherUser.save();

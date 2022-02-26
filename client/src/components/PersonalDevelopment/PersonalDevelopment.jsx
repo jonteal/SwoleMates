@@ -4,8 +4,6 @@ import { useQuery } from '@apollo/client';
 import { GET_PROFILE } from "../../utils/queries";
 //update goal?
 const PersonalDevelopment = () => {
-  // const { data, loading, error } = useQuery(GET_PROFILE);
-  // console.log(data)
 
   const { data } = useQuery(GET_PROFILE);
 

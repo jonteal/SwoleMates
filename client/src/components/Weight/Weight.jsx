@@ -27,7 +27,6 @@ const Weight = () => {
     const db_update = await updateWeight({
       variables: { weight: currentWeight },
     });
-    console.log(db_update.data.updateWeight.weight);
     setWeight(db_update.data.updateWeight.weight)
     setForm(!form);
     return db_update;
@@ -37,19 +36,19 @@ const Weight = () => {
     <>
       {!form ? (
 
-          <div className="weightCard">
-            <h1 className="weightHeader">Current Weight</h1>
+        <div className="weightCard">
+          <h1 className="weightHeader">Current Weight</h1>
 
-            <h2 className="currentWeight">{displayWeight}</h2>
-            <button
-              onClick={showForm}
-              className="weightBtn"
-              type="button"
-              variant="success"
-            >
-              Update
-            </button>
-          </div>
+          <h2 className="currentWeight">{displayWeight}</h2>
+          <button
+            onClick={showForm}
+            className="weightBtn"
+            type="button"
+            variant="success"
+          >
+            Update
+          </button>
+        </div>
 
       ) : (
         <div className="weight-container">
@@ -57,7 +56,7 @@ const Weight = () => {
             <h1 className="weightHeader">Update Weight</h1>
             <form className="weight-form" onSubmit={handleSubmit}>
               <input
-              className="weightInput"
+                className="weightInput"
                 type="number"
                 placeholder="150 lbs"
                 name="weight"
