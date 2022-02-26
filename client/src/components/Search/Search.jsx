@@ -5,7 +5,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { GET_SEARCHED_USER } from '../../utils/queries';
 import { Link } from 'react-router-dom';
 import { FOLLOW_UNFOLLOW } from '../../utils/mutations';
-
+import './search.css';
 
 const Search = () => {
 
@@ -62,22 +62,24 @@ const Search = () => {
     return(
         <>
 
-            <div className='mainContainer'>
+            <div className='searchMainContainer'>
 
             <div className="searchBarContainer">
-                <h1>Search for a SwoleMate!</h1>
+                <h1 className="searchTitle">Search for a SwoleMate!</h1>
                 <form className='searchForm' onSubmit={handleFormSubmit}>
+                    <div className="searchDiv">
                     <input
+                    className="searchInputCard"
                         name='searchInput'
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
                         type='text'
                         placeholder='Search by email'
                     />
-                    <button type='submit' className="ui secondary basic button">
+                    <button type='submit' className="searchBtn">
                         Search
                     </button>
-
+                    </div>
 
 
                     <div className="ui card">

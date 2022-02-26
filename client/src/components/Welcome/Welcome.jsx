@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import Login from "../LoginForm/LoginForm";
 // import SwoleMates from "./SwoleMates";
 import "./welcome.css";
