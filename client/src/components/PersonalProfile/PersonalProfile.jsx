@@ -7,6 +7,8 @@ import AuthService from "../../utils/auth";
 import FollowersContainer from "../FollowersContainer/FollowersContainer";
 import FollowingContainer from "../FollowingContainer/FollowingContainer";
 import { Link } from "react-router-dom";
+import * as IoIcons from "react-icons/io";
+import * as MdIcons from "react-icons/md";
 
 // Personal Profile component - Displays user's profile
 const PersonalProfile = () => {
@@ -48,8 +50,14 @@ const PersonalProfile = () => {
               </div>
               <div className="cardBottom">
               <div className="followerBox">
-                <Link to="/followers">Followers</Link>
-                <Link to="/following">Following</Link>
+                <Link to="/followers">
+                  <IoIcons.IoIosPeople />
+                  Followers
+                </Link>
+                <Link to="/following">
+                  <MdIcons.MdOutlinePersonSearch />
+                  Following
+                </Link>
               </div>
               <button class="matesBtn pt-7">Search for Mates</button>
             </div>
