@@ -54,5 +54,46 @@ db.once("open", async () => {
 
   console.log("users deleted, adios suckers");
 
+  const users = await User.insertMany([
+    {
+    firstName: 'Laurel',
+    lastName: 'Thorburn',
+    email: 'laurel@thorburn.com',
+    password: 'password',
+    goal: 'gain'
+    },
+    {
+    firstName: 'Valerii',
+    lastName: 'Bihun',
+    email: 'valerii@bihun.com',
+    password: 'password',
+    goal: 'lose'
+    },
+    {
+    firstName: 'Jon',
+    lastName: 'Jackson',
+    email: 'jon@jackson.com',
+    password: 'password',
+    goal: 'gain'
+    },
+    {
+    firstName: 'Ryan',
+    lastName: 'Paragas',
+    email: 'ryan@paragas.com',
+    password: 'password',
+    goal: 'lose'
+    },
+    {
+    firstName: 'Eric',
+    lastName: 'Martin',
+    email: 'eric@martin.com',
+    password: 'password',
+    goal: 'maintain'
+    },
+  ])
+
+  console.log("users created, welcome swolemates 💓");
+
+
   process.exit();
 });
