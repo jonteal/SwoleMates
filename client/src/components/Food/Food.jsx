@@ -232,10 +232,10 @@ const FoodBar = () => {
                     </div>
                   </a>
                   <div className="foodText">
-                    <p>Calories : {recipeCalories}</p>
-                    <p>Fats : {recipeFats}</p>
-                    <p>Carbs : {recipeCarbs}</p>
-                    <p>Proteins : {recipeProteins}</p>
+                    <p>Calories : {recipeCalories} kCal</p>
+                    <p>Fats : {recipeFats} g</p>
+                    <p>Carbs : {recipeCarbs} g</p>
+                    <p>Proteins : {recipeProteins} g</p>
                   </div>
                 </div>
               ) : null}
