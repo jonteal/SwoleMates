@@ -118,7 +118,7 @@ npm run test
 ## Collaborators?
   Meet the swole mates who created this app:
 
-* Eric Martin: [GitHub](https://github.com/EMtheDM)
+* Eric Martin: <a href="https://github.com/EMtheDM" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
 * Jon Jackson: [GitHub](https://github.com/jonteal)
 * Laurel Thorburn: [GitHub](https://github.com/laurelthorburn)
 * Ryan Paragas: [GitHub](https://github.com/ParagasR)
