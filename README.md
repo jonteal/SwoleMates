@@ -48,7 +48,7 @@ THEN I am presented with an option to see weekly meal recipes or view nutrients 
 WHEN I click on 'Exercise' in the nav bar 
 THEN I am presented with my logged workouts and am able to log my cardio, strength, and/or stretching sessions
 WHEN I click on 'Mates' in the nav bar 
-THEN I am presented with NEED ME***
+THEN I am presented with my profile card and the ability to search for active user's by e
 WHEN I click on 'Sponsor' in the nav bar 
 THEN I am presented with a list of exercises I can purchase securely using Stripe payment
 WHEN I go to an invalid route
