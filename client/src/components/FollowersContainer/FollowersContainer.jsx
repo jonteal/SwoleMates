@@ -13,36 +13,28 @@ const FollowersContainer = () => {
 
     const [user, setUser] = useState({});
 
-    // console.log(AuthService.getProfile());
     const { loading, data } = useQuery(GET_ME, {
         variables: { id: AuthService.getProfile().data._id }
     });
 
-    const [followButton, {error}] = useMutation(FOLLOW_UNFOLLOW);
+    const [followButton, { error }] = useMutation(FOLLOW_UNFOLLOW);
 
 
     const handleFollow = async (event) => {
         event.preventDefault();
 
-        console.log((event.target.id));
         const db_followers = await followButton({
-            variables: {_id: event.target.id}
+            variables: { _id: event.target.id }
         })
 
-        console.log(db_followers);
         return db_followers;
     }
-    
+
     useEffect(() => {
         if (data) {
             setUser(data.getMe);
-            console.log("---- fetched data ---");
-            console.log(data);
         }
     }, [data])
-
-    console.log("---- fetched user ---");
-    console.log(data);
 
     if (loading) {
         return <p>Loading</p>
@@ -63,15 +55,15 @@ const FollowersContainer = () => {
 
             <div className="followerList">
                 <ul>
-                {followers.map(follower => (
-                    <li key={follower._id}>
-                    
-                    <div className="ui card">
-                        <div className="content">
-                            <a className="header">{`${follower.firstName} ${follower.lastName}`}</a>
-                        </div>
-                        <div className="extra content">
-                        {/* <a>
+                    {followers.map(follower => (
+                        <li key={follower._id}>
+
+                            <div className="ui card">
+                                <div className="content">
+                                    <a className="header">{`${follower.firstName} ${follower.lastName}`}</a>
+                                </div>
+                                <div className="extra content">
+                                    {/* <a>
                         <i className="user icon"></i>
                             22 Followers
                         </a>
@@ -80,22 +72,22 @@ const FollowersContainer = () => {
                         <i className="user icon dataRight"></i>
                             15 Following
                         </a> */}
-                        </div>
+                                </div>
 
-                        <button className="followUnfollowBtn ui button"
-                            id={follower._id}
-                            onClick={handleFollow}
-                        >
-                            Follow
-                        </button>
+                                <button className="followUnfollowBtn ui button"
+                                    id={follower._id}
+                                    onClick={handleFollow}
+                                >
+                                    Follow
+                                </button>
 
-                    </div>
+                            </div>
 
-                    </li>
-                ))}
+                        </li>
+                    ))}
                 </ul>
 
-                
+
             </div>
 
             <div className="homeBtnContainer">

@@ -59,7 +59,6 @@ const Workout = () => {
           caloriesBurnt: totalCalories,
         },
       });
-      console.log(data);
     } catch (err) {
       console.error(err);
     }

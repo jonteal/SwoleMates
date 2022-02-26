@@ -71,7 +71,6 @@ const FoodBar = () => {
       setFoodItem("");
     } catch (err) {
       window.location.assign("/food");
-      console.log(err);
     }
   };
 
@@ -186,19 +185,19 @@ const FoodBar = () => {
         ) : type == "recipe" ? (
           <div>
             <div className="foodCard">
-            <input
-              className="border-black mb-1 foodInputW"
-              type="text"
-              name="foodItem"
-              value={foodItem}
-              placeholder="Insert recipe"
-              onChange={(e) => setFoodItem(e.target.value)}
-              required
-            />
-            <button className="foodBtn foodInputW" onClick={(e) => handleSubmitRecipe(e)}>
-              Find recipes!{" "}
-            </button>
-</div>
+              <input
+                className="border-black mb-1 foodInputW"
+                type="text"
+                name="foodItem"
+                value={foodItem}
+                placeholder="Insert recipe"
+                onChange={(e) => setFoodItem(e.target.value)}
+                required
+              />
+              <button className="foodBtn foodInputW" onClick={(e) => handleSubmitRecipe(e)}>
+                Find recipes!{" "}
+              </button>
+            </div>
             {error ? (
               <div>
                 <p>{error}</p>
@@ -225,12 +224,12 @@ const FoodBar = () => {
               {recipeCalories ? (
                 <div>
                   <a href={recipeUrl} target="_blank">
-                  <h3 className="foodSubTitleRecipe">
+                    <h3 className="foodSubTitleRecipe">
                       {recipeTitle}
-                  </h3>
-                  <div className="foodImageContainer">
-                    <img className="foodImage" src={recipeImg} alt={recipeTitle} />
-                  </div>
+                    </h3>
+                    <div className="foodImageContainer">
+                      <img className="foodImage" src={recipeImg} alt={recipeTitle} />
+                    </div>
                   </a>
                   <div className="foodText">
                     <p>Calories : {recipeCalories}</p>

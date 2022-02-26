@@ -10,10 +10,9 @@ const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
 
   const [login, { error }] = useMutation(LOGIN_USER);
-  const [ newError, setError] = useState("")
+  const [newError, setError] = useState("")
 
   useEffect(() => {
-    console.log(error)
     error ? setError("No account found, please sign up first.") : setError("")
   });
 
