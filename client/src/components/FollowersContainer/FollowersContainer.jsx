@@ -17,6 +17,21 @@ const FollowersContainer = () => {
     const { loading, data } = useQuery(GET_ME, {
         variables: { id: AuthService.getProfile().data._id }
     });
+
+    const [followButton, {error}] = useMutation(FOLLOW_UNFOLLOW);
+
+
+    const handleFollow = async (event) => {
+        event.preventDefault();
+
+        console.log((event.target.id));
+        const db_followers = await followButton({
+            variables: {_id: event.target.id}
+        })
+
+        console.log(db_followers);
+        return db_followers;
+    }
     
     useEffect(() => {
         if (data) {
@@ -34,7 +49,7 @@ const FollowersContainer = () => {
     }
 
     // const followers = user?.followers || [];
-    const followers = user?.followers || [];
+    let followers = user?.followers || [];
 
     return (
         <>
@@ -56,7 +71,7 @@ const FollowersContainer = () => {
                             <a className="header">{`${follower.firstName} ${follower.lastName}`}</a>
                         </div>
                         <div className="extra content">
-                        <a>
+                        {/* <a>
                         <i className="user icon"></i>
                             22 Followers
                         </a>
@@ -64,12 +79,16 @@ const FollowersContainer = () => {
                         <a>
                         <i className="user icon dataRight"></i>
                             15 Following
-                        </a>
+                        </a> */}
                         </div>
 
-                        <button className="followUnfollowBtn ui button" {...followers?.includes(follower._id) ? "Unfollow" : "Follow"}>
+                        <button className="followUnfollowBtn ui button"
+                            id={follower._id}
+                            onClick={handleFollow}
+                        >
                             Follow
                         </button>
+
                     </div>
 
                     </li>
