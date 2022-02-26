@@ -120,7 +120,7 @@ npm run test
 
 * Eric Martin: <a href="https://github.com/EMtheDM" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
 * Jon Jackson: <a href="https://github.com/jonteal" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
-* Laurel Thorburn: [GitHub](https://github.com/laurelthorburn)
+* Laurel Thorburn: <a href="https://github.com/laurelthorburn" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
 * Ryan Paragas: [GitHub](https://github.com/ParagasR)
 * Valerii Bihun: [GitHub](https://github.com/Valllerian)
 
