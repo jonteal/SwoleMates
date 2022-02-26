@@ -173,11 +173,11 @@ const FoodBar = () => {
                 <p className="foodSubTitle">{searchedTitle}:</p>
                 <div>
                   <div className="foodText">
-                    <p> Calories: {foodCalories}</p>
-                    <p> Sugars: {foodSugars} </p>
-                    <p> Sodium: {foodSodium}</p>
-                    <p> Fat: {foodFat}</p>
-                    <p> Protein: {foodProtein} </p>
+                    <p> Calories: {foodCalories} kCal</p>
+                    <p> Sugars: {foodSugars} g</p>
+                    <p> Sodium: {foodSodium} g</p>
+                    <p> Fat: {foodFat} g</p>
+                    <p> Protein: {foodProtein} g</p>
                   </div>
                 </div>
               </div>
