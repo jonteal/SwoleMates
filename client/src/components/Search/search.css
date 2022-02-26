@@ -43,3 +43,14 @@ width: 75px;
     background-color: #7e8ba3;
     color:aliceblue;
 }
+
+.searchReturn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nameResult {
+    font-weight: bold;
+}

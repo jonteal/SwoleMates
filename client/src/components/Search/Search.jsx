@@ -42,11 +42,11 @@ const Search = () => {
         
         if (data?.getSearchedUser[0]._id) {
             console.log("user exists");
-            setUserstate(<><div>{`${data?.getSearchedUser[0].firstName} ${data?.getSearchedUser[0].lastName}`}</div>                        
-                <button className="followUnfollowBtn ui button"
+            setUserstate(<div className='searchReturn'><div className='nameResult'>{`${data?.getSearchedUser[0].firstName} ${data?.getSearchedUser[0].lastName}`}</div>                        
+                <button className="followUnfollowBtn ui teal basic button"
                     id={data?.getSearchedUser[0]._id}
                     onClick={handleFollow}
-                >Follow</button></>);
+                >Follow</button></div>);
             
 
         } else {
