@@ -2,7 +2,7 @@
 
 <a name="descsection"></a>
 ## Description
-Here at SwoleMates we are passionate about two things: Getting swole and finding mates (mates as in friends, ya perv). This application is built using a MERN stack. It is a single-page application. The app utilizes ReactJS, tailwindCSS, Node JS, ExpressJS, GraphQL, MongoDB, JWT, PWA, Stripe, Spoonacular API, Quote API, and so much more... You can enjoy not only tracking your workouts and researching your food's macro-nutrients, but also lurking your friends. Sign up today to find your one true swole mate 💓
+Here at SwoleMates we are passionate about two things: Getting swole and finding mates (mates as in friends, ya perv). This application is built using a MERN stack single-page application. The app utilizes ReactJS, tailwindCSS, Node JS, ExpressJS, GraphQL, MongoDB, JWT, PWA, Stripe, Spoonacular API, Quote API, and so much more... You can enjoy not only tracking your workouts and researching your food's macro-nutrients, but also lurking your friends. Sign up today to find your one true swole mate 💓
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -24,8 +24,8 @@ Here at SwoleMates we are passionate about two things: Getting swole and finding
 ## User Story
 ```
 AS A swole mate,
-I WANT a site where I can track both mine and my mate's exercises, weight, calories, and goals
-SO THAT I can find my one true swole mate and continue to grow my fitness journey
+I WANT a site where I can track my exercises, weight, calories, food/recipes, and goals
+SO THAT I can grow my fitness journey and become a swole mate
 ```
 
 <a name="acceptancesection"></a>
@@ -35,26 +35,29 @@ Given an unauthenticated user
 WHEN I arrive at the website
 THEN I am presented with a welcome page that transitions to a login page
 IF I don't have an account, I can click sign up and be routed to the sign up page and profile page
-THEN I am able to sign up by entering a unique email and a password twice that must match and be at least 8 characters
+THEN I am able to sign up by entering a unique email and my password twice to ensure they match and are at least 8 characters
 WHEN I have an account, I login with my authentication
 IF I enter my login information, I am rerouted to the home page, else I receive an error that my username and/or password is incorrect
 
 Given an authenticated user
-WHEN I select login, I am routed to the home page
-THEN I am presented with a dashboard of my calorie chart, current weight, my fitness goal, and inspirational quotes
+WHEN I select login, I am routed to the dashboard page
+THEN I am presented with a list of my calorie chart, current weight, my fitness goal, and inspirational quotes
 WHEN I click on the navigation bar, I am able to go to the food, exercise, mates, or sponsor page
-WHEN I click on 'Food' in the nav bar 
+WHEN I click on 'Food' in the navigation bar 
 THEN I am presented with an option to see weekly meal recipes or view nutrients for single food items or recipes
-WHEN I click on 'Exercise' in the nav bar 
+WHEN I click on 'Exercise' in the navigation bar 
 THEN I am presented with my logged workouts and am able to log my cardio, strength, and/or stretching sessions
-WHEN I click on 'Mates' in the nav bar 
+WHEN I click on 'Mates' in the navigation bar 
 THEN I am presented with my profile card and the ability to search for active user's by e
-WHEN I click on 'Sponsor' in the nav bar 
+WHEN I click on 'Sponsor' in the navigation bar 
 THEN I am presented with a list of exercises I can purchase securely using Stripe payment
 WHEN I go to an invalid route
-THEN I am presented with a 404 error and an option re route back to the home page
+THEN I am presented with a 404 error and an option route back to the home page
 WHEN I click logout or am idle on the site for too long
-Then I am redirected to login page
+THEN I am redirected to the login page
+
+WHEN I use this application
+THEN I become my one true swole mate
 ```
 
 <a name="installsection"></a>
@@ -120,7 +123,7 @@ npm run test
 
 * Eric Martin: <a href="https://github.com/EMtheDM" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
 * Jon Jackson: <a href="https://github.com/jonteal" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
-* Laurel Thorburn: <a href="https://github.com/laurelthorburn" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
+* Laurel Thorburn: <a href="https://github.com/laurelthorburn" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-FFC0CB?logo=GitHub"></a>
 * Ryan Paragas: <a href="https://github.com/ParagasR" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
 * Valerii Bihun: <a href="https://github.com/Valllerian" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
 
