@@ -60,7 +60,7 @@ const PersonalProfile = () => {
                     <Link to="/following">Following</Link>
                   </div>
                 </div>
-                <button class="matesBtn pt-7">Search for Mates</button>
+                <button class="matesBtn pt-7" onClick={handleFindMates}>Search for Mates</button>
               </div>
             </div>
           </div>
