@@ -1,5 +1,5 @@
 .errorBox {
-  max-height: 90vh;
+  max-height: 75vh;
   margin-top: 10vh;
 }
 
@@ -14,11 +14,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60vh;
+  height: 50vh;
 }
 
 .imageBox img {
-  height: 50vh;
+  height: 40vh;
 }
 
 .messageBox {
