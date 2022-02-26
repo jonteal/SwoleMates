@@ -124,7 +124,6 @@ npm run test
 * Ryan Paragas: <a href="https://github.com/ParagasR" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
 * Valerii Bihun: <a href="https://github.com/Valllerian" target="_blank" alt="Github Page"><img src="https://img.shields.io/badge/-GitHub-708090?logo=GitHub"></a>
 
-  Questions/comments/concerns? Please send an email to codinglaurel@gmail.com
   
   <a name="picsection"></a>
   ## Screenshots
