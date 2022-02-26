@@ -59,7 +59,7 @@ const Weight = () => {
               <input
               className="weightInput"
                 type="number"
-                placeholder="200 lbs"
+                placeholder="150 lbs"
                 name="weight"
                 onChange={(e) => {
                   setWeight(parseFloat(e.target.value));
