@@ -25,10 +25,6 @@ const PersonalProfile = () => {
     return <p>Patience, mate...</p>;
   }
 
-  const handleFindMates = (e) => {
-    e.preventDefault();
-    window.location.assign("/search");
-  };
 
   const followers = user?.followers || [];
   const following = user?.following || [];
@@ -60,7 +56,7 @@ const PersonalProfile = () => {
                     <Link to="/following">Following</Link>
                   </div>
                 </div>
-                <button class="matesBtn pt-7" onClick={handleFindMates}>Search for Mates</button>
+                <Link class="matesBtn pt-7" to="/search">Search for Mates</Link>
               </div>
             </div>
           </div>
