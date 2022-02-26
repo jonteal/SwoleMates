@@ -106,7 +106,7 @@
 .cardBottom{
     display: flex;
     flex-direction: column;
-    height: 150px;
+    height: 110px;
     justify-content: flex-end;
 }
 
