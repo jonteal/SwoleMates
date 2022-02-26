@@ -38,7 +38,6 @@
   box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3),
     0 0 40px rgba(0, 0, 0, 0.1) inset;
     background-color: darkcyan;
-
 }
 
 .front__bkg-photo {
@@ -80,7 +79,6 @@
   .front__text-para {
     position: relative;
     top: -5px;
-
     color: #000;
     font-size: 14px;
     letter-spacing: 0.4px;
@@ -104,13 +102,9 @@
 
 .cardTop{
     background-color: aqua;
-    flex:1;
 }
 
 .cardBottom{
     background-color: chartreuse;
-    flex: 1;
     align-items: flex-end;
 }
-  
-
