@@ -36,19 +36,24 @@ const FollowingContainer = () => {
         return db_following;
     }
     
+    let following = user?.following || [];
+
     // 
     useEffect(() => {
         if (data) {
+            console.log("updating state");
             setUser(data.getMe);
         }
+
+        following = user?.following || [];
+        console.log(following);
     }, [data])
 
     if (loading) {
         return <p>Loading...</p>
     }
 
-    // const followers = user?.followers || [];
-    const following = user?.following || [];
+
 
 
     return (
@@ -57,6 +62,7 @@ const FollowingContainer = () => {
 
             <div className="followingList">
                 <ul>
+                
                 {following.map(following => (
                     <li key={following._id}>
                     
@@ -65,14 +71,14 @@ const FollowingContainer = () => {
                             <Link to={`/account/${Account._id}`} className="header">{`${following.firstName} ${following.lastName}`}</Link>
                         </div>
                         <div className="extra content">
-                        <a>
+                        {/* <a>
                         <i className="user icon"></i>
-                            22 Followers
+                            {following.followers?.length || 0} Followers
                         </a>
                         <a>
                         <i className="user icon"></i>
-                            15 Following
-                        </a>
+                            {following.following?.length || 0} Following
+                        </a> */}
                         
                         </div>
 

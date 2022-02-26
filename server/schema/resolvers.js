@@ -215,24 +215,27 @@ const resolvers = {
           "following followers"
         );
         const user = await User.findById(context.user._id).populate("following followers");
+        console.log(user._id);
+        console.log(_id);
         if (otherUser.followers.find((m) => m._id == user._id.toString())) {
           
-          return await User.findByIdAndUpdate(
+          const updatedOtherUser = await User.findByIdAndUpdate(
             _id,
             {
               $pull: { followers: user._id },
             },
             { new: true },
-            (result) => {
-              User.findByIdAndUpdate(
-                user._id,
-                {
-                  $pull: { following: _id },
-                },
-                { new: true }
-              ).populate("following followers");
-            }
-          ).populate("following followers");
+          );
+
+          const updatedUser = await User.findByIdAndUpdate(
+            user._id,
+            {
+              $pull: { following: _id },
+            },
+            { new: true }
+          );
+
+          // return [updatedOtherUser, updatedUser]
         } else {          
           otherUser.followers.push(context.user._id);
           user.following.push(_id);
