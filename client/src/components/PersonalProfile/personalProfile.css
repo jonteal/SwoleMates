@@ -112,18 +112,20 @@
     padding: 2px 5px;
     opacity: .5;
     align-self: center;
+    text-decoration: none;
   }
 
   .matesBtn:hover {
       opacity: 1;
+      color: #fff;
   }
 
-  .cardBottom a {
+  .peopleRow a {
       color: darkslategray;
       font-family: "Montserrat", sans-serif;
       padding-bottom: 10px;
     }
-  .cardBottom a:hover {
+  .peopleRow a:hover {
       cursor: pointer;
       color: #096479;
     }
@@ -133,3 +135,4 @@
       flex-direction: row;
       justify-content: center;
     }
+
