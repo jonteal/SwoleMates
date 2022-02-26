@@ -94,20 +94,12 @@
     color: gray;
   }
 
-  .followerBox{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.cardTop{
-}
-
 .cardBottom{
     display: flex;
     flex-direction: column;
     height: 110px;
     justify-content: flex-end;
+
 }
 
 .matesBtn {
@@ -125,3 +117,13 @@
   .matesBtn:hover {
       opacity: 1;
   }
+
+  .cardBottom a {
+      color: darkslategray;
+      font-family: "Montserrat", sans-serif;
+      padding-bottom: 10px;
+    }
+  .cardBottom a:hover {
+      cursor: pointer;
+      color: #096479;
+    }

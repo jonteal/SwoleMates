@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Icon } from "semantic-ui-react";
 import "./personalProfile.css";
 import { useQuery } from "@apollo/client";
 import { GET_ME } from "../../utils/queries";
 import AuthService from "../../utils/auth";
-import FollowersContainer from "../FollowersContainer/FollowersContainer";
-import FollowingContainer from "../FollowingContainer/FollowingContainer";
 import { Link } from "react-router-dom";
 
 // Personal Profile component - Displays user's profile
@@ -47,15 +44,15 @@ const PersonalProfile = () => {
                 {user.firstName} {user.lastName}
               </h3>
               <p class="front__text-para">
-                <i class="fas fa-map-marker-alt front-icons"></i>My goal is to{" "}
-                {user.goal} weight
+                <i class="fas fa-map-marker-alt front-icons"></i>
+
               </p>
               </div>
               <div className="cardBottom">
-              <div className="followerBox">
+
                 <Link to="/followers">Followers</Link>
                 <Link to="/following">Following</Link>
-              </div>
+
               <button class="matesBtn pt-7" onClick={handleFindMates}>Search for Mates</button>
             </div>
             </div>
