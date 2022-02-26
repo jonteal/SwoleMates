@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 // import { FOLLOW_UNFOLLOW } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-// import { useMutation } from '@apollo/client';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { GET_SEARCHED_USER } from '../../utils/queries';
 import { Link } from 'react-router-dom';
+import { FOLLOW_UNFOLLOW } from '../../utils/mutations';
 
 
 const Search = () => {
@@ -21,6 +21,19 @@ const Search = () => {
 
     let searchedUser = userstate;
 
+    const [followButton, {error}] = useMutation(FOLLOW_UNFOLLOW);
+
+    const handleFollow = async (event) => {
+        event.preventDefault();
+
+        console.log((event.target.id));
+        const db_searched = await followButton({
+            variables: {_id: event.target.id}
+        })
+
+        console.log(db_searched);
+        return db_searched;
+    }
 
     // create method to search for users and set state on form submit
     const handleFormSubmit = async (event) => {
@@ -30,7 +43,10 @@ const Search = () => {
         if (data?.getSearchedUser[0]._id) {
             console.log("user exists");
             setUserstate(<><div>{`${data?.getSearchedUser[0].firstName} ${data?.getSearchedUser[0].lastName}`}</div>                        
-                <button className="followUnfollowBtn ui button">Follow</button></>);
+                <button className="followUnfollowBtn ui button"
+                    id={data?.getSearchedUser[0]._id}
+                    onClick={handleFollow}
+                >Follow</button></>);
             
 
         } else {
