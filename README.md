@@ -73,7 +73,7 @@ npm install || npm i
 npm run seed
 ```
 
-* Run the project by typing the following in the terminal:
+* Run the project by typing the following in your integrated terminal:
 ```
 npm run develop
 ```
