@@ -1,0 +1,45 @@
+.searchMainContainer {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchBarContainer{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.searchTitle{
+    color: #7e8ba3;
+    font-size: 2rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.searchDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.searchInputCard button{
+    margin: 0;
+}
+
+.searchBtn{
+border: black solid 1px;
+border-radius: 5px;
+width: 75px;
+}
+
+.searchBtn:hover{
+    cursor: pointer;
+    background-color: #7e8ba3;
+    color:aliceblue;
+}
