@@ -16,7 +16,7 @@
 }
 
 .weightInput{
-  width: 100%;
+  width: 50%;
 }
 
 .weightBtn {
@@ -40,4 +40,10 @@
 
 .currentWeight{
     font-size: 1.25rem;
+}
+
+.weight-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
