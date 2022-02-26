@@ -127,3 +127,9 @@
       cursor: pointer;
       color: #096479;
     }
+
+    .peopleRow{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }

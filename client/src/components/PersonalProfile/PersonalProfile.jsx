@@ -26,9 +26,9 @@ const PersonalProfile = () => {
   }
 
   const handleFindMates = (e) => {
-      e.preventDefault();
-      window.location.assign('/search');
-  }
+    e.preventDefault();
+    window.location.assign("/search");
+  };
 
   const followers = user?.followers || [];
   const following = user?.following || [];
@@ -41,28 +41,27 @@ const PersonalProfile = () => {
             <div class="front__bkg-photo"></div>
             <div class="front__face-photo"></div>
             <div class="front__text">
-                <div className="cardTop">
-              <h3 class="matesHeader">
-                {user.firstName} {user.lastName}
-              </h3>
-              <p class="front__text-para">
-                <i class="fas fa-map-marker-alt front-icons"></i>
-
-              </p>
+              <div className="cardTop">
+                <h3 class="matesHeader">
+                  {user.firstName} {user.lastName}
+                </h3>
+                <p class="front__text-para">
+                  <i class="fas fa-map-marker-alt front-icons"></i>
+                </p>
               </div>
               <div className="cardBottom">
-              <div className="followerBox">
-                <Link to="/followers">
-                  <IoIcons.IoIosPeople />
-                  Followers
-                </Link>
-                <Link to="/following">
-                  <MdIcons.MdOutlinePersonSearch />
-                  Following
-                </Link>
+                <div className="followerBox">
+                  <div className="peopleRow">
+                    <IoIcons.IoIosPeople className="mr-3" />
+                    <Link to="/followers">Followers</Link>
+                  </div>
+                  <div className="peopleRow">
+                    <MdIcons.MdOutlinePersonSearch className="mr-3" />
+                    <Link to="/following">Following</Link>
+                  </div>
+                </div>
+                <button class="matesBtn pt-7">Search for Mates</button>
               </div>
-              <button class="matesBtn pt-7">Search for Mates</button>
-            </div>
             </div>
           </div>
         </div>
