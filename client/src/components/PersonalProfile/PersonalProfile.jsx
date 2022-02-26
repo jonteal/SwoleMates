@@ -38,7 +38,7 @@ const PersonalProfile = () => {
             <div class="front__face-photo"></div>
             <div class="front__text">
                 <div className="cardTop">
-              <h3 class="front__text-header">
+              <h3 class="matesHeader">
                 {user.firstName} {user.lastName}
               </h3>
               <p class="front__text-para">
@@ -51,7 +51,7 @@ const PersonalProfile = () => {
                 <Link to="/followers">Followers</Link>
                 <Link to="/following">Following</Link>
               </div>
-              <button class="front__text-hover">Search for Mates</button>
+              <button class="matesBtn pt-7">Search for Mates</button>
             </div>
             </div>
           </div>
@@ -62,18 +62,3 @@ const PersonalProfile = () => {
 };
 
 export default PersonalProfile;
-
-{
-  /* <div className="personalProfileMain">
-<div className="personalProfileCard">
-  <p>
-    Name: {user.firstName} {user.lastName}
-  </p>
-  <p> Goal: {`My current goal is to ${user.goal}!`}</p>
-</div>
-<div className="followerBox">
-  <Link to="/followers">Followers</Link>
-  <Link to="/following">Following</Link>
-</div>
-</div> */
-}

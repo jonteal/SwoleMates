@@ -22,22 +22,22 @@
   transform-style: preserve-3d;
 }
 
-.front {
-  position: relative;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
+.matesHeader{
+    color: #7e8ba3;
+    font-size: 2rem;
+    font-weight: 100;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .front {
-  cursor: pointer;
   height: 100%;
   background: #fff;
   backface-visibility: hidden;
   border-radius: 5px;
   box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3),
     0 0 40px rgba(0, 0, 0, 0.1) inset;
-    background-color: darkcyan;
 }
 
 .front__bkg-photo {
@@ -101,10 +101,27 @@
 }
 
 .cardTop{
-    background-color: aqua;
 }
 
 .cardBottom{
-    background-color: chartreuse;
-    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    justify-content: flex-end;
 }
+
+.matesBtn {
+    background-image: linear-gradient(160deg, #096479 0%, #76D9F0 100%);
+    color: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 50%;
+    border-radius: 10px;
+    padding: 2px 5px;
+    opacity: .5;
+    align-self: center;
+  }
+
+  .matesBtn:hover {
+      opacity: 1;
+  }
