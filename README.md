@@ -2,7 +2,7 @@
 
 <a name="descsection"></a>
 ## Description
-Here at SwoleMates we are passionate about two things: Getting swole and finding mates (mates as in friends, ya perv). This application is built using a MERN stack. It is a single-page application. The app utilizes ReactJS, tailwindCSS, Node JS, ExpressJS, GraphQL, MongoDB, JWT, PWA, Stripe, Spoonacular API, Quote API, and so much more... Enjoy not only tracking your workouts and researching your food's macro-nutrients, but also lurking your friends. Sign up today to find your one true swole mate 💓
+Here at SwoleMates we are passionate about two things: Getting swole and finding mates (mates as in friends, ya perv). This application is built using a MERN stack. It is a single-page application. The app utilizes ReactJS, tailwindCSS, Node JS, ExpressJS, GraphQL, MongoDB, JWT, PWA, Stripe, Spoonacular API, Quote API, and so much more... You can enjoy not only tracking your workouts and researching your food's macro-nutrients, but also lurking your friends. Sign up today to find your one true swole mate 💓
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
