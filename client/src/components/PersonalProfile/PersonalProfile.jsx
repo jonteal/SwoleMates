@@ -4,6 +4,8 @@ import { useQuery } from "@apollo/client";
 import { GET_ME } from "../../utils/queries";
 import AuthService from "../../utils/auth";
 import { Link } from "react-router-dom";
+import * as IoIcons from "react-icons/io";
+import * as MdIcons from "react-icons/md";
 
 // Personal Profile component - Displays user's profile
 const PersonalProfile = () => {
@@ -49,11 +51,17 @@ const PersonalProfile = () => {
               </p>
               </div>
               <div className="cardBottom">
-
-                <Link to="/followers">Followers</Link>
-                <Link to="/following">Following</Link>
-
-              <button class="matesBtn pt-7" onClick={handleFindMates}>Search for Mates</button>
+              <div className="followerBox">
+                <Link to="/followers">
+                  <IoIcons.IoIosPeople />
+                  Followers
+                </Link>
+                <Link to="/following">
+                  <MdIcons.MdOutlinePersonSearch />
+                  Following
+                </Link>
+              </div>
+              <button class="matesBtn pt-7">Search for Mates</button>
             </div>
             </div>
           </div>
